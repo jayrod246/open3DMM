@@ -1,0 +1,104 @@
+﻿struct UnkStruct
+{
+	+00 (SomePointer, 4)
+	+1C (RECTANGLE*, 4) Dest
+}
+
+struct RECTANGLE
+{
+	+00 (int, 4h)	X1
+	+04 (int, 4h)	Y1
+	+08 (int, 4h)	X2
+	+0C (int, 4h)	Y2
+}
+
+GPT::Method0042B330(Arg1	+04 (MBMP*, 4h) source_MBMP
+					Arg2	+08 (RECTANGLE*, 4h)
+					Arg3	+0C (UnkStruct*, 4h)
+					)
+{
+// LOCALS
+Loc1	-40 (RECTANGLE, 10h)
+Loc2	-30 (RECTANGLE, 10h)
+Loc3	-50 (RECTANGLE, 10h)
+Loc4	-10 (RECTANGLE, 10h)
+Loc5	-20 (RECTANGLE, 10h)
+
+	Loc1.Copy(in Arg2);
+
+	if(Arg3.Dest != null)
+	{
+		Loc2.Copy(in *Arg3.Dest);
+		if(!Loc2.CalculateIntersection(in Loc1))
+			return;
+	}
+	else
+	{
+		// Loc2.X1 = Loc1.X1;
+		// Loc2.Y1 = Loc1.Y1;
+		// Loc2.X2 = Loc1.X2;
+		// Loc2.Y2 = Loc1.Y2;
+		Loc2.Copy(in Loc1);
+	}
+
+	Arg1.GetRect(out Loc3); // call 0x0043F7D0 
+	if(Loc3.Y1 < Loc3.Y2 && Loc3.X1 < Loc3.X2 && this.BitDepth == 8) // BitDepth at +34
+	{
+		if(Loc1.X1 - Loc1.X2 + Loc3.X2 != Loc3.X1 || Loc1.Y1 - Loc1.Y2 + Loc3.Y2 != Loc3.Y1)
+		{
+			// 0042B451
+			gdi32.SetTextColor(this.DC, 0x2FFFFFF);
+			gdi32.SetBkColor(this.DC, 0x2000000);
+			Loc3.TopLeftOrigin();
+			var gpt = AllocateBitmap(Loc3, 1); // call 0x00429EE0
+			if(gpt != null)
+			{
+				Arg1.Method425850(gpt.GetField<int>(0x30), gpt.GetField<int>(0x38), Loc3.Y2 - Loc3.Y1, -Loc3.X1, -Loc3.Y1, Loc3); // call 0x00425850
+				this.Method42A550(Arg3.Dest);
+				gdi32.StretchBlt(this.GetField<int>(0x24), Loc1.X1, Loc1.X2, Loc1.X2 - Loc1.X1, Loc1.Y2 - Loc1.Y1, gpt.GetField<int>(0x24), 0, 0, Loc3.X2 - Loc3.X1, Loc3.Y2 - Loc3.Y1, 0xEE0086);
+				if(gpt != null) // Redundant? 0042B50F  test edi, edi
+				{
+					gpt.VirtualCall(0x10); // Free?
+				}
+				var gpt8 = AllocateBitmap(Loc3, 8); // call 0x00429EE0
+				if(gpt8 != null)
+				{
+					Loc3.SizeLimit(ref Loc4);
+					Loc5.X1 = Loc4.X1;
+					Loc5.Y1 = Loc4.Y1;
+					Loc5.X2 = Loc4.X2;
+					Loc5.Y2 = Loc4.Y2'
+
+					gdi32.FillRect(gpt8.GetField<int>(0x24), &Loc5, gdi32.GetStockObject(0));
+					GDIFlush(); //00429680
+
+					Arg1.Blit(gpt8.PixelBuffer, gpt8.Stride, Loc3.Y2 - Loc3.Y1, -Loc3.X1, -Loc3.Y1, &Loc3, null);
+					var eax = Loc1.Y2 - Loc1.Y1;
+					var ecx = this.GetField<int>(0x24);
+
+					gdi32.StretchBlt(this.GetField<int>(0x24), Loc1.X1, Loc1.Y1, Loc1.X2 - Loc1.X1, Loc1.Y2 - Loc1.Y1, gpt8.GetField<int>(0x24), 0, 0, Loc3.X2 - Loc3.X1, Loc3.Y2 - Loc3.Y1, 0x8800C6);
+					if(gpt8 != null) // Redundant? 0042B5E0  test edi, edi
+					{
+						gpt8.VirtualCall(0x10); // Free?
+					}
+				}
+			}
+		}
+		else
+		{
+			// 0042B3F0
+			var rc03C = this.GetField<RECTANGLE>(0x3C)
+			if(Loc2.CalculateIntersection(in rc03C))
+			{
+				if(this.GetField<RECTANGLE>(0x50) >= GlobalFlushCounter) // GlobalFlushCounter at 004E3CAC
+				{
+					GDIFlush(); //00429680
+				}
+
+				Arg1.Blit(this.PixelBuffer, this.Stride, rc03C.Y2 - rc03C.Y1, Loc1.X1 - Loc3.X1, Loc1.Y1 - Loc3.Y1, ref Loc2, this.GetField<REGN>(0x08));
+				// PixelBuffer at +30
+				// Stride at +38
+			}
+		}
+	}
+}

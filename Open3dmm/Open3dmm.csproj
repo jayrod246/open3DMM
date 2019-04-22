@@ -1,0 +1,277 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Costura.Fody.4.0.0\build\Costura.Fody.props" Condition="Exists('..\packages\Costura.Fody.4.0.0\build\Costura.Fody.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4F85FF3C-C12E-4FA1-B363-0A57F19FB21C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Open3dmm</RootNamespace>
+    <AssemblyName>Open3dmm</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <BaseAddress>16777216</BaseAddress>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Costura, Version=4.0.0.0, Culture=neutral, PublicKeyToken=9919ef960d84173d, processorArchitecture=MSIL">
+      <HintPath>..\packages\Costura.Fody.4.0.0\lib\net40\Costura.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoGame.Framework, Version=3.7.1.189, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MonoGame.Framework.WindowsDX.3.7.1.189\lib\net45\MonoGame.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="PE, Version=0.1.10.0, Culture=neutral, PublicKeyToken=951c63ca832f7094, processorArchitecture=MSIL">
+      <HintPath>..\packages\PE.0.1.10\lib\net45\PE.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDX, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpDX.4.2.0\lib\net45\SharpDX.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDX.Direct2D1, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpDX.Direct2D1.4.2.0\lib\net45\SharpDX.Direct2D1.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDX.Direct3D11, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpDX.Direct3D11.4.2.0\lib\net45\SharpDX.Direct3D11.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDX.Direct3D9, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpDX.Direct3D9.4.2.0\lib\net45\SharpDX.Direct3D9.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDX.DXGI, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpDX.DXGI.4.2.0\lib\net45\SharpDX.DXGI.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDX.Mathematics, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpDX.Mathematics.4.2.0\lib\net45\SharpDX.Mathematics.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDX.MediaFoundation, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpDX.MediaFoundation.4.2.0\lib\net45\SharpDX.MediaFoundation.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDX.XAudio2, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpDX.XAudio2.4.2.0\lib\net45\SharpDX.XAudio2.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDX.XInput, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpDX.XInput.4.2.0\lib\net45\SharpDX.XInput.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BRender\BrActor.cs" />
+    <Compile Include="BRender\BrActorTypes.cs" />
+    <Compile Include="BRender\BrAngle.cs" />
+    <Compile Include="BRender\BrBounds.cs" />
+    <Compile Include="BRender\BrCamera.cs" />
+    <Compile Include="BRender\BrCameraTypes.cs" />
+    <Compile Include="BRender\BrColor.cs" />
+    <Compile Include="BRender\BrEuler.cs" />
+    <Compile Include="BRender\BrEulerOrder.cs" />
+    <Compile Include="BRender\BrFace.cs" />
+    <Compile Include="BRender\BrFaceFlags.cs" />
+    <Compile Include="BRender\BrFaceGroup.cs" />
+    <Compile Include="BRender\BrFraction.cs" />
+    <Compile Include="BRender\BrFVector2.cs" />
+    <Compile Include="BRender\BrFVector3.cs" />
+    <Compile Include="BRender\BrFVector4.cs" />
+    <Compile Include="BRender\BrLight.cs" />
+    <Compile Include="BRender\BrLightType.cs" />
+    <Compile Include="BRender\BrMaterial.cs" />
+    <Compile Include="BRender\BrMaterialFlags.cs" />
+    <Compile Include="BRender\BrMaterialUpdateFlags.cs" />
+    <Compile Include="BRender\BrMatrix23.cs" />
+    <Compile Include="BRender\BrMatrix34.cs" />
+    <Compile Include="BRender\BrMatrix44.cs" />
+    <Compile Include="BRender\BrModel.cs" />
+    <Compile Include="BRender\BrPixelMap.cs" />
+    <Compile Include="BRender\BrPixelMapType.cs" />
+    <Compile Include="BRender\BrRenderStyles.cs" />
+    <Compile Include="BRender\BrScalar.cs" />
+    <Compile Include="BRender\BrTransform.cs" />
+    <Compile Include="BRender\BrUFraction.cs" />
+    <Compile Include="BRender\BrVector2.cs" />
+    <Compile Include="BRender\BrVector3.cs" />
+    <Compile Include="BRender\BrVector4.cs" />
+    <Compile Include="BRender\BrVertex.cs" />
+    <Compile Include="BRender\BrVertexGroup.cs" />
+    <Compile Include="Classes\ACTN.cs" />
+    <Compile Include="Classes\ACTR.cs" />
+    <Compile Include="Classes\All.cs" />
+    <Compile Include="Classes\APE.cs" />
+    <Compile Include="Classes\APP.cs" />
+    <Compile Include="Classes\APPB.cs" />
+    <Compile Include="Classes\BACO.cs" />
+    <Compile Include="Classes\BASE.cs" />
+    <Compile Include="Classes\BCL.cs" />
+    <Compile Include="Classes\BCLS.cs" />
+    <Compile Include="Classes\BKGD.cs" />
+    <Compile Include="Classes\BLCK.cs" />
+    <Compile Include="Classes\BLL.cs" />
+    <Compile Include="Classes\BODY.cs" />
+    <Compile Include="Classes\BRCL.cs" />
+    <Compile Include="Classes\BRCN.cs" />
+    <Compile Include="Classes\BSF.cs" />
+    <Compile Include="Classes\BSM.cs" />
+    <Compile Include="Classes\BWLD.cs" />
+    <Compile Include="Classes\CABO.cs" />
+    <Compile Include="Classes\CAMS.cs" />
+    <Compile Include="Classes\CFL.cs" />
+    <Compile Include="Classes\CLOK.cs" />
+    <Compile Include="Classes\CMTL.cs" />
+    <Compile Include="Classes\CTL.cs" />
+    <Compile Include="Classes\CURS.cs" />
+    <Compile Include="Classes\DOCB.cs" />
+    <Compile Include="Classes\FIL.cs" />
+    <Compile Include="Classes\GKDS.cs" />
+    <Compile Include="Classes\GNV.cs" />
+    <Compile Include="Classes\GOB.cs" />
+    <Compile Include="Classes\GOKD.cs" />
+    <Compile Include="Classes\GPT.cs" />
+    <Compile Include="Classes\GPT_UnkStruct1.cs" />
+    <Compile Include="Classes\MBMP.cs" />
+    <Compile Include="Classes\MDWS.cs" />
+    <Compile Include="Classes\MIDS.cs" />
+    <Compile Include="Classes\MODL.cs" />
+    <Compile Include="Classes\POINT.cs" />
+    <Compile Include="Classes\Quad.cs" />
+    <Compile Include="Classes\QuadIDPair.cs" />
+    <Compile Include="Classes\RECTANGLE.cs" />
+    <Compile Include="Classes\REGN.cs" />
+    <Compile Include="Classes\RGBQUAD.cs" />
+    <Compile Include="Classes\SCB.cs" />
+    <Compile Include="Classes\TBXB.cs" />
+    <Compile Include="Classes\TBXG.cs" />
+    <Compile Include="Classes\TDT.cs" />
+    <Compile Include="Classes\ZBMP.cs" />
+    <Compile Include="GameTimer.cs" />
+    <Compile Include="Graphics\BrWorldRenderer.cs" />
+    <Compile Include="Helper.cs" />
+    <Compile Include="HookFunctionAttribute.cs" />
+    <Compile Include="ManagedArray.cs" />
+    <Compile Include="Classes\ClassID.cs" />
+    <Compile Include="FunctionNames.cs" />
+    <Compile Include="Hook.cs" />
+    <Compile Include="NativeAbstraction.Graphics.cs" />
+    <Compile Include="NativeAbstraction.Methods.cs" />
+    <Compile Include="NativeAbstraction.Hooks.cs" />
+    <Compile Include="NativeHandle.cs" />
+    <Compile Include="NativeObject.cs" />
+    <Compile Include="NativeObjectFactory.cs" />
+    <Compile Include="Classes\Pointer.cs" />
+    <Compile Include="WinApi\ApiDetour.cs" />
+    <Compile Include="NativeAbstraction.Imports.cs" />
+    <Compile Include="PE\IMAGE_IMPORT_BY_NAME.cs" />
+    <Compile Include="PE\IMAGE_IMPORT_DESCRIPTOR.cs" />
+    <Compile Include="NativeAbstraction.cs" />
+    <Compile Include="Patch.cs" />
+    <Compile Include="NativeAbstraction.Patches.cs" />
+    <Compile Include="PE\PEHeaderExtensions.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SkipLoadingScreensPatch.cs" />
+    <Compile Include="UnmanagedFunctionCall.cs" />
+    <Compile Include="WinApi\Kernel32.cs" />
+    <Compile Include="WinApi\LibraryNames.cs" />
+    <Compile Include="NativeAbstraction.WindowsApi.cs" />
+    <Compile Include="WinApi\PInvoke.cs" />
+    <Compile Include="WinApi\VK.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Research\GOK.txt" />
+    <Content Include="Research\MBMP.txt" />
+    <Content Include="Research\Reverse0042B330.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Costura.Fody.4.0.0\build\Costura.Fody.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Costura.Fody.4.0.0\build\Costura.Fody.props'))" />
+    <Error Condition="!Exists('..\packages\MonoGame.Framework.WindowsDX.3.7.1.189\build\MonoGame.Framework.WindowsDX.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MonoGame.Framework.WindowsDX.3.7.1.189\build\MonoGame.Framework.WindowsDX.targets'))" />
+    <Error Condition="!Exists('..\packages\Fody.5.0.6\build\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Fody.5.0.6\build\Fody.targets'))" />
+  </Target>
+  <Import Project="..\packages\MonoGame.Framework.WindowsDX.3.7.1.189\build\MonoGame.Framework.WindowsDX.targets" Condition="Exists('..\packages\MonoGame.Framework.WindowsDX.3.7.1.189\build\MonoGame.Framework.WindowsDX.targets')" />
+  <Import Project="..\packages\Fody.5.0.6\build\Fody.targets" Condition="Exists('..\packages\Fody.5.0.6\build\Fody.targets')" />
+</Project>

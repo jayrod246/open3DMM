@@ -1,0 +1,8 @@
+﻿class 'MBMP' (vtable at 004DF5A0) size=20h
+  +18(4) height * 2
+  +1C(4) pointer raw chunk data
+
+method:
+  00425300
+  0043F7D0 bool? GetRect(out Rectangle result);
+  00425300 Blit(destPtr, width, height, x, y, Rectangle, REGN)
