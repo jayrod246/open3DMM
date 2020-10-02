@@ -1,0 +1,1 @@
+﻿Open3dmm.LegacyEntrypoint.Main(Environment.GetCommandLineArgs());

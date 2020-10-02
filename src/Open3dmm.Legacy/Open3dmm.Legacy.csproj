@@ -1,0 +1,37 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Platforms>AnyCPU;x86</Platforms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ImGui.NET" Version="*" />
+    <PackageReference Include="ImGui.NET.Docking" Version="*" />
+    <PackageReference Include="ManagedBass" Version="*" />
+    <PackageReference Include="ManagedBass.Midi" Version="*" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.1" />
+    <PackageReference Include="Veldrid.ImGui" Version="*" />
+    <PackageReference Include="Veldrid.SPIRV" Version="*" />
+    <PackageReference Include="Veldrid.StartupUtilities" Version="*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Open3dmm.Legacy.Core\Open3dmm.Legacy.Core.csproj" />
+    <ProjectReference Include="..\Open3dmm.Legacy.Veldrid\Open3dmm.Legacy.Veldrid.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="bass.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="bassmidi.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="ChoriumRevA.SF2">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>
