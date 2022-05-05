@@ -6,7 +6,7 @@ set SOC_ROOT=%cd%
 :: Setup the Kauai dir that's needed by most things
 set KAUAI_ROOT=%SOC_ROOT%\kauai
 :: Update includes to cover whats needed
-set include=%include%;%SOC_ROOT%\INC;%SOC_ROOT%\BREN\INC;%KAUAI_ROOT%\SRC
+set include=%include%;%SOC_ROOT%\INC;%SOC_ROOT%\BREN\INC;%KAUAI_ROOT%\SRC;%SOC_ROOT%\SRC
 :: Setup the Build Type
 :: This can be one of WIND, WINS, WINUD, WINUS
 :: D specifies it is debug, vs S for shipping
