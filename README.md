@@ -10,10 +10,52 @@ under the [MIT license](LICENSE) as open source.
 This project is unlikely to build successfully under modern hardware/software, but you can get started with compilation and get partial completed binaries. Here's what will get you going. Thanks to Mac Sample for their work on getting this far!
 
 - Make sure this repo is checked out to a folder with a short name, ideally right on the root of a drive (i.e. C:\3d).
-- You will need Visual C++ 2.0's dev tools (located under MSVC20\BIN on its installer disk) on your path. Modern compilers dislike some of the pre C++98 conventions.
+- You will need Visual C++ 2.1's dev tools (located under MSVC21\BIN on its installer disk) on your path. Modern compilers dislike some of the pre C++98 conventions.
+- Set these environment variables:
+  - set MSVCNT_ROOT=C:\msvc21
+  - set PATH=%MSVCNT_ROOT%\bin;%PATH%;
+  - set INCLUDE=%MSVCNT_ROOT%\include
+  - set LIB=%MSVCNT_ROOT%\lib
 - From the root of this repo, run ```setvars.bat``` you can change the values in this script to change what your build will target.
+  - Environment variables used by the build:
+    - SOC_ROOT: Path to root of repo (where this README.md is)
+    - KAUAI_ROOT: Path to Kauai: %SOC_ROOT%\kauai
+    - ARCH: Operating system to build for
+      - WIN: Windows
+      - MAC: Macintosh 68k
+    - INCLUDE: Set to the MSVC include directories, plus:
+      - %SOC_ROOT%\INC
+      - %SOC_ROOT%\BREN\INC
+      - %SOC_ROOT%\SRC
+      - %KAUAI_ROOT%\SRC
+    - UNICODE: If set to non-empty, build Unicode instead of ANSI
+    - TYPE: Sets build type
+      - DAY: Debug, incremental (daily?)
+      - HOME: Debug, not incremental
+      - SHIP: Release
+      - DBSHIP: Release, with linker debug output
+    - BLD_TYPE_DIR: Name of directory under OBJ to place binaries. **This will be set automatically by the Kauai makefiles.**
+      - WINS for ANSI release builds
+      - WINUS for Unicode release builds
+      - WIND for ANSI debug builds
+      - WINUD for Unicode debug builds
+    - CHIP: Set to use optimized assembly language implementations of some functions in Kauai
+      - IN_80386: Intel 80386
+      - MC_68020: Motorola 68020 (for Macintosh)
+      - If not set, just use the C implementation
 - Locate and place font files (see [FONTS.md](FONTS.md))
-- Run nmake and you'll begin building 3d Movie Maker.
+- Build Kauai
+  - `cd %SOC_ROOT%\kauai`
+  - `nmake all`
+- Build 3D Movie Maker
+  - `cd %SOC_ROOT%`
+  - `nmake all`
+
+### Known Issues
+
+- Compilation of `SITOBREN.EXE` is disabled
+  - This requires the SoftImage SDK "DKIT" to compile
+
 
 ## Contributing
 

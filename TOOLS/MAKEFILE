@@ -101,7 +101,7 @@ TGT_NAME=Tools
 
 #-Targets-------------------------------------------------------------------
 
-ALL_SOCTOOLS = $(TARGET_DIR)tdfmake.exe $(TARGET_DIR)sitobren.exe $(TARGET_DIR)mktmap.exe
+ALL_SOCTOOLS = $(TARGET_DIR)tdfmake.exe $(TARGET_DIR)mktmap.exe
 ALL_TARGETS_ROOT = $(ALL_TARGETS_ROOT) $(ALL_SOCTOOLS)
 
 CLEAN_SOCTOOLS = CLEAN_TDFMAKE CLEAN_SITOBREN CLEAN_MKTMAP
