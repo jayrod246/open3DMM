@@ -5,7 +5,7 @@
 
   browser.cpp
 
-  Author: ******
+  Author: Sean Selitrennikoff
 
   Date: March, 1995
 

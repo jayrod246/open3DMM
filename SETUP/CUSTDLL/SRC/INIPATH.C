@@ -12,7 +12,7 @@
 **
 **	Author: ******
 **	Written For:	Explorapedia Win32/Win16 versions of Nature and People
-**	History:	Started with [internal path]
+**	History:	Started with \\conman\release\usrswap\customa\inipath
 **
 ****************************************************************************/
 

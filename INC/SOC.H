@@ -4,7 +4,7 @@
 //
 //  soc.h
 //
-//  Author: ******
+//  Author: Sean Selitrennikoff
 //
 //  Date: August, 1994
 //

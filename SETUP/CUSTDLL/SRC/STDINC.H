@@ -1,3 +1,6 @@
+/* Copyright (c) Microsoft Corporation.
+   Licensed under the MIT License. */
+
 /* Disable C4001: nonstandard extension 'single line comment' was used */
 #pragma warning(disable:4001)
 /* Disable C4115: 'IRpcStubBuffer' : named type definition in parentheses */

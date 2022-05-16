@@ -1,6 +1,3 @@
-/* Copyright (c) Microsoft Corporation.
-   Licensed under the MIT License. */
-
 //{{NO_DEPENDENCIES}}
 // Microsoft Visual C++ generated include file.
 // Used by autorun.rc
