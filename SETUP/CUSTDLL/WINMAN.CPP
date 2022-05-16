@@ -11,7 +11,7 @@
 
 *******************************************************************************
 
-        Description: ***** Window Manager functions
+        Description: Sendak Window Manager functions
 
         Current Owner: *****
 

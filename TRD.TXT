@@ -63,7 +63,7 @@ Materials and Texture Maps
 	Load texmap from chunky file                    not yet reviewed
 	Save texmap to chunky file                      not yet reviewed
 	Import texmap from PIX                          not yet reviewed
-	Import texmap from BMP ((*****))                  not yet reviewed
+	Import texmap from BMP (peted)                  not yet reviewed
 
 	mtrl.cpp ((*****))
 	Shade table management                          zd
@@ -150,7 +150,7 @@ Costume Changer Easel
 Content Conversion - Tools to bring designer's data into Socrates.
 	See Materials and Texture Maps
 
-	sitobren.cpp ((*****))
+	sitobren.cpp (peted)
 	Actor conversion
 		NOTE: no final actors have been received from the content
 			production staff; if problems appear in existing
@@ -320,7 +320,7 @@ ARE 'zd' DOES NOT IMPLY THE CODE BEHIND THE UI IS 'zd'.
         Text box create                                 not done
 
    Settings Secondary Tools:
-        Scene sorter (*****)                            not done
+        Scene sorter (peted)                            not done
         Camera browser                                  zd
         Scene pauses                                    zd
 
@@ -486,12 +486,12 @@ Chunky tools
 	and not	part of Socrates.  All Kauai (framework)
 	functionality is also owned by shonk.
 	
-	ched.exe ((*****))
+	ched.exe (shonk)
 	Chunky editor                                   not yet reviewed
 
-	chomp.exe ((*****))
+	chomp.exe (shonk)
 	Chunky compiler                                 not yet reviewed
 
-	chelp.exe ((*****))
+	chelp.exe (shonk)
 	Chunky help editor                              not yet reviewed
 

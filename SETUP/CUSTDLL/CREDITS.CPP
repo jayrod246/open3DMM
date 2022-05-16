@@ -10,7 +10,7 @@
  *
  *******************************************************************
  *
- * Description: ***** main stack procedures.
+ * Description: Sendak main stack procedures.
  *
  * Current Owner: *****
  *
@@ -19,23 +19,23 @@
  *******************************************************************
  *
  * Revision History:
- * 09/01/94 *****     Created
- * 10/09/94 *****      Modified PID box code so the text is in the
+ * 09/01/94 *****    Created
+ * 10/09/94 *****  Modified PID box code so the text is in the
  *                    disc resource file (eg Nature.rc)
- * 10/14/94 *****     Changed gadget cursor to fly with wings in
- * 04/14/95 *****     MediaView 1.4 port
- * 04/19/95 *****     MediaView & 16bit clean up
- * 04/25/95 *****     Win32 port
- * 06/20/95 *****     Created PID dialog for System Info button
- * 07/01/95 *****     Fixed resource modification and memory allocation bugs in PID DlgProc
- * 07/03/95 *****     locked PID dialog's colors
- * 07/06/95 *****     modified version-checking to use import libs
- * 07/07/95 *****     Fixed PID dialog, accepts default buttons and hotkeys
- * 07/10/95 *****     Modified PID for version 2.0 of PID
- * 07/11/95 *****     Fixed minor bug preventing PID 2.0 text from being visible
- * 07/11/95 *****     Fixed centering of PID after res-switch and task-switch
- * 07/12/95 *****     PID box uses Arial font
- * 07/17/95 *****     Credits screen rejects screen saver
+ * 10/14/94 *****  Changed gadget cursor to fly with wings in
+ * 04/14/95 *****    MediaView 1.4 port
+ * 04/19/95 *****    MediaView & 16bit clean up
+ * 04/25/95 *****  Win32 port
+ * 06/20/95 *****  Created PID dialog for System Info button
+ * 07/01/95 *****  Fixed resource modification and memory allocation bugs in PID DlgProc
+ * 07/03/95 *****  locked PID dialog's colors
+ * 07/06/95 *****  modified version-checking to use import libs
+ * 07/07/95 *****  Fixed PID dialog, accepts default buttons and hotkeys
+ * 07/10/95 *****  Modified PID for version 2.0 of PID
+ * 07/11/95 *****  Fixed minor bug preventing PID 2.0 text from being visible
+ * 07/11/95 *****  Fixed centering of PID after res-switch and task-switch
+ * 07/12/95 *****  PID box uses Arial font
+ * 07/17/95 *****  Credits screen rejects screen saver
  *
  ******************************************************************/
 

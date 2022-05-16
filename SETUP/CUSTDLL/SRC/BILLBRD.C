@@ -1,3 +1,6 @@
+/* Copyright (c) Microsoft Corporation.
+   Licensed under the MIT License. */
+
 /***************************************************************************
 **
 **	File:			BillBrd.C (sample from ACME95 - offbb.c)
