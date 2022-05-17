@@ -3,7 +3,7 @@ obj/
 .DS_Store
 out/
 .vs/
-
+dist/
 
 
 # Files generated during build, so they're ignored to keep them out of git
