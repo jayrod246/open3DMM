@@ -2105,7 +2105,7 @@ LEndOfSprm:
 	values of pchpOld and pchpNew differ for the given sprm. Returns
 	tMaybe on error.
 ***************************************************************************/
-bool TXRD::_TGetLwFromChp(byte sprm, PCHP pchpNew, PCHP pchpOld,
+tribool TXRD::_TGetLwFromChp(byte sprm, PCHP pchpNew, PCHP pchpOld,
 	long *plw, long *plwMask)
 {
 	AssertIn(sprm, sprmMinChp, sprmLimChp);
@@ -2353,7 +2353,7 @@ void TXRD::_GetParaBounds(long *pcpMin, long *pcpLim, bool fExpand)
 	values of pchpOld and pchpNew differ for the given sprm. Returns
 	tMaybe on error.
 ***************************************************************************/
-bool TXRD::_TGetLwFromPap(byte sprm, PPAP ppapNew, PPAP ppapOld,
+tribool TXRD::_TGetLwFromPap(byte sprm, PPAP ppapNew, PPAP ppapOld,
 	long *plw, long *plwMask)
 {
 	AssertIn(sprm, sprmMinPap, sprmLimPap);

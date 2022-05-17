@@ -513,8 +513,8 @@ public:
 	};
 
 BEGIN_CMD_MAP(DWN, GOB)
-	ON_CID_ME(cidDoScroll, FCmdScroll, pvNil)
-	ON_CID_ME(cidEndScroll, FCmdScroll, pvNil)
+	ON_CID_ME(cidDoScroll, &DWN::FCmdScroll, pvNil)
+	ON_CID_ME(cidEndScroll, &DWN::FCmdScroll, pvNil)
 END_CMD_MAP_NIL()
 
 long DWN::_cdwn = 0;

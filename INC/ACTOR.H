@@ -72,11 +72,11 @@ const BRS krAngleMin = BR_SCALAR(0.1);	// Min angle impacting amount of forward 
 const BRS krAngleMinRcp = BR_RCP(krAngleMin);	
 const BRS krAngleMax = BR_SCALAR(0.4);	// Max angle impacting amount of forward movement on placement
 const BRS krScaleMinFactor = (BR_SCALAR(0.1));	// Min scaling between Brender update
-const krScaleMaxFactor = BrsDiv(rOne, krScaleMinFactor);	// Max scaling between Brender update
-const krScaleMin = (BR_SCALAR(0.25));	// Min scaling 
-const krScaleMax = (BR_SCALAR(10.0));	// Max scaling 
-const krPullMin = krScaleMin;
-const krPullMax = BrsDiv(rOne, krPullMin);
+const auto krScaleMaxFactor = BrsDiv(rOne, krScaleMinFactor);	// Max scaling between Brender update
+const auto krScaleMin = (BR_SCALAR(0.25));	// Min scaling 
+const auto krScaleMax = (BR_SCALAR(10.0));	// Max scaling 
+const auto krPullMin = krScaleMin;
+const auto krPullMax = BrsDiv(rOne, krPullMin);
 
 #define aridNil	ivNil
 

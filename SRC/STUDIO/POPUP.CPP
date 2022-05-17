@@ -18,7 +18,7 @@ RTCLASS(MP)
 RTCLASS(MPFNT)
 
 BEGIN_CMD_MAP(MP, BRWD)
-	ON_CID_GEN(cidSelIdle, FCmdSelIdle, pvNil)
+	ON_CID_GEN(cidSelIdle, &MP::FCmdSelIdle, pvNil)
 END_CMD_MAP_NIL()
 
 
@@ -214,7 +214,7 @@ void MP::MarkMem(void)
 
 
 BEGIN_CMD_MAP(MPFNT, BRWD)
-	ON_CID_GEN(cidSelIdle, FCmdSelIdle, pvNil)
+	ON_CID_GEN(cidSelIdle, &MPFNT::FCmdSelIdle, pvNil)
 END_CMD_MAP_NIL()
 
 /***************************************************************************

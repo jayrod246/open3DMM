@@ -15,11 +15,11 @@ ASSERTNAME
 RTCLASS(SPLOT)
 
 BEGIN_CMD_MAP(SPLOT, GOK)
-	ON_CID_GEN(cidSplotInit, FCmdInit, pvNil)
-	ON_CID_GEN(cidSplotDo, FCmdSplot, pvNil)
-	ON_CID_GEN(cidSplotUpdate, FCmdUpdate, pvNil)
-	ON_CID_GEN(cidSplotOk, FCmdDismiss, pvNil)
-	ON_CID_GEN(cidSplotCancel, FCmdDismiss, pvNil)
+	ON_CID_GEN(cidSplotInit, &SPLOT::FCmdInit, pvNil)
+	ON_CID_GEN(cidSplotDo, &SPLOT::FCmdSplot, pvNil)
+	ON_CID_GEN(cidSplotUpdate, &SPLOT::FCmdUpdate, pvNil)
+	ON_CID_GEN(cidSplotOk, &SPLOT::FCmdDismiss, pvNil)
+	ON_CID_GEN(cidSplotCancel, &SPLOT::FCmdDismiss, pvNil)
 END_CMD_MAP_NIL()
 
 

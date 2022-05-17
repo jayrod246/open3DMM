@@ -223,7 +223,7 @@ protected:
 
 	// system volume level - to be saved and restored. The volume we set
 	// is always relative to this
-	bool _tBogusDriver;	// to indicate whether midiOutGetVolume really works
+	tribool _tBogusDriver;	// to indicate whether midiOutGetVolume really works
 	ulong _luVolSys;
 	long _vlmBase;		// our current volume relative to _luVolSys.
 

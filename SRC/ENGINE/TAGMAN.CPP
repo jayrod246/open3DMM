@@ -53,7 +53,7 @@ public:
 	FNI fniHD;			// FNI of the HD directory
 	FNI fniCD;			// FNI of the CD directory
 	PCRM pcrmSource;	// CRM of files on the CD (or possibly HD)
-	bool tContentOnHD;  // Is the content on the HD or CD?
+	tribool tContentOnHD;  // Is the content on the HD or CD?
 
 public:
 	void Clear(void)	// Zeros out an SFS

@@ -91,7 +91,7 @@ const long klwMin = -klwMax;	// so -klwMin is positive
 const ulong kluMax = 0xFFFFFFFF;
 const ulong kluMin = 0;
 
-typedef int bool;
+//typedef int bool;
 
 // standard character types:
 // schar - short (skinny) character (1 byte)

@@ -163,7 +163,7 @@ static void * BR_CALLBACK BrStdioOpenWrite(char *name, int mode)
  */
 static void BR_CALLBACK BrStdioClose(void *f)
 {
-	fclose(f);
+	fclose((FILE*)f);
 }
 
 /*
@@ -241,7 +241,7 @@ void BR_CALLBACK BrStdioPutLine(char *buf, void * f)
  */
 static void BR_CALLBACK BrStdioAdvance(br_size_t count, void *f)
 {
-	fseek(f,(long int)count,SEEK_CUR);
+	fseek((FILE*)f,(long int)count,SEEK_CUR);
 }
 
 /*

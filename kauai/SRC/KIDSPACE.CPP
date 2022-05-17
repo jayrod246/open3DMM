@@ -1495,7 +1495,8 @@ bool GOK::FRunScriptCno(CNO cno, long *prglw, long clw, long *plwReturn,
 	AssertThis(0);
 	AssertNilOrVarMem(plwReturn);
 	PSCPT pscpt;
-	bool fError, tRet, fExists;
+	bool fError, fExists;
+  tribool tRet;
 
 	fExists = fTrue;
 	pscpt = (PSCPT)_pcrf->PbacoFetch(kctgScript, cno,
@@ -2382,16 +2383,19 @@ PGORT GORT::PgortNew(PGOK pgok, PCRF pcrf, CTG ctg, CNO cno)
 	if (kboOther == gotil.bo)
 		SwapBytesRgsw(&gotil, size(gotil) / size(short));
 
+#pragma warning(push)
+#pragma warning(disable:4804)
 	if (kboCur != gotil.bo ||
-
-		gotil.rgdxp[idzpLeftBorder] < 0 ||
-		gotil.rgdxp[idzpRightBorder] < 0 ||
+    gotil.rgdxp[idzpLeftBorder] < 0 ||
+    gotil.rgdxp[idzpRightBorder] < 0 ||
 		gotil.rgdxp[idzpLeft] < 0 ||
 		gotil.rgdxp[idzpRight] < 0 ||
 		gotil.rgdxp[idzpLeftFlex] < 0 ||
 		gotil.rgdxp[idzpRightFlex] < 0 ||
 		gotil.rgdxp[idzpLeftFlex] + gotil.rgdxp[idzpRightFlex] <= 0 ||
+    /* FIXME(bruxisma): This is comparing an integer with a boolean */
 		gotil.rgdxp[idzpLeftInc] < (gotil.rgdxp[idzpLeftFlex] > 0) ||
+    /* FIXME(bruxisma): This is comparing an integer with a boolean */
 		gotil.rgdxp[idzpRightInc] < (gotil.rgdxp[idzpRightFlex] > 0) ||
 		gotil.rgdxp[idzpLeftInc] > gotil.rgdxp[idzpLeftFlex] ||
 		gotil.rgdxp[idzpRightInc] > gotil.rgdxp[idzpRightFlex] ||
@@ -2403,7 +2407,9 @@ PGORT GORT::PgortNew(PGOK pgok, PCRF pcrf, CTG ctg, CNO cno)
 		gotil.rgdyp[idzpLeftFlex] < 0 ||
 		gotil.rgdyp[idzpRightFlex] < 0 ||
 		gotil.rgdyp[idzpLeftFlex] + gotil.rgdyp[idzpRightFlex] <= 0 ||
+    /* FIXME(bruxisma): This is comparing an integer with a boolean */
 		gotil.rgdyp[idzpLeftInc] < (gotil.rgdyp[idzpLeftFlex] > 0) ||
+    /* FIXME(bruxisma): This is comparing an integer with a boolean */
 		gotil.rgdyp[idzpRightInc] < (gotil.rgdyp[idzpRightFlex] > 0) ||
 		gotil.rgdyp[idzpLeftInc] > gotil.rgdyp[idzpLeftFlex] ||
 		gotil.rgdyp[idzpRightInc] > gotil.rgdyp[idzpRightFlex])
@@ -2411,7 +2417,7 @@ PGORT GORT::PgortNew(PGOK pgok, PCRF pcrf, CTG ctg, CNO cno)
 		Warn("Bad TILE chunk");
 		return pvNil;
 		}
-
+#pragma warning(pop)
 	if (!pcfl->FGetKidChidCtg(ctg, cno, 0, kctgMbmp, &kid))
 		{
 		Warn("no child MBMP of TILE chunk");

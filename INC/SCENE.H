@@ -241,8 +241,8 @@ public:
 	bool FSetTransition(TRANS trans); 	// Set the final transition to be and undo.
 	TRANS Trans(void) { return _trans; }// Returns the transition setting.
 	// These two operate a specific SCEN chunk rather than a SCEN in memory
-	static FTransOnFile(PCRF pcrf, CNO cno, TRANS *ptrans);
-	static FSetTransOnFile(PCRF pcrf, CNO cno, TRANS trans);
+	static bool FTransOnFile(PCRF pcrf, CNO cno, TRANS *ptrans);
+	static bool FSetTransOnFile(PCRF pcrf, CNO cno, TRANS trans);
 
 	//
 	// State functions

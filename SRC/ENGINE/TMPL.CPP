@@ -144,7 +144,7 @@ LFail:
 /***************************************************************************
 	Read an ACTN from a chunk
 ***************************************************************************/
-ACTN::_FInit(PCFL pcfl, CTG ctg, CNO cno)
+bool ACTN::_FInit(PCFL pcfl, CTG ctg, CNO cno)
 {
 	AssertPo(pcfl, 0);
 
@@ -431,7 +431,7 @@ bool TMPL::_FWriteTmplf(PCFL pcfl, CTG ctg, CNO *pcno)
 /***************************************************************************
 	Read a TMPL from a chunk
 ***************************************************************************/
-TMPL::_FInit(PCFL pcfl, CTG ctg, CNO cno)
+bool TMPL::_FInit(PCFL pcfl, CTG ctg, CNO cno)
 {
 	AssertPo(pcfl, 0);
 

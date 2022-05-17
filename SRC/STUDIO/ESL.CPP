@@ -79,8 +79,8 @@ void SetGokState(long kid, long st)
 
 
 BEGIN_CMD_MAP(ESL, GOK)
-	ON_CID_GEN(cidEaselOk, FCmdDismiss, pvNil)
-	ON_CID_GEN(cidEaselCancel, FCmdDismiss, pvNil)
+	ON_CID_GEN(cidEaselOk, &ESL::FCmdDismiss, pvNil)
+	ON_CID_GEN(cidEaselCancel, &ESL::FCmdDismiss, pvNil)
 END_CMD_MAP_NIL()
 
 
@@ -202,14 +202,14 @@ void ESL::MarkMem(void)
 
 
 BEGIN_CMD_MAP(ESLT, ESL)
-	ON_CID_GEN(cidEaselRotate, FCmdRotate, pvNil)
-	ON_CID_GEN(cidEaselTransmogrify, FCmdTransmogrify, pvNil)
-	ON_CID_GEN(cidEaselFont, FCmdStartPopup, pvNil)
-	ON_CID_GEN(cidEaselShape, FCmdStartPopup, pvNil)
-	ON_CID_GEN(cidEaselTexture, FCmdStartPopup, pvNil)
-	ON_CID_GEN(cidEaselSetFont, FCmdSetFont, pvNil)
-	ON_CID_GEN(cidEaselSetShape, FCmdSetShape, pvNil)
-	ON_CID_GEN(cidEaselSetColor, FCmdSetColor, pvNil)
+	ON_CID_GEN(cidEaselRotate, &ESLT::FCmdRotate, pvNil)
+	ON_CID_GEN(cidEaselTransmogrify, &ESLT::FCmdTransmogrify, pvNil)
+	ON_CID_GEN(cidEaselFont, &ESLT::FCmdStartPopup, pvNil)
+	ON_CID_GEN(cidEaselShape, &ESLT::FCmdStartPopup, pvNil)
+	ON_CID_GEN(cidEaselTexture, &ESLT::FCmdStartPopup, pvNil)
+	ON_CID_GEN(cidEaselSetFont, &ESLT::FCmdSetFont, pvNil)
+	ON_CID_GEN(cidEaselSetShape, &ESLT::FCmdSetShape, pvNil)
+	ON_CID_GEN(cidEaselSetColor, &ESLT::FCmdSetColor, pvNil)
 END_CMD_MAP_NIL()
 
 
@@ -867,9 +867,9 @@ void SNE::MarkMem(void)
 
 
 BEGIN_CMD_MAP(ESLA, ESL)
-	ON_CID_GEN(cidEaselRotate, FCmdRotate, pvNil)
-	ON_CID_GEN(cidEaselCostumes, FCmdTool, pvNil)
-	ON_CID_GEN(cidEaselAccessories, FCmdTool, pvNil)
+	ON_CID_GEN(cidEaselRotate, &ESLA::FCmdRotate, pvNil)
+	ON_CID_GEN(cidEaselCostumes, &ESLA::FCmdTool, pvNil)
+	ON_CID_GEN(cidEaselAccessories, &ESLA::FCmdTool, pvNil)
 END_CMD_MAP_NIL()
 
 
@@ -1110,8 +1110,8 @@ void ESLA::MarkMem(void)
 //
 
 BEGIN_CMD_MAP(ESLL, ESL)
-	ON_CID_GEN(cidEaselVol, FCmdVlm, pvNil)
-	ON_CID_GEN(cidEaselPlay, FCmdPlay, pvNil)
+	ON_CID_GEN(cidEaselVol, &ESLL::FCmdVlm, pvNil)
+	ON_CID_GEN(cidEaselPlay, &ESLL::FCmdPlay, pvNil)
 END_CMD_MAP_NIL()
 
 
@@ -1695,9 +1695,9 @@ void LSND::MarkMem(void)
 //
 
 BEGIN_CMD_MAP(ESLR, ESL)
-	ON_CID_GEN(cidEaselRecord, FCmdRecord, pvNil)
-	ON_CID_GEN(cidEaselPlay, FCmdPlay, pvNil)
-	ON_CID_GEN(cidAlarm, FCmdUpdateMeter, pvNil)
+	ON_CID_GEN(cidEaselRecord, &ESLR::FCmdRecord, pvNil)
+	ON_CID_GEN(cidEaselPlay, &ESLR::FCmdPlay, pvNil)
+	ON_CID_GEN(cidAlarm, &ESLR::FCmdUpdateMeter, pvNil)
 END_CMD_MAP_NIL()
 
 

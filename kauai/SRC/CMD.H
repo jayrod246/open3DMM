@@ -266,7 +266,7 @@ protected:
 	virtual bool _FFindCmhl(long cmhl, long *picmhe);
 
 	virtual bool _FCmhOk(PCMH pcmh);
-	virtual bool _TGetNextCmd(void);
+	virtual tribool _TGetNextCmd(void);
 	virtual bool _FSendCmd(PCMH pcmh);
 	virtual void _CleanUpCmd(void);
 	virtual bool _FEnableCmd(PCMH pcmh, PCMD pcmd, ulong *pgrfeds);

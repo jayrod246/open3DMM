@@ -205,7 +205,7 @@ bool FResizePhq(HQ *phq, long cb, ulong grfmem, long mpr)
 	Assert(cb + size(HQH) + hqh.cbExtra > cb, 0);
 
 	fInAllocSave = _fInAlloc;
-	_fInAlloc = fTrue;
+	_fInAlloc = true;
 	do
 		{
 		err = ErrSetHandleSize((HN)*phq, cb + hqh.cbExtra + size(HQH));
@@ -219,7 +219,7 @@ bool FResizePhq(HQ *phq, long cb, ulong grfmem, long mpr)
 LFail:
 		AssertHq(*phq);
 		PushErc(ercOomHq);
-		return fFalse;
+		return false;
 		}
 
 	if (cbOld < cb)
@@ -239,7 +239,7 @@ LFail:
 	*_QhqhFromHqBv(*phq, cb + hqh.cbExtra) = hqh;
 
 	AssertHq(*phq);
-	return fTrue;
+	return true;
 }
 
 

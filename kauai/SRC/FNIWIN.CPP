@@ -449,7 +449,7 @@ void FNI::GetStnPath(PSTN pstn)
 	if the fni type (file or dir) doesn't match the disk object of the
 	same name.
 ***************************************************************************/
-bool FNI::TExists(void)
+tribool FNI::TExists(void)
 {
 	AssertThis(ffniFile | ffniDir);
 	STN stn;

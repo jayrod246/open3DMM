@@ -104,10 +104,10 @@ const short kcvnBack = 4;
 // _FReadIndex can be removed!
 const short kcvnMin = 1;
 
-const kcvnMinStnNames = 3;
-const kcvnMinGrfcrp = 4;
-const kcvnMinSmallIndex = 4;
-const kcvnMinForest = 5;
+const auto kcvnMinStnNames = 3;
+const auto kcvnMinGrfcrp = 4;
+const auto kcvnMinSmallIndex = 4;
+const auto kcvnMinForest = 5;
 
 
 const long klwMagicChunky = BigLittle('CHN2', '2NHC'); //chunky file signature
@@ -1208,7 +1208,7 @@ void CFL::MarkMem(void)
 	we find something wrong, return tNo.  If a memory error occurs,
 	return tMaybe.  If it's AOK, return tYes.
 ***************************************************************************/
-bool CFL::_TValidIndex(void)
+tribool CFL::_TValidIndex(void)
 {
 	//WARNING: this is called by a full CFL::AssertValid().
 	long icrp, icrpT;
@@ -3065,7 +3065,7 @@ long CFL::CckiRef(CTG ctg, CNO cno)
 	Determines if (ctgSub, cnoSub) is in the chunk subgraph of (ctg, cno).
 	Returns tMaybe on error.
 ***************************************************************************/
-bool CFL::TIsDescendent(CTG ctg, CNO cno, CTG ctgSub, CNO cnoSub)
+tribool CFL::TIsDescendent(CTG ctg, CNO cno, CTG ctgSub, CNO cnoSub)
 {
 	AssertThis(0);
 	CGE cge;

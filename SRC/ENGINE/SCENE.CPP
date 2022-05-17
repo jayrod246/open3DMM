@@ -69,9 +69,9 @@ struct SEVP
 //
 // Scene thumbnails
 //
-const kdxpThumbnail = 144;
-const kdypThumbnail = 81;
-const kbTransparent = 250;
+const auto kdxpThumbnail = 144;
+const auto kdypThumbnail = 81;
+const auto kbTransparent = 250;
 
 //
 // Scene event
@@ -82,8 +82,8 @@ struct SEV
 	SEVT sevt; // event type
 	};
 
-const kbomSev = 0xF0000000;
-const kbomLong = 0xC0000000;
+const auto kbomSev = 0xF0000000;
+const auto kbomLong = 0xC0000000;
 
 //
 // Header for the scene chunk when on file
@@ -97,7 +97,7 @@ struct SCENH
 	TRANS trans;
 	};
 
-const kbomScenh = 0x5FC00000;
+const auto kbomScenh = 0x5FC00000;
 /****************************************
 	TAGC - Tag,Chid combo
 ****************************************/

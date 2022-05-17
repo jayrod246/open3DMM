@@ -83,7 +83,7 @@ protected:
 	long _cundbMax;
 
 	bool _FFindDdg(PDDG pddg, long *pipddg);
-	virtual bool _TQuerySave(bool fForce);
+	virtual tribool _TQuerySave(bool fForce);
 
 	DOCB(PDOCB pdocb = pvNil, ulong grfdoc = fdocNil);
 	~DOCB(void);
@@ -346,7 +346,7 @@ public:
 
 	void GetRcSplit(PDSG pdsg, RC *prcBounds, RC *prcSplit);
 	void MoveSplit(PDSG pdsg, long relNew);
-	bool TVert(PDSG pdsg);
+	tribool TVert(PDSG pdsg);
 
 	virtual void Release(void);
 	};
@@ -452,7 +452,7 @@ public:
 
 	virtual void Draw(PGNV pgnv, RC *prcClip);
 	virtual void MouseDown(long xp, long yp, long cact, ulong grfcust);
-	bool TVert(void);
+	tribool TVert(void);
 	};
 
 #endif //!DOCB_H

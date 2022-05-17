@@ -892,7 +892,7 @@ void GPT::DrawRcs(RCS *prcs, GDD *pgdd)
 			pgdd->dypPen * 2 >= prcs->bottom - prcs->top)
 		{
 		//just fill it
-		_Fill(prcs, pgdd, (PFNDRW)_FillRcs);
+		_Fill(prcs, pgdd, (PFNDRW)&GPT::_FillRcs);
 		}
 	else
 		_FrameRcsOval(prcs, pgdd, fFalse);
@@ -912,7 +912,7 @@ void GPT::DrawOval(RCS *prcs, GDD *pgdd)
 			pgdd->dypPen * 2 >= prcs->bottom - prcs->top)
 		{
 		//just fill it
-		_Fill(prcs, pgdd, (PFNDRW)_FillOval);
+		_Fill(prcs, pgdd, (PFNDRW)&GPT::_FillOval);
 		}
 	else
 		_FrameRcsOval(prcs, pgdd, fTrue);
@@ -945,7 +945,7 @@ void GPT::_FrameRcsOval(RCS *prcs, GDD *pgdd, bool fOval)
 	switch (CombineRgn(hrgnOutside, hrgnInside, hrgnOutside, RGN_XOR))
 		{
 	default:
-		_Fill(&hrgnOutside, pgdd, (PFNDRW)_FillRgn);
+		_Fill(&hrgnOutside, pgdd, (PFNDRW)&GPT::_FillRgn);
 		break;
 
 	case NULLREGION:
@@ -974,7 +974,7 @@ void GPT::DrawPoly(HQ hqoly, GDD *pgdd)
 	AssertHq(hqoly);
 	AssertVarMem(pgdd);
 
-	_Fill(PvLockHq(hqoly), pgdd, (PFNDRW)_FillPoly);
+	_Fill(PvLockHq(hqoly), pgdd, (PFNDRW)&GPT::_FillPoly);
 	UnlockHq(hqoly);
 }
 
@@ -1040,7 +1040,7 @@ void GPT::DrawLine(PTS *ppts1, PTS *ppts2, GDD *pgdd)
 		}
 	Assert(pptsDst == &poly->rgpts[4], "wrote off end of OLY");
 
-	_Fill(poly, pgdd, (PFNDRW)_FillPoly);
+	_Fill(poly, pgdd, (PFNDRW)&GPT::_FillPoly);
 }
 
 

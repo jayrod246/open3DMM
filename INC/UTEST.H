@@ -285,7 +285,7 @@ public:
 #endif //!WIN
 			}
 	}
-	bool TModal(PRCA prca, long tpc, PSTN pstnBackup = pvNil,
+	tribool TModal(PRCA prca, long tpc, PSTN pstnBackup = pvNil,
 		long bkBackup = ivNil, long stidSubst = ivNil,
 		PSTN pstnSubst = pvNil);
 

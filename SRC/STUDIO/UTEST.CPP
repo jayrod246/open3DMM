@@ -56,18 +56,18 @@ const PSZ kpszOpenFile = PszLit("3DMMOpen.tmp");
 const long klwOpenDoc = 0x12123434; // arbitrary wParam for WM_USER
 
 BEGIN_CMD_MAP(APP, APPB)
-	ON_CID_GEN(cidInfo, FCmdInfo, pvNil)
-	ON_CID_GEN(cidLoadStudio, FCmdLoadStudio, pvNil)
-	ON_CID_GEN(cidLoadBuilding, FCmdLoadBuilding, pvNil)
-	ON_CID_GEN(cidTheaterOpen, FCmdTheaterOpen, pvNil)
-	ON_CID_GEN(cidTheaterClose, FCmdTheaterClose, pvNil)
-	ON_CID_GEN(cidPortfolioOpen, FCmdPortfolioOpen, pvNil)
-	ON_CID_GEN(cidPortfolioClear, FCmdPortfolioClear, pvNil)
-	ON_CID_GEN(cidDisableAccel, FCmdDisableAccel, pvNil)
-	ON_CID_GEN(cidEnableAccel, FCmdEnableAccel, pvNil)
-	ON_CID_GEN(cidInvokeSplot, FCmdInvokeSplot, pvNil)
-	ON_CID_GEN(cidExitStudio, FCmdExitStudio, pvNil)
-	ON_CID_GEN(cidDeactivate, FCmdDeactivate, pvNil)
+	ON_CID_GEN(cidInfo, &APP::FCmdInfo, pvNil)
+	ON_CID_GEN(cidLoadStudio, &APP::FCmdLoadStudio, pvNil)
+	ON_CID_GEN(cidLoadBuilding, &APP::FCmdLoadBuilding, pvNil)
+	ON_CID_GEN(cidTheaterOpen, &APP::FCmdTheaterOpen, pvNil)
+	ON_CID_GEN(cidTheaterClose, &APP::FCmdTheaterClose, pvNil)
+	ON_CID_GEN(cidPortfolioOpen, &APP::FCmdPortfolioOpen, pvNil)
+	ON_CID_GEN(cidPortfolioClear, &APP::FCmdPortfolioClear, pvNil)
+	ON_CID_GEN(cidDisableAccel, &APP::FCmdDisableAccel, pvNil)
+	ON_CID_GEN(cidEnableAccel, &APP::FCmdEnableAccel, pvNil)
+	ON_CID_GEN(cidInvokeSplot, &APP::FCmdInvokeSplot, pvNil)
+	ON_CID_GEN(cidExitStudio, &APP::FCmdExitStudio, pvNil)
+	ON_CID_GEN(cidDeactivate, &APP::FCmdDeactivate, pvNil)
 END_CMD_MAP_NIL()
 
 
@@ -2859,7 +2859,7 @@ bool APP::FCmdExitStudio(PCMD pcmd)
 	AssertThis(0);
 	AssertVarMem(pcmd);
 
-	bool tRet;
+	tribool tRet;
 	STN stnBackup;
 
 	// Now query the user to find whether they want to go to the
@@ -3667,14 +3667,14 @@ void APP::_CleanUp(void)
 /***************************************************************************
 	Put up a modal help balloon
 ***************************************************************************/
-bool APP::TModal(PRCA prca, long tpc, PSTN pstnBackup, long bkBackup,
+tribool APP::TModal(PRCA prca, long tpc, PSTN pstnBackup, long bkBackup,
 	long stidSubst, PSTN pstnSubst)
 {
 	AssertThis(0);
 	AssertNilOrPo(prca, 0);
 
 	long lwSelect;
-	bool tRet;
+	tribool tRet;
 	STN stn;
 
 	// If app is minimized, restore it so user can see the dialog

@@ -111,7 +111,7 @@ public:
 	void GetLeaf(PSTN pstn);
 	void GetStnPath(PSTN pstn);
 
-	bool TExists(void);
+	tribool TExists(void);
 	bool FDelete(void);
 	bool FRename(PFNI pfniNew);
 	bool FEqual(PFNI pfni);

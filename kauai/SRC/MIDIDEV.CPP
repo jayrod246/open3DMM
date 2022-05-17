@@ -10,6 +10,9 @@
 
 ***************************************************************************/
 #include "frame.h"
+
+#include <climits>
+
 ASSERTNAME
 
 
@@ -115,10 +118,10 @@ void MIDO::_GetSysVol(void)
 {
 	Assert(hNil != _hmo, "calling _VlmGetSys with nil _hmo");
 
-	if (0 != midiOutGetVolume((uint)_hmo, &_luVolSys))
+	if (0 != midiOutGetVolume(_hmo, &_luVolSys))
 		{
 		// failed - assume full volume
-		_luVolSys = (ulong)(-1);
+		_luVolSys = ULONG_MAX;
 		}
 }
 
@@ -129,7 +132,7 @@ void MIDO::_GetSysVol(void)
 void MIDO::_SetSysVol(ulong luVol)
 {
 	Assert(hNil != _hmo, "calling _SetSysVol with nil _hmo");
-	midiOutSetVolume((uint)_hmo, luVol);
+	midiOutSetVolume(_hmo, luVol);
 }
 
 

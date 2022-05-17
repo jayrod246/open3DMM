@@ -93,15 +93,15 @@ RTCLASS(BCLS)
 RTCLASS(FNET)
 
 BEGIN_CMD_MAP(BRWD, GOK)
-	ON_CID_GEN(cidBrowserFwd, FCmdFwd, pvNil)
-	ON_CID_GEN(cidBrowserBack, FCmdBack, pvNil)
-	ON_CID_GEN(cidBrowserCancel, FCmdCancel, pvNil)
-	ON_CID_GEN(cidBrowserOk, FCmdOk, pvNil)
-	ON_CID_GEN(cidBrowserSelect, FCmdSelect, pvNil)
-	ON_CID_GEN(cidBrowserSelectThum, FCmdSelectThum, pvNil)
-	ON_CID_GEN(cidPortfolioFile, FCmdFile, pvNil)
-	ON_CID_GEN(cidBrowserChangeCel, FCmdChangeCel, pvNil)
-	ON_CID_GEN(cidBrowserDel, FCmdDel, pvNil)
+	ON_CID_GEN(cidBrowserFwd, &BRWD::FCmdFwd, pvNil)
+	ON_CID_GEN(cidBrowserBack, &BRWD::FCmdBack, pvNil)
+	ON_CID_GEN(cidBrowserCancel, &BRWD::FCmdCancel, pvNil)
+	ON_CID_GEN(cidBrowserOk, &BRWD::FCmdOk, pvNil)
+	ON_CID_GEN(cidBrowserSelect, &BRWD::FCmdSelect, pvNil)
+	ON_CID_GEN(cidBrowserSelectThum, &BRWD::FCmdSelectThum, pvNil)
+	ON_CID_GEN(cidPortfolioFile, &BRWD::FCmdFile, pvNil)
+	ON_CID_GEN(cidBrowserChangeCel, &BRWD::FCmdChangeCel, pvNil)
+	ON_CID_GEN(cidBrowserDel, &BRWD::FCmdDel, pvNil)
 END_CMD_MAP_NIL()
 
 
@@ -1154,7 +1154,7 @@ void BRWL::_GetThumFromIthum(long ithum, void *pvthumSelect, long *psid)
 	AssertIn(ithum, 0, _Cthum());
 	AssertVarMem(psid);
 
-	THD thd;						
+	THD thd { };						
 	
 	if (_bws == kbwsIndex)
 		{

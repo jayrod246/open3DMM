@@ -31,7 +31,7 @@ const BRA kaFov = BR_ANGLE_DEG(60.0);	// camera field of view
 RTCLASS(APE)
 
 BEGIN_CMD_MAP(APE, GOB)
-	ON_CID_GEN(cidAlarm, FCmdNextCel, pvNil)
+	ON_CID_GEN(cidAlarm, &APE::FCmdNextCel, pvNil)
 END_CMD_MAP_NIL()
 
 

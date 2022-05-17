@@ -127,7 +127,7 @@ private:
 	static ulong CFL::_GrffilFromGrfcfl(ulong grfcfl);
 
 	bool _FReadIndex(void);
-	bool _TValidIndex(void);
+	tribool _TValidIndex(void);
 	bool _FWriteIndex(CTG ctgCreator);
 	bool _FCreateExtra(void);
 	bool _FAllocFlo(long cb, PFLO pflo, bool fForceOnExtra = fFalse);
@@ -233,7 +233,7 @@ public:
 	void DeleteChild(CTG ctgPar, CNO cnoPar,
 		CTG ctgChild, CNO cnoChild, CHID chid = 0);
 	long CckiRef(CTG ctg, CNO cno);
-	bool TIsDescendent(CTG ctg, CNO cno, CTG ctgSub, CNO cnoSub);
+	tribool TIsDescendent(CTG ctg, CNO cno, CTG ctgSub, CNO cnoSub);
 	void ChangeChid(CTG ctgPar, CNO cnoPar, CTG ctgChild, CNO cnoChild,
 		CHID chidOld, CHID chidNew);
 

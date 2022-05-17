@@ -924,7 +924,7 @@ void CEX::FlushCid(long cid)
 	if the command shouldn't be dispatched, but we shouldn't check the
 	system queue.
 ***************************************************************************/
-bool CEX::_TGetNextCmd(void)
+tribool CEX::_TGetNextCmd(void)
 {
 	AssertThis(0);
 

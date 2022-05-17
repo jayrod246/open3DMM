@@ -7591,7 +7591,7 @@ void MVU::_MouseDrag(CMD_MOUSE *pcmd)
 	case toolCompose:
 		{
 		ulong grfmaf = fmafNil;
-		bool fMoved;
+		bool fMoved { };
 
 		if (_fRespectGround)
 			{

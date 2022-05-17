@@ -1023,7 +1023,7 @@ bool APPB::FAssertProcApp(PSZS pszsFile, long lwLine, PSZS pszsMsg,
 	Put an alert up. Return which button was hit. Returns tYes for yes
 	or ok; tNo for no; tMaybe for cancel.
 ***************************************************************************/
-bool APPB::TGiveAlertSz(PSZ psz, long bk, long cok)
+tribool APPB::TGiveAlertSz(PSZ psz, long bk, long cok)
 {
 	AssertThis(0);
 	AssertSz(psz);
