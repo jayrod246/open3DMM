@@ -855,6 +855,9 @@ bool TAGM::FCacheTagToHD(PTAG ptag, bool fCacheChildChunks)
 	if (ksidUseCrf == ptag->sid)
 		return fTrue;
 
+
+	// FOONE: Disable caching for now. It doesn't seem to be working properly.
+	return fTrue;
 	// Do nothing if the source itself is already on HD
 	if (!_FDetermineIfSourceHD(ptag->sid, &fSourceIsOnHD))
 		goto LFail;
