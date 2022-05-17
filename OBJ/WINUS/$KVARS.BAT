@@ -1,4 +1,0 @@
-set PROJ=SOC
-set ARCH=WIN
-set TYPE=DBSHIP
-set CHAR=UNICODE
