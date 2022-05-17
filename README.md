@@ -53,7 +53,7 @@ This project is unlikely to build successfully under modern hardware/software, b
 - Create a distribution directory that will be usable as-is
   - `nmake dist`
 - Now you can run 3DMOVIE.EXE in the "dist" subdirectory and it should run without errors.
-- Optionally, generate a release binary in dist, using the current version number in version.def.
+- Optionally, generate a release binary in dist, using the current version number in version.def (requires a "7z" binary in the path)
   - `nmake zip`
 
 ### Known Issues
