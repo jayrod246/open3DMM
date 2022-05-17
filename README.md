@@ -50,6 +50,9 @@ This project is unlikely to build successfully under modern hardware/software, b
 - Build 3D Movie Maker
   - `cd %SOC_ROOT%`
   - `nmake all`
+- Create a distribution directory that will be usable as-is
+  - `nmake dist`
+- Now you can run 3DMOVIE.EXE in the "dist" subdirectory and it should run without errors.
 
 ### Known Issues
 
