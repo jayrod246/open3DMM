@@ -1607,6 +1607,15 @@ bool APP::_FReadTitlesFromReg(PGST *ppgst)
 		cchSid = kcchMaxSz;
 		}
 
+	if(pgst->IvMac()==0){
+		stnTitle.SetSz(PszLit("3D Movie Maker/3DMovie"));
+		sid=1;
+		if (!pgst->FAddStn(&stnTitle, &sid)){
+			Warn("Failed to add fallback Title!")
+			goto LFail;
+		}
+
+	}
 #else  //!WIN
 	RawRtn();
 #endif //!WIN
@@ -2323,8 +2332,10 @@ bool APP::_FFindMsKidsDir(void)
 		_fniMsKidsDir = _fniExe;
 		if (!_fniMsKidsDir.FSetLeaf(pvNil, kftgDir))
 			return fFalse;
+		/* FOONE: hack out search to top of DIR
 		while (_fniMsKidsDir.FUpDir(pvNil, ffniMoveToDir))
 			;
+		*/
 		/* REVIEW ***** (peted): if you check for the MSKIDS dir first, then
 			you don't have to reset the dir string before presenting the error
 			to the user */
