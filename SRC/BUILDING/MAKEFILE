@@ -109,8 +109,8 @@ $(SOC_OBJ_DIR) :
 CLEAN_BLDG_CHUNKS:
     @echo <<delchunk.bat
 @echo off
-rm -f $(BLDG_CHUNK_TARGETS: =^
-rm -f )
+DEL /q dummy.nul $(BLDG_CHUNK_TARGETS: = 2>nul^
+DEL /q dummy.nul ) 2>nul
 <<KEEP
     call delchunk.bat
 

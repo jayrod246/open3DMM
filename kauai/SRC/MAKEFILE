@@ -144,8 +144,8 @@ $(TARGET_DIR)kcd2_386.exe: $(KAUAI_SRC_DIR)\kcd2_386.c
 CLEAN_KAUAI_OBJ:
     @echo <<delkauai.bat
 @echo off
-rm -f $(KAUAI_TARGETS: =^
-rm -f )
+DEL /q dummy.nul $(KAUAI_TARGETS: = 2>nul^
+DEL /q dummy.nul ) 2>nul
 <<KEEP
     cmd /c delkauai.bat
     del delkauai.bat
@@ -154,10 +154,10 @@ rm -f )
 CLEAN_UT:
     @echo <<delut.bat
 @echo off
-rm -f $(UT_TARGETS: =^
-rm -f )
-rm -f $(TARGET_DIR)ut.obj
-rm -f $(TARGET_DIR)test.obj
+DEL /q dummy.nul $(UT_TARGETS: = 2>nul^
+DEL /q dummy.nul ) 2>nul
+DEL /q dummy.nul $(TARGET_DIR)ut.obj 2>nul
+DEL /q dummy.nul $(TARGET_DIR)test.obj 2>nul
 <<KEEP
     cmd /c delut.bat
     del delut.bat
@@ -166,11 +166,11 @@ rm -f $(TARGET_DIR)test.obj
 CLEAN_FT:
     @echo <<delft.bat
 @echo off
-rm -f $(FT_TARGETS: =^
-rm -f )
-rm -f $(TARGET_DIR)ft.obj
-rm -f $(TARGET_DIR)test.obj
-rm -f $(TARGET_DIR)ft.res
+DEL /q dummy.nul $(FT_TARGETS: = 2>nul^
+DEL /q dummy.nul ) 2>nul
+DEL /q dummy.nul $(TARGET_DIR)ft.obj 2>nul
+DEL /q dummy.nul $(TARGET_DIR)test.obj 2>nul
+DEL /q dummy.nul $(TARGET_DIR)ft.res 2>nul
 <<KEEP
     cmd /c delft.bat
     del delft.bat

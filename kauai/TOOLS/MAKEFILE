@@ -183,21 +183,20 @@ CLEAN_TARGETS_ROOT = $(CLEAN_TARGETS_ROOT) $(CLEAN_KAUAI_TOOLS)
 #   @echo Making Directories $(KAUAI_OBJ_DIR)...
 #    if not exist $(KAUAI_OBJ_ROOT_DIR)/nul mkdir $(KAUAI_OBJ_ROOT_DIR)
 #    if not exist $(KAUAI_OBJ_DIR)/nul mkdir $(KAUAI_OBJ_DIR)
-
 ALL: $(KAUAI_OBJ_DIR) $(ALL_KAUAI_TOOLS)
 CLEAN : RM ALL
 RM :
         @echo Cleaning $(KAUAI_OBJ_DIR)\ directory
-        @rm -f $(KAUAI_OBJ_DIR)\*.obj 2>nul
-        @rm -f $(KAUAI_OBJ_DIR)\*.pch 2>nul
-        @rm -f $(KAUAI_OBJ_DIR)\*.pdb 2>nul
-        @rm -f $(KAUAI_OBJ_DIR)\*.exe 2>nul
-        @rm -f $(KAUAI_OBJ_DIR)\*.res 2>nul
-        @rm -f $(KAUAI_OBJ_DIR)\*.cod 2>nul
-        @rm -f $(KAUAI_OBJ_DIR)\*.map 2>nul
-        @rm -f $(KAUAI_OBJ_DIR)\*.lib 2>nul
-        @rm -f $(KAUAI_OBJ_DIR)\*.i   2>nul
-        @rm -f $(KAUAI_OBJ_DIR)\*.lnk 2>nul
+        @DEL /q $(KAUAI_OBJ_DIR)\*.obj 2>nul
+        @DEL /q $(KAUAI_OBJ_DIR)\*.pch 2>nul
+        @DEL /q $(KAUAI_OBJ_DIR)\*.pdb 2>nul
+        @DEL /q $(KAUAI_OBJ_DIR)\*.exe 2>nul
+        @DEL /q $(KAUAI_OBJ_DIR)\*.res 2>nul
+        @DEL /q $(KAUAI_OBJ_DIR)\*.cod 2>nul
+        @DEL /q $(KAUAI_OBJ_DIR)\*.map 2>nul
+        @DEL /q $(KAUAI_OBJ_DIR)\*.lib 2>nul
+        @DEL /q $(KAUAI_OBJ_DIR)\*.i   2>nul
+        @DEL /q $(KAUAI_OBJ_DIR)\*.lnk 2>nul
 
 
 !ENDIF # LOCAL_BUILD != 0
@@ -211,8 +210,8 @@ RMOBJ : $(CLEAN_KAUAI_TOOLS)
 CLEAN_CHED:
     @echo <<delched.bat
 @echo off
-rm -f $(CHED_TARGETS: = 2>nul^
-rm -f ) 2>nul
+DEL /q dummy.nul $(CHED_TARGETS: = 2>nul^
+DEL /q dummy.nul ) 2>nul
 <<KEEP
     cmd /c delched.bat
     del delched.bat
@@ -221,8 +220,8 @@ rm -f ) 2>nul
 CLEAN_CHELP:
     @echo <<delchelp.bat
 @echo off
-rm -f $(CHELP_TARGETS: = 2>nul^
-rm -f ) 2>nul
+DEL /q dummy.nul $(CHELP_TARGETS: = 2>nul^
+DEL /q dummy.nul ) 2>nul
 <<KEEP
     cmd /c delchelp.bat
     del delchelp.bat
@@ -231,8 +230,8 @@ rm -f ) 2>nul
 CLEAN_CHOMP:
     @echo <<delchomp.bat
 @echo off
-rm -f $(CHOMP_TARGETS: = 2>nul^
-rm -f ) 2>nul
+DEL /q dummy.nul $(CHOMP_TARGETS: = 2>nul^
+DEL /q dummy.nul ) 2>nul
 <<KEEP
     cmd /c delchomp.bat
     del delchomp.bat
@@ -241,8 +240,8 @@ rm -f ) 2>nul
 CLEAN_MKMBMP:
     @echo <<delmkmb.bat
 @echo off
-rm -f $(MKMBMP_TARGETS: = 2>nul^
-rm -f ) 2>nul
+DEL /q dummy.nul $(MKMBMP_TARGETS: = 2>nul^
+DEL /q dummy.nul ) 2>nul
 <<KEEP
     cmd /c delmkmb.bat
     del delmkmb.bat
@@ -251,8 +250,8 @@ rm -f ) 2>nul
 CLEAN_KPACK:
     @echo <<delmkmb.bat
 @echo off
-rm -f $(KPACK_TARGETS: = 2>nul^
-rm -f ) 2>nul
+DEL /q dummy.nul $(KPACK_TARGETS: = 2>nul^
+DEL /q dummy.nul ) 2>nul
 <<KEEP
     cmd /c delmkmb.bat
     del delmkmb.bat
@@ -261,8 +260,8 @@ rm -f ) 2>nul
 CLEAN_CHMERGE:
     @echo <<dchmerge.bat
 @echo off
-rm -f $(CHMERGE_TARGETS: = 2>nul^
-rm -f ) 2>nul
+DEL /q dummy.nul $(CHMERGE_TARGETS: = 2>nul^
+DEL /q dummy.nul ) 2>nul
 <<KEEP
     cmd /c dchmerge.bat
     del dchmerge.bat
@@ -271,8 +270,8 @@ rm -f ) 2>nul
 CLEAN_CHELPDMP:
     @echo <<delchdmp.bat
 @echo off
-rm -f $(CHELPDMP_TARGETS: = 2>nul^
-rm -f ) 2>nul
+DEL /q dummy.nul $(CHELPDMP_TARGETS: = 2>nul^
+DEL /q dummy.nul ) 2>nul
 <<KEEP
     cmd /c delchdmp.bat
     del delchdmp.bat

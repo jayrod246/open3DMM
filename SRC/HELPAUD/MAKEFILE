@@ -68,8 +68,8 @@ $(SOC_OBJ_DIR) :
 CLEAN_HELPAUD_CHUNKS:
     @echo <<delhelp.bat
 @echo off
-rm -f $(HELPAUD_CHUNK_TARGETS: =^
-rm -f )
+DEL /q dummy.nul $(HELPAUD_CHUNK_TARGETS: = 2>nul^
+DEL /q dummy.nul ) 2>nul
 <<KEEP
     call delhelp.bat
 

@@ -81,8 +81,8 @@ $(SOC_OBJ_DIR) :
 CLEAN_SHARED_CHUNKS:
     @echo <<delshrd.bat
 @echo off
-rm -f $(SHARED_CHUNK_TARGETS: =^
-rm -f )
+DEL /q dummy.nul $(SHARED_CHUNK_TARGETS: = 2>nul^
+DEL /q dummy.nul ) 2>nul
 <<KEEP
     call delshrd.bat
 				  

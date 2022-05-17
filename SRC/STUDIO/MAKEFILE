@@ -167,9 +167,9 @@ $(SOC_OBJ_DIR) :
 CLEAN_UTEST:
     @echo <<delutest.bat
 @echo off
-rm -f $(UTEST_TARGETS: =^
-rm -f )
-rm -f $(TARGET_DIR)3dmovie.chk
+DEL /q dummy.nul $(UTEST_TARGETS: = 2>nul^
+DEL /q dummy.nul ) 2>nul
+DEL /q dummy.nul $(TARGET_DIR)3dmovie.chk 2>nul
 <<KEEP
     cmd /c delutest.bat
     rem del delutest.bat
@@ -178,8 +178,8 @@ rm -f $(TARGET_DIR)3dmovie.chk
 CLEAN_STUDIO_CHUNKS:
     @echo <<delchunk.bat
 @echo off
-rm -f $(STUDIO_CHUNK_TARGETS: =^
-rm -f )
+DEL /q dummy.nul $(STUDIO_CHUNK_TARGETS: = 2>nul^
+DEL /q dummy.nul ) 2>nul
 <<KEEP
     cmd /c delchunk.bat
     rem del delchunk.bat
@@ -188,8 +188,8 @@ rm -f )
 CLEAN_STUDIO_CHTS:
     @echo <<delcht.bat
 @echo off
-rm -f $(STUDIO_CHT_TARGETS: =^
-rm -f )
+DEL /q dummy.nul $(STUDIO_CHT_TARGETS: = 2>nul^
+DEL /q dummy.nul ) 2>nul
 <<KEEP
     cmd /c delcht.bat
     rem del delcht.bat

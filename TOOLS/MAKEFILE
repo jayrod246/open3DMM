@@ -126,8 +126,8 @@ $(SOC_OBJ_DIR) :
 CLEAN_TDFMAKE:
     @echo <<deltdf.bat
 @echo off
-rm -f $(TDFMAKE_TARGETS: =^
-rm -f )
+DEL /q dummy.nul $(TDFMAKE_TARGETS: = 2>nul^
+DEL /q dummy.nul ) 2>nul
 <<KEEP
     cmd /c deltdf.bat
     del deltdf.bat
@@ -136,8 +136,8 @@ rm -f )
 CLEAN_SITOBREN:
     @echo <<delsito.bat
 @echo off
-rm -f $(SITOBREN_TARGETS: =^
-rm -f )
+DEL /q dummy.nul $(SITOBREN_TARGETS: = 2>nul^
+DEL /q dummy.nul ) 2>nul
 <<KEEP
     cmd /c delsito.bat
     del delsito.bat
@@ -146,8 +146,8 @@ rm -f )
 CLEAN_MKTMAP:
     @echo <<deltmap.bat
 @echo off
-rm -f $(MKTMAP_TARGETS: =^
-rm -f )
+DEL /q dummy.nul $(MKTMAP_TARGETS: = 2>nul^
+DEL /q dummy.nul ) 2>nul
 <<KEEP
     cmd /c deltmap.bat
     del deltmap.bat

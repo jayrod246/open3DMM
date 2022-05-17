@@ -74,8 +74,8 @@ $(BREN_OBJ_DIR) :
 CLEAN_BREN_OBJ:
     @echo <<delbren.bat
 @echo off
-rm -f $(BREN_TARGETS: =^
-rm -f )
+DEL /q dummy.nul $(BREN_TARGETS: = 2>nul^
+DEL /q dummy.nul ) 2>nul
 <<KEEP
     cmd /c delbren.bat
     del delbren.bat
