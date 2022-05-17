@@ -27,8 +27,18 @@ ALL_TOOLS:
     $(MAKE) /NOLOGO all
     cd $(SOC_ROOT)
 
+SOC_OBJ_ROOT_DIR = $(SOC_ROOT)\obj
+SOC_OBJ_DIR = $(SOC_OBJ_ROOT_DIR)\$(BLD_TYPE_DIR)
 
-
+DIST: ALL_SRC
+    -mkdir $(SOC_ROOT)\DIST 2>nul
+    -mkdir $(SOC_ROOT)\DIST\"Microsoft Kids"
+    -mkdir $(SOC_ROOT)\DIST\"Microsoft Kids"\"3D Movie Maker"
+    -mkdir $(SOC_ROOT)\DIST\"Microsoft Kids"\Users"
+    -mkdir $(SOC_ROOT)\DIST\"Microsoft Kids"\Users\Melanie"
+    copy /Y $(SOC_ROOT)\cd9\*.* $(SOC_ROOT)\DIST\"Microsoft Kids"\"3D Movie Maker"
+    copy /Y $(SOC_OBJ_DIR)\*.chk $(SOC_ROOT)\DIST\"Microsoft Kids"\"3D Movie Maker"
+    copy /Y $(SOC_OBJ_DIR)\3dmovie.exe $(SOC_ROOT)\DIST\
 
 CLEAN: CLEAN_REST CLEAN_BREN BUILD_REST
 
