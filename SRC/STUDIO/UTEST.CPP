@@ -696,6 +696,7 @@ bool APP::_FEnsureColorDepth(void)
 		_fDontReportInitFailure = fTrue;
 		return fFalse;
 		}
+	/* FOONE: It's the future, we don't need to worry about running in true-color mode.
 	if (cbitPixel > 8)
 		{
 		// warn user
@@ -722,6 +723,7 @@ bool APP::_FEnsureColorDepth(void)
 				}
 			}
 		}
+	*/
 #endif //WIN
 #ifdef MAC
 	RawRtn();
