@@ -3,3 +3,11 @@ obj/
 .DS_Store
 out/
 .vs/
+
+
+
+# Files generated during build, so they're ignored to keep them out of git
+ELIB/WIND/BREN.LIB
+ELIB/WINS/BREN.LIB
+kauai/SRC/KCD2_386.H
+kauai/SRC/KCDC_386.H
