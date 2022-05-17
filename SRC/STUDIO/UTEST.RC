@@ -272,6 +272,19 @@ BEGIN
                     IDC_STATIC,10,6,225,34
 END
 
+dlidGenericErrorBox DIALOG DISCARDABLE  0, 0, 243, 95
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "3D Movie Maker error"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDCANCEL,96,75,50,14
+    EDITTEXT        IDC_EDIT1,10,41,225,29,ES_MULTILINE | ES_READONLY | NOT 
+                    WS_BORDER
+    LTEXT           "3D Movie Maker ended unexpectedly:",
+                    IDC_STATIC,10,6,225,34
+END
+
+
 dlidAbnormalExit DIALOG DISCARDABLE  0, 0, 243, 95
 STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
 CAPTION "Unexpected Exit"

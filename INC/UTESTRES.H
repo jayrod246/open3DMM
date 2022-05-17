@@ -34,6 +34,7 @@
 #define dlidCantFindFile                224
 #define acidGlobal                      225
 #define dlidAbnormalExit                226
+#define dlidGenericErrorBox             227
 #define IDC_CHECK1                      1010
 #define IDC_RADIO1                      1012
 #define IDC_RADIO2                      1013

@@ -12,6 +12,8 @@
 #ifndef UTEST_H
 #define UTEST_H
 
+
+
 /****************************************
 	KidWorld for the App class
 ****************************************/
@@ -153,6 +155,9 @@ protected:
 	bool _FQueryProductExists(STN *pstnLong, STN *pstnShort, FNI *pfni);
 	bool _FFindMsKidsDir(void);
 	bool _FCantFindFileDialog(PSTN pstn);
+	bool _FGenericError(PSTZ message);
+	bool _FGenericError(PSTN message);
+	bool _FGenericError(FNI *path);
 	bool _FGetUserName(void);
 	bool _FGetUserDirectories(void);
 	bool _FReadUserData(void);

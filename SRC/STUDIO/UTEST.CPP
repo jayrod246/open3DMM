@@ -187,7 +187,6 @@ bool APP::_FInit(ulong grfapp, ulong grfgob, long ginDef)
 		_fDontReportInitFailure = fTrue;
 		goto LFail;
 		}
-
 #ifdef DEBUG
 	{
 	DBINFO dbinfo;
@@ -201,84 +200,151 @@ bool APP::_FInit(ulong grfapp, ulong grfgob, long ginDef)
 	}
 #endif // DEBUG
 
-	if (!_FEnsureOS())
+	if (!_FEnsureOS()){
+		_FGenericError(PszLit("_FEnsureOS"));
+		_fDontReportInitFailure=fTrue;
 		goto LFail;
+	}
 
-	if (!_FEnsureAudio())
+	if (!_FEnsureAudio()){
+		_FGenericError(PszLit("_FEnsureAudio"));
+		_fDontReportInitFailure=fTrue;
 		goto LFail;
+	}
 
-	if (!_FEnsureVideo())
+	if (!_FEnsureVideo()){
+		_FGenericError(PszLit("_FEnsureVideo"));
+		_fDontReportInitFailure=fTrue;
 		goto LFail;
+	}
 
 	_ParseCommandLine();
 
 	// If _ParseCommandLine doesn't set _stnProduct, set to 3dMovieMaker
-	if (!_FEnsureProductNames())
+	if (!_FEnsureProductNames()){
+		_FGenericError(PszLit("_FEnsureProductNames"));
+		_fDontReportInitFailure=fTrue;
 		goto LFail;
+	}
 
-	if (!_FFindMsKidsDir())
+	if (!_FFindMsKidsDir()){
+		_FGenericError(PszLit("_FFindMsKidsDir"));
+		_fDontReportInitFailure=fTrue;
 		goto LFail;
+	}
 
 	// Init product names for tagman & _fniProductDir & potentially _stnProduct
-	if (!_FInitProductNames())
+	if (!_FInitProductNames()){
+		// _FInitProductNames prints its own errors
+		_fDontReportInitFailure=fTrue;
 		goto LFail;
+	}
 					
-	if (!_FOpenResourceFile())
+	if (!_FOpenResourceFile()){
+		_FGenericError(PszLit("_FOpenResourceFile"));
+		_fDontReportInitFailure=fTrue;
 		goto LFail;
+	}
 
-	if (!_FReadStringTables())
-		goto LFail;
+	if (!_FReadStringTables()){
+		_FGenericError(PszLit("_FReadStringTables"));
+		_fDontReportInitFailure=fTrue;
 
-	if (!_FEnsureDisplayResolution()) // may call _FInitOS
 		goto LFail;
+	}
+
+	if (!_FEnsureDisplayResolution()){ // may call _FInitOS
+		_FGenericError(PszLit("_FEnsureDisplayResolution"));
+		_fDontReportInitFailure=fTrue;
+		goto LFail;
+	}
 		
-	if (!_FEnsureColorDepth())
+	if (!_FEnsureColorDepth()){
+		_FGenericError(PszLit("_FEnsureColorDepth"));
+		_fDontReportInitFailure=fTrue;
 		goto LFail;
+	}
 
-	if (!APP_PAR::_FInit(grfapp, grfgob, ginDef)) // calls _FInitOS
+	if (!APP_PAR::_FInit(grfapp, grfgob, ginDef)){ // calls _FInitOS
+		_FGenericError(PszLit("APP_PAR::_FInit"));
+		_fDontReportInitFailure=fTrue;
 		goto LFail;
+	}
 
 	/* Ensure default font.  Do it here just so we get the error reported
 		early. */
 	OnnDefVariable();
 
-	if (!_FInitKidworld())
+	if (!_FInitKidworld()){
+		_FGenericError(PszLit("_FInitKidworld"));
+		_fDontReportInitFailure=fTrue;
 		goto LFail;
+	}
 
-	if (!_FDisplayHomeLogo())
+	if (!_FDisplayHomeLogo()){
+		_FGenericError(PszLit("_FDisplayHomeLogo"));
+		_fDontReportInitFailure=fTrue;
 		goto LFail;
+	}
 	tsHomeLogo = TsCurrent();
 
-	if (!_FDetermineIfSlowCPU())
+	if (!_FDetermineIfSlowCPU()){
+		_FGenericError(PszLit("_FDetermineIfSlowCPU"));
+		_fDontReportInitFailure=fTrue;
 		goto LFail;
+	}
 
-	if (!_FInitTdt())
+	if (!_FInitTdt()){
+		_FGenericError(PszLit("_FInitTdt"));
+		_fDontReportInitFailure=fTrue;
 		goto LFail;
+	}
 
-	if (!MTRL::FSetShadeTable(_pcfl, kctgTmap, 0))
+	if (!MTRL::FSetShadeTable(_pcfl, kctgTmap, 0)){
+		_FGenericError(PszLit("FSetShadeTable"));
+		_fDontReportInitFailure=fTrue;
 		goto LFail;
+	}
 
 	while (TsCurrent() - tsHomeLogo < kdtsHomeLogo)
 		; // spin until home logo has been up long enough
 
-	if (!_FShowSplashScreen())
+	if (!_FShowSplashScreen()){
+		_FGenericError(PszLit("_FShowSplashScreen"));
+		_fDontReportInitFailure=fTrue;
 		goto LFail;
+	}
 	tsSplashScreen = TsCurrent();
 
-	if (!_FPlaySplashSound())
+	if (!_FPlaySplashSound()){
+		_FGenericError(PszLit("_FPlaySplashSound"));
+		_fDontReportInitFailure=fTrue;
 		goto LFail;
+	}
 
-	if (!_FGetUserName())
+	if (!_FGetUserName()){
+		_FGenericError(PszLit("_FGetUserName"));
+		_fDontReportInitFailure=fTrue;
 		goto LFail;
+	}
 
-	if (!_FGetUserDirectories())
+	if (!_FGetUserDirectories()){
+		_FGenericError(PszLit("_FGetUserDirectories"));
+		_fDontReportInitFailure=fTrue;
 		goto LFail;
+	}
 
-	if (!_FReadUserData())
+	if (!_FReadUserData()){
+		_FGenericError(PszLit("_FReadUserData"));
+		_fDontReportInitFailure=fTrue;
 		goto LFail;
+	}
 
-	if (!_FInitCrm())
+	if (!_FInitCrm()){
+		_FGenericError(PszLit("_FInitCrm"));
+		_fDontReportInitFailure=fTrue;
 		goto LFail;
+	}
 
 	while (TsCurrent() - tsSplashScreen < kdtsSplashScreen)
 		; // spin until splash screen has been up long enough
@@ -291,21 +357,34 @@ bool APP::_FInit(ulong grfapp, ulong grfgob, long ginDef)
 	if (fniUserDoc.Ftg() == ftgNil)
 		{
 		// Startup place depends on whether this is the user's first time in.
-		if (!FGetProp(kpridFirstTimeUser, &fFirstTimeUser))
+		if (!FGetProp(kpridFirstTimeUser, &fFirstTimeUser)){
+			_FGenericError(PszLit("FGetProp: kpridFirstTimeUser"));
+			_fDontReportInitFailure=fTrue;
 			goto LFail;
+		}
 
-		if (!FSetProp(kpridBuildingGob, (fFirstTimeUser ? kgobCloset : kgobLogin)))
-			goto LFail;
-		if (!_FInitBuilding())
-			goto LFail;
-		}
-	else
-		{
-		if (!FSetProp(kpridBuildingGob, kgobStudio1))
-			goto LFail;
-		if (!_FInitStudio(&fniUserDoc, fFalse))
+		if (!FSetProp(kpridBuildingGob, (fFirstTimeUser ? kgobCloset : kgobLogin))){
+			_FGenericError(PszLit("FSetProp: kpridBuildingGob"));
+			_fDontReportInitFailure=fTrue;
 			goto LFail;
 		}
+		if (!_FInitBuilding()){
+			_FGenericError(PszLit("_FInitBuilding"));
+			_fDontReportInitFailure=fTrue;
+			goto LFail;
+		}
+	}else{
+		if (!FSetProp(kpridBuildingGob, kgobStudio1)){
+			_FGenericError(PszLit("FSetProp: kpridBuildingGob"));
+			_fDontReportInitFailure=fTrue;
+			goto LFail;
+		}
+		if (!_FInitStudio(&fniUserDoc, fFalse)){
+			_FGenericError(PszLit("_FInitStudio"));
+			_fDontReportInitFailure=fTrue;
+			goto LFail;
+		}
+	}
 
 	EnsureInteractive();
 
@@ -1032,6 +1111,49 @@ bool APP::_FCantFindFileDialog(PSTN pstnFile)
 	return fTrue;
 }
 
+/***************************************************************************
+	Report that 3DMM ran into a generic error
+***************************************************************************/
+bool APP::_FGenericError(FNI *path)
+{
+	STN stn;
+	path->GetStnPath(&stn);
+	return _FGenericError(&stn);
+}
+
+/***************************************************************************
+	Report that 3DMM ran into a generic error
+***************************************************************************/
+bool APP::_FGenericError(PSTZ message)
+{
+	STN stn=message;
+	return _FGenericError(&stn);
+}
+/***************************************************************************
+	Report that 3DMM ran into a generic error
+***************************************************************************/
+bool APP::_FGenericError(PSTN message)
+{
+	AssertBaseThis(0);
+
+	PDLG pdlg;
+
+
+	pdlg = DLG::PdlgNew(dlidGenericErrorBox, pvNil, pvNil);
+	if (pvNil == pdlg)
+		return fFalse;
+
+	if (!pdlg->FPutStn(1, message))
+		{
+		ReleasePpo(&pdlg);
+		return fFalse;
+		}
+	pdlg->IditDo();
+	ReleasePpo(&pdlg);
+	_fDontReportInitFailure = fTrue;
+	return fTrue;
+}
+
 
 /******************************************************************************
 	Finds _fniUsersDir, _fniMelanieDir, and _fniUserDir.  _fniUserDir is
@@ -1400,21 +1522,32 @@ bool APP::_FInitProductNames(void)
 	BLCK blck;
 
 	// Use kcbCacheTagm of cache per source, don't cache on CD
+
     vptagm = TAGM::PtagmNew(&_fniMsKidsDir, APP::FInsertCD, kcbCacheTagm);
- 	if (vptagm == pvNil)
+ 	if (vptagm == pvNil){
+ 		_FGenericError(PszLit("_FInitProductNames: TAGM::PtagmNew"));
 		return fFalse;
+ 	}
 
-	if (!_FReadTitlesFromReg(&pgst))
+	if (!_FReadTitlesFromReg(&pgst)){
+		_FGenericError(PszLit("_FInitProductNames: _FReadTitlesFromReg"));
 		goto LFail;
+	}
 
-	if (!vptagm->FMergeGstSource(pgst, kboCur, koskCur))
+	if (!vptagm->FMergeGstSource(pgst, kboCur, koskCur)){
+		_FGenericError(PszLit("_FInitProductNames: FMergeGstSource"));
 		goto LFail;
+	}
 
-	if (!_FFindProductDir(pgst))
+	if (!_FFindProductDir(pgst)){
+		_FGenericError(PszLit("_FInitProductNames: _FFindProductDir"));
 		goto LFail;
+	}
 
-	if (!vptagm->FGetSid(&_stnProductLong, &_sidProduct))
+	if (!vptagm->FGetSid(&_stnProductLong, &_sidProduct)){
+		_FGenericError(PszLit("_FInitProductNames: FGetSid"));
 		goto LFail;
+	}
 
 	ReleasePpo(&pgst);
 	return fTrue;
@@ -1452,6 +1585,7 @@ bool APP::_FReadTitlesFromReg(PGST *ppgst)
 			KEY_ALL_ACCESS, NULL, &hkey, &dwDisposition) != ERROR_SUCCESS)
 		{
 		Warn("Missing InstallDirectory registry entry or registry error");
+		_FGenericError("Missing InstallDirectory registry entry or registry error");
 		goto LFail;
 		}
 	
