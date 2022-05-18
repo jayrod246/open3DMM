@@ -99,7 +99,9 @@ file(GLOB studio-sources CONFIGURE_DEPENDS
   "${PROJECT_SOURCE_DIR}/src/studio/*.rc")
 list(FILTER studio-sources EXCLUDE REGEX "UTESTSCB.CPP$")
 target_sources(studio PRIVATE ${studio-sources})
-target_include_directories(studio PUBLIC $<TARGET_PROPERTY:engine,INCLUDE_DIRECTORIES>)
+target_include_directories(studio
+  PUBLIC $<TARGET_PROPERTY:engine,INCLUDE_DIRECTORIES>
+  "${PROJECT_SOURCE_DIR}/SRC")
 target_link_libraries(studio PRIVATE engine)
 set_property(TARGET studio PROPERTY OUTPUT_NAME 3dmovie)
 #target_link_options(studio BEFORE PRIVATE $<$<LINK_LANG_AND_ID:CXX,MSVC>:/VERBOSE:LIB>)
