@@ -96,7 +96,7 @@ target_link_libraries(engine PUBLIC kauai brender)
 add_executable(studio WIN32)
 file(GLOB studio-sources CONFIGURE_DEPENDS
   "${PROJECT_SOURCE_DIR}/src/studio/*.cpp"
-  "${PROJECT_SOUREC_DIR}/src/studio/*.rc")
+  "${PROJECT_SOURCE_DIR}/src/studio/*.rc")
 list(FILTER studio-sources EXCLUDE REGEX "UTESTSCB.CPP$")
 target_sources(studio PRIVATE ${studio-sources})
 target_include_directories(studio PUBLIC $<TARGET_PROPERTY:engine,INCLUDE_DIRECTORIES>)
