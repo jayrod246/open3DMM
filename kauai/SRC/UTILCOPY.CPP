@@ -407,7 +407,7 @@ bool FEqualRgb(void *pv1, void *pv2, long cb)
 
 #ifdef IN_80386
 
-	bool fRet;
+	tribool fRet;
 
 	__asm
 		{

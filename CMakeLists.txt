@@ -22,17 +22,48 @@ endif()
 #  get_property(CMAKE_CXX_CLANG_TIDY TARGET Clang::Tidy PROPERTY IMPORTED_LOCATION)
 #endif()
 
+add_executable(kcdc-386 EXCLUDE_FROM_ALL)
+target_sources(kcdc-386 PRIVATE "${PROJECT_SOURCE_DIR}/kauai/src/kcdc_386.c")
+target_include_directories(kcdc-386 PRIVATE $<TARGET_PROPERTY:kauai,INCLUDE_DIRECTORIES>)
+
+add_executable(kcd2-386 EXCLUDE_FROM_ALL)
+target_sources(kcd2-386 PRIVATE "${PROJECT_SOURCE_DIR}/kauai/src/kcd2_386.c")
+target_include_directories(kcd2-386 PRIVATE $<TARGET_PROPERTY:kauai,INCLUDE_DIRECTORIES>)
+
+add_custom_command(
+  OUTPUT "${PROJECT_BINARY_DIR}/generated/kauai/src/kcdc_386.h"
+  COMMAND cmake -E make_directory "${PROJECT_BINARY_DIR}/generated/kauai/src"
+  COMMAND kcdc-386 "${PROJECT_BINARY_DIR}/generated/kauai/src/kcdc_386.h"
+  COMMENT "Generating kcdc_386.h"
+  VERBATIM)
+
+add_custom_command(
+  OUTPUT "${PROJECT_BINARY_DIR}/generated/kauai/src/kcd2_386.h"
+  COMMAND cmake -E make_directory "${PROJECT_BINARY_DIR}/generated/kauai/src"
+  COMMAND kcd2-386 "${PROJECT_BINARY_DIR}/generated/kauai/src/kcd2_386.h"
+  COMMENT "Generating kcd2_386.h"
+  VERBATIM)
+
 add_compile_options($<$<COMPILE_LANG_AND_ID:CXX,MSVC>:/wd4430>)
 
 add_library(kauai)
 file(GLOB kauai-sources CONFIGURE_DEPENDS "${PROJECT_SOURCE_DIR}/kauai/src/*.cpp")
 file(GLOB kauai-headers CONFIGURE_DEPENDS "${PROJECT_SOURCE_DIR}/kauai/src/*.h")
 list(FILTER kauai-sources EXCLUDE REGEX "MAC[.](CPP|cpp)")
-target_include_directories(kauai PUBLIC "${PROJECT_SOURCE_DIR}/kauai/src")
-target_sources(kauai PRIVATE ${kauai-sources})
+target_include_directories(
+  kauai
+    PUBLIC
+      "${PROJECT_SOURCE_DIR}/kauai/src"
+      "$<BUILD_INTERFACE:${PROJECT_BINARY_DIR}/generated/kauai/src>")
+target_sources(kauai
+  PRIVATE
+    "${PROJECT_BINARY_DIR}/generated/kauai/src/kcdc_386.h"
+    "${PROJECT_BINARY_DIR}/generated/kauai/src/kcd2_386.h"
+    ${kauai-sources})
 target_compile_definitions(kauai PUBLIC
   _LPCVOID_DEFINED
   STRICT
+  $<$<PLATFORM_ID:Windows>:IN_80386>
   $<$<PLATFORM_ID:Windows>:WIN>)
 target_link_libraries(kauai
   PUBLIC

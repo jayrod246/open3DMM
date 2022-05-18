@@ -13,15 +13,17 @@
 		ecx: for rep movsb
 		esi: for rep movsb
 ***************************************************************************/
-
+#include <stdbool.h>
+#include <stdlib.h>
+#include <stddef.h>
 #include <stdio.h>
 #include "codkpri.h"
 
-#define kcbitMinMoveByDword 3
+const int kcbitMinMoveByDword = 3;
 
-typedef long bool;
 const bool fFalse = 0;
 const bool fTrue = 1;
+static FILE* output = NULL;
 
 void Setup(void);
 void End(void);
@@ -35,8 +37,18 @@ void CallCopy(long ibit, long cbit, bool fTestForDword);
 void Copy(long ibit, bool fDword);
 
 
-int main(void)
+int main(int argc, char* argv[])
 {
+  if (argc != 2) {
+    fprintf(stderr, "usage: %s <filename>", argv[0]);
+    return EXIT_FAILURE;
+  }
+  output = fopen(argv[1], "w");
+  if (output == NULL) {
+    fprintf(stderr, "could not open %s", argv[1]);
+    return EXIT_FAILURE;
+  }
+
 	long ibit;
 
 	Setup();
@@ -46,7 +58,7 @@ int main(void)
 		if (kcbitMinMoveByDword <= kcbitMaxLenKcdc)
 			{
 			Copy(ibit, fTrue);
-			printf("	jmp LBlock%d\n", ibit);
+			fprintf(output, "	jmp LBlock%d\n", ibit);
 			}
 		Copy(ibit, fFalse);
 		Block(ibit);
@@ -59,7 +71,7 @@ int main(void)
 
 void Setup(void)
 {
-	printf(
+	fprintf(output,
 		"	// Setup\n"
 		"	long cbTot;\n"
 		"	byte *pbLimDst = (byte *)pvDst + cbDst;\n\n"
@@ -72,18 +84,18 @@ void Setup(void)
 
 	Advance(4);
 
-	printf("	jmp LBlock0\n");
+	fprintf(output, "	jmp LBlock0\n");
 }
 
 
 void Copy(long ibit, bool fDword)
 {
 	if (fDword)
-		printf("\n	// Copy Dword %d\nLCopyDword%d:\n", ibit, ibit);
+		fprintf(output, "\n	// Copy Dword %d\nLCopyDword%d:\n", ibit, ibit);
 	else
-		printf("\n	// Copy Byte %d\nLCopyByte%d:\n", ibit, ibit);
+		fprintf(output, "\n	// Copy Byte %d\nLCopyByte%d:\n", ibit, ibit);
 
-	printf(
+	fprintf(output,
 		"#ifdef SAFETY\n"
 		"	push edx\n"
 		"	lea edx,[edi+ecx]\n"
@@ -93,12 +105,12 @@ void Copy(long ibit, bool fDword)
 		"#endif //SAFETY\n"
 		);
 
-	printf(
+	fprintf(output,
 		"	neg esi\n"
 		"	add esi,edi\n"
 		);
 
-	printf(
+	fprintf(output,
 		"#ifdef SAFETY\n"
 		"	cmp esi,pvDst\n"
 		"	jb LFail\n"
@@ -107,7 +119,7 @@ void Copy(long ibit, bool fDword)
 
 	if (fDword)
 		{
-		printf(
+		fprintf(output,
 			"	mov edx,ecx\n"
 			"	shr ecx,2\n"
 			"	and edx,3\n"
@@ -117,13 +129,13 @@ void Copy(long ibit, bool fDword)
 			);
 		}
 	else
-		printf("	rep movsb\n");
+		fprintf(output, "	rep movsb\n");
 }
 
 
 void End(void)
 {
-	printf(
+	fprintf(output,
 		"\nLDone:\n"
 		"	sub edi,pvDst\n"
 		"	mov cbTot,edi\n"
@@ -139,31 +151,31 @@ void Advance(long cb)
 	case 0:
 		break;
 	case 1:
-		printf(
+		fprintf(output,
 			"	mov eax,[ebx-3]\n"
 			"	inc ebx\n"
 			);
 		break;
 	case 2:
-		printf(
+		fprintf(output,
 			"	mov eax,[ebx-2]\n"
 			"	add ebx,2\n"
 			);
 		break;
 	case 3:
-		printf(
+		fprintf(output,
 			"	mov eax,[ebx-1]\n"
 			"	add ebx,3\n"
 			);
 		break;
 	case 4:
-		printf(
+		fprintf(output,
 			"	mov eax,[ebx]\n"
 			"	add ebx,4\n"
 			);
 		break;
 	default:
-		printf("*** BUG\n");
+		fprintf(output, "*** BUG\n");
 		break;
 		}
 }
@@ -172,28 +184,28 @@ void Advance(long cb)
 void Test(long ibit)
 {
 	if (ibit < 8)
-		printf("	test al,%d\n", 1 << ibit);
+		fprintf(output, "	test al,%d\n", 1 << ibit);
 	else if (ibit < 16)
-		printf("	test ah,%d\n", 1 << (ibit - 8));
+		fprintf(output, "	test ah,%d\n", 1 << (ibit - 8));
 	else
-		printf("	test eax,%d\n", 1 << ibit);
+		fprintf(output, "	test eax,%d\n", 1 << ibit);
 }
 
 
 void Block(long ibit)
 {
-	printf("\n	// Block %d\n", ibit);
-	printf("LBlock%d:\n", ibit);
+	fprintf(output, "\n	// Block %d\n", ibit);
+	fprintf(output, "LBlock%d:\n", ibit);
 
 	Test(ibit);
-	printf("	jz LLiteral%d\n", ibit + 1);
+	fprintf(output,"	jz LLiteral%d\n", ibit + 1);
 	Test(ibit + 1);
-	printf("	jz L%dBit%d\n", kcbitKcdc0, ibit + 2);
+	fprintf(output, "	jz L%dBit%d\n", kcbitKcdc0, ibit + 2);
 	Test(ibit + 2);
-	printf("	jz L%dBit%d\n", kcbitKcdc1, ibit + 3);
+	fprintf(output, "	jz L%dBit%d\n", kcbitKcdc1, ibit + 3);
 	Test(ibit + 3);
-	printf("	jz L%dBit%d\n", kcbitKcdc2, ibit + 4);
-	printf("	jmp L%dBit%d\n", kcbitKcdc3, ibit + 4);
+	fprintf(output, "	jz L%dBit%d\n", kcbitKcdc2, ibit + 4);
+	fprintf(output, "	jmp L%dBit%d\n", kcbitKcdc3, ibit + 4);
 
 	Literal(ibit + 1);
 	Offset(ibit + 2, kcbitKcdc0, kdibMinKcdc0, 2);
@@ -205,10 +217,10 @@ void Block(long ibit)
 
 void Literal(long ibit)
 {
-	printf("\n	// Literal %d\n", ibit);
-	printf("LLiteral%d:\n", ibit);
+	fprintf(output,"\n	// Literal %d\n", ibit);
+	fprintf(output,"LLiteral%d:\n", ibit);
 
-	printf(
+	fprintf(output,
 		"#ifdef SAFETY\n"
 		"	cmp edi,pbLimDst\n"
 		"	jae LFail\n"
@@ -217,14 +229,14 @@ void Literal(long ibit)
 
 	if (ibit == 8)
 		{
-		printf(
+		fprintf(output,
 			"	mov [edi],ah\n"
 			"	inc edi\n"
 			);
 		}
 	else
 		{
-		printf(
+		fprintf(output,
 			"	mov edx,eax\n"
 			"	shr edx,%d\n"
 			"	mov [edi],dl\n"
@@ -234,30 +246,30 @@ void Literal(long ibit)
 
 	ibit += 8;
 	Advance(ibit / 8);
-	printf("	jmp LBlock%d\n", ibit & 0x07);
+	fprintf(output,"	jmp LBlock%d\n", ibit & 0x07);
 }
 
 
 void Offset(long ibit, long cbit, long dibBase, long cbBase)
 {
-	printf("\nL%dBit%d:\n", cbit, ibit);
+	fprintf(output,"\nL%dBit%d:\n", cbit, ibit);
 
-	printf("	mov esi,eax\n");
-	printf("	mov ecx,%d\n", cbBase);
-	printf("	shr esi,%d\n", ibit);
-	printf("	and esi,%d\n", (1 << cbit) - 1);
+	fprintf(output,"	mov esi,eax\n");
+	fprintf(output,"	mov ecx,%d\n", cbBase);
+	fprintf(output,"	shr esi,%d\n", ibit);
+	fprintf(output,"	and esi,%d\n", (1 << cbit) - 1);
 
 	if (kcbitKcdc3 == cbit)
 		{
 		// Put in the test for being done
-		printf("	cmp esi,%d\n", (1 << cbit) - 1);
-		printf("	je LDone\n");
+		fprintf(output,"	cmp esi,%d\n", (1 << cbit) - 1);
+		fprintf(output,"	je LDone\n");
 		}
 
 	if (1 == dibBase)
-		printf("	inc esi\n");
+		fprintf(output,"	inc esi\n");
 	else
-		printf("	add esi,%d\n", dibBase);
+		fprintf(output,"	add esi,%d\n", dibBase);
 
 	ibit += cbit;
 	Advance(ibit / 8);
@@ -276,20 +288,20 @@ void GetLen(long ibit, bool fTestForDword)
 	for (cbit = 0; cbit <= kcbitMaxLenKcdc; cbit++)
 		{
 		Test(ibit + cbit);
-		printf("	jz LLen%d_%d\n", _cactCall, cbit);
+		fprintf(output,"	jz LLen%d_%d\n", _cactCall, cbit);
 		}
-	printf("	jmp LFail\n");
+	fprintf(output,"	jmp LFail\n");
 
 	for (cbit = 0; cbit <= kcbitMaxLenKcdc; cbit++)
 		{
-		printf("LLen%d_%d:\n", _cactCall, cbit);
+		fprintf(output,"LLen%d_%d:\n", _cactCall, cbit);
 		if (cbit > 0)
 			{
-			printf("	mov edx,eax\n");
-			printf("	shr edx,%d\n", ibit + cbit + 1);
-			printf("	add ecx,%d\n", (1 << cbit) - 1);
-			printf("	and edx,%d\n", (1 << cbit) - 1);
-			printf("	add ecx,edx\n");
+			fprintf(output,"	mov edx,eax\n");
+			fprintf(output,"	shr edx,%d\n", ibit + cbit + 1);
+			fprintf(output,"	add ecx,%d\n", (1 << cbit) - 1);
+			fprintf(output,"	and edx,%d\n", (1 << cbit) - 1);
+			fprintf(output,"	add ecx,edx\n");
 			}
 		CallCopy(ibit + cbit + cbit + 1, cbit, fTestForDword);
 		}
@@ -302,15 +314,15 @@ void CallCopy(long ibit, long cbit, bool fTestForDword)
 	ibit &= 0x07;
 
 	if (cbit < kcbitMinMoveByDword)
-		printf("jmp LCopyByte%d\n", ibit);
+		fprintf(output,"jmp LCopyByte%d\n", ibit);
 	else
 		{
 		if (fTestForDword)
 			{
-			printf("	cmp esi,4\n");
-			printf("	jb LCopyByte%d\n", ibit);
+			fprintf(output,"	cmp esi,4\n");
+			fprintf(output,"	jb LCopyByte%d\n", ibit);
 			}
-		printf("	jmp LCopyDword%d\n", ibit);
+		fprintf(output,"	jmp LCopyDword%d\n", ibit);
 		}
 }
 
