@@ -22,6 +22,8 @@ endif()
 #  get_property(CMAKE_CXX_CLANG_TIDY TARGET Clang::Tidy PROPERTY IMPORTED_LOCATION)
 #endif()
 
+# Local Tooling
+
 add_executable(kcdc-386 EXCLUDE_FROM_ALL)
 target_sources(kcdc-386 PRIVATE "${PROJECT_SOURCE_DIR}/kauai/src/kcdc_386.c")
 target_include_directories(kcdc-386 PRIVATE $<TARGET_PROPERTY:kauai,INCLUDE_DIRECTORIES>)
@@ -29,6 +31,11 @@ target_include_directories(kcdc-386 PRIVATE $<TARGET_PROPERTY:kauai,INCLUDE_DIRE
 add_executable(kcd2-386 EXCLUDE_FROM_ALL)
 target_sources(kcd2-386 PRIVATE "${PROJECT_SOURCE_DIR}/kauai/src/kcd2_386.c")
 target_include_directories(kcd2-386 PRIVATE $<TARGET_PROPERTY:kauai,INCLUDE_DIRECTORIES>)
+
+add_executable(chomp EXCLUDE_FROM_ALL)
+target_sources(chomp PRIVATE "${PROJECT_SOURCE_DIR}/kauai/tools/chomp.cpp")
+target_include_directories(chomp PRIVATE $<TARGET_PROPERTY:kauai,INCLUDE_DIRECTORIES>)
+target_link_libraries(chomp PRIVATE $<TARGET_NAME_IF_EXISTS:kauai>)
 
 add_custom_command(
   OUTPUT "${PROJECT_BINARY_DIR}/generated/kauai/src/kcdc_386.h"
@@ -109,3 +116,10 @@ set_property(TARGET studio PROPERTY OUTPUT_NAME 3dmovie)
 target_link_options(studio
   BEFORE PRIVATE
     $<$<AND:$<LINK_LANG_AND_ID:CXX,MSVC>,$<CONFIG:DEBUG>>:/NODEFAULTLIB:libcmt.lib>)
+
+install(TARGETS studio RUNTIME DESTINATION .)
+install(DIRECTORY "${PROJECT_SOURCE_DIR}/cd9/"
+  DESTINATION "Microsoft Kids/3D Movie Maker")
+install(DIRECTORY "${PROJECT_BINARY_DIR}/generated/chomp/"
+  DESTINATION "Microsoft Kids/3D Movie Maker"
+  FILES_MATCHING PATTERN "*.chk")
