@@ -548,7 +548,7 @@ public:
 	bool FSquashStretchActr(BRS brs);			// Squash/Stretch selected actor
 	bool FSoonerLaterActr(long nfrm);			// Sooner/Later selected actor
 	bool FScaleActr(BRS brs);					// Scale selected actor
-	bool FCostumeActr(long ibprt, PTAG ptag, long cmid, bool fCustom);
+	bool FCostumeActr(long ibprt, PTAG ptag, long cmid, tribool fCustom);
 	bool FAddScen(PTAG ptag);					// Add a scene after the current one, or change
 												//   change bkgd if scene is empty
 	bool FSetTransition(TRANS trans);			// Set the transition type for the current scene.
@@ -566,9 +566,9 @@ public:
 	bool _FAdoptMsndInMvie(PCFL pcfl, CNO cnoScen);	// Adopt msnd chunks as children of the movie
 
 
-	bool FAddBkgdSnd(PTAG ptag, bool fLoop, bool fQueue, long vlm = vlmNil,
+	bool FAddBkgdSnd(PTAG ptag, tribool fLoop, tribool fQueue, long vlm = vlmNil,
 		long sty = styNil); // Adds a sound
-	bool FAddActrSnd(PTAG ptag, bool fLoop, bool fQueue, bool fActnCel,
+	bool FAddActrSnd(PTAG ptag, tribool fLoop, tribool fQueue, tribool fActnCel,
 		long vlm, long sty);	// Adds a sound
 
 	//

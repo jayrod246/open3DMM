@@ -114,7 +114,7 @@ protected:
 	PRCA _prca;		// file that the WAV/MIDI lives in
 	long _sty;		// MIDI, speech, or sfx
 	long _vlm;		// Volume of the sound
-	bool _fNoSound;	// Set if silent sound
+	tribool _fNoSound;	// Set if silent sound
 	STN _stn;		// Sound name
 	bool _fInvalid;	// Invalid flag
 
@@ -144,7 +144,7 @@ public:
 	long Sty(void) { AssertThis(0); return _sty; }
 	long Vlm(void) { AssertThis(0); return _vlm; }
  	long Spr(long tool);		// Return Priority
-	long FNoSound(void) { AssertThis(0); return _fNoSound; }
+	tribool FNoSound(void) { AssertThis(0); return _fNoSound; }
 
 	void Play(long objID, bool fLoop, bool fQueue, long vlm,
 		long spr, bool fActr = fFalse, ulong dtsStart = 0);

@@ -351,7 +351,7 @@ bool SPLOT::FCmdUpdate(PCMD pcmd)
 		Assert(thd.tag.sid != ksidUseCrf, "Need to open tag before using it");
 		if (!vptagm->FCacheTagToHD(&thd.tag))
 			goto LFail;
-		if (!_pmvie->FAddBkgdSnd(&thd.tag, fTrue, fFalse))
+		if (!_pmvie->FAddBkgdSnd(&thd.tag, tribool::tYes, tribool::tNo))
 			goto LFail;
 
 		_pmvie->Pmsq()->PlayMsq();

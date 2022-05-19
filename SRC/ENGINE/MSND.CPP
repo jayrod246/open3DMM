@@ -145,10 +145,10 @@ bool MSND::_FInit(PCFL pcfl, CTG ctg, CNO cno)
 		{
 		_cnoSnd = kid.cki.cno;
 		_ctgSnd = kid.cki.ctg;
-		_fNoSound = fFalse;
+		_fNoSound = tribool::tNo;
 		}
 	else
-		_fNoSound = fTrue;
+		_fNoSound = tribool::tYes;
 
 	return fTrue;
 LFail:
@@ -679,7 +679,7 @@ void MSND::Play(long objID, bool fLoop, bool fQueue, long vlm,
 	long cactRepeat;
 	long sqn; // sound queue
 	long scl; // sound class
-	long sii;
+	long sii{};
 
 	static long _siiLastMidi;
 	static CTG _ctgLastMidi;

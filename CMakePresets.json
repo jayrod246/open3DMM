@@ -22,9 +22,18 @@
       }
     },
     {
+      "name": "msvc:x86:base",
+      "inherits": "msvc:base",
+      "hidden": true,
+      "architecture": {
+        "value": "x86",
+        "strategy": "external"
+      }
+    },
+    {
       "displayName": "MSVC x86 Release",
       "name": "x86:msvc:release",
-      "inherits": "msvc:base",
+      "inherits": "msvc:x86:base",
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": "Release"
       }
@@ -32,7 +41,7 @@
     {
       "displayName": "MSVC x86 Debug",
       "name": "x86:msvc:debug",
-      "inherits": "msvc:base",
+      "inherits": "msvc:x86:base",
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": "Debug"
       }

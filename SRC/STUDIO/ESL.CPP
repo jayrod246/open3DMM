@@ -600,7 +600,7 @@ bool ESLT::_FAcceptChanges(bool *pfDismissEasel)
 	TAG tagTdfNew;
 	long cbset;
 	long ibset;
-	bool fMtrl;
+	tribool fMtrl;
 	long cmid;
 	TAG tagMtrl;
 
@@ -631,7 +631,7 @@ bool ESLT::_FAcceptChanges(bool *pfDismissEasel)
 			{
 			if (_pape->FGetMaterial(ibset, &fMtrl, &cmid, &tagMtrl))
 				{
-				if (!_pactr->FSetCostumeCore(ibset, &tagMtrl, cmid, !fMtrl))
+				if (!_pactr->FSetCostumeCore(ibset, &tagMtrl, cmid, (tribool)!fMtrl))
 					goto LFail;
 				fChangesMade = fTrue;
 				}
@@ -662,7 +662,7 @@ bool ESLT::_FAcceptChanges(bool *pfDismissEasel)
 			{
 			if (_pape->FGetMaterial(ibset, &fMtrl, &cmid, &tagMtrl))
 				{
-				if (!_pactr->FSetCostumeCore(ibset, &tagMtrl, cmid, !fMtrl))
+				if (!_pactr->FSetCostumeCore(ibset, &tagMtrl, cmid, (tribool)!fMtrl))
 					goto LFail;
 				fChangesMade = fTrue;
 				}
@@ -1019,7 +1019,7 @@ bool ESLA::_FAcceptChanges(bool *pfDismissEasel)
 	STN stnNew;
 	long cbset;
 	long ibset;
-	bool fMtrl;
+	tribool fMtrl;
 	long cmid;
 	TAG tagMtrl;
 
@@ -1054,7 +1054,7 @@ bool ESLA::_FAcceptChanges(bool *pfDismissEasel)
 		{
 		if (_pape->FGetMaterial(ibset, &fMtrl, &cmid, &tagMtrl))
 			{
-			if (!_pactr->FSetCostumeCore(ibset, &tagMtrl, cmid, !fMtrl))
+			if (!_pactr->FSetCostumeCore(ibset, &tagMtrl, cmid, (tribool)!fMtrl))
 				goto LFail;
 			fChangesMade = fTrue;
 			}

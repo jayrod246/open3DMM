@@ -215,19 +215,19 @@ struct AEVCOST
 	{
 	long ibset;			// body part set
 	long cmid;			// costume ID (for custom costumes)
-	bool fCmtl; 		// vs fMtrl
+	tribool fCmtl; 		// vs fMtrl
 	TAG tag;
 	};
 const BOM kbomAevcost = 0xfc000000 | (kbomTag >> 6);
 
 struct AEVSND
 	{
-	bool fLoop;			// loop count
-	bool fQueue;		// queued sound
+	tribool fLoop;		// loop count
+	tribool fQueue;		// queued sound
 	long vlm;			// volume
 	long celn;			// motion match	: ivNil if not
 	long sty;			// sound type
-	bool fNoSound;		// no sound
+	tribool fNoSound;	// no sound
 	CHID chid;			// user sound requires chid
 	TAG tag;
 	};
@@ -520,7 +520,7 @@ public:
 	bool FAddOnStageCore(void);	
 	bool FSetActionCore(long anid, long celn, bool fFreeze);
 	bool FRemFromStageCore(void);		
-	bool FSetCostumeCore(long ibsetClicked, TAG *ptag, long cmid, bool fCustom);
+	bool FSetCostumeCore(long ibsetClicked, TAG *ptag, long cmid, tribool fCustom);
 	bool FSetStep(BRS dwrStep);
 	bool FRotate(BRA xa, BRA ya, BRA za, bool fFromHereFwd);
 	bool FNormalizeCore(ulong grfnorm);				
@@ -539,7 +539,7 @@ public:
 	void Reset(void);
 	bool FAddOnStage(void);				//add actor to the stage, w/Undo
 	bool FSetAction(long anid, long celn, bool fFreeze, PACTR *ppactrDup = pvNil);
-	bool FSetCostume(long ibset, TAG *ptag, long cmid, bool fCustom);
+	bool FSetCostume(long ibset, TAG *ptag, long cmid, tribool fCustom);
 	bool FRemFromStage(void);			//add event: rem actor from stage, w/Undo
 	bool FCopy(PACTR *ppactr, bool fEntireScene = fFalse);	//Duplicate actor from this frame on
 	bool FCopyRte(PACTR *ppactr, bool fEntireScene = fFalse);	//Duplicate path from this frame on
@@ -549,8 +549,8 @@ public:
 	bool FDelete(bool *pfAlive, bool fDeleteAll);
    	
    	// ActrSnd Routines
-	bool FSetSnd(PTAG ptag, bool fLoop, bool fQueue, bool fActnCel, long vlm, long sty);
-   	bool FSetSndCore(PTAG ptag, bool fLoop, bool fQueue, bool fActnCel, long vlm, long sty);
+	bool FSetSnd(PTAG ptag, tribool fLoop, tribool fQueue, tribool fActnCel, long vlm, long sty);
+   	bool FSetSndCore(PTAG ptag, tribool fLoop, tribool fQueue, tribool fActnCel, long vlm, long sty);
 	bool FSetVlmSnd(long sty, bool fMotionMatch, long vlm);	// Set the volume of a sound
 	bool FQuerySnd(long sty, bool fMotionMatch, PGL *pglTagSnd, long *pvlm,
 		bool *pfLoop);
