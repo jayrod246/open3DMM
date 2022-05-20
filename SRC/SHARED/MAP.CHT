@@ -272,7 +272,7 @@ ENDCHUNK
 
 // --------------------------------------------------------------------------------
 OBJECT( "map - inspiration Mask", kgobMapIdeaMask, 60, kcrsHand1 )
-REP_MASK( CHID1( krepDefault ),   "shared\bmp\map\ideamsk.bmp" )
+REP_MASK( CHID1( krepDefault ),   "shared\bmp\map\ideamsk.bmp", 0, 0 )
 CLICK_SCRIPT( "inspiration Mask clicked" )
 	
 	RunScriptGob(kgobMapMain, kchidScript1, kgobInspiration1,
@@ -281,7 +281,7 @@ ENDCHUNK
 
 // --------------------------------------------------------------------------------
 OBJECT( "map - studio Mask",   kgobMapStudioMask, 60, kcrsHand1 )
-REP_MASK( CHID1( krepDefault ), "shared\bmp\map\studmsk.bmp" )
+REP_MASK( CHID1( krepDefault ), "shared\bmp\map\studmsk.bmp", 0, 0 )
 CLICK_SCRIPT( "studio Mask clicked" )
  	RunScriptGob(kgobMapMain, kchidScript1, kgobStudio1,
 			MAPENTRY(kgobStudio1), fFalse);
@@ -289,7 +289,7 @@ ENDCHUNK
 
 // --------------------------------------------------------------------------------
 OBJECT( "map - projects Mask",   kgobMapProjMask, 60, kcrsHand1 )
-REP_MASK( CHID1( krepDefault ), "shared\bmp\map\projmsk.bmp" )
+REP_MASK( CHID1( krepDefault ), "shared\bmp\map\projmsk.bmp", 0, 0 )
 CLICK_SCRIPT( "Mask clicked" )
  	RunScriptGob(kgobMapMain, kchidScript1, kgobProjects1,
 			MAPENTRY(kgobProjects1), fFalse);
@@ -297,7 +297,7 @@ ENDCHUNK
 
 // --------------------------------------------------------------------------------
 OBJECT( "map - backstage Mask",  kgobMapBackMask, 60, kcrsHand1 )
-REP_MASK( CHID1( krepDefault ), "shared\bmp\map\bkstgmsk.bmp" )
+REP_MASK( CHID1( krepDefault ), "shared\bmp\map\bkstgmsk.bmp", 0, 0 )
 CLICK_SCRIPT( "Mask clicked" )
  	RunScriptGob(kgobMapMain, kchidScript1, kgobBackstage1,
 			MAPENTRY(kgobBackstage1), fFalse);
@@ -305,7 +305,7 @@ ENDCHUNK
 
 // --------------------------------------------------------------------------------
 OBJECT( "map - theater Mask", kgobMapTheatreMask, 60, kcrsHand1 )
-REP_MASK( CHID1( krepDefault ), "shared\bmp\map\theatmsk.bmp" )
+REP_MASK( CHID1( krepDefault ), "shared\bmp\map\theatmsk.bmp", 0, 0 )
 CLICK_SCRIPT( "Mask clicked" )
  	RunScriptGob(kgobMapMain, kchidScript1, kgobTheatre1,
 			MAPENTRY(kgobTheatre1), fFalse);
@@ -314,7 +314,7 @@ ENDCHUNK
 
 // --------------------------------------------------------------------------------
 OBJECT( "map - lobby Mask", kgobMapLobbyMask, 60, kcrsHand1 )
-REP_MASK( CHID1( krepDefault ), "shared\bmp\map\LOBBYMSK.BMP" )
+REP_MASK( CHID1( krepDefault ), "shared\bmp\map\LOBBYMSK.BMP", 0, 0 )
 CLICK_SCRIPT("Mask clicked")
  	RunScriptGob(kgobMapMain, kchidScript1, kgobLobby1, MAPENTRY(kgobLobby1),
 			fFalse);
@@ -322,7 +322,7 @@ ENDCHUNK
 
 // --------------------------------------------------------------------------------
 OBJECT( "map - ticketbooth Mask",  kgobMapTicketMask, 60, kcrsHand1 )
-REP_MASK( CHID1( krepDefault ), "shared\bmp\map\TICKTMSK.BMP" )
+REP_MASK( CHID1( krepDefault ), "shared\bmp\map\TICKTMSK.BMP", 0, 0 )
 CLICK_SCRIPT( "Mask clicked" )
  	RunScriptGob(kgobMapMain, kchidScript1, kgobTicket2,
 			MAPENTRY(kgobTicket2), fFalse);
@@ -331,35 +331,35 @@ ENDCHUNK
 
 // --------------------------------------------------------------------------------
 OBJECT( "map - bio book Mask", kgobMapBioMask, 60, kcrsHand1 )
-REP_MASK( CHID1( krepDefault ), "shared\bmp\map\biomsk.bmp" )
+REP_MASK( CHID1( krepDefault ), "shared\bmp\map\biomsk.bmp", 0, 0 )
 CLICK_SCRIPT( "Mask clicked" )
  	RunScriptGob( kgobMapMain, kchidScript1, kgobInspiration1, kst8 , fFalse );
 ENDCHUNK
 
 // --------------------------------------------------------------------------------
 OBJECT( "map - idea room - splot machine", kgobMapSplotMask, 60, kcrsHand1 )
-REP_MASK( CHID1( krepDefault ), "shared\bmp\map\SPLOTMSK.BMP" )
+REP_MASK( CHID1( krepDefault ), "shared\bmp\map\SPLOTMSK.BMP", 0, 0 )
 CLICK_SCRIPT( "Mask clicked" )
  	RunScriptGob( kgobMapMain, kchidScript1, kgobInspiration1, kst7 , fFalse );
 ENDCHUNK
 
 // --------------------------------------------------------------------------------
 OBJECT( "map - tools Mask", kgobMapToolsMask, 60, kcrsHand1 )
-REP_MASK( CHID1( krepDefault ), "shared\bmp\map\TBOXMSK.BMP" )
+REP_MASK( CHID1( krepDefault ), "shared\bmp\map\TBOXMSK.BMP", 0, 0 )
 CLICK_SCRIPT( "Mask clicked" )
  	RunScriptGob(kgobMapMain, kchidScript1, kgobStudio1, kst2, fTrue);
 ENDCHUNK
 
 // --------------------------------------------------------------------------------
 OBJECT( "map - project 1 Mask - logo", kgobMapLogoMask, 60, kcrsHand1 )
-REP_MASK( CHID1( krepDefault ), "shared\bmp\map\LOGOMSK.BMP" )
+REP_MASK( CHID1( krepDefault ), "shared\bmp\map\LOGOMSK.BMP", 0, 0 )
 CLICK_SCRIPT( "Mask clicked" )
  	RunScriptGob( kgobMapMain, kchidScript1, kgobProjects1, kst4 , fFalse );
 ENDCHUNK
 
 // --------------------------------------------------------------------------------
 OBJECT( "map - project 2 Mask",  kgobMapSnippetMask, 60, kcrsHand1 )
-REP_MASK( CHID1( krepDefault ), "shared\bmp\map\GIZMOMSK.BMP" )
+REP_MASK( CHID1( krepDefault ), "shared\bmp\map\GIZMOMSK.BMP", 0, 0 )
 CLICK_SCRIPT( "Mask clicked" )
  	RunScriptGob( kgobMapMain, kchidScript1, kgobProjects1, kst5 , fFalse );
 ENDCHUNK

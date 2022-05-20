@@ -32,7 +32,7 @@
 #ifdef NAMES
 	#define __NAME(x)  x
 #else
-	#define __NAME(x)
+	#define __NAME(...)
 #endif
 
 

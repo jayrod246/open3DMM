@@ -501,7 +501,7 @@ GOBCHUNK("Secondary tools - Actor, XY", kidActorsXY, kgokkRectHit)
 	ACTION(fcustNil, fcustNil, fgrfstClosed, kcrsHand, CHID(kstClosed, kchidClick), cidNil, kttActorsXY)
 	ACTION(fcustNil, fcustNil, fgrfstOpen, kcrsHand, CHID(kstOpen, kchidClick), cidNil, kttActorsXY)
 ENDCHUNK
-REP_RECT(CHID(kstDefault, krepDefault ), "hidden", 0, 0, 0, 0)
+REP_RECT(CHID(kstDefault, krepDefault), "hidden", 0, 0, 0, 0)
 REP_MBMPREG(CHID(kstClosed, krepDefault), "studio\bmp\2xy.bmp",
 	kxpregActorsXY, kypregActorsXY)
 ADOPT_MBMP(LAST_MBMP, CHID(kstClosed, krepMouseUpOn))

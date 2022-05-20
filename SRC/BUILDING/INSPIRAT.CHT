@@ -329,9 +329,9 @@ GOBCHUNK("BSplot1 button", kgobBSplot1, kgokkRectHit )
 	ACTION(fcustNil, fcustNil, fgrfst1, kcrsHand1, CHID(kst1, kchidClick), cidNil, cnoNil)
 ENDCHUNK
 
-	REP_PPMBMP( kcell2, "building\pbm\inspirat\bigarm2.pbm", 0, 0 )
-	REP_PPMBMP( kcell3, "building\pbm\inspirat\bigarm3.pbm", 0, 0 )
-	REP_PPMBMP( kcell4, "building\pbm\inspirat\bigarm4.pbm", 0, 0 )
+	REP_PPMBMP( kcell2, "building\pbm\inspirat\bigarm2.pbm" )
+	REP_PPMBMP( kcell3, "building\pbm\inspirat\bigarm3.pbm" )
+	REP_PPMBMP( kcell4, "building\pbm\inspirat\bigarm4.pbm" )
 
 	REP_PPMBMP( CHID(kst1, krepDefault), "building\pbm\inspirat\bigarm1.pbm")	 // Disabled button
 
@@ -388,9 +388,9 @@ GOBCHUNK("BSplot2 button", kgobBSplot2, kgokkRectHit)
 	ACTION(fcustNil, fcustNil, fgrfst1, kcrsArrow1, chidNil, cidNil, cnoNil)
 	ACTION(fcustNil, fcustNil, fgrfst2, kcrsHand1, CHID(kst2, kchidClick), cidNil, cnoNil)
 ENDCHUNK
-	REP_PPMBMP( kcell2, "building\pbm\inspirat\actarm2.pbm", 0, 0 );
-	REP_PPMBMP( kcell3, "building\pbm\inspirat\actarm3.pbm", 0, 0 );
-	REP_PPMBMP( kcell4, "building\pbm\inspirat\actarm4.pbm", 0, 0 );
+	REP_PPMBMP( kcell2, "building\pbm\inspirat\actarm2.pbm" );
+	REP_PPMBMP( kcell3, "building\pbm\inspirat\actarm3.pbm" );
+	REP_PPMBMP( kcell4, "building\pbm\inspirat\actarm4.pbm" );
 
 	REP_PPMBMP( CHID(kst1, krepDefault), "building\pbm\inspirat\actarm1.pbm")	 	// Disabled button
 	ADOPT_MBMP(LAST_MBMP, CHID(kst2, krepDefault))
@@ -442,9 +442,9 @@ GOBCHUNK("BSplot3 button", kgobBSplot3, kgokkRectHit)
 	ACTION(fcustNil, fcustNil, fgrfst2, kcrsHand1, CHID(kst2, kchidClick), cidNil, cnoNil)
 ENDCHUNK
 	REP_WAVE( CHID( kst2, krepClicked ), "building\sound\inspirat\splthndl.wav" );
-	REP_PPMBMP( kcell2, "building\pbm\inspirat\cmrarm2.pbm", 0, 0 );
-	REP_PPMBMP( kcell3, "building\pbm\inspirat\cmrarm3.pbm", 0, 0 );
-	REP_PPMBMP( kcell4, "building\pbm\inspirat\cmrarm4.pbm", 0, 0 );
+	REP_PPMBMP( kcell2, "building\pbm\inspirat\cmrarm2.pbm" );
+	REP_PPMBMP( kcell3, "building\pbm\inspirat\cmrarm3.pbm" );
+	REP_PPMBMP( kcell4, "building\pbm\inspirat\cmrarm4.pbm" );
 
 	REP_PPMBMP( CHID(kst1, krepDefault), "building\pbm\inspirat\cmrarm1.pbm")	 // Disabled button
 	ADOPT_MBMP(LAST_MBMP, CHID(kst2, krepDefault))
@@ -495,9 +495,9 @@ GOBCHUNK("BSplot4 button", kgobBSplot4, kgokkRectHit)
 	ACTION(fcustNil, fcustNil, fgrfst2, kcrsHand1, CHID(kst2, kchidClick), cidNil, cnoNil)
 ENDCHUNK
 	REP_WAVE( CHID( kst2, krepClicked ), "building\sound\inspirat\splthndl.wav" );
-	REP_PPMBMP( kcell2, "building\pbm\inspirat\muscarm2.pbm", 0, 0 );
-	REP_PPMBMP( kcell3, "building\pbm\inspirat\muscarm3.pbm", 0, 0 );
-	REP_PPMBMP( kcell4, "building\pbm\inspirat\muscarm4.pbm", 0, 0 );
+	REP_PPMBMP( kcell2, "building\pbm\inspirat\muscarm2.pbm" );
+	REP_PPMBMP( kcell3, "building\pbm\inspirat\muscarm3.pbm" );
+	REP_PPMBMP( kcell4, "building\pbm\inspirat\muscarm4.pbm" );
 
 	REP_PPMBMP( CHID(kst1, krepDefault), "building\pbm\inspirat\muscarm1.pbm")	 	// Disabled button
 	ADOPT_MBMP(LAST_MBMP, CHID(kst2, krepDefault))
@@ -549,9 +549,9 @@ GOBCHUNK("BSplot5 button", kgobBSplot5, kgokkRectHit)
 	ACTION(fcustNil, fcustNil, fgrfst2, kcrsHand1, CHID(kst2, kchidClick), cidNil, cnoNil)
 ENDCHUNK
 	REP_WAVE( CHID( kst2, krepClicked ), "building\sound\inspirat\splthndl.wav" );
-	REP_PPMBMP( kcell2, "building\pbm\inspirat\scnarm2.pbm", 0, 0 );
-	REP_PPMBMP( kcell3, "building\pbm\inspirat\scnarm3.pbm", 0, 0 );
-	REP_PPMBMP( kcell4, "building\pbm\inspirat\scnarm4.pbm", 0, 0 );
+	REP_PPMBMP( kcell2, "building\pbm\inspirat\scnarm2.pbm" );
+	REP_PPMBMP( kcell3, "building\pbm\inspirat\scnarm3.pbm" );
+	REP_PPMBMP( kcell4, "building\pbm\inspirat\scnarm4.pbm" );
 
 	REP_PPMBMP( CHID(kst1, krepDefault), "building\pbm\inspirat\scnarm1.pbm")	 	// Disabled button
 	ADOPT_MBMP(LAST_MBMP, CHID(kst2, krepDefault))

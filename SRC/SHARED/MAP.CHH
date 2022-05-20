@@ -42,7 +42,6 @@
 #define kgobMapLogoMask		0x0001205b
 #define kgobMapSnippetMask	0x0001205c
 #define kgobMapToolsMask	0x0001205d
-#define kgobMapNoTalk		0x0001205e
 #define kgobMapVolumeSlider	0x0001205f
 #define kgobVolumePath		0x00012060
 #define kgobMapNoTalk		0x00012061
