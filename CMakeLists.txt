@@ -1,15 +1,22 @@
 cmake_minimum_required(VERSION 3.23)
-project(3DMMForever LANGUAGES CXX C)
+project(3DMMForever LANGUAGES CXX C VERSION 0.2)
 
 list(APPEND CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake")
 
 set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
 set(CMAKE_CXX_STANDARD 14)
 
+include(CMakeDependentOption)
 include(TargetChompSources)
 
 find_package(AudioMan REQUIRED)
 find_package(BRender REQUIRED)
+
+# Options
+option(BUILD_PACKAGES "Build packages for 3DMM" ON)
+
+cmake_dependent_option(3DMM_PACKAGE_WIX "Generate an MSI via WiX" ON "BUILD_PACKAGES AND DEFINED ENV{WIX}" OFF)
+cmake_dependent_option(3DMM_PACKAGE_ZIP "Generate a portable ZIP" ON "BUILD_PACKAGES" OFF)
 
 # Optional Tools
 find_package(ClangTidy)
@@ -31,6 +38,7 @@ add_compile_definitions(
   $<$<PLATFORM_ID:Windows>:WIN>
   $<$<PLATFORM_ID:Windows>:IN_80386>)
 
+# NOTE: kcdc-386 and kcd2-386 prevent cross compiling at this time.
 add_executable(kcdc-386 EXCLUDE_FROM_ALL)
 target_sources(kcdc-386 PRIVATE "${PROJECT_SOURCE_DIR}/kauai/src/kcdc_386.c")
 target_include_directories(kcdc-386 PRIVATE $<TARGET_PROPERTY:kauai,INCLUDE_DIRECTORIES>)
@@ -154,3 +162,23 @@ install(FILES $<TARGET_PROPERTY:studio,CHOMPED_CHUNKS>
   DESTINATION "Microsoft Kids/3D Movie Maker")
 install(DIRECTORY "${PROJECT_SOURCE_DIR}/cd9/"
   DESTINATION "Microsoft Kids/3D Movie Maker")
+
+# CPack must be included *last*, which is antithetical to how most CMake
+# Modules work. We can set all variables for all packaging regardless of
+# whether they're supported. This way we can just swap out what is added to
+# `CPACK_GENERATOR`
+
+# DO NOT CHANGE THIS. EVER. Generated manually via uuidgen. This needs to be
+# the same so that user's can automatically upgrade via MSI
+set(CPACK_WIX_UPGRADE_GUID 01c5fef4-82b5-4194-aaf3-bd0247004941)
+# Change this as needed.
+set(CPACK_WIX_PROPERTY_ARPURLINFOABOUT https://github.com/foone/3DMMForever)
+
+if (BUILD_PACKAGES)
+  foreach (generator IN ITEMS ZIP WIX)
+    if (3DMM_PACKAGE_${generator})
+      list(APPEND CPACK_GENERATOR ${generator})
+    endif()
+  endforeach()
+  include(CPack)
+endif()
