@@ -3504,27 +3504,12 @@ bool APP::_FDisplaySwitchSupported(void)
 #ifdef WIN
 	DWORD dwVersion;
 	byte bVersionMajor;
-	byte bVersionMinor;
-	bool fNT;
 	
 	dwVersion = GetVersion();
-	bVersionMinor = (byte)((dwVersion & 0x0000ff00) >> 8);
 	bVersionMajor = (byte)(dwVersion & 0x000000ff);
-	fNT = ((dwVersion & 0x80000000) == 0);
-	if (fNT)
-		{
-		// Note: At this time, no version of NT supports res-switching.  If
-		//       this changes in the future, do the version-check here.  We
-		//       can't just try ChangeDisplaySettings to see if it works,
-		//       because on NT 3.51, the API exists, but hangs when we call
-		//       it.
-		return fFalse;
-		}
-	else
-		{
-		if (bVersionMajor >= 4)
-			return fTrue;
-		}
+	// FOONE: We don't care if it's NT or not, major version 4.0 means win95 and up or NT4.0 and up.
+	if (bVersionMajor >= 4)
+		return fTrue;
 #endif //WIN
 #ifdef MAC
 	RawRtn();
