@@ -65,6 +65,25 @@ KAUAI_OBJ_GROUPS_FOR_MKTMAP =\
     $(MBMPIO_OBJS)\
     $(KAUAI_OBJ_DIR)\mssio.obj
 
+KAUAI_OBJ_GROUPS_FOR_PBMTOBMP =\
+    $(BASE_OBJS)\
+    $(FILE_OBJS)\
+    $(GROUP_OBJS)\
+    $(MBMPIO_OBJS)\
+    $(GUI_OBJS)\
+    $(SOUND_OBJS)\
+    $(VIDEO_OBJS)\
+    $(SCREXE_OBJS)\
+    $(DOC_OBJS)\
+    $(RICHTEXT_OBJS)\
+    $(CTL_OBJS)\
+    $(STREAM_OBJS)\
+    $(DLG_OBJS)\
+    $(TEXTEDIT_OBJS)\
+    $(KID_OBJS)\
+    $(SCRCOM_OBJS)\
+    $(LEXER_OBJS)\
+    $(KAUAI_OBJ_DIR)\mssio.obj
 
 TDFMAKE_TARGETS =\
     $(TARGET_DIR)tdfmake.obj
@@ -84,6 +103,13 @@ MKTMAP_DEPS =\
     $(BREN_LIB)
 
 
+PBMTOBMP_TARGETS =\
+    $(TARGET_DIR)pbmtobmp.obj
+
+PBMTOBMP_DEPS =\
+    $(TARGET_DIR)engine.lib\
+    $(BREN_LIB)
+
 #-Compile rules-------------------------------------------------------------
 
 
@@ -101,10 +127,10 @@ TGT_NAME=Tools
 
 #-Targets-------------------------------------------------------------------
 
-ALL_SOCTOOLS = $(TARGET_DIR)tdfmake.exe $(TARGET_DIR)mktmap.exe
+ALL_SOCTOOLS = $(TARGET_DIR)tdfmake.exe $(TARGET_DIR)mktmap.exe $(TARGET_DIR)pbmtobmp.exe
 ALL_TARGETS_ROOT = $(ALL_TARGETS_ROOT) $(ALL_SOCTOOLS)
 
-CLEAN_SOCTOOLS = CLEAN_TDFMAKE CLEAN_SITOBREN CLEAN_MKTMAP
+CLEAN_SOCTOOLS = CLEAN_TDFMAKE CLEAN_SITOBREN CLEAN_MKTMAP CLEAN_PBMTOBMP
 CLEAN_TARGETS_ROOT = $(CLEAN_TARGETS_ROOT) $(CLEAN_SOCTOOLS)
 
 
@@ -151,6 +177,15 @@ DEL /q dummy.nul ) 2>nul
 <<KEEP
     cmd /c deltmap.bat
     del deltmap.bat
+
+CLEAN_PBMTOBMP:
+    @echo <<delpbmtobmp.bat
+@echo off
+DEL /q dummy.nul $(PBMTOBMP_TARGETS: = 2>nul^
+DEL /q dummy.nul ) 2>nul
+<<KEEP
+    cmd /c delpbmtobmp.bat
+    del delpbmtobmp.bat
 
 
 !IF "$(LOCAL_BUILD)" != "1"
@@ -212,6 +247,23 @@ $(TARGET_DIR)mktmap.exe : $(MKTMAP_TARGETS) $(MKTMAP_DEPS) $(TARGET_DIR)mktmap.l
     $(MKTMAP_DEPS) \
     -out:$(TARGET_DIR)mktmap.exe @$(TARGET_DIR)mktmap.lnk
     $(CHKERR)
+
+
+$(TARGET_DIR)pbmtobmp.lnk : $(TOOLS_SRC_DIR)\makefile $(KAUAI_ROOT)\makefile.def
+    @echo <<$(TARGET_DIR)pbmtobmp.lnk
+$(KAUAI_OBJ_GROUPS_FOR_PBMTOBMP: =^
+)
+<<KEEP
+
+$(TARGET_DIR)pbmtobmp.exe : $(KAUAI_OBJ_GROUPS_FOR_PBMTOBMP)
+$(TARGET_DIR)pbmtobmp.exe : $(PBMTOBMP_TARGETS) $(PBMTOBMP_DEPS) $(TARGET_DIR)pbmtobmp.lnk
+    @echo Linking pbmtobmp Objects...
+    $(LINK) -link $(LFLAGS_CONS) $(VFW32_LIB) $(AUDIO_LIB)  uuid.lib\
+    $(PBMTOBMP_TARGETS) \
+    $(PBMTOBMP_DEPS) \
+    -out:$(TARGET_DIR)pbmtobmp.exe @$(TARGET_DIR)pbmtobmp.lnk
+    $(CHKERR)
+
 
 !ENDIF  # !MAKEFILE_SOC_TOOLS
 
