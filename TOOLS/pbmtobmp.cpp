@@ -1,6 +1,7 @@
 
 #include <stdio.h>
 #include "frame.h"
+#include <string.h>
 ASSERTNAME
 
 void FrameMain(void)
@@ -120,11 +121,13 @@ LBadSrc:
 		RC size;
 		int buffer_size;
 		mbmp->GetRc(&size);
-		fprintf(stderr, "Size is left=%d top=%d right=%d bottom=%d.\n",size.xpLeft,size.ypTop,size.xpRight,size.ypBottom);
-		buffer_size=size.xpRight*size.ypBottom;
+		int stride=size.xpRight + ((size.xpRight%4==0)?0:(4-(size.xpRight&3)));
+		fprintf(stderr, "Size is left=%d top=%d right=%d bottom=%d stride is %d\n",size.xpLeft,size.ypTop,size.xpRight,size.ypBottom,stride);
+		buffer_size=stride*size.ypBottom;
 		byte *temp_buffer = new byte [buffer_size];
-		mbmp->Draw(temp_buffer, size.xpRight, size.ypBottom, 0, 0);
-		fprintf(stderr, "Drew %d bytes\n",buffer_size);
+		memset(temp_buffer, 253, buffer_size);
+		mbmp->Draw(temp_buffer, stride, size.ypBottom, 0, 0);
+		fprintf(stderr, "Drew %d bytes\n",stride*size.ypBottom);
 		if(!FWriteBitmap(&fniDst, temp_buffer, pglclrSrc, size.xpRight, size.ypBottom)){
 			fprintf(stderr, "writing BMP failed\n\n");
 			goto LFail;
