@@ -47,8 +47,13 @@ add_executable(kcd2-386 EXCLUDE_FROM_ALL)
 target_sources(kcd2-386 PRIVATE "${PROJECT_SOURCE_DIR}/kauai/src/kcd2_386.c")
 target_include_directories(kcd2-386 PRIVATE $<TARGET_PROPERTY:kauai,INCLUDE_DIRECTORIES>)
 
-add_executable(chelp EXCLUDE_FROM_ALL)
-target_sources(chelp PRIVATE "${PROJECT_SOURCE_DIR}/kauai/tools/chelp.cpp")
+add_executable(chelp WIN32 EXCLUDE_FROM_ALL)
+target_sources(chelp PRIVATE
+    "${PROJECT_SOURCE_DIR}/kauai/TOOLS/CHTOP.CPP"
+    "${PROJECT_SOURCE_DIR}/kauai/TOOLS/CHELP.CPP"
+    "${PROJECT_SOURCE_DIR}/kauai/TOOLS/CHELPEXP.CPP"
+    "${PROJECT_SOURCE_DIR}/kauai/TOOLS/CHELP.RC"
+)
 target_include_directories(chelp PRIVATE $<TARGET_PROPERTY:kauai,INCLUDE_DIRECTORIES>)
 target_link_libraries(chelp PRIVATE $<TARGET_NAME_IF_EXISTS:kauai>)
 
@@ -84,6 +89,8 @@ add_library(kauai)
 file(GLOB kauai-sources CONFIGURE_DEPENDS "${PROJECT_SOURCE_DIR}/kauai/src/*.cpp")
 file(GLOB kauai-headers CONFIGURE_DEPENDS "${PROJECT_SOURCE_DIR}/kauai/src/*.h")
 list(FILTER kauai-sources EXCLUDE REGEX "MAC[.](CPP|cpp)")
+list(FILTER kauai-sources EXCLUDE REGEX "FT[.](CPP|cpp)")
+list(FILTER kauai-sources EXCLUDE REGEX "UT[.](CPP|cpp)")
 target_include_directories(
   kauai
     PUBLIC

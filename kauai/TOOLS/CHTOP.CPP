@@ -2230,7 +2230,7 @@ void HETD::GetHtopStn(long istn, PSTN pstn)
 	else if (pvNil != _pgst && istn < _pgst->IvMac())
 		_pgst->GetStn(istn, pstn);
 	else
-		pstn->SetNil;
+		pstn->SetNil();
 }
 
 
