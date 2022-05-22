@@ -169,7 +169,7 @@ install(FILES $<FILTER:$<TARGET_PROPERTY:studio,CHOMPED_CHUNKS>,INCLUDE,.+UTEST[
   RENAME 3dmovie.chk
   DESTINATION "Microsoft Kids/3D Movie Maker")
 install(FILES $<TARGET_PROPERTY:studio,3DMM_SAMPLES>
-  DESTINATION "Microsoft Kids/3D Movie Maker/Users/Melanie")
+  DESTINATION "Microsoft Kids/Users/Melanie")
 install(DIRECTORY "${PROJECT_SOURCE_DIR}/cd9/"
   DESTINATION "Microsoft Kids/3D Movie Maker")
 
