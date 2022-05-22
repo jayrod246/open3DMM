@@ -227,7 +227,10 @@ void AssertPvCb(void *pv, long cb)
 {
 	if (vcactSuspendCheckPointers == 0 && cb != 0)
 		{
-		AssertVar(!IsBadWritePtr(pv, cb), "no write access to ptr", &pv);
+		// This assert has been disabled because AssertPvCb is called on pointers to
+		// globals which were previously read/write but are now read-only.
+
+		//AssertVar(!IsBadWritePtr(pv, cb), "no write access to ptr", &pv);
 		// I (ShonK) am assuming that write access implies read access for
 		// memory, so it would just be a waste of time to call this.
 		// AssertVar(!IsBadReadPtr(pv, cb), "no read access to ptr", &pv);
