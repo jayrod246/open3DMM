@@ -51,4 +51,9 @@ if (${CMAKE_FIND_PACKAGE_NAME}_FOUND AND NOT TARGET BRender::Libraries)
   target_link_libraries(BRender::BRFWMXR
     INTERFACE
       $<$<LINK_LANG_AND_ID:CXX,MSVC>:legacy_stdio_definitions>)
+
+  # Precompiled BRender libraries do not support SafeSEH
+  target_link_options(BRender::BRFWMXR INTERFACE
+      $<$<LINK_LANG_AND_ID:CXX,MSVC>:/SAFESEH:NO>
+  )
 endif()
