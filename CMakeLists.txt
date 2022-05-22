@@ -133,6 +133,8 @@ add_executable(studio WIN32)
 file(GLOB studio-sources CONFIGURE_DEPENDS
   "${PROJECT_SOURCE_DIR}/src/studio/*.cpp"
   "${PROJECT_SOURCE_DIR}/src/studio/*.rc")
+file(GLOB studio-samples CONFIGURE_DEPENDS
+  "${PROJECT_SOURCE_DIR}/cd3/SAMPLES/*.3mm")
 list(FILTER studio-sources EXCLUDE REGEX "UTESTSCB.CPP$")
 target_sources(studio PRIVATE ${studio-sources})
 target_include_directories(studio
@@ -154,12 +156,20 @@ target_link_options(studio BEFORE PRIVATE $<$<LINK_LANG_AND_ID:CXX,MSVC>:/MANIFE
 target_link_options(studio
   BEFORE PRIVATE
     $<$<AND:$<LINK_LANG_AND_ID:CXX,MSVC>,$<CONFIG:DEBUG>>:/NODEFAULTLIB:libcmt.lib>)
+set_property(TARGET studio PROPERTY 3DMM_SAMPLES ${studio-samples})
 
 # Please pay attention to the ending / in each DIRECTORY declaration. It
 # affects the destination!
 install(TARGETS studio RUNTIME DESTINATION .)
-install(FILES $<TARGET_PROPERTY:studio,CHOMPED_CHUNKS>
+# HACK(bruxisma): This is due to UTEST.CHT not generating 3DMOVIE.CHK
+#                 Renaming it to 3DMOVIE.CHT would resolve this.
+install(FILES $<FILTER:$<TARGET_PROPERTY:studio,CHOMPED_CHUNKS>,EXCLUDE,.+UTEST[.]chk$>
   DESTINATION "Microsoft Kids/3D Movie Maker")
+install(FILES $<FILTER:$<TARGET_PROPERTY:studio,CHOMPED_CHUNKS>,INCLUDE,.+UTEST[.]chk$>
+  RENAME 3dmovie.chk
+  DESTINATION "Microsoft Kids/3D Movie Maker")
+install(FILES $<TARGET_PROPERTY:studio,3DMM_SAMPLES>
+  DESTINATION "Microsoft Kids/3D Movie Maker/Users/Melanie")
 install(DIRECTORY "${PROJECT_SOURCE_DIR}/cd9/"
   DESTINATION "Microsoft Kids/3D Movie Maker")
 
@@ -175,6 +185,7 @@ set(CPACK_WIX_UPGRADE_GUID 01c5fef4-82b5-4194-aaf3-bd0247004941)
 set(CPACK_WIX_PROPERTY_ARPURLINFOABOUT https://github.com/foone/3DMMForever)
 
 if (BUILD_PACKAGES)
+  add_custom_target(dist DEPENDS $<TARGET_NAME_IF_EXISTS:package>)
   foreach (generator IN ITEMS ZIP WIX)
     if (3DMM_PACKAGE_${generator})
       list(APPEND CPACK_GENERATOR ${generator})
