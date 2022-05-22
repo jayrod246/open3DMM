@@ -36,7 +36,9 @@ endif()
 
 add_compile_definitions(
   $<$<PLATFORM_ID:Windows>:WIN>
-  $<$<PLATFORM_ID:Windows>:IN_80386>)
+  $<$<PLATFORM_ID:Windows>:IN_80386>
+  $<$<CONFIG:Debug>:DEBUG>
+)
 
 # NOTE: kcdc-386 and kcd2-386 prevent cross compiling at this time.
 add_executable(kcdc-386 EXCLUDE_FROM_ALL)
