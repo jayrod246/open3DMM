@@ -59,6 +59,21 @@ target_sources(chelp PRIVATE
 target_include_directories(chelp PRIVATE $<TARGET_PROPERTY:kauai,INCLUDE_DIRECTORIES>)
 target_link_libraries(chelp PRIVATE $<TARGET_NAME_IF_EXISTS:kauai>)
 
+# Kauai test applications
+add_executable(ft WIN32 EXCLUDE_FROM_ALL)
+target_sources(ft PRIVATE
+    "${PROJECT_SOURCE_DIR}/kauai/SRC/TEST.CPP"
+    "${PROJECT_SOURCE_DIR}/kauai/SRC/FT.RC"
+    "${PROJECT_SOURCE_DIR}/kauai/SRC/FT.CPP"
+)
+target_link_libraries(ft PRIVATE kauai)
+
+add_executable(ut EXCLUDE_FROM_ALL)
+target_sources(ut PRIVATE
+    "${PROJECT_SOURCE_DIR}/kauai/SRC/UT.CPP"
+)
+target_link_libraries(ut PRIVATE kauai)
+
 add_executable(chomp EXCLUDE_FROM_ALL)
 target_sources(chomp PRIVATE "${PROJECT_SOURCE_DIR}/kauai/tools/chomp.cpp")
 target_include_directories(chomp PRIVATE $<TARGET_PROPERTY:kauai,INCLUDE_DIRECTORIES>)
