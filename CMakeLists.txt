@@ -79,6 +79,49 @@ target_sources(chomp PRIVATE "${PROJECT_SOURCE_DIR}/kauai/tools/chomp.cpp")
 target_include_directories(chomp PRIVATE $<TARGET_PROPERTY:kauai,INCLUDE_DIRECTORIES>)
 target_link_libraries(chomp PRIVATE $<TARGET_NAME_IF_EXISTS:kauai>)
 
+# Chunk Editor
+add_executable(ched WIN32 EXCLUDE_FROM_ALL)
+target_sources(ched PRIVATE
+    "${PROJECT_SOURCE_DIR}/kauai/TOOLS/CHED.RC"
+    "${PROJECT_SOURCE_DIR}/kauai/TOOLS/CHDOC.CPP"
+    "${PROJECT_SOURCE_DIR}/kauai/TOOLS/CHED.CPP"
+    "${PROJECT_SOURCE_DIR}/kauai/TOOLS/CHGRP.CPP"
+    "${PROJECT_SOURCE_DIR}/kauai/TOOLS/CHHEX.CPP"
+    "${PROJECT_SOURCE_DIR}/kauai/TOOLS/CHMBMP.CPP"
+    "${PROJECT_SOURCE_DIR}/kauai/TOOLS/CHPIC.CPP"
+    "${PROJECT_SOURCE_DIR}/kauai/TOOLS/CHTXT.CPP"
+)
+target_link_libraries(ched PRIVATE kauai)
+
+# mkmbmp
+add_executable(mkmbmp EXCLUDE_FROM_ALL)
+target_sources(mkmbmp PRIVATE
+    "${PROJECT_SOURCE_DIR}/kauai/TOOLS/MKMBMP.CPP"
+)
+target_link_libraries(mkmbmp PRIVATE kauai)
+
+# kpack
+add_executable(kpack EXCLUDE_FROM_ALL)
+target_sources(kpack PRIVATE
+    "${PROJECT_SOURCE_DIR}/kauai/TOOLS/KPACK.CPP"
+)
+target_link_libraries(kpack PRIVATE kauai)
+
+# chmerge
+add_executable(chmerge EXCLUDE_FROM_ALL)
+target_sources(chmerge PRIVATE
+    "${PROJECT_SOURCE_DIR}/kauai/TOOLS/CHMERGE.CPP"
+)
+target_link_libraries(chmerge PRIVATE kauai)
+
+# chelpdmp
+add_executable(chelpdmp EXCLUDE_FROM_ALL)
+target_sources(chelpdmp PRIVATE
+    "${PROJECT_SOURCE_DIR}/kauai/TOOLS/CHELPDMP.CPP"
+    "${PROJECT_SOURCE_DIR}/kauai/TOOLS/CHELPEXP.CPP"
+)
+target_link_libraries(chelpdmp PRIVATE kauai)
+
 # These are only here to ensure configure is rerun when dependencies are generated.
 # This is 
 file(GLOB building-chunk-sources CONFIGURE_DEPENDS "${PROJECT_SOURCE_DIR}/SRC/BUILDING/*.cht")
