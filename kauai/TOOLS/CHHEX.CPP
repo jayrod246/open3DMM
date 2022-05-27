@@ -905,7 +905,7 @@ long DCH::_YpFromIb(long ib)
 	output (unless the point is not in the edit area of the DCH).  If *ptHex
 	is tYes or tNo on input, the ib is determined using *ptHex.
 ***************************************************************************/
-long DCH::_IbFromPt(long xp, long yp, bool *ptHex, bool *pfRight)
+long DCH::_IbFromPt(long xp, long yp, tribool *ptHex, bool *pfRight)
 {
 	AssertVarMem(ptHex);
 	AssertNilOrVarMem(pfRight);
@@ -967,7 +967,7 @@ long DCH::_IbFromPt(long xp, long yp, bool *ptHex, bool *pfRight)
 void DCH::MouseDown(long xp, long yp, long cact, ulong grfcust)
 {
 	AssertThis(0);
-	bool tHex;
+	tribool tHex;
 	bool fDown, fRight;
 	PT pt, ptT;
 	long ib;

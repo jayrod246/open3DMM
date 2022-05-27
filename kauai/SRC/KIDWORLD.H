@@ -142,7 +142,7 @@ public:
 	virtual PCMH PcmhFromHid(long hid);
 	virtual PGOB PgobParGob(PGOB pgob);
 	virtual bool FFindFile(PSTN pstnSrc, PFNI pfni);
-	virtual bool TGiveAlert(PSTN pstn, long bk, long cok);
+	virtual tribool TGiveAlert(PSTN pstn, long bk, long cok);
 	virtual void Print(PSTN pstn);
 
 	virtual ulong GrfcustCur(bool fAsynch = fFalse);

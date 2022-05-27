@@ -357,7 +357,7 @@ bool SCEG::_FExecOp(long op)
 			}
 		else
 			{
-			bool tRet;
+			tribool tRet;
 
 			GobMayDie();
 			if (kopRunScriptCnoGob == op || kopRunScriptCnoThis == op)

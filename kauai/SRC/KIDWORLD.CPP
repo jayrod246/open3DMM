@@ -425,7 +425,7 @@ bool WOKS::FFindFile(PSTN pstnSrc, PFNI pfni)
 /***************************************************************************
 	Put up an alert (and don't return until it is dismissed).
 ***************************************************************************/
-bool WOKS::TGiveAlert(PSTN pstn, long bk, long cok)
+tribool WOKS::TGiveAlert(PSTN pstn, long bk, long cok)
 {
 	AssertThis(0);
 

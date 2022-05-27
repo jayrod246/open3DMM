@@ -481,7 +481,7 @@ protected:
 	long _XpFromCb(long cb, bool fHex, bool fNoTrailSpace = fFalse);
 	long _XpFromIb(long ib, bool fHex);
 	long _YpFromIb(long ib);
-	long _IbFromPt(long xp, long yp, bool *ptHex, bool *pfRight = pvNil);
+	long _IbFromPt(long xp, long yp, tribool *ptHex, bool *pfRight = pvNil);
 
 	void _SetSel(long ibAnchor, long ibOther, bool fRight);
 	void _SetHalfSel(long ib);

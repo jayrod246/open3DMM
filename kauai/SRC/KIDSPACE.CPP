@@ -1065,7 +1065,7 @@ bool GOK::_FFilterCmd(PCMD pcmd, CHID chidScript, bool *pfFilter)
 	long rglw[6];
 	long lw;
 	bool fGokExists;
-	bool tRet;
+	tribool tRet;
 
 	rglw[0] = (pvNil == pcmd->pcmh) ? hidNil : pcmd->pcmh->Hid();
 	rglw[1] = pcmd->cid;
@@ -1464,7 +1464,7 @@ void GOK::SetNoSlip(bool fNoSlip)
 	CAUTION: this GOK may not exist on return.
 ***************************************************************************/
 bool GOK::FRunScript(CHID chid, long *prglw, long clw, long *plwReturn,
-	bool *ptSuccess)
+	tribool *ptSuccess)
 {
 	AssertThis(0);
 	AssertNilOrVarMem(plwReturn);
@@ -1490,7 +1490,7 @@ bool GOK::FRunScript(CHID chid, long *prglw, long clw, long *plwReturn,
 	CAUTION: this GOK may not exist on return.
 ***************************************************************************/
 bool GOK::FRunScriptCno(CNO cno, long *prglw, long clw, long *plwReturn,
-	bool *ptSuccess)
+	tribool *ptSuccess)
 {
 	AssertThis(0);
 	AssertNilOrVarMem(plwReturn);
@@ -1576,7 +1576,7 @@ bool GOK::FCmdClicked(PCMD_MOUSE pcmd)
 	PGOB pgob;
 	long rglw[3];
 	long lw;
-	bool tRet;
+	tribool tRet;
 	CUME cume;
 	long hid = Hid();
 	long grid = Grid();
