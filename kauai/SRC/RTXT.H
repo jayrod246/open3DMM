@@ -317,9 +317,9 @@ protected:
 	void _AddRefInAg(long jv);
 	void _ReleaseSprmLw(byte sprm, long lw);
 	void _AddRefSprmLw(byte sprm, long lw);
-	bool _TGetLwFromChp(byte sprm, PCHP pchpNew, PCHP pchpOld,
+	tribool _TGetLwFromChp(byte sprm, PCHP pchpNew, PCHP pchpOld,
 		long *plw, long *plwMask);
-	bool _TGetLwFromPap(byte sprm, PPAP ppapNew, PPAP ppapOld,
+	tribool _TGetLwFromPap(byte sprm, PPAP ppapNew, PPAP ppapOld,
 		long *plw, long *plwMask);
 	bool _FGetRgspvmFromChp(PCHP pchp, PCHP pchpDiff,
 		SPVM *prgspvm, long *pcspvm);

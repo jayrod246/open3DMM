@@ -22,7 +22,7 @@
 ****************************************/
 const bool fTrue = 1;
 const bool fFalse = 0;
-enum
+enum tribool
 	{
 	tNo,
 	tYes,

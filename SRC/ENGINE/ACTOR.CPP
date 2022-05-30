@@ -2243,7 +2243,7 @@ void ACTR::_DelAddFrame(long iaevAdd, long iaevLim)
 
 ***************************************************************************/
 bool ACTR::FSetCostumeCore(long ibsetClicked, TAG *ptag, long cmid,
-	bool fCmtl)
+	tribool fCmtl)
 {
 	AssertThis(0);
 	Assert(fCmtl || ibsetClicked >= 0, "Invalid ibsetClicked argument");

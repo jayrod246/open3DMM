@@ -3751,7 +3751,7 @@ bool MVIE::FScaleActr(BRS brs)
  *  fFalse if there was a failure, else fTrue.
  *
  ****************************************************/
-bool MVIE::FAddBkgdSnd(PTAG ptag, bool fLoop, bool fQueue, long vlm, long sty)
+bool MVIE::FAddBkgdSnd(PTAG ptag, tribool fLoop, tribool fQueue, long vlm, long sty)
 {
 	AssertThis(0);
 	Assert(Pscen(), 0);
@@ -3790,7 +3790,7 @@ bool MVIE::FAddBkgdSnd(PTAG ptag, bool fLoop, bool fQueue, long vlm, long sty)
  *  fFalse if there was a failure, else fTrue.
  *
  ****************************************************/
-bool MVIE::FAddActrSnd(PTAG ptag, bool fLoop, bool fQueue, bool fActnCel,
+bool MVIE::FAddActrSnd(PTAG ptag, tribool fLoop, tribool fQueue, tribool fActnCel,
 	long vlm, long sty)
 {
 	AssertThis(0);
@@ -4650,7 +4650,7 @@ LCheckForPause:
  *  fTrue if successful, else fFalse.
  *
  **************************************************************************/
-bool MVIE::FCostumeActr(long ibprt, PTAG ptag, long cmid, bool fCustom)
+bool MVIE::FCostumeActr(long ibprt, PTAG ptag, long cmid, tribool fCustom)
 {
 	AssertThis(0);
 	AssertPo(Pscen(), 0);
@@ -7121,8 +7121,8 @@ void MVU::_MouseDown(CMD_MOUSE *pcmd)
 	case toolMatcher:
 		if (pactr == pvNil) // scene sound
 			{
-			bool fLoop = (Tool() == toolLooper);
-			bool fQueue = FPure(_grfcust & fcustCmd);
+			tribool fLoop = (tribool)(Tool() == toolLooper);
+			tribool fQueue = (tribool)FPure(_grfcust & fcustCmd);
 
 			if ((Tool() == toolMatcher) && (ksidInvalid != _tagTool.sid))
 				{
@@ -7136,9 +7136,9 @@ void MVU::_MouseDown(CMD_MOUSE *pcmd)
 			}
 		else // actor sound
 			{
-			bool fLoop = (Tool() == toolLooper);
-			bool fQueue = FPure(_grfcust & fcustCmd);
-			bool fActnCel = FPure(Tool() == toolMatcher);
+			tribool fLoop = (tribool)(Tool() == toolLooper);
+			tribool fQueue = (tribool)FPure(_grfcust & fcustCmd);
+			tribool fActnCel = (tribool)FPure(Tool() == toolMatcher);
 
 			if (ksidInvalid != _tagTool.sid)
 				{
@@ -7397,7 +7397,7 @@ void MVU::_MouseDown(CMD_MOUSE *pcmd)
 			TAG tag; // unused
 			TrashVar(&tag);
 			TrashVar(&ibset);
-			Pmvie()->FCostumeActr(ibset, &tag, CmidTool(), fTrue);
+			Pmvie()->FCostumeActr(ibset, &tag, CmidTool(), tribool::tYes);
 			}
 		break;
 	case toolActorEasel:
@@ -7591,7 +7591,7 @@ void MVU::_MouseDrag(CMD_MOUSE *pcmd)
 	case toolCompose:
 		{
 		ulong grfmaf = fmafNil;
-		bool fMoved;
+		bool fMoved { };
 
 		if (_fRespectGround)
 			{

@@ -17,9 +17,10 @@
 // disable brain dead cast warnings
 #pragma warning(disable:4305)
 #pragma warning(disable:4309)
+#pragma warning(disable:4838)
 #endif //!SYMC
 
-static schar _mpchschsMacToWin[128] =
+static constexpr schar _mpchschsMacToWin[128] =
 	{
 	/*        0/8   1/9   2/A   3/B   4/C   5/D   6/E   7/F */
 	/* 80 */ 0xC4, 0xC5, 0xC7, 0xC9, 0xD1, 0xD6, 0xDC, 0xE1,
@@ -40,7 +41,7 @@ static schar _mpchschsMacToWin[128] =
 	         0xAF, 0x7F, 0x7F, 0xB0, 0xB8, 0xA8, 0x7F, 0x7F,
 	};
 
-static schar _mpchschsWinToMac[128] =
+static constexpr schar _mpchschsWinToMac[128] =
 	{
 	/*        0/8   1/9   2/A   3/B   4/C   5/D   6/E   7/F */
 	/* 80 */ 0x7F, 0x7F, 0xE2, 0xC4, 0xE3, 0xC9, 0xA0, 0xE0,
@@ -67,4 +68,5 @@ schar _mpchschsLower[256];
 #ifndef SYMC
 #pragma warning(default:4305)
 #pragma warning(default:4309)
+#pragma warning(default:4838)
 #endif //!SYMC

@@ -1344,14 +1344,14 @@ void MISI::_GetSysVol(void)
 
 		// We also look for drivers that give us nonsense values.
 
-		if (0 != midiOutGetVolume((uint)_hms, &_luVolSys) ||
-				_luVolSys == (ulong)(-1) ||
-			0 != midiOutSetVolume((uint)_hms, (ulong)0) ||
-            0 != midiOutGetVolume((uint)_hms, &lu0) ||
-			0 != midiOutSetVolume((uint)_hms, (ulong)0x7FFF7FFF) ||
-            0 != midiOutGetVolume((uint)_hms, &lu1) ||
-			0 != midiOutSetVolume((uint)_hms, (ulong)0xFFFFFFFF) ||
-            0 != midiOutGetVolume((uint)_hms, &lu2) ||
+		if (0 != midiOutGetVolume(_hms, &_luVolSys) ||
+				_luVolSys == ULONG_MAX ||
+			0 != midiOutSetVolume(_hms, 0ul) ||
+            0 != midiOutGetVolume(_hms, &lu0) ||
+			0 != midiOutSetVolume(_hms, 0x7FFF7FFFul) ||
+            0 != midiOutGetVolume(_hms, &lu1) ||
+			0 != midiOutSetVolume(_hms, 0xFFFFFFFFul) ||
+            0 != midiOutGetVolume(_hms, &lu2) ||
 			lu0 >= lu1 || lu1 >= lu2)
 			{
 			_tBogusDriver = tYes;
@@ -1362,11 +1362,11 @@ void MISI::_GetSysVol(void)
 			_tBogusDriver = tNo;
 			vluSysVolFake = _luVolSys;
 			}
-		midiOutSetVolume((uint)_hms, _luVolSys);
+		midiOutSetVolume(_hms, _luVolSys);
 		break;
 
 	default:
-		if (0 != midiOutGetVolume((uint)_hms, &_luVolSys))
+		if (0 != midiOutGetVolume(_hms, &_luVolSys))
 			{
 			// failed - use the fake value
 			_luVolSys = vluSysVolFake;
@@ -1384,7 +1384,7 @@ void MISI::_GetSysVol(void)
 void MISI::_SetSysVol(ulong luVol)
 {
 	Assert(hNil != _hms, "calling _SetSysVol with nil _hms");
-	midiOutSetVolume((uint)_hms, luVol);
+	midiOutSetVolume(_hms, luVol);
 }
 
 

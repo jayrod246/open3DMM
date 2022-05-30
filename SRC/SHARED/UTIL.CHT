@@ -61,12 +61,7 @@ ENDCHUNK
 // help TOPIC definitions
 // -----------------------------------------------------
 
-// WARNING: Since help topics declared here are actually provided as part of
-// the Building chunk, these numbers need to be the same as the ones in
-// building\socdefn.h
-
-#define ktpcQuitAlert		0x00016043
-#define ktpcHelpAbout		0x0001604f
+#include "socdefn.h"
 
 WAVE_CHUNK( "shared\sound\util\splot.wav", kwavSplot )
 WAVE_CHUNK( "shared\sound\util\ding.wav", kwavDing )

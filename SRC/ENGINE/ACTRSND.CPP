@@ -20,7 +20,7 @@ ASSERTNAME
 	Add a sound event to the actor event list, and create an undo object
 
 ***************************************************************************/
-bool ACTR::FSetSnd(PTAG ptag, bool fLoop, bool fQueue, bool fMotionMatch, long vlm, long sty)
+bool ACTR::FSetSnd(PTAG ptag, tribool fLoop, tribool fQueue, tribool fMotionMatch, long vlm, long sty)
 {
 	AssertThis(0);
 	AssertVarMem(ptag);
@@ -62,7 +62,7 @@ bool ACTR::FSetSnd(PTAG ptag, bool fLoop, bool fQueue, bool fMotionMatch, long v
 	a current tag.	
 
 ***************************************************************************/
-bool ACTR::FSetSndCore(PTAG ptag, bool fLoop, bool fQueue, bool fMotionMatch, long vlm, long sty)
+bool ACTR::FSetSndCore(PTAG ptag, tribool fLoop, tribool fQueue, tribool fMotionMatch, long vlm, long sty)
 {
 	AssertThis(0);
 	AssertVarMem(ptag);
@@ -405,7 +405,7 @@ bool ACTR::_FAddAevDefMm(long anid)
 		vlm = pmsnd->Vlm();
 		sty = pmsnd->Sty();
 
-		if (!FSetSndCore(&tag, fFalse, vlm, fFalse,	sty, fTrue))
+		if (!FSetSndCore(&tag, tribool::tNo, (tribool)vlm, tribool::tNo, sty, tribool::tYes))
 			{
 			goto LFail;		// Continuing pointless
 			}

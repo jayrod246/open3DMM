@@ -113,7 +113,7 @@ public:
 	long Cbset(void) { return _pbody->Cbset(); }
 
 	// Returns fTrue if a material was applied to this ibset
-	bool FGetMaterial(long ibset, bool *pfMtrl, long *pcmid, TAG *ptagMtrl);
+	bool FGetMaterial(long ibset, tribool *pfMtrl, long *pcmid, TAG *ptagMtrl);
 	};
 
 

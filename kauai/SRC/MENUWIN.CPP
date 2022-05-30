@@ -160,7 +160,7 @@ bool MUB::FAddListCid(long cid, long lw0, PSTN pstn)
 	HMENU hmenuPrev;
 	long dimni;
 	bool fSeparator;
-	bool fRet = fTrue;
+	bool fRet = true;
 
 	if (pvNil == _pglmlst)
 		return fTrue;
@@ -218,12 +218,12 @@ LAdjustSeparator:
 			if (!InsertMenu(mlst.hmenu, mlst.imniBase, MF_BYPOSITION | MF_SEPARATOR,
 					cidNil, pvNil))
 				{
-				fRet = fFalse;
+				fRet = false;
 				}
 			else
 				{
 				mlst.imniBase++;
-				mlst.fSeparator = fTrue;
+				mlst.fSeparator = true;
 				_pglmlst->Put(imlst, &mlst);
 				dimni++;
 				}
@@ -232,7 +232,7 @@ LAdjustSeparator:
 			{
 			//delete a separator
 			if (!DeleteMenu(mlst.hmenu, mlst.imniBase - 1, MF_BYPOSITION))
-				fRet = fFalse;
+				fRet = true;
 			else
 				{
 				mlst.imniBase--;

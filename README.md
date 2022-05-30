@@ -16,7 +16,7 @@ This project is unlikely to build successfully under modern hardware/software, b
   - set PATH=%MSVCNT_ROOT%\bin;%PATH%;
   - set INCLUDE=%MSVCNT_ROOT%\include
   - set LIB=%MSVCNT_ROOT%\lib
-- From the root of this repo, run ```setvars.bat``` you can change the values in this script to change what your build will target.
+- From the root of this repo, run `setvars.bat` you can change the values in this script to change what your build will target.
   - Environment variables used by the build:
     - SOC_ROOT: Path to root of repo (where this README.md is)
     - KAUAI_ROOT: Path to Kauai: %SOC_ROOT%\kauai
@@ -55,6 +55,34 @@ This project is unlikely to build successfully under modern hardware/software, b
 - Now you can run 3DMOVIE.EXE in the "dist" subdirectory and it should run without errors.
 - Optionally, generate a release binary in dist, using the current version number in version.def (requires a "7z" binary in the path)
   - `nmake zip`
+
+### CMake Building Instruction
+
+With this current CMake change, CMake 3.23 and Visual Studio 2022 are required.
+
+To setup an environment quickly, one can install
+[VCVars](https://github.com/bruxisma/VCVars) for powershell and use
+
+```console
+$ pushvc (invoke-vcvars -TargetArch x86 -HostArch AMD64)
+```
+
+to enable the environment. (To remove the environment simply call `popvc` afterwards
+
+As of right now it's only safe to target x86, which means using a cross
+compiler environment in conjunction with CMake. Using Ninja is an option via
+configure presets:
+
+```console
+$ cmake --preset x86:msvc:debug
+$ cmake --build build
+```
+
+This should generate the `3dmovie.exe` file with little to no issue as long as
+your environment is setup correctly.
+
+The CMake project *does not* currently setup a correct install, nor does it
+show files inside of visual studio correctly (This will be added later)
 
 ### Known Issues
 

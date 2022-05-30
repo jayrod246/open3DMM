@@ -4,6 +4,7 @@ obj/
 out/
 .vs/
 dist/
+build/
 
 
 # Files generated during build, so they're ignored to keep them out of git

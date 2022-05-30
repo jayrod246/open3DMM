@@ -355,7 +355,7 @@ OBJECT( "backstage", kgobBackstage1, 0, kcrsArrow1 )
 
 OBJECT( "backstage view 2 ", kgobBackstage2, 0, kcrsArrow1 )
 	REP_PPMBMP( CHID1( krepDefault ), "building\pbm\backstag\backstg2.pbm" )
-	CREATE_SCRIPT( "startup", kst1 )
+	CREATE_SCRIPTST( "startup", kst1 )
 		SETPALETTE( kpalSocBackstage );
 		SETKEYS(kflgBuildingAll);
 		PLAYMIDI( kmidBackstage );
@@ -419,7 +419,7 @@ OBJECT( "Biopage 40 mask",  kgobBackstage2m1, 0, kcrsHand1 )
 
 OBJECT( "inspiration view 1", kgobInspiration1, 0, kcrsArrow1 )
 	REP_PPMBMP( CHID1(krepDefault), "building\pbm\inspirat\inspir1.pbm" )
-	CREATE_SCRIPT( "startup", kst1 )
+	CREATE_SCRIPTST( "startup", kst1 )
 		SETKEYS(kflgBuildingAll);
 		SETPALETTE( kpalSocInspiration );
 		PLAYMIDI( kmidIdeas );

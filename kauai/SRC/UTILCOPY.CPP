@@ -211,7 +211,7 @@ LDone:
 	long *psw1, *psw2;
 	long sw;
 
-	for (psw2 = (psw1 = (short *)pv) + csw - 1; psw1 < psw2; )
+	for (psw2 = (psw1 = reinterpret_cast<long*>(pv)) + csw - 1; psw1 < psw2; )
 		{
 		sw = *psw1;
 		*psw1++ = *psw2;
@@ -407,7 +407,7 @@ bool FEqualRgb(void *pv1, void *pv2, long cb)
 
 #ifdef IN_80386
 
-	bool fRet;
+	tribool fRet;
 
 	__asm
 		{

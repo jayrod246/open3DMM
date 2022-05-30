@@ -38,7 +38,7 @@ const long kcmhlBrowser = 0x11000;	// nice medium level for the Browser
 const long kcbMaxCrm = 300000;
 const long kdwTotalPhysLim = 10240000; 	// 10MB	heuristic
 const long kdwAvailPhysLim = 1024000;	// 1MB heuristic
-const kBrwsScript = (kstDefault << 16) | kchidBrowserDismiss;
+const auto kBrwsScript = (kstDefault << 16) | kchidBrowserDismiss;
 
 /************************************
 

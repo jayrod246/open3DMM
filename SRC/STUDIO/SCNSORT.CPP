@@ -15,15 +15,15 @@
 ASSERTNAME
 
 BEGIN_CMD_MAP(SCRT, GOK)
-	ON_CID_ME(cidSceneSortInit, FCmdInit, pvNil)
-	ON_CID_ME(cidSceneSortSelect, FCmdSelect, pvNil)
-	ON_CID_ME(cidSceneSortInsert, FCmdInsert, pvNil)
-	ON_CID_ME(cidSceneSortScroll, FCmdScroll, pvNil)
-	ON_CID_ME(cidSceneSortNuke, FCmdNuke, pvNil)
-	ON_CID_ME(cidSceneSortOk, FCmdDismiss, pvNil)
-	ON_CID_ME(cidSceneSortCancel, FCmdDismiss, pvNil)
-	ON_CID_ME(cidSceneSortPortfolio, FCmdPortfolio, pvNil)
-	ON_CID_ME(cidSceneSortTransition, FCmdTransition, pvNil)
+	ON_CID_ME(cidSceneSortInit, &SCRT::FCmdInit, pvNil)
+	ON_CID_ME(cidSceneSortSelect, &SCRT::FCmdSelect, pvNil)
+	ON_CID_ME(cidSceneSortInsert, &SCRT::FCmdInsert, pvNil)
+	ON_CID_ME(cidSceneSortScroll, &SCRT::FCmdScroll, pvNil)
+	ON_CID_ME(cidSceneSortNuke, &SCRT::FCmdNuke, pvNil)
+	ON_CID_ME(cidSceneSortOk, &SCRT::FCmdDismiss, pvNil)
+	ON_CID_ME(cidSceneSortCancel, &SCRT::FCmdDismiss, pvNil)
+	ON_CID_ME(cidSceneSortPortfolio, &SCRT::FCmdPortfolio, pvNil)
+	ON_CID_ME(cidSceneSortTransition, &SCRT::FCmdTransition, pvNil)
 END_CMD_MAP_NIL()
 
 

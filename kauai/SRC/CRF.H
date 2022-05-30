@@ -100,7 +100,7 @@ class RCA : public RCA_PAR
 	RTCLASS_DEC
 
 public:
-	virtual bool TLoad(CTG ctg, CNO cno, PFNRPO pfnrpo,
+	virtual tribool TLoad(CTG ctg, CNO cno, PFNRPO pfnrpo,
 		RSC rsc = rscNil, long crep = crepNormal) = 0;
 	virtual PBACO PbacoFetch(CTG ctg, CNO cno, PFNRPO pfnrpo,
 		bool *pfError = pvNil, RSC rsc = rscNil) = 0;
@@ -147,7 +147,7 @@ public:
 	~CRF(void);
 	static PCRF PcrfNew(PCFL pcfl, long cbMax);
 
-	virtual bool TLoad(CTG ctg, CNO cno, PFNRPO pfnrpo,
+	virtual tribool TLoad(CTG ctg, CNO cno, PFNRPO pfnrpo,
 		RSC rsc = rscNil, long crep = crepNormal);
 	virtual PBACO PbacoFetch(CTG ctg, CNO cno, PFNRPO pfnrpo,
 		bool *pfError = pvNil, RSC rsc = rscNil);
@@ -190,7 +190,7 @@ public:
 	~CRM(void);
 	static PCRM PcrmNew(long ccrfInit);
 
-	virtual bool TLoad(CTG ctg, CNO cno, PFNRPO pfnrpo,
+	virtual tribool TLoad(CTG ctg, CNO cno, PFNRPO pfnrpo,
 		RSC rsc = rscNil, long crep = crepNormal);
 	virtual PBACO PbacoFetch(CTG ctg, CNO cno, PFNRPO pfnrpo,
 		bool *pfError = pvNil, RSC rsc = rscNil);

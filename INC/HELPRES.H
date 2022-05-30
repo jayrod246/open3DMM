@@ -78,7 +78,6 @@
 #define mbmpBrwsBackground      0x2003E
 #define mbmpBrwsActor           0x2003F
 #define mbmpBrwsProp                    0x20040
-#define mbmpBrwsThreeD          0x20041
 #define mbmpSettingsBrowser     0x20042
 #define mbmpBrwsBkSound         0x20043
 #define mbmpBrwsFXSound         0x20044

@@ -25,10 +25,8 @@
 #ifndef SOCDEFN_H
 #define SOCDEFN_H
 
-
-
 #define kgobInit				0x00012100		// Initialize globals
-#define kgobPortfolio			0x00012200		// Portfolio object
+// #define kgobPortfolio	0x00012200		// Portfolio object
 #define kgobMovie				0x00012300		// Movie viewer object
 
 // -----------------------------------------------------
@@ -231,10 +229,10 @@
 // -----------------------------------------------------
 
 #define kgobPortfolio		0x00010101
-#define kgobPortIcon		0x00010102
+#define kgobPortIcon		   0x00010102
 #define kgobCarpetBag		0x00010105
 #define kgobVolume			0x00010106
-#define kgobSwitcher		0x00010107
+#define kgobSwitcher		   0x00010107
 #define kgobNavbarLeft		0x00010108
 #define kgobNavbarRight		0x00010109
 #define kgobNavbarDown		0x0001010a
@@ -408,8 +406,7 @@
 #define kwavVO43				0x0001801c
 #define kwavTBCY2				0x0001801d
 #define kwavTBTH3				0x0001801f
-#define kwavTKTBTH				0x00018020
-#define kwavVO54				0x00018021
+#define kwavTKTBTH			0x00018020
 #define kwavVO56B				0x00018022
 #define kwavVO57A				0x00018023
 #define kwavVO58				0x00018024
@@ -421,22 +418,22 @@
 #define kwavVO76				0x0001802a
 #define kwavVO75D				0x0001802b
 #define kwavVO79				0x0001802c
-#define kwavVO80AA				0x0001802d
+#define kwavVO80AA			0x0001802d
 #define kwavVO80A				0x0001802e
 #define kwavVO80B				0x0001802f
 #define kwavVO83				0x00018030
 #define kwavVO86				0x00018031
-#define kwavIdea1a				0x00018032
-#define kwavIdea1b				0x00018033
+#define kwavIdea1a			0x00018032
+#define kwavIdea1b			0x00018033
 #define kwavIdea2				0x00018034
 #define kwavIdea3				0x00018035
 #define kwavIdea4				0x00018036
 #define kwavVO94B				0x00018037
 #define kwavVO57				0x00018039									 
 #define kwavStd1B				0x0001803a
-#define kwavVO57AA				0x0001803c
+#define kwavVO57AA			0x0001803c
 
-#define kwavVO292A				0x00018100
+#define kwavVO292A			0x00018100
 #define kwavVO86A				0x00018101
 #define kwavVO86B				0x00018102
 
@@ -445,19 +442,19 @@
 #define kwavVO97B				0x00018105	// wait state.
 
 #define kwavVO53				0x00018106
-#define kwav30_thr4				0x00018107
+#define kwav30_thr4			0x00018107
 #define kwavVO75				0x00018108
-#define kwavPrjt1 				0x00018109
-#define kwavPrjt2A 				0x0001810a
+#define kwavPrjt1 			0x00018109
+#define kwavPrjt2A 			0x0001810a
 #define kwav21_thr1b			0x0001810d
-#define kwavStudioIntro			0x0001810e
+#define kwavStudioIntro		0x0001810e
 #define kwavVO54				0x0001810f
-#define kwavRollerCoaster		0x00018110
-#define	kwavTicketFar			0x00018111
-#define kwavPrjtMonitor			0x00018112
-#define	kwavStudioTVPop			0x00018113
-#define kwavBioCancel 			0x00018114
-#define kwavBioPopup 			0x00018115
+#define kwavRollerCoaster	0x00018110
+#define	kwavTicketFar		0x00018111
+#define kwavPrjtMonitor		0x00018112
+#define	kwavStudioTVPop	0x00018113
+#define kwavBioCancel 	   0x00018114
+#define kwavBioPopup 		0x00018115
 // music definitions
 
 //-----------------------------------------------------

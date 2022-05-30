@@ -202,7 +202,7 @@ CLICK_SCRIPT( "studio 2 map clicked" )
 ENDCHUNK
 
 OBJECT( "studio2 exit",  kgobStudio2Exit, 45, kcrsHand1 )
-REP_MASK( CHID1( krepDefault), "building\bitmaps\studio\st2exit.bmp" )
+REP_MASK( CHID1( krepDefault), "building\bitmaps\studio\st2exit.bmp", 0, 0 )
 CLICK_SCRIPT( "studio 2 exit clicked" ) 
 	QUITAPP();
 ENDCHUNK

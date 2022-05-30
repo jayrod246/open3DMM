@@ -210,7 +210,7 @@ bool DOCB::FQueryCloseAll(ulong grfdoc)
 ***************************************************************************/
 bool DOCB::FQueryClose(ulong grfdoc)
 {
-	bool tRet;
+	tribool tRet;
 	DTE dte;
 	PDOCB pdocb;
 	ulong grfdte;
@@ -228,26 +228,26 @@ bool DOCB::FQueryClose(ulong grfdoc)
 			if (tNo == tRet)
 				continue;
 			if (tMaybe == tRet)
-				return fFalse;
+				return false;
 			}
 		if (!pdocb->FSave())
 			{
 			if (!fForce)
-				return fFalse;
+				return false;
 			}
 		}
-	return fTrue;
+	return true;
 }
 
 
 /***************************************************************************
 	Ask the user if they want to save the document before closing it.
 ***************************************************************************/
-bool DOCB::_TQuerySave(bool fForce)
+tribool DOCB::_TQuerySave(bool fForce)
 {
 	AssertThis(0);
 
-	return vpappb->TQuerySaveDoc(this, fForce);
+	return vpappb->TQuerySaveDoc(this, fForce) ? tYes : tNo;
 }
 
 
@@ -2073,7 +2073,7 @@ LZero:
 	Determine whether the split corresponding to pdsg is vertical,
 	horizontal or inactive.
 ***************************************************************************/
-bool DMW::TVert(PDSG pdsg)
+tribool DMW::TVert(PDSG pdsg)
 {
 	AssertThis(0);
 	AssertPo(pdsg, 0);
@@ -2191,8 +2191,8 @@ void DMW::MarkMem(void)
 
 
 BEGIN_CMD_MAP(DSG, GOB)
-	ON_CID_ME(cidDoScroll, FCmdScroll, pvNil)
-	ON_CID_ME(cidEndScroll, FCmdScroll, pvNil)
+	ON_CID_ME(cidDoScroll, &DSG::FCmdScroll, pvNil)
+	ON_CID_ME(cidEndScroll, &DSG::FCmdScroll, pvNil)
 END_CMD_MAP_NIL()
 
 
@@ -2502,7 +2502,7 @@ void DSSM::Draw(PGNV pgnv, RC *prcClip)
 {
 	AssertThis(0);
 	RC rc;
-	bool tVert;
+	tribool tVert;
 
 	tVert = TVert();
 	if (tMaybe == tVert)
@@ -2526,7 +2526,7 @@ void DSSM::MouseDown(long xp, long yp, long cact, ulong grfcust)
 	RC rc, rcSplit;
 	PDSG pdsg;
 	PDMW pdmw;
-	bool tVert;
+	tribool tVert;
 	PT pt(xp, yp);
 
 	tVert = TVert();
@@ -2579,7 +2579,7 @@ void DSSM::MouseDown(long xp, long yp, long cact, ulong grfcust)
 	Determine if we are disabled (tMaybe) or if not whether we are vertical
 	(tYes) or horizontal (tNo).
 ***************************************************************************/
-bool DSSM::TVert(void)
+tribool DSSM::TVert(void)
 {
 	PDSG pdsg;
 	PDMW pdmw;

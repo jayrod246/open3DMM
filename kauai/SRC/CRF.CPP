@@ -272,7 +272,7 @@ void CRF::SetCbMax(long cbMax)
 	tNo if the chunk isn't in the CRF and tMaybe if there wasn't room
 	to cache the chunk.
 ***************************************************************************/
-bool CRF::TLoad(CTG ctg, CNO cno, PFNRPO pfnrpo, RSC rsc, long crep)
+tribool CRF::TLoad(CTG ctg, CNO cno, PFNRPO pfnrpo, RSC rsc, long crep)
 {
 	AssertThis(0);
 	Assert(pvNil != pfnrpo, "bad pfnrpo");
@@ -836,12 +836,12 @@ PCRM CRM::PcrmNew(long ccrfInit)
 	Prefetch the object if there is room in the cache.  Assigns the fetched
 	object the given priority (crep).
 ***************************************************************************/
-bool CRM::TLoad(CTG ctg, CNO cno, PFNRPO pfnrpo, RSC rsc, long crep)
+tribool CRM::TLoad(CTG ctg, CNO cno, PFNRPO pfnrpo, RSC rsc, long crep)
 {
 	AssertThis(0);
 	Assert(pvNil != pfnrpo, "nil object reader");
 	PCRF pcrf;
-	bool t;
+	tribool t;
 	long ipcrf;
 	long cpcrf = _pglpcrf->IvMac();
 

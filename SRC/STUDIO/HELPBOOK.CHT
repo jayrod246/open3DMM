@@ -490,9 +490,9 @@ OBJECT("Help Book How To Sub", kgobHelpBookHowSub, 250, kcrsArrow)
 		CreateChildThis(kgobHelpHowButton5, kgobHelpHowButton5);
 		CreateChildThis(kgobHelpHowButton6, kgobHelpHowButton6);
 	ENDCHUNK
-	REP_RECT( CHID1( krepDefault ), "blank", 0, 0, 0,0 )
-	REP_MASK( CHID( kst2, krepDefault ), "studio\bmp\howmsk.bmp" );
-	REP_RECT( CHID( kst3, krepDefault ), "blank", 0, 0, 0,0 )
+	REP_RECT( CHID1( krepDefault ), "blank", 0, 0, 0, 0 )
+	REP_MASK( CHID( kst2, krepDefault ), "studio\bmp\howmsk.bmp", 0, 0 );
+	REP_RECT( CHID( kst3, krepDefault ), "blank", 0, 0, 0, 0 )
 
 // -----------------------------------------------------
 // First "how to" subsection button

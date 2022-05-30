@@ -1239,7 +1239,7 @@ bool ACTR::FNormalize(ulong grfnorm)
 	Add the event to the event list
 
 ***************************************************************************/
-bool ACTR::FSetCostume(long ibset, TAG *ptag, long cmid, bool fCmtl)
+bool ACTR::FSetCostume(long ibset, TAG *ptag, long cmid, tribool fCmtl)
 {
 	AssertThis(0);
 	Assert(fCmtl || ibset >= 0, "Invalid ibset argument");

@@ -222,9 +222,8 @@ ulong APPB::GrfcustCur(bool fAsync)
 	AssertThis(0);
 
 	#ifdef WIN
-		short (*pfnT)(int);
 
-		pfnT = fAsync ? GetAsyncKeyState : GetKeyState;
+		auto pfnT = fAsync ? GetAsyncKeyState : GetKeyState;
 		_grfcust &= ~kgrfcustUser;
 		if (pfnT(VK_CONTROL) < 0)
 			_grfcust |= fcustCmd;

@@ -1233,8 +1233,12 @@ void UpperRgchw(wchar *prgchw, long cchw)
 	AssertIn(cchw, 0, kcbMax);
 	AssertPvCb(prgchw, cchw * size(wchar));
 
-#ifdef WIN
+#if defined(WIN)
+#if defined(UNICODE)
 	CharUpperBuffW(prgchw, cchw);
+#else
+  CharUpperBuffA(reinterpret_cast<char*>(prgchw), cchw);
+#endif //!UNICODE
 #else //!WIN
 	RawRtn(); //REVIEW shonk: Mac: implement UpperRgchw
 #endif //!WIN
@@ -1252,8 +1256,12 @@ void LowerRgchw(wchar *prgchw, long cchw)
 	AssertIn(cchw, 0, kcbMax);
 	AssertPvCb(prgchw, cchw * size(wchar));
 
-#ifdef WIN
+#if defined(WIN)
+#if defined(UNICODE)
 	CharLowerBuffW(prgchw, cchw);
+#else
+  CharLowerBuffA(reinterpret_cast<char*>(prgchw), cchw);
+#endif
 #else //!WIN
 	RawRtn(); //REVIEW shonk: Mac: implement UpperRgchw
 #endif //!WIN
@@ -1457,7 +1465,7 @@ void TranslateRgch(achar *prgch, long cch, short osk, bool fToCur)
 	// for unicode, we just have to change the byte ordering
 	SwapBytesRgsw(prgch, cch);
 #else //!UNICODE
-	achar *pmpchschs = MacWin(!fToCur, fToCur) ? _mpchschsMacToWin :
+	auto pmpchschs = MacWin(!fToCur, fToCur) ? _mpchschsMacToWin :
 		_mpchschsWinToMac;
 
 	for ( ; cch > 0; cch--, prgch++)
