@@ -144,7 +144,8 @@ bool FPortGetFniOpen(FNI *pfni, LPTSTR lpstrFilter, LPTSTR lpstrTitle,
 	ofn.lpfnHook = OpenHookProc; 			
 	ofn.lpTemplateName = MAKEINTRESOURCE(dlidPortfolio);
 	ofn.Flags = OFN_FILEMUSTEXIST | OFN_HIDEREADONLY |
-				OFN_EXPLORER | OFN_ENABLEHOOK | OFN_ENABLETEMPLATE;
+				OFN_EXPLORER | OFN_ENABLEHOOK | OFN_ENABLETEMPLATE ;
+	ofn.FlagsEx = OFN_EX_NOPLACESBAR;
 
 	// lpstrDefExt is used for appended to the user typed filename is
 	// one is entered without an extension. As the user cannot type
@@ -275,6 +276,7 @@ bool FPortGetFniSave(FNI *pfni, LPTSTR lpstrFilter, LPTSTR lpstrTitle, LPTSTR lp
 	// Instead query overwrite after the portfolio has closed.
 	ofn.Flags = OFN_PATHMUSTEXIST | OFN_HIDEREADONLY |
 				OFN_EXPLORER | OFN_ENABLEHOOK | OFN_ENABLETEMPLATE;
+	ofn.FlagsEx = OFN_EX_NOPLACESBAR;
 
 	// Do not allow the save portfolio to change the current directory.
 	ofn.Flags |= OFN_NOCHANGEDIR;
@@ -512,6 +514,9 @@ UINT CALLBACK OpenHookProc(HWND hwndCustom, UINT msg, UINT wParam, LONG lParam)
 		SendMessage(hwndDlg, CDM_HIDECONTROL, cmb1, 0L);		// File type combo box	
 		EnableWindow(GetDlgItem(hwndDlg, cmb1), FALSE);
 
+		SendMessage(hwndDlg, CDM_HIDECONTROL, cmb13, 0L);		// Filename entry box
+		EnableWindow(GetDlgItem(hwndDlg, cmb13), FALSE);
+
 		SendMessage(hwndDlg, CDM_HIDECONTROL, chx1, 0L);		// Open as Read-only check box
 		EnableWindow(GetDlgItem(hwndDlg, chx1), FALSE);
 
@@ -523,11 +528,12 @@ UINT CALLBACK OpenHookProc(HWND hwndCustom, UINT msg, UINT wParam, LONG lParam)
 		SendMessage(hwndDlg, CDM_HIDECONTROL, IDOK, 0L);		// OK btn.
 		SendMessage(hwndDlg, CDM_HIDECONTROL, IDCANCEL, 0L);	// Cancel btn.
 
+		SendMessage(hwndDlg, CDM_HIDECONTROL, stc3, 0L);	// 'File Name'
+		EnableWindow(GetDlgItem(hwndDlg, stc3), FALSE);
+
+
 		if(pdiPortfolio->fIsOpen)
 			{
-			SendMessage(hwndDlg, CDM_HIDECONTROL, stc3, 0L);	// 'File Name'
-			EnableWindow(GetDlgItem(hwndDlg, stc3), FALSE);
-
 			SendMessage(hwndDlg, CDM_HIDECONTROL, edt1, 0L);	// File name edit ctrl
 			EnableWindow(GetDlgItem(hwndDlg, edt1), FALSE);
 			}
