@@ -40,6 +40,10 @@ add_compile_definitions(
   $<$<CONFIG:Debug>:DEBUG>
 )
 
+if (NOT CMAKE_SIZEOF_VOID_P EQUAL 4)
+  message(FATAL_ERROR "Cannot compile for 64-bit yet")
+endif()
+
 # NOTE: kcdc-386 and kcd2-386 prevent cross compiling at this time.
 add_executable(kcdc-386 EXCLUDE_FROM_ALL)
 target_sources(kcdc-386 PRIVATE "${PROJECT_SOURCE_DIR}/kauai/src/kcdc_386.c")
