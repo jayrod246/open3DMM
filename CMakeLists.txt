@@ -33,7 +33,6 @@ endif()
 #endif()
 
 # Local Tooling
-
 add_compile_definitions(
   $<$<PLATFORM_ID:Windows>:WIN>
   $<$<PLATFORM_ID:Windows>:IN_80386>

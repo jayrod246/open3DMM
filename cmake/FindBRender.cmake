@@ -9,11 +9,11 @@ include(FindPackageHandleStandardArgs)
 # starts to support external versions of BRender
 
 foreach (name IN ITEMS BRFMMXR BRFWMXR BRZBMXR)
-  foreach (cfg IN ITEMS DEBUG RELEASE)
+  foreach (cfg IN ITEMS DEBUG RELEASE RELWITHDEBINFO MINSIZEREL)
     set(variable ${CMAKE_FIND_PACKAGE_NAME}_${name}_${cfg}_LIBRARY)
-    set(suffix "D")
-    if (${cfg} STREQUAL "RELEASE")
-      set(suffix "S")
+    set(suffix "S")
+    if (${cfg} STREQUAL "DEBUG")
+      set(suffix "D")
     endif()
     find_library(${variable}
       NAMES ${name}
@@ -40,6 +40,8 @@ if (${CMAKE_FIND_PACKAGE_NAME}_FOUND AND NOT TARGET BRender::Libraries)
     set_target_properties(BRender::${library}
       PROPERTIES
         IMPORTED_LOCATION_RELEASE ${${CMAKE_FIND_PACKAGE_NAME}_${library}_RELEASE_LIBRARY}
+        IMPORTED_LOCATION_RELWITHDEBINFO ${${CMAKE_FIND_PACKAGE_NAME}_${library}_RELWITHDEBINFO_LIBRARY}
+        IMPORTED_LOCATION_MINSIZEREL ${${CMAKE_FIND_PACKAGE_NAME}_${library}_MINSIZEREL_LIBRARY}
         IMPORTED_LOCATION_DEBUG ${${CMAKE_FIND_PACKAGE_NAME}_${library}_DEBUG_LIBRARY})
       target_link_libraries(BRender::Libraries INTERFACE BRender::${library})
     mark_as_advanced(
