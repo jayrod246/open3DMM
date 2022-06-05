@@ -316,7 +316,7 @@ public:
 	virtual void BadModalCmd(PCMD pcmd);
 
 	// Query save changes for a document
-	virtual bool TQuerySaveDoc(PDOCB pdocb, bool fForce);
+	virtual tribool TQuerySaveDoc(PDOCB pdocb, bool fForce);
 
 	// flush user generated events from the system event queue.
 	virtual void FlushUserEvents(ulong grfevt = kgrfevtAll);

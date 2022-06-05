@@ -1611,7 +1611,7 @@ bool APP::_FReadTitlesFromReg(PGST *ppgst)
 		stnTitle.SetSz(PszLit("3D Movie Maker/3DMovie"));
 		sid=1;
 		if (!pgst->FAddStn(&stnTitle, &sid)){
-			Warn("Failed to add fallback Title!")
+			Warn("Failed to add fallback Title!");
 			goto LFail;
 		}
 
@@ -3150,7 +3150,7 @@ long APP::DypTextDef(void)
 /***************************************************************************
 	Ask the user if they want to save changes to the given doc.
 ***************************************************************************/
-bool APP::TQuerySaveDoc(PDOCB pdocb, bool fForce)
+tribool APP::TQuerySaveDoc(PDOCB pdocb, bool fForce)
 {
 	AssertThis(0);
 	AssertPo(pdocb, 0);
@@ -3159,7 +3159,7 @@ bool APP::TQuerySaveDoc(PDOCB pdocb, bool fForce)
 	long tpc;
 	STN stnBackup;
 	long bk;
-	bool tResult;
+	tribool tResult;
 
 	pdocb->GetName(&stnName);
 	tpc = fForce ? ktpcQuerySave : ktpcQuerySaveWithCancel;

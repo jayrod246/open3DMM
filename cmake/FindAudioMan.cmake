@@ -19,5 +19,9 @@ if (${CMAKE_FIND_PACKAGE_NAME}_FOUND AND NOT TARGET 3DMMForever::AudioMan)
   set_property(TARGET 3DMMForever::AudioMan
     PROPERTY
       IMPORTED_LOCATION "${${CMAKE_FIND_PACKAGE_NAME}_LIBRARY}")
+  # Precompiled AudioMan library does not support SafeSEH
+  target_link_options(3DMMForever::AudioMan INTERFACE
+      $<$<LINK_LANG_AND_ID:CXX,MSVC>:/SAFESEH:NO>
+  )
   mark_as_advanced(${CMAKE_FIND_PACKAGE_NAME}_LIBRARY)
 endif()

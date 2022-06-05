@@ -21,8 +21,8 @@ BEGIN_CMD_MAP(APP, APPB)
 END_CMD_MAP_NIL()
 
 BEGIN_CMD_MAP(LIG, GOB)
-	ON_CID_ME(cidDoScroll, FCmdScroll, pvNil)
-	ON_CID_ME(cidEndScroll, FCmdScroll, pvNil)
+	ON_CID_ME(cidDoScroll, &LIG::FCmdScroll, pvNil)
+	ON_CID_ME(cidEndScroll, &LIG::FCmdScroll, pvNil)
 END_CMD_MAP_NIL()
 
 

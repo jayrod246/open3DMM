@@ -1120,7 +1120,7 @@ bool CEX::_FEnableCmd(PCMH pcmh, PCMD pcmd, ulong *pgrfeds)
 	Determines whether the given command is currently enabled. This is
 	normally used for menu graying/checking etc and toolbar enabling/status.
 ***************************************************************************/
-bool CEX::GrfedsForCmd(PCMD pcmd)
+ulong CEX::GrfedsForCmd(PCMD pcmd)
 {
 	AssertThis(0);
 	AssertPo(pcmd, 0);
@@ -1169,7 +1169,7 @@ LDone:
 	Determines whether the given command is currently enabled. This is
 	normally used for menu graying/checking etc and toolbar enabling/status.
 ***************************************************************************/
-bool CEX::GrfedsForCid(long cid, PCMH pcmh, PGG pgg,
+ulong CEX::GrfedsForCid(long cid, PCMH pcmh, PGG pgg,
 	long lw0, long lw1, long lw2, long lw3)
 {
 	AssertThis(0);

@@ -306,8 +306,8 @@ public:
 	virtual void FlushCid(long cid);
 
 	// menu marking
-	virtual bool GrfedsForCmd(PCMD pcmd);
-	virtual bool GrfedsForCid(long cid, PCMH pcmh = pvNil, PGG pgg = pvNil,
+	virtual ulong GrfedsForCmd(PCMD pcmd);
+	virtual ulong GrfedsForCid(long cid, PCMH pcmh = pvNil, PGG pgg = pvNil,
 		long lw0 = 0, long lw1 = 0, long lw2 = 0, long lw3 = 0);
 
 	// mouse tracking

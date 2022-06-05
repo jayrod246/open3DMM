@@ -421,9 +421,9 @@ public:
 	virtual long LwState(void);
 
 	virtual bool FRunScript(CHID chid, long *prglw = pvNil, long clw = 0,
-		long *plwReturn = pvNil, bool *ptSuccess = pvNil);
+		long *plwReturn = pvNil, tribool *ptSuccess = pvNil);
 	virtual bool FRunScriptCno(CNO cno, long *prglw = pvNil, long clw = 0,
-		long *plwReturn = pvNil, bool *ptSuccess = pvNil);
+		long *plwReturn = pvNil, tribool *ptSuccess = pvNil);
 	virtual bool FChangeState(long sno);
 	virtual bool FSetRep(CHID chid, ulong grfgok = fgokKillAnim,
 		CTG ctg = ctgNil, long dxp = 0, long dyp = 0, ulong dtim = 0);

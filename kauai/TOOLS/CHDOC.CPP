@@ -128,7 +128,7 @@ bool _FDlgAddChunk(PDLG pdlg, long *pidit, void *pv)
 				lw != (long)padcd->cki.cno) &&
 				padcd->pcfl->FFind(ctg, lw))
 			{
-			bool tRet = vpappb->TGiveAlertSz(PszLit("A chunk with this CTG & CNO")
+			tribool tRet = vpappb->TGiveAlertSz(PszLit("A chunk with this CTG & CNO")
 				PszLit(" already exists. Replace the existing chunk?"),
 				bkYesNoCancel, cokQuestion);
 

@@ -24,6 +24,9 @@ ASSERTNAME
 
 RTCLASS(USAC)
 
+// Allocate globals in utilglob before any other globals to avoid crashes on exit
+#pragma init_seg(lib)
+
 #ifdef DEBUG
 // protects our debug linked list object management
 MUTX vmutxBase;

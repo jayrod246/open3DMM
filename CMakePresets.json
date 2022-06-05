@@ -45,6 +45,23 @@
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": "Debug"
       }
+    },
+    {
+      "displayName": "MSVC x86 RelWithDebInfo",
+      "name": "x86:msvc:relwithdebinfo",
+      "inherits": "msvc:x86:base",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "RelWithDebInfo"
+      }
+    },
+    {
+      "displayName": "MSVC x86 MinSizeRel",
+      "name": "x86:msvc:minsizerel",
+      "inherits": "msvc:x86:base",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "MinSizeRel"
+      }
     }
+
   ]
 }

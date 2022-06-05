@@ -33,10 +33,15 @@ endif()
 #endif()
 
 # Local Tooling
-
 add_compile_definitions(
   $<$<PLATFORM_ID:Windows>:WIN>
-  $<$<PLATFORM_ID:Windows>:IN_80386>)
+  $<$<PLATFORM_ID:Windows>:IN_80386>
+  $<$<CONFIG:Debug>:DEBUG>
+)
+
+if (NOT CMAKE_SIZEOF_VOID_P EQUAL 4)
+  message(FATAL_ERROR "Cannot compile for 64-bit yet")
+endif()
 
 # NOTE: kcdc-386 and kcd2-386 prevent cross compiling at this time.
 add_executable(kcdc-386 EXCLUDE_FROM_ALL)
@@ -47,20 +52,83 @@ add_executable(kcd2-386 EXCLUDE_FROM_ALL)
 target_sources(kcd2-386 PRIVATE "${PROJECT_SOURCE_DIR}/kauai/src/kcd2_386.c")
 target_include_directories(kcd2-386 PRIVATE $<TARGET_PROPERTY:kauai,INCLUDE_DIRECTORIES>)
 
-add_executable(chelp EXCLUDE_FROM_ALL)
-target_sources(chelp PRIVATE "${PROJECT_SOURCE_DIR}/kauai/tools/chelp.cpp")
+add_executable(chelp WIN32 EXCLUDE_FROM_ALL)
+target_sources(chelp PRIVATE
+    "${PROJECT_SOURCE_DIR}/kauai/TOOLS/CHTOP.CPP"
+    "${PROJECT_SOURCE_DIR}/kauai/TOOLS/CHELP.CPP"
+    "${PROJECT_SOURCE_DIR}/kauai/TOOLS/CHELPEXP.CPP"
+    "${PROJECT_SOURCE_DIR}/kauai/TOOLS/CHELP.RC"
+)
 target_include_directories(chelp PRIVATE $<TARGET_PROPERTY:kauai,INCLUDE_DIRECTORIES>)
 target_link_libraries(chelp PRIVATE $<TARGET_NAME_IF_EXISTS:kauai>)
+
+# Kauai test applications
+add_executable(ft WIN32 EXCLUDE_FROM_ALL)
+target_sources(ft PRIVATE
+    "${PROJECT_SOURCE_DIR}/kauai/SRC/TEST.CPP"
+    "${PROJECT_SOURCE_DIR}/kauai/SRC/FT.RC"
+    "${PROJECT_SOURCE_DIR}/kauai/SRC/FT.CPP"
+)
+target_link_libraries(ft PRIVATE kauai)
+
+add_executable(ut EXCLUDE_FROM_ALL)
+target_sources(ut PRIVATE
+    "${PROJECT_SOURCE_DIR}/kauai/SRC/UT.CPP"
+)
+target_link_libraries(ut PRIVATE kauai)
 
 add_executable(chomp EXCLUDE_FROM_ALL)
 target_sources(chomp PRIVATE "${PROJECT_SOURCE_DIR}/kauai/tools/chomp.cpp")
 target_include_directories(chomp PRIVATE $<TARGET_PROPERTY:kauai,INCLUDE_DIRECTORIES>)
 target_link_libraries(chomp PRIVATE $<TARGET_NAME_IF_EXISTS:kauai>)
 
+# Chunk Editor
+add_executable(ched WIN32 EXCLUDE_FROM_ALL)
+target_sources(ched PRIVATE
+    "${PROJECT_SOURCE_DIR}/kauai/TOOLS/CHED.RC"
+    "${PROJECT_SOURCE_DIR}/kauai/TOOLS/CHDOC.CPP"
+    "${PROJECT_SOURCE_DIR}/kauai/TOOLS/CHED.CPP"
+    "${PROJECT_SOURCE_DIR}/kauai/TOOLS/CHGRP.CPP"
+    "${PROJECT_SOURCE_DIR}/kauai/TOOLS/CHHEX.CPP"
+    "${PROJECT_SOURCE_DIR}/kauai/TOOLS/CHMBMP.CPP"
+    "${PROJECT_SOURCE_DIR}/kauai/TOOLS/CHPIC.CPP"
+    "${PROJECT_SOURCE_DIR}/kauai/TOOLS/CHTXT.CPP"
+)
+target_link_libraries(ched PRIVATE kauai)
+
+# mkmbmp
+add_executable(mkmbmp EXCLUDE_FROM_ALL)
+target_sources(mkmbmp PRIVATE
+    "${PROJECT_SOURCE_DIR}/kauai/TOOLS/MKMBMP.CPP"
+)
+target_link_libraries(mkmbmp PRIVATE kauai)
+
+# kpack
+add_executable(kpack EXCLUDE_FROM_ALL)
+target_sources(kpack PRIVATE
+    "${PROJECT_SOURCE_DIR}/kauai/TOOLS/KPACK.CPP"
+)
+target_link_libraries(kpack PRIVATE kauai)
+
+# chmerge
+add_executable(chmerge EXCLUDE_FROM_ALL)
+target_sources(chmerge PRIVATE
+    "${PROJECT_SOURCE_DIR}/kauai/TOOLS/CHMERGE.CPP"
+)
+target_link_libraries(chmerge PRIVATE kauai)
+
+# chelpdmp
+add_executable(chelpdmp EXCLUDE_FROM_ALL)
+target_sources(chelpdmp PRIVATE
+    "${PROJECT_SOURCE_DIR}/kauai/TOOLS/CHELPDMP.CPP"
+    "${PROJECT_SOURCE_DIR}/kauai/TOOLS/CHELPEXP.CPP"
+)
+target_link_libraries(chelpdmp PRIVATE kauai)
+
 # These are only here to ensure configure is rerun when dependencies are generated.
 # This is 
 file(GLOB building-chunk-sources CONFIGURE_DEPENDS "${PROJECT_SOURCE_DIR}/SRC/BUILDING/*.cht")
-file(GLOB studio-chunk-sources CONFIGURE_DEPENDS "${PROJECT_SORUCE_DIR}/SRC/STUDIO/*.cht")
+file(GLOB studio-chunk-sources CONFIGURE_DEPENDS "${PROJECT_SOURCE_DIR}/SRC/STUDIO/*.cht")
 
 add_custom_command(
   OUTPUT "${PROJECT_BINARY_DIR}/generated/kauai/src/kcdc_386.h"
@@ -79,11 +147,7 @@ add_custom_command(
 )
 
 add_compile_options($<$<COMPILE_LANG_AND_ID:CXX,MSVC>:/wd4430>)
-
 add_library(kauai)
-file(GLOB kauai-sources CONFIGURE_DEPENDS "${PROJECT_SOURCE_DIR}/kauai/src/*.cpp")
-file(GLOB kauai-headers CONFIGURE_DEPENDS "${PROJECT_SOURCE_DIR}/kauai/src/*.h")
-list(FILTER kauai-sources EXCLUDE REGEX "MAC[.](CPP|cpp)")
 target_include_directories(
   kauai
     PUBLIC
@@ -94,7 +158,76 @@ target_sources(kauai
   PRIVATE
     "${PROJECT_BINARY_DIR}/generated/kauai/src/kcdc_386.h"
     "${PROJECT_BINARY_DIR}/generated/kauai/src/kcd2_386.h"
-    ${kauai-sources})
+
+    "${PROJECT_SOURCE_DIR}/kauai/SRC/APPB.CPP"
+    "${PROJECT_SOURCE_DIR}/kauai/SRC/BASE.CPP"
+    "${PROJECT_SOURCE_DIR}/kauai/SRC/CHCM.CPP"
+    "${PROJECT_SOURCE_DIR}/kauai/SRC/CHSE.CPP"
+    "${PROJECT_SOURCE_DIR}/kauai/SRC/CHUNK.CPP"
+    "${PROJECT_SOURCE_DIR}/kauai/SRC/CLIP.CPP"
+    "${PROJECT_SOURCE_DIR}/kauai/SRC/CLOK.CPP"
+    "${PROJECT_SOURCE_DIR}/kauai/SRC/CMD.CPP"
+    "${PROJECT_SOURCE_DIR}/kauai/SRC/CODEC.CPP"
+    "${PROJECT_SOURCE_DIR}/kauai/SRC/CODKAUAI.CPP"
+    "${PROJECT_SOURCE_DIR}/kauai/SRC/CRF.CPP"
+    "${PROJECT_SOURCE_DIR}/kauai/SRC/CTL.CPP"
+    "${PROJECT_SOURCE_DIR}/kauai/SRC/CURSOR.CPP"
+    "${PROJECT_SOURCE_DIR}/kauai/SRC/DLG.CPP"
+    "${PROJECT_SOURCE_DIR}/kauai/SRC/DOCB.CPP"
+    "${PROJECT_SOURCE_DIR}/kauai/SRC/FILE.CPP"
+    "${PROJECT_SOURCE_DIR}/kauai/SRC/FRAME.RC"
+    "${PROJECT_SOURCE_DIR}/kauai/SRC/GFX.CPP"
+    "${PROJECT_SOURCE_DIR}/kauai/SRC/GOB.CPP"
+    "${PROJECT_SOURCE_DIR}/kauai/SRC/GROUPS.CPP"
+    "${PROJECT_SOURCE_DIR}/kauai/SRC/GROUPS2.CPP"
+    "${PROJECT_SOURCE_DIR}/kauai/SRC/KIDHELP.CPP"
+    "${PROJECT_SOURCE_DIR}/kauai/SRC/KIDSPACE.CPP"
+    "${PROJECT_SOURCE_DIR}/kauai/SRC/KIDWORLD.CPP"
+    "${PROJECT_SOURCE_DIR}/kauai/SRC/LEX.CPP"
+    "${PROJECT_SOURCE_DIR}/kauai/SRC/MBMP.CPP"
+    "${PROJECT_SOURCE_DIR}/kauai/SRC/MBMPGUI.CPP"
+    "${PROJECT_SOURCE_DIR}/kauai/SRC/MIDI.CPP"
+    "${PROJECT_SOURCE_DIR}/kauai/SRC/MIDIDEV.CPP"
+    "${PROJECT_SOURCE_DIR}/kauai/SRC/MIDIDEV2.CPP"
+    "${PROJECT_SOURCE_DIR}/kauai/SRC/MSSIO.CPP"
+    "${PROJECT_SOURCE_DIR}/kauai/SRC/PIC.CPP"
+    "${PROJECT_SOURCE_DIR}/kauai/SRC/REGION.CPP"
+    "${PROJECT_SOURCE_DIR}/kauai/SRC/RTXT.CPP"
+    "${PROJECT_SOURCE_DIR}/kauai/SRC/RTXT2.CPP"
+    "${PROJECT_SOURCE_DIR}/kauai/SRC/SCRCOM.CPP"
+    "${PROJECT_SOURCE_DIR}/kauai/SRC/SCRCOMG.CPP"
+    "${PROJECT_SOURCE_DIR}/kauai/SRC/SCREXE.CPP"
+    "${PROJECT_SOURCE_DIR}/kauai/SRC/SCREXEG.CPP"
+    "${PROJECT_SOURCE_DIR}/kauai/SRC/SNDAM.CPP"
+    "${PROJECT_SOURCE_DIR}/kauai/SRC/SNDM.CPP"
+    "${PROJECT_SOURCE_DIR}/kauai/SRC/SPELL.CPP"
+    "${PROJECT_SOURCE_DIR}/kauai/SRC/STREAM.CPP"
+    "${PROJECT_SOURCE_DIR}/kauai/SRC/TEXT.CPP"
+    "${PROJECT_SOURCE_DIR}/kauai/SRC/TEXTDOC.CPP"
+    "${PROJECT_SOURCE_DIR}/kauai/SRC/UTIL.CPP"
+    "${PROJECT_SOURCE_DIR}/kauai/SRC/UTILCOPY.CPP"
+    "${PROJECT_SOURCE_DIR}/kauai/SRC/UTILERRO.CPP"
+    "${PROJECT_SOURCE_DIR}/kauai/SRC/UTILGLOB.CPP"
+    "${PROJECT_SOURCE_DIR}/kauai/SRC/UTILINT.CPP"
+    "${PROJECT_SOURCE_DIR}/kauai/SRC/UTILMEM.CPP"
+    "${PROJECT_SOURCE_DIR}/kauai/SRC/UTILRND.CPP"
+    "${PROJECT_SOURCE_DIR}/kauai/SRC/UTILSTR.CPP"
+    "${PROJECT_SOURCE_DIR}/kauai/SRC/VIDEO.CPP"
+
+    # Windows implementations
+    $<$<PLATFORM_ID:Windows>:${PROJECT_SOURCE_DIR}/kauai/SRC/APPBWIN.CPP>
+    $<$<PLATFORM_ID:Windows>:${PROJECT_SOURCE_DIR}/kauai/SRC/DLGWIN.CPP>
+    $<$<PLATFORM_ID:Windows>:${PROJECT_SOURCE_DIR}/kauai/SRC/FILEWIN.CPP>
+    $<$<PLATFORM_ID:Windows>:${PROJECT_SOURCE_DIR}/kauai/SRC/FNIWIN.CPP>
+    $<$<PLATFORM_ID:Windows>:${PROJECT_SOURCE_DIR}/kauai/SRC/GFXWIN.CPP>
+    $<$<PLATFORM_ID:Windows>:${PROJECT_SOURCE_DIR}/kauai/SRC/MEMWIN.CPP>
+    $<$<PLATFORM_ID:Windows>:${PROJECT_SOURCE_DIR}/kauai/SRC/MENUWIN.CPP>
+    $<$<PLATFORM_ID:Windows>:${PROJECT_SOURCE_DIR}/kauai/SRC/PICWIN.CPP>
+    $<$<PLATFORM_ID:Windows>:${PROJECT_SOURCE_DIR}/kauai/SRC/GOBWIN.CPP>
+
+    # Stubs for Visual C++ 2.1 CRT functions
+    "${PROJECT_SOURCE_DIR}/kauai/SRC/stub.cpp"   
+)
 
 target_compile_definitions(kauai PUBLIC
   _LPCVOID_DEFINED
@@ -109,12 +242,15 @@ target_link_libraries(kauai
     $<$<PLATFORM_ID:Windows>:mpr>)
 
 add_library(brender)
-file(GLOB brender-sources CONFIGURE_DEPENDS
-  "${PROJECT_SOURCE_DIR}/BREN/*.CPP"
-  "${PROJECT_SOURCE_DIR}/BREN/*.C")
-
-list(FILTER brender-sources EXCLUDE REGEX "(MATERIAL|BRENFUN).CPP$")
-target_sources(brender PRIVATE ${brender-sources})
+target_sources(brender
+    PRIVATE
+    "${PROJECT_SOURCE_DIR}/BREN/BWLD.CPP"
+    "${PROJECT_SOURCE_DIR}/BREN/stderr.c"
+    "${PROJECT_SOURCE_DIR}/BREN/stdfile.c"
+    "${PROJECT_SOURCE_DIR}/BREN/stdmem.c"
+    "${PROJECT_SOURCE_DIR}/BREN/TMAP.CPP"
+    "${PROJECT_SOURCE_DIR}/BREN/ZBMP.CPP"
+)
 target_include_directories(brender PUBLIC "${PROJECT_SOURCE_DIR}/BREN/INC")
 target_link_libraries(brender
   PUBLIC
@@ -122,21 +258,52 @@ target_link_libraries(brender
     BRender::Libraries)
 
 add_library(engine)
-file(GLOB engine-sources CONFIGURE_DEPENDS "${PROJECT_SOURCE_DIR}/SRC/ENGINE/*.CPP")
-target_sources(engine PRIVATE ${engine-sources})
+target_sources(engine
+    PRIVATE
+    "${PROJECT_SOURCE_DIR}/SRC/ENGINE/ACTOR.CPP"
+    "${PROJECT_SOURCE_DIR}/SRC/ENGINE/ACTREDIT.CPP"
+    "${PROJECT_SOURCE_DIR}/SRC/ENGINE/ACTRSAVE.CPP"
+    "${PROJECT_SOURCE_DIR}/SRC/ENGINE/ACTRSND.CPP"
+    "${PROJECT_SOURCE_DIR}/SRC/ENGINE/BKGD.CPP"
+    "${PROJECT_SOURCE_DIR}/SRC/ENGINE/BODY.CPP"
+    "${PROJECT_SOURCE_DIR}/SRC/ENGINE/MODL.CPP"
+    "${PROJECT_SOURCE_DIR}/SRC/ENGINE/MOVIE.CPP"
+    "${PROJECT_SOURCE_DIR}/SRC/ENGINE/MSND.CPP"
+    "${PROJECT_SOURCE_DIR}/SRC/ENGINE/MTRL.CPP"
+    "${PROJECT_SOURCE_DIR}/SRC/ENGINE/SCENE.CPP"
+    "${PROJECT_SOURCE_DIR}/SRC/ENGINE/SREC.CPP"
+    "${PROJECT_SOURCE_DIR}/SRC/ENGINE/TAGL.CPP"
+    "${PROJECT_SOURCE_DIR}/SRC/ENGINE/TAGMAN.CPP"
+    "${PROJECT_SOURCE_DIR}/SRC/ENGINE/TBOX.CPP"
+    "${PROJECT_SOURCE_DIR}/SRC/ENGINE/TDF.CPP"
+    "${PROJECT_SOURCE_DIR}/SRC/ENGINE/TDT.CPP"
+    "${PROJECT_SOURCE_DIR}/SRC/ENGINE/TMPL.CPP"
+)
 target_include_directories(engine PUBLIC
   $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/INC>)
 target_link_libraries(engine PUBLIC kauai brender)
 
 # On non-windows WIN32 is a no-op
 add_executable(studio WIN32)
-file(GLOB studio-sources CONFIGURE_DEPENDS
-  "${PROJECT_SOURCE_DIR}/src/studio/*.cpp"
-  "${PROJECT_SOURCE_DIR}/src/studio/*.rc")
-file(GLOB studio-samples CONFIGURE_DEPENDS
-  "${PROJECT_SOURCE_DIR}/cd3/SAMPLES/*.3mm")
-list(FILTER studio-sources EXCLUDE REGEX "UTESTSCB.CPP$")
-target_sources(studio PRIVATE ${studio-sources})
+target_sources(studio
+    PRIVATE
+    "${PROJECT_SOURCE_DIR}/SRC/STUDIO/APE.CPP"
+    "${PROJECT_SOURCE_DIR}/SRC/STUDIO/BROWSER.CPP"
+    "${PROJECT_SOURCE_DIR}/SRC/STUDIO/ESL.CPP"
+    "${PROJECT_SOURCE_DIR}/SRC/STUDIO/MMINSTAL.CPP"
+    "${PROJECT_SOURCE_DIR}/SRC/STUDIO/POPUP.CPP"
+    "${PROJECT_SOURCE_DIR}/SRC/STUDIO/PORTF.CPP"
+    "${PROJECT_SOURCE_DIR}/SRC/STUDIO/SCNSORT.CPP"
+    "${PROJECT_SOURCE_DIR}/SRC/STUDIO/SPLOT.CPP"
+    "${PROJECT_SOURCE_DIR}/SRC/STUDIO/STDIOBRW.CPP"
+    "${PROJECT_SOURCE_DIR}/SRC/STUDIO/STDIOSCB.CPP"
+    "${PROJECT_SOURCE_DIR}/SRC/STUDIO/STUDIO.CPP"
+    "${PROJECT_SOURCE_DIR}/SRC/STUDIO/TATR.CPP"
+    "${PROJECT_SOURCE_DIR}/SRC/STUDIO/TGOB.CPP"
+    "${PROJECT_SOURCE_DIR}/SRC/STUDIO/UTEST.CPP"
+    "${PROJECT_SOURCE_DIR}/SRC/STUDIO/UTEST.RC"
+    "${PROJECT_SOURCE_DIR}/SRC/STUDIO/UTEST.RC2"
+)
 target_include_directories(studio
   PUBLIC $<TARGET_PROPERTY:engine,INCLUDE_DIRECTORIES>
   "${PROJECT_SOURCE_DIR}/SRC")
@@ -156,7 +323,28 @@ target_link_options(studio BEFORE PRIVATE $<$<LINK_LANG_AND_ID:CXX,MSVC>:/MANIFE
 target_link_options(studio
   BEFORE PRIVATE
     $<$<AND:$<LINK_LANG_AND_ID:CXX,MSVC>,$<CONFIG:DEBUG>>:/NODEFAULTLIB:libcmt.lib>)
-set_property(TARGET studio PROPERTY 3DMM_SAMPLES ${studio-samples})
+
+set_property(
+    TARGET studio
+    PROPERTY 3DMM_SAMPLES
+    ${studio-samples}
+    "${PROJECT_SOURCE_DIR}/cd3/SAMPLES/BONGO.3MM"
+    "${PROJECT_SOURCE_DIR}/cd3/SAMPLES/BOOOOOO.3MM"
+    "${PROJECT_SOURCE_DIR}/cd3/SAMPLES/CITYTOUR.3MM"
+    "${PROJECT_SOURCE_DIR}/cd3/SAMPLES/GRAVEYRD.3MM"
+    "${PROJECT_SOURCE_DIR}/cd3/SAMPLES/HAUNTED.3MM"
+    "${PROJECT_SOURCE_DIR}/cd3/SAMPLES/HOSPITAL.3MM"
+    "${PROJECT_SOURCE_DIR}/cd3/SAMPLES/JUNGLE.3MM"
+    "${PROJECT_SOURCE_DIR}/cd3/SAMPLES/MESSAGE.3MM"
+    "${PROJECT_SOURCE_DIR}/cd3/SAMPLES/SPACE.3MM"
+    "${PROJECT_SOURCE_DIR}/cd3/SAMPLES/SPROG.3MM"
+    "${PROJECT_SOURCE_DIR}/cd3/SAMPLES/TERROR.3MM"
+    "${PROJECT_SOURCE_DIR}/cd3/SAMPLES/THEBOOK.3MM"
+    "${PROJECT_SOURCE_DIR}/cd3/SAMPLES/THELODGE.3MM"
+    "${PROJECT_SOURCE_DIR}/cd3/SAMPLES/THETHIEF.3MM"
+    "${PROJECT_SOURCE_DIR}/cd3/SAMPLES/VENUS31.3MM"
+    "${PROJECT_SOURCE_DIR}/cd3/SAMPLES/WHERE.3MM"
+)
 
 # Please pay attention to the ending / in each DIRECTORY declaration. It
 # affects the destination!

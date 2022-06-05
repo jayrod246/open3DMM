@@ -1747,7 +1747,7 @@ void APPB::BadModalCmd(PCMD pcmd)
 /***************************************************************************
 	Ask the user if they want to save changes to the given doc.
 ***************************************************************************/
-bool APPB::TQuerySaveDoc(PDOCB pdocb, bool fForce)
+tribool APPB::TQuerySaveDoc(PDOCB pdocb, bool fForce)
 {
 	AssertThis(0);
 	STN stn;
