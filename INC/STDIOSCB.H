@@ -25,64 +25,66 @@ const long kctsFps = 20;
 typedef class SSCB *PSSCB;
 #define kclsSSCB 'SSCB'
 class SSCB : public SSCB_PAR
-	{
-	RTCLASS_DEC
-	ASSERT
-	MARKMEM
+{
+    RTCLASS_DEC
+    ASSERT
+    MARKMEM
 
-private:
-	long _nfrmFirstOld;
-	bool _fNoAutoadjust;
+  private:
+    long _nfrmFirstOld;
+    bool _fNoAutoadjust;
 
-	bool _fBtnAddsFrames;
+    bool _fBtnAddsFrames;
 
-	//
-	//	Private methods
-	//
-	long _CxScrollbar(long kidScrollbar, long kidThumb);
+    //
+    //	Private methods
+    //
+    long _CxScrollbar(long kidScrollbar, long kidThumb);
 
-protected:
-
-	PTGOB _ptgobFrame;
-	PTGOB _ptgobScene;
+  protected:
+    PTGOB _ptgobFrame;
+    PTGOB _ptgobScene;
 
 #ifdef SHOW_FPS
-	// Frame descriptor
-	struct FDSC
-		{
-		ulong ts;
-		long cfrm;
-		};
+    // Frame descriptor
+    struct FDSC
+    {
+        ulong ts;
+        long cfrm;
+    };
 
-	PTGOB _ptgobFps;
-	FDSC _rgfdsc[kctsFps];
-	long _itsNext;
+    PTGOB _ptgobFps;
+    FDSC _rgfdsc[kctsFps];
+    long _itsNext;
 #endif // SHOW_FPS
 
-	PMVIE _pmvie;
-	SSCB(PMVIE pmvie);
+    PMVIE _pmvie;
+    SSCB(PMVIE pmvie);
 
-public:
-
-	//
-	//	Constructors and destructors
-	//
-	static PSSCB PsscbNew(PMVIE pmvie);
+  public:
+    //
+    //	Constructors and destructors
+    //
+    static PSSCB PsscbNew(PMVIE pmvie);
     ~SSCB(void);
 
-	//
-	//	Notification
-	//
-	virtual void Update(void);
-	void SetMvie(PMVIE pmvie);
-	void StartNoAutoadjust(void);
-	void EndNoAutoadjust(void) { AssertThis(0); _fNoAutoadjust = fFalse; }
-	void SetSndFrame(bool fSoundInFrame);
+    //
+    //	Notification
+    //
+    virtual void Update(void);
+    void SetMvie(PMVIE pmvie);
+    void StartNoAutoadjust(void);
+    void EndNoAutoadjust(void)
+    {
+        AssertThis(0);
+        _fNoAutoadjust = fFalse;
+    }
+    void SetSndFrame(bool fSoundInFrame);
 
-	//
-	//	Event handling
-	//
-	bool FCmdScroll(PCMD pcmd);
-	};
+    //
+    //	Event handling
+    //
+    bool FCmdScroll(PCMD pcmd);
+};
 
 #endif // STDIOSCB_H

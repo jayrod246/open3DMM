@@ -11,28 +11,29 @@
 #define _BRENDER_H_
 
 #ifdef __cplusplus
-	extern "C" {
+extern "C"
+{
 #endif
 
 #ifndef _COMPILER_H_
 #include "compiler.h"
-#endif		   
+#endif
 
 #ifndef _BRLIMITS_H_
 #include "brlimits.h"
-#endif		   
+#endif
 
 #ifndef _FIXED_H_
 #include "fixed.h"
-#endif		   
+#endif
 
 #ifndef _SCALAR_H_
 #include "scalar.h"
-#endif		   
+#endif
 
 #ifndef _COLOUR_H_
 #include "colour.h"
-#endif		   
+#endif
 
 #ifndef _MATRIX_H_
 #include "matrix.h"
@@ -110,9 +111,9 @@
 #include "fmt.h"
 #endif
 
-	/*
-	 * Function prototypes
-	 */
+    /*
+     * Function prototypes
+     */
 
 #ifndef _FWPROTO_H_
 #include "fwproto.h"
@@ -126,9 +127,9 @@
 #include "fwpextra.h"
 #endif
 
-	/*
-	 * Inline functions
-	 */
+    /*
+     * Inline functions
+     */
 
 #ifndef _NO_PROTOTYPES
 #ifndef _NO_VECTOR_MACROS
@@ -142,4 +143,3 @@
 };
 #endif
 #endif
-

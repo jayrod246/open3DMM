@@ -10,21 +10,24 @@
 #define _QUAT_H_
 
 #ifdef __cplusplus
-extern "C" {
+extern "C"
+{
 #endif
 
-typedef struct br_quat {
-	br_scalar x;
-	br_scalar y;
-	br_scalar z;
-	br_scalar w;
-} br_quat;
+    typedef struct br_quat
+    {
+        br_scalar x;
+        br_scalar y;
+        br_scalar z;
+        br_scalar w;
+    } br_quat;
 
-#define BR_QUAT(x,y,z,w) {BR_SCALAR(x),BR_SCALAR(y),BR_SCALAR(z),BR_SCALAR(w)}
+#define BR_QUAT(x, y, z, w)                                                                                            \
+    {                                                                                                                  \
+        BR_SCALAR(x), BR_SCALAR(y), BR_SCALAR(z), BR_SCALAR(w)                                                         \
+    }
 
 #ifdef __cplusplus
 };
 #endif
 #endif
-
-

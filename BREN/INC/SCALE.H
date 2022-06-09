@@ -14,5 +14,4 @@ void BR_PUBLIC_ENTRY BrScaleEnd(void);
  * scale pixelmap src to new_x,new_y with filter width fwidth
  * src must be BR_PMT_RGB_888
  */
-br_pixelmap * BR_PUBLIC_ENTRY BrPixelmapScale(br_pixelmap *src,br_uint_32 new_x,br_uint_32 new_y,float fwidth);
-
+br_pixelmap *BR_PUBLIC_ENTRY BrPixelmapScale(br_pixelmap *src, br_uint_32 new_x, br_uint_32 new_y, float fwidth);

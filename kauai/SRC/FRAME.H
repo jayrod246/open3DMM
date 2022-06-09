@@ -5,12 +5,12 @@
    Licensed under the MIT License. */
 
 /***************************************************************************
-	Author: ShonK
-	Project: Kauai
-	Reviewed:
-	Copyright (c) Microsoft Corporation
+    Author: ShonK
+    Project: Kauai
+    Reviewed:
+    Copyright (c) Microsoft Corporation
 
-	Main include file for frame files.
+    Main include file for frame files.
 
 ***************************************************************************/
 #ifndef FRAME_H
@@ -20,18 +20,17 @@
 #include "util.h"
 #include "keys.h"
 
-
-class GPT;	// graphics port
-class GNV;	// graphics environment
-class CMH;	// command handler
-class GOB;	// graphic object
-class MUB;	// menu bar
-class DOCB;	// base document
-class DMD;	// document mdi window
-class DMW;	// main document window
-class DSG;	// document scroll gob
-class DDG;	// document display gob
-class SNDM;	// sound manager
+class GPT;  // graphics port
+class GNV;  // graphics environment
+class CMH;  // command handler
+class GOB;  // graphic object
+class MUB;  // menu bar
+class DOCB; // base document
+class DMD;  // document mdi window
+class DMW;  // main document window
+class DSG;  // document scroll gob
+class DDG;  // document display gob
+class SNDM; // sound manager
 
 typedef class GPT *PGPT;
 typedef class GNV *PGNV;
@@ -58,7 +57,7 @@ typedef class SNDM *PSNDM;
 #include "sndm.h"
 #include "video.h"
 
-//these are optional
+// these are optional
 #include "dlg.h"
 #include "clip.h"
 #include "docb.h"
@@ -72,5 +71,4 @@ typedef class SNDM *PSNDM;
 #include "mididev.h"
 #include "mididev2.h"
 
-#endif //!FRAME_H
-
+#endif //! FRAME_H

@@ -5,12 +5,12 @@
    Licensed under the MIT License. */
 
 /***************************************************************************
-	Author: ShonK
-	Project: Kauai
-	Reviewed:
-	Copyright (c) Microsoft Corporation
+    Author: ShonK
+    Project: Kauai
+    Reviewed:
+    Copyright (c) Microsoft Corporation
 
-	Standard KidFrame header file.
+    Standard KidFrame header file.
 
 ***************************************************************************/
 #ifndef KIDFRAME_H
@@ -26,11 +26,10 @@ typedef class GOK *PGOK;
 typedef class HBAL *PHBAL;
 typedef struct HTOP *PHTOP;
 
-
 #include "scrcomg.h"
 #include "kidworld.h"
 #include "screxeg.h"
 #include "kidspace.h"
 #include "kidhelp.h"
 
-#endif //!KIDFRAME_H
+#endif //! KIDFRAME_H

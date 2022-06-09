@@ -5,12 +5,12 @@
    Licensed under the MIT License. */
 
 /******************************************************************************
-	Author: ShonK
-	Project: Kauai
-	Reviewed:
-	Copyright (c) Microsoft Corporation
+    Author: ShonK
+    Project: Kauai
+    Reviewed:
+    Copyright (c) Microsoft Corporation
 
-	Error registration and reporting.  All error codes go here.
+    Error registration and reporting.  All error codes go here.
 
 ******************************************************************************/
 #ifndef UTILERROR_H
@@ -18,53 +18,52 @@
 
 const long kcerdMax = 20;
 
-
 /***************************************************************************
-	Error stack class
+    Error stack class
 ***************************************************************************/
 #define ERS_PAR BASE
 #define kclsERS 'ERS'
 class ERS : public ERS_PAR
-	{
-	RTCLASS_DEC
-	ASSERT
+{
+    RTCLASS_DEC
+    ASSERT
 
-private:
-	struct ERD
-		{
-		long erc;
-		#ifdef DEBUG
-			PSZS pszsFile;
-			long lwLine;
-		#endif //DEBUG
-		};
+  private:
+    struct ERD
+    {
+        long erc;
+#ifdef DEBUG
+        PSZS pszsFile;
+        long lwLine;
+#endif // DEBUG
+    };
 
-	MUTX _mutx;
-	long _cerd;
-	ERD _rgerd[kcerdMax];
+    MUTX _mutx;
+    long _cerd;
+    ERD _rgerd[kcerdMax];
 
-public:
-	ERS(void);
+  public:
+    ERS(void);
 
-	#ifdef DEBUG
-		virtual void Push(long erc, schar *pszsFile, long lwLine);
-	#else //!DEBUG
-		virtual void Push(long erc);
-	#endif //!DEBUG
-	virtual bool FPop(long *perc = pvNil);
-	virtual bool FIn(long erc);
-	virtual long Cerc(void);
-	virtual long ErcGet(long ierc);
-	virtual void Clear(void);
-	virtual void Flush(long erc);
-	};
+#ifdef DEBUG
+    virtual void Push(long erc, schar *pszsFile, long lwLine);
+#else  //! DEBUG
+    virtual void Push(long erc);
+#endif //! DEBUG
+    virtual bool FPop(long *perc = pvNil);
+    virtual bool FIn(long erc);
+    virtual long Cerc(void);
+    virtual long ErcGet(long ierc);
+    virtual void Clear(void);
+    virtual void Flush(long erc);
+};
 
 extern ERS *vpers;
 
 #ifdef DEBUG
 #define PushErc(erc) vpers->Push(erc, __szsFile, __LINE__)
-#else //!DEBUG
+#else //! DEBUG
 #define PushErc(erc) vpers->Push(erc)
-#endif //!DEBUG
+#endif //! DEBUG
 
-#endif //!UTILERROR_H
+#endif //! UTILERROR_H

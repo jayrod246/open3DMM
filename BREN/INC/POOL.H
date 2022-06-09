@@ -10,27 +10,29 @@
 #define _POOL_H_
 
 #ifdef __cplusplus
-extern "C" {
+extern "C"
+{
 #endif
 
 #define BR_POOL_DEBUG 0
 #define BR_POOL_ALIGN 7
 
-typedef struct br_pool_block {
-		struct br_pool_block *next;
-} br_pool_block;
+    typedef struct br_pool_block
+    {
+        struct br_pool_block *next;
+    } br_pool_block;
 
-typedef struct br_pool {
-		br_pool_block *free;
-		br_uint_32	block_size;
-		br_uint_32	chunk_size;
-		int			mem_type;
+    typedef struct br_pool
+    {
+        br_pool_block *free;
+        br_uint_32 block_size;
+        br_uint_32 chunk_size;
+        int mem_type;
 #if BR_POOL_DEBUG
-		br_uint_32 max_count;
-		br_uint_32 count;
+        br_uint_32 max_count;
+        br_uint_32 count;
 #endif
-} br_pool;
-
+    } br_pool;
 
 /*
  * Speedup macros
@@ -39,13 +41,10 @@ typedef struct br_pool {
 #if !POOL_DEBUG
 br_pool_block *__bp; /* Hmm, this global is not optimizer friendly */
 
-#define BrPoolAllocate(pool)\
-	(void *)(((pool)->free?0:BrPoolAddChunk(pool)),\
-	(__bp = (pool)->free),\
-	((pool)->free = __bp->next,__bp))
+#define BrPoolAllocate(pool)                                                                                           \
+    (void *)(((pool)->free ? 0 : BrPoolAddChunk(pool)), (__bp = (pool)->free), ((pool)->free = __bp->next, __bp))
 
-#define BrPoolFree(pool,bp)\
-	((bp)->next = (pool)->free,(pool)->free = (bp))
+#define BrPoolFree(pool, bp) ((bp)->next = (pool)->free, (pool)->free = (bp))
 #endif
 #endif
 
@@ -53,6 +52,3 @@ br_pool_block *__bp; /* Hmm, this global is not optimizer friendly */
 };
 #endif
 #endif
-
-
-

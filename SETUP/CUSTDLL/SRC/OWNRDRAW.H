@@ -9,16 +9,16 @@
 VOID DrawButton(PDRAWITEMSTRUCT lpdis, HBITMAP hbmp);
 
 typedef enum
-	{
-	ttabLeft,
-	ttabRight,
-	ttabCentre
-	} TTAB, *PTTAB;
+{
+    ttabLeft,
+    ttabRight,
+    ttabCentre
+} TTAB, *PTTAB;
 
 typedef struct
-	{
-	LONG dx;
-	TTAB ttab;
-	} TAB, *PTAB;	// listbox tab setting
+{
+    LONG dx;
+    TTAB ttab;
+} TAB, *PTAB; // listbox tab setting
 
 VOID DrawList(PDRAWITEMSTRUCT pdis, LONG ctab, PTAB prgtab, BOOL fCombo);

@@ -3,10 +3,10 @@
 
 /***************************************************************************
 
-	tdfmake.h: Three-D Font authoring tool
+    tdfmake.h: Three-D Font authoring tool
 
-	Primary Author: ******
-	Review Status: Not yet reviewed
+    Primary Author: ******
+    Review Status: Not yet reviewed
 
 ***************************************************************************/
 #ifndef TDFMAKE_H
@@ -15,6 +15,4 @@
 #include <stdio.h>
 #include "frame.h"
 
-
-#endif //!TDFMAKE_H
-
+#endif //! TDFMAKE_H

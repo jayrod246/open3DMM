@@ -17,16 +17,15 @@
 #undef ASSERT
 
 #if DEBUG
-#define ASSERT(e)	((void)((e) || (_BrAssert(#e,__FILE__,__LINE__),1)))
+#define ASSERT(e) ((void)((e) || (_BrAssert(#e, __FILE__, __LINE__), 1)))
 #else
-#define ASSERT(ignore)	((void) 0)
+#define ASSERT(ignore) ((void)0)
 #endif
 
 #undef UASSERT
 
 #if PARANOID
-#define UASSERT(e)	((void)((e) || (_BrUAssert(#e,__FILE__,__LINE__),1)))
+#define UASSERT(e) ((void)((e) || (_BrUAssert(#e, __FILE__, __LINE__), 1)))
 #else
-#define UASSERT(ignore)	((void) 0)
+#define UASSERT(ignore) ((void)0)
 #endif
-

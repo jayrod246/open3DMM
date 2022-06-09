@@ -5,12 +5,12 @@
    Licensed under the MIT License. */
 
 /***************************************************************************
-	Author: ShonK
-	Project: Kauai
-	Reviewed:
-	Copyright (c) Microsoft Corporation
+    Author: ShonK
+    Project: Kauai
+    Reviewed:
+    Copyright (c) Microsoft Corporation
 
-	Data movement declarations
+    Data movement declarations
 
 ***************************************************************************/
 #ifndef UTILCOPY_H
@@ -31,15 +31,13 @@ long CbEqualRgb(void *pv1, void *pv2, long cbMax);
 ulong FcmpCompareRgb(void *pv1, void *pv2, long cb);
 
 #ifdef DEBUG
-#define SwapVars(pv1, pv2) \
-	if (size(*pv1) != size(*pv2)) \
-		Bug("sizes don't match"); \
-	else \
-		SwapPb(pv1, pv2, size(*pv1))
-#else //!DEBUG
-#define SwapVars(pv1, pv2) \
-		SwapPb(pv1, pv2, size(*pv1))
-#endif //!DEBUG
+#define SwapVars(pv1, pv2)                                                                                             \
+    if (size(*pv1) != size(*pv2))                                                                                      \
+        Bug("sizes don't match");                                                                                      \
+    else                                                                                                               \
+        SwapPb(pv1, pv2, size(*pv1))
+#else //! DEBUG
+#define SwapVars(pv1, pv2) SwapPb(pv1, pv2, size(*pv1))
+#endif //! DEBUG
 
-#endif //UTILCOPY_H
-
+#endif // UTILCOPY_H

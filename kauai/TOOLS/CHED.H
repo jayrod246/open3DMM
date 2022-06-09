@@ -6,7 +6,7 @@
 
 /***************************************************************************
 
-	Chunky editor main header file
+    Chunky editor main header file
 
 ***************************************************************************/
 #ifndef CHED_H
@@ -15,8 +15,7 @@
 #include "kidframe.h"
 #include "chedres.h"
 
-
-//creator type for the chunky editor
+// creator type for the chunky editor
 #define kctgChed 'CHED'
 
 #include "chdoc.h"
@@ -24,21 +23,19 @@
 #define APP_PAR APPB
 #define kclsAPP 'APP'
 class APP : public APP_PAR
-	{
-	RTCLASS_DEC
-	CMD_MAP_DEC(APP)
+{
+    RTCLASS_DEC
+    CMD_MAP_DEC(APP)
 
-protected:
-	virtual bool _FInit(ulong grfapp, ulong grfgob, long ginDef);
-	virtual void _FastUpdate(PGOB pgob, PREGN pregnClip,
-		ulong grfapp = fappNil, PGPT pgpt = pvNil);
+  protected:
+    virtual bool _FInit(ulong grfapp, ulong grfgob, long ginDef);
+    virtual void _FastUpdate(PGOB pgob, PREGN pregnClip, ulong grfapp = fappNil, PGPT pgpt = pvNil);
 
-public:
-	virtual void GetStnAppName(PSTN pstn);
-	virtual void UpdateHwnd(HWND hwnd, RC *prc, ulong grfapp = fappNil);
+  public:
+    virtual void GetStnAppName(PSTN pstn);
+    virtual void UpdateHwnd(HWND hwnd, RC *prc, ulong grfapp = fappNil);
 
-	virtual bool FCmdOpen(PCMD pcmd);
-	};
+    virtual bool FCmdOpen(PCMD pcmd);
+};
 
-#endif //!CHED_H
-
+#endif //! CHED_H

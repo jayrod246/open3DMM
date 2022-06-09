@@ -14,27 +14,25 @@
 
 static void BR_CALLBACK BrStdioWarning(char *message)
 {
-	MessageBox(0, message, "BRender Warning", MB_OK);
+    MessageBox(0, message, "BRender Warning", MB_OK);
 }
 
 static void BR_CALLBACK BrStdioError(char *message)
 {
-	MessageBox(0, message, "BRender Fatal Error", MB_OK);
-	exit(10);
+    MessageBox(0, message, "BRender Fatal Error", MB_OK);
+    exit(10);
 }
 
 /*
  * ErrorHandler structure
  */
 br_diaghandler BrStdioDiagHandler = {
-	"Stdio DiagHandler",
-	BrStdioWarning,
-	BrStdioError,
+    "Stdio DiagHandler",
+    BrStdioWarning,
+    BrStdioError,
 };
 
 /*
  * Override default
  */
 br_diaghandler *_BrDefaultDiagHandler = &BrStdioDiagHandler;
-
-
