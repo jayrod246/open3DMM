@@ -221,7 +221,9 @@ public:
 		// setting up the heap
 		static void _SetupHeap(long cbExtraStack, long cactMoreMasters);
 		virtual void SetupHeap(void);
-	#endif //MAC
+	#elif defined(WIN)
+		static void CreateConsole();
+	#endif
 
 	bool FQuitting(void) { return _fQuit; }
 	bool FForeground(void) { return _fForeground; }
