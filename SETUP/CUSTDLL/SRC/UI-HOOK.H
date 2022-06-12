@@ -7,7 +7,6 @@
 //					standard acme ui
 ////////////////////////////////////////////////////////////////////////////////
 
-
 #include <windows.h>
 #include <acmhook.h>
 #include <setupapi.h>
@@ -19,14 +18,11 @@
 #include "resource.h"
 #include "ownrdraw.h"
 
-
 #if !defined(IDC_STATIC)
 #define IDC_STATIC -1
-#endif //!IDC_STATIC
-
+#endif //! IDC_STATIC
 
 extern "C" HINSTANCE hinst;
-
 
 extern HWND HwndGetDlgOwner(VOID);
 extern BOOL CALLBACK GenericHookDlgProc(HWND hdlg, UINT uMsg, WPARAM wParam, LPARAM lParam);

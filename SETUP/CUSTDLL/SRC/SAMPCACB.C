@@ -13,190 +13,167 @@
 #define SAMPCACB_C
 
 #include "stdinc.h"
-#include <stdlib.h>		/* _MAX_PATH */
+#include <stdlib.h> /* _MAX_PATH */
 #include "setupapi.h"
 #include "stdtypes.h"
 #include "datadef.h"
 
+/*
+***************************************************************************/
+RC PUBLIC RcInitializeObject(PCD pcd, OR or)
+{
+    CAMFDInitializeObject camfd;
+
+    return ((*pcd->pfncacb)(or, camfInitializeObject, &camfd));
+}
 
 /*
 ***************************************************************************/
-RC PUBLIC RcInitializeObject ( PCD pcd, OR or )
+BOOL PUBLIC FCalcDstDir(PCD pcd, OR or, SZ szParentDstDir)
 {
-	CAMFDInitializeObject camfd;
+    CAMFDCalcDstDir camfd;
 
-	return ((*pcd->pfncacb)(or, camfInitializeObject, &camfd));
+    camfd.szParentDstDir = szParentDstDir;
+    (*pcd->pfncacb)(or, camfCalcDstDir, &camfd);
+    return (camfd.fRes);
 }
-
 
 /*
 ***************************************************************************/
-BOOL PUBLIC FCalcDstDir ( PCD pcd, OR or, SZ szParentDstDir )
+RC PUBLIC RcSetModeOfObject(PCD pcd, OR or, SMA sma)
 {
-	CAMFDCalcDstDir camfd;
+    CAMFDSetModeOfObject camfd;
 
-	camfd.szParentDstDir = szParentDstDir;
-	(*pcd->pfncacb)(or, camfCalcDstDir, &camfd);
-	return (camfd.fRes);
+    camfd.sma = sma;
+    return ((*pcd->pfncacb)(or, camfSetModeOfObject, &camfd));
 }
-
 
 /*
 ***************************************************************************/
-RC PUBLIC RcSetModeOfObject ( PCD pcd, OR or, SMA sma )
+YNME PUBLIC YnmeCheckObjectIBSE(PCD pcd, OR or)
 {
-	CAMFDSetModeOfObject camfd;
+    CAMFDCheckObjectIBSE camfd;
 
-	camfd.sma = sma;
-	return ((*pcd->pfncacb)(or, camfSetModeOfObject, &camfd));
+    (*pcd->pfncacb)(or, camfCheckObjectIBSE, &camfd);
+    return (camfd.ynmeRes);
 }
-
 
 /*
 ***************************************************************************/
-YNME PUBLIC YnmeCheckObjectIBSE ( PCD pcd, OR or )
+RC PUBLIC RcGetCost(PCD pcd, OR or, PSCB pscb, SZ szDestDir)
 {
-	CAMFDCheckObjectIBSE camfd;
+    CAMFDGetCost camfd;
 
-	(*pcd->pfncacb)(or, camfCheckObjectIBSE, &camfd);
-	return (camfd.ynmeRes);
+    camfd.pscb = pscb;
+    camfd.szDestDir = szDestDir;
+    return ((*pcd->pfncacb)(or, camfGetCost, &camfd));
 }
-
 
 /*
 ***************************************************************************/
-RC PUBLIC RcGetCost ( PCD pcd, OR or, PSCB pscb, SZ szDestDir )
+RC PUBLIC RcGetOODSCostNum(PCD pcd, OR or, CHAR chDrv, PSCB pscb)
 {
-	CAMFDGetCost camfd;
+    CAMFDGetOODSCostNum camfd;
 
-	camfd.pscb      = pscb;
-	camfd.szDestDir = szDestDir;
-	return ((*pcd->pfncacb)(or, camfGetCost, &camfd));
+    camfd.chDrv = chDrv;
+    camfd.pscb = pscb;
+    return ((*pcd->pfncacb)(or, camfGetOODSCostNum, &camfd));
 }
-
 
 /*
 ***************************************************************************/
-RC PUBLIC RcGetOODSCostNum ( PCD pcd, OR or, CHAR chDrv, PSCB pscb )
+RC PUBLIC RcGetOODSCostStr(PCD pcd, OR or, SZ szSym, CHAR chDrv, UINT depth, BOOL fExpandGrp)
 {
-	CAMFDGetOODSCostNum camfd;
+    CAMFDGetOODSCostStr camfd;
 
-	camfd.chDrv = chDrv;
-	camfd.pscb  = pscb;
-	return ((*pcd->pfncacb)(or, camfGetOODSCostNum, &camfd));
+    camfd.szSym = szSym;
+    camfd.chDrv = chDrv;
+    camfd.depth = depth;
+    camfd.fExpandGrp = fExpandGrp;
+    return ((*pcd->pfncacb)(or, camfGetOODSCostStr, &camfd));
 }
-
 
 /*
 ***************************************************************************/
-RC PUBLIC RcGetOODSCostStr ( PCD pcd, OR or, SZ szSym, CHAR chDrv,
-				UINT depth, BOOL fExpandGrp )
+UINT PUBLIC OrGetUIDstDirObj(PCD pcd, OR or)
 {
-	CAMFDGetOODSCostStr camfd;
+    CAMFDGetUIDstDirObj camfd;
 
-	camfd.szSym      = szSym;
-	camfd.chDrv      = chDrv;
-	camfd.depth      = depth;
-	camfd.fExpandGrp = fExpandGrp;
-	return ((*pcd->pfncacb)(or, camfGetOODSCostStr, &camfd));
+    (*pcd->pfncacb)(or, camfGetUIDstDirObj, &camfd);
+    return (camfd.orObjIDRes);
 }
-
-
-
 
 /*
 ***************************************************************************/
-UINT PUBLIC OrGetUIDstDirObj ( PCD pcd, OR or )
+BOOL PUBLIC FSetOisState(PCD pcd, OR or, OIS oisNew)
 {
-	CAMFDGetUIDstDirObj camfd;
+    CAMFDSetOisState camfd;
 
-	(*pcd->pfncacb)(or, camfGetUIDstDirObj, &camfd);
-	return (camfd.orObjIDRes);
+    camfd.oisNew = oisNew;
+    (*pcd->pfncacb)(or, camfSetOisState, &camfd);
+    return (camfd.fRes);
 }
-
-
-
 
 /*
 ***************************************************************************/
-BOOL PUBLIC FSetOisState ( PCD pcd, OR or, OIS oisNew )
+BOOL PUBLIC FSetDstDir(PCD pcd, OR or, SZ szDir, BOOL fDup)
 {
-	CAMFDSetOisState camfd;
+    CAMFDSetDstDir camfd;
 
-	camfd.oisNew = oisNew;
-	(*pcd->pfncacb)(or, camfSetOisState, &camfd);
-	return (camfd.fRes);
+    camfd.szDir = szDir;
+    camfd.fDup = fDup;
+    (*pcd->pfncacb)(or, camfSetDstDir, &camfd);
+    return (camfd.fRes);
 }
-
 
 /*
 ***************************************************************************/
-BOOL PUBLIC FSetDstDir ( PCD pcd, OR or, SZ szDir, BOOL fDup )
+VOID PUBLIC SetDstDirUserChoice(PCD pcd, OR or, BOOL f)
 {
-	CAMFDSetDstDir camfd;
+    CAMFDSetDstDirUserChoice camfd;
 
-	camfd.szDir = szDir;
-	camfd.fDup  = fDup;
-	(*pcd->pfncacb)(or, camfSetDstDir, &camfd);
-	return (camfd.fRes);
+    camfd.f = f;
+    (*pcd->pfncacb)(or, camfSetDstDirUserChoice, &camfd);
 }
-
 
 /*
 ***************************************************************************/
-VOID PUBLIC SetDstDirUserChoice ( PCD pcd, OR or, BOOL f )
+RC PUBLIC RcSetDstDirInTree(PCD pcd, OR or, SZ szParentDstDir, BOOL fUserChoice, BOOL fForceRecalc)
 {
-	CAMFDSetDstDirUserChoice camfd;
+    CAMFDSetDstDirInTree camfd;
 
-	camfd.f = f;
-	(*pcd->pfncacb)(or, camfSetDstDirUserChoice, &camfd);
+    camfd.szParentDstDir = szParentDstDir;
+    camfd.fUserChoice = fUserChoice;
+    camfd.fForceRecalc = fForceRecalc;
+    return ((*pcd->pfncacb)(or, camfSetDstDirInTree, &camfd));
 }
-
 
 /*
 ***************************************************************************/
-RC PUBLIC RcSetDstDirInTree ( PCD pcd, OR or, SZ szParentDstDir,
-				BOOL fUserChoice, BOOL fForceRecalc )
+VOID PUBLIC SetIBSEState(PCD pcd, OR or, YNME ynme)
 {
-	CAMFDSetDstDirInTree camfd;
+    CAMFDSetIBSEState camfd;
 
-	camfd.szParentDstDir = szParentDstDir;
-	camfd.fUserChoice    = fUserChoice;
-	camfd.fForceRecalc   = fForceRecalc;
-	return ((*pcd->pfncacb)(or, camfSetDstDirInTree, &camfd));
+    camfd.ynme = ynme;
+    (*pcd->pfncacb)(or, camfSetIBSEState, &camfd);
 }
-
 
 /*
 ***************************************************************************/
-VOID PUBLIC SetIBSEState ( PCD pcd, OR or, YNME ynme )
+VOID PUBLIC SetVisitedIBSE(PCD pcd, OR or, BOOL f)
 {
-	CAMFDSetIBSEState camfd;
+    CAMFDSetVisitedIBSE camfd;
 
-	camfd.ynme = ynme;
-	(*pcd->pfncacb)(or, camfSetIBSEState, &camfd);
+    camfd.f = f;
+    (*pcd->pfncacb)(or, camfSetVisitedIBSE, &camfd);
 }
-
 
 /*
 ***************************************************************************/
-VOID PUBLIC SetVisitedIBSE ( PCD pcd, OR or, BOOL f )
+POD PUBLIC PodGetObjData(PCD pcd, OR or)
 {
-	CAMFDSetVisitedIBSE camfd;
+    CAMFDGetObjData camfd;
 
-	camfd.f = f;
-	(*pcd->pfncacb)(or, camfSetVisitedIBSE, &camfd);
+    (*pcd->pfncacb)(or, camfGetObjData, &camfd);
+    return (camfd.podRes);
 }
-
-
-/*
-***************************************************************************/
-POD PUBLIC PodGetObjData ( PCD pcd, OR or )
-{
-	CAMFDGetObjData camfd;
-
-	(*pcd->pfncacb)(or, camfGetObjData, &camfd);
-	return (camfd.podRes);
-}
-
-

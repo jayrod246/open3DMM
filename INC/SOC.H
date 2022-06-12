@@ -35,11 +35,11 @@
 
 #define kctgActn 'ACTN'
 #define kctgActr 'ACTR'
-#define kctgBds  'BDS '
+#define kctgBds 'BDS '
 #define kctgBkgd 'BKGD'
 #define kctgBmdl 'BMDL'
 #define kctgBpmp 'BPMP'
-#define kctgCam  'CAM '
+#define kctgCam 'CAM '
 #define kctgGgae 'GGAE'
 #define kctgGldc 'GLDC' // REVIEW *****: obsolete
 #define kctgGgcm 'GGCM'
@@ -54,44 +54,44 @@
 #define kctgPath 'PATH'
 #define kctgPict 'PICT'
 #define kctgScen 'SCEN'
-#define kctgSnd  'SND '
-#define kctgSoc  'SOC '
+#define kctgSnd 'SND '
+#define kctgSoc 'SOC '
 #define kctgTbox 'TBOX'
-#define kctgTdf  'TDF '
-#define kctgTdt  'TDT '
+#define kctgTdf 'TDF '
+#define kctgTdt 'TDT '
 #define kctgTmpl 'TMPL'
 #define kctgGlpi 'GLPI'
 #define kctgGlbs 'GLBS'
 #define kctgInfo 'INFO'
-#define kctgFrmGg 	'GGFR'
-#define kctgStartGg	'GGST'
+#define kctgFrmGg 'GGFR'
+#define kctgStartGg 'GGST'
 #define kctgThumbMbmp 'THUM'
 #define kctgGltm 'GLTM'
 #define kctgGlbk 'GLBK'
 #define kctgGlcg 'GLCG'
-#define kctgBkth 'BKTH'		// Background thumbnail
-#define kctgCath 'CATH'		// Camera thumbnail
-#define kctgTmth 'TMTH'		// Template thumbnail (non-prop)
-#define kctgPrth 'PRTH'		// Prop thumbnail
-#define kctgAnth 'ANTH'		// Action thumbnail
-#define kctgSvth 'SVTH'		// Sounds (voice) thumbnail
-#define kctgSfth 'SFTH'		// Sounds (FX) thumbnail
-#define kctgSmth 'SMTH'		// Sounds (midi) thumbnail
-#define kctgMtth 'MTTH'		// Materials thumbnail
-#define kctgCmth 'CMTH'		// Custom materials thumbnail
-#define kctgTsth 'TSTH'		// 3d shape thumbnail
-#define kctgTfth 'TFTH'		// 3d font thumbnail
-#define kctgTcth 'TCTH'		// Text color thumbnail
-#define kctgTbth 'TBTH'     // Text background thumbnail
-#define kctgTzth 'TZTH'		// Text size thumbnail
-#define kctgTyth 'TYTH'     // Text style thumbnail
+#define kctgBkth 'BKTH' // Background thumbnail
+#define kctgCath 'CATH' // Camera thumbnail
+#define kctgTmth 'TMTH' // Template thumbnail (non-prop)
+#define kctgPrth 'PRTH' // Prop thumbnail
+#define kctgAnth 'ANTH' // Action thumbnail
+#define kctgSvth 'SVTH' // Sounds (voice) thumbnail
+#define kctgSfth 'SFTH' // Sounds (FX) thumbnail
+#define kctgSmth 'SMTH' // Sounds (midi) thumbnail
+#define kctgMtth 'MTTH' // Materials thumbnail
+#define kctgCmth 'CMTH' // Custom materials thumbnail
+#define kctgTsth 'TSTH' // 3d shape thumbnail
+#define kctgTfth 'TFTH' // 3d font thumbnail
+#define kctgTcth 'TCTH' // Text color thumbnail
+#define kctgTbth 'TBTH' // Text background thumbnail
+#define kctgTzth 'TZTH' // Text size thumbnail
+#define kctgTyth 'TYTH' // Text style thumbnail
 
-#define khidMscb			khidLimKidFrame
-#define khidMvieClock		khidLimKidFrame + 1
-#define khidRcd 			khidLimKidFrame + 2
-#define khidMsq				khidLimKidFrame + 3
-#define khidMsqClock		khidLimKidFrame + 4
-//khidStudio 				khidLimKidFrame + 5  Defined in stdiodef.h
+#define khidMscb khidLimKidFrame
+#define khidMvieClock khidLimKidFrame + 1
+#define khidRcd khidLimKidFrame + 2
+#define khidMsq khidLimKidFrame + 3
+#define khidMsqClock khidLimKidFrame + 4
+// khidStudio 				khidLimKidFrame + 5  Defined in stdiodef.h
 
 #define kftgChunky MacWin('chnk', 'CHK')
 #define kftgContent MacWin('3con', '3CN')
@@ -105,4 +105,3 @@
 extern PTAGM vptagm;
 
 #endif !SOC_H
-

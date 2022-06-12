@@ -16,6 +16,5 @@
 //
 // RCDATA blocks
 //
-#define RC_PID_NUMBER           128     // NNNNNSSSXXXXXXX\0
-#define RCDATA					10
-
+#define RC_PID_NUMBER 128 // NNNNNSSSXXXXXXX\0
+#define RCDATA 10

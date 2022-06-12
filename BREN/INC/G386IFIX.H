@@ -7,7 +7,6 @@
  * Inline fixed point maths for GNU-C (386)
  */
 
-
 /*
  * Old version using inline functions
  */
@@ -289,158 +288,144 @@ __inline static const long IFixedSqr4(
 	return __r;
 }
 
-#define BrFixedMul(a,b)					IFixedMul(a,b)
-#define BrFixedMac2(a,b,c,d)	 		IFixedMac2(a,b,c,d)
-#define BrFixedMac3(a,b,c,d,e,f)		IFixedMac3(a,b,c,d,e,f)
-#define BrFixedMac4(a,b,c,d,e,f,g,h)	IFixedMac4(a,b,c,d,e,f,g,h)
+#define BrFixedMul(a, b) IFixedMul(a, b)
+#define BrFixedMac2(a, b, c, d) IFixedMac2(a, b, c, d)
+#define BrFixedMac3(a, b, c, d, e, f) IFixedMac3(a, b, c, d, e, f)
+#define BrFixedMac4(a, b, c, d, e, f, g, h) IFixedMac4(a, b, c, d, e, f, g, h)
 
-#define BrFixedDiv(a,b)				  	IFixedDiv(a,b)
-#define BrFixedDivR(a,b)				IFixedDivR(a,b)
-#define BrFixedDivF(a,b)				IFixedDivF(a,b)
-#define BrFixedMulDiv(a,b,c)			IFixedMulDiv(a,b,c)
-#define BrFixedRcp(a)					IFixedRcp(a)
+#define BrFixedDiv(a, b) IFixedDiv(a, b)
+#define BrFixedDivR(a, b) IFixedDivR(a, b)
+#define BrFixedDivF(a, b) IFixedDivF(a, b)
+#define BrFixedMulDiv(a, b, c) IFixedMulDiv(a, b, c)
+#define BrFixedRcp(a) IFixedRcp(a)
 
-#define BrFixedSqr(a)					IFixedSqr(a)
-#define BrFixedSqr2(a,b)				IFixedSqr2(a,b)
-#define BrFixedSqr3(a,b,c)				IFixedSqr3(a,b,c)
-#define BrFixedSqr4(a,b,c,d)			IFixedSqr4(a,b,c,d)
+#define BrFixedSqr(a) IFixedSqr(a)
+#define BrFixedSqr2(a, b) IFixedSqr2(a, b)
+#define BrFixedSqr3(a, b, c) IFixedSqr3(a, b, c)
+#define BrFixedSqr4(a, b, c, d) IFixedSqr4(a, b, c, d)
 #endif
 
 /*
  * New version using direct expansion
  */
 #if 0
-#define BrFixedMul(__a,__b)							\
-({													\
-	long __r;										\
-													\
-	__asm (											\
-"		imull %2\n"									\
-"		shrdl $16,%%edx,%%eax\n"					\
-	: "=a" (__r)									\
-	: "0" ((long)(__a)), "rm" ((long)(__b))			\
-	: "edx", "cc");									\
-													\
-	__r;											\
-})
+#define BrFixedMul(__a, __b)                                                                                           \
+    ({                                                                                                                 \
+        long __r;                                                                                                      \
+                                                                                                                       \
+        __asm("		imull %2\n"                                                                                           \
+              "		shrdl $16,%%edx,%%eax\n"                                                                              \
+              : "=a"(__r)                                                                                              \
+              : "0"((long)(__a)), "rm"((long)(__b))                                                                    \
+              : "edx", "cc");                                                                                          \
+                                                                                                                       \
+        __r;                                                                                                           \
+    })
 
-#define BrFixedDiv(__a,__b)							\
-({													\
-	register long __r;								\
-													\
-	__asm (											\
-"		movl	%%eax,%%edx\n" 						\
-"		shll	$16,%%eax\n"						\
-"		sarl	$16,%%edx\n"						\
-"		idivl	%2\n"								\
-	: "=a" (__r)									\
-	: "a" ((long)(__a)), "rm" ((long)(__b))			\
-	: "edx", "cc"									\
-	);												\
-													\
-	__r;											\
-})
+#define BrFixedDiv(__a, __b)                                                                                           \
+    ({                                                                                                                 \
+        register long __r;                                                                                             \
+                                                                                                                       \
+        __asm("		movl	%%eax,%%edx\n"                                                                                   \
+              "		shll	$16,%%eax\n"                                                                                     \
+              "		sarl	$16,%%edx\n"                                                                                     \
+              "		idivl	%2\n"                                                                                           \
+              : "=a"(__r)                                                                                              \
+              : "a"((long)(__a)), "rm"((long)(__b))                                                                    \
+              : "edx", "cc");                                                                                          \
+                                                                                                                       \
+        __r;                                                                                                           \
+    })
 
+#define BrFixedMulDiv(__a, __b, __c)                                                                                   \
+    ({                                                                                                                 \
+        register long __r;                                                                                             \
+                                                                                                                       \
+        __asm("imull %2\n"                                                                                             \
+              "idivl %3\n"                                                                                             \
+              : "=a"(__r)                                                                                              \
+              : "0"((long)(__a)), "rm"((long)(__b)), "rm"((long)(__c))                                                 \
+              : "edx", "cc");                                                                                          \
+                                                                                                                       \
+        __r;                                                                                                           \
+    })
 
-#define BrFixedMulDiv(__a,__b,__c)					\
-({													\
-	register long __r;								\
-													\
-	__asm (											\
-		"imull %2\n"								\
-		"idivl %3\n"								\
-	: "=a" (__r)									\
-	: "0" ((long)(__a)), "rm" ((long)(__b)),		\
-	  "rm" ((long)(__c))							\
-	: "edx", "cc");									\
-													\
-	__r;											\
-})
+#define BrFixedMac2(__a, __b, __c, __d)                                                                                \
+    ({                                                                                                                 \
+        register long __r;                                                                                             \
+                                                                                                                       \
+        __asm("imull %2\n"                                                                                             \
+              "movl  %%eax,%%ebx\n"                                                                                    \
+              "movl  %%edx,%%ecx\n"                                                                                    \
+                                                                                                                       \
+              "movl  %3,%%eax\n"                                                                                       \
+              "imull %4\n"                                                                                             \
+              "addl	%%ebx,%%eax\n"                                                                                     \
+              "adcl	%%ecx,%%edx\n"                                                                                     \
+              "shrdl $16,%%edx,%%eax\n"                                                                                \
+              : "=a"(__r)                                                                                              \
+              : "0"((long)(__a)), "rm"((long)(__b)), "rm"((long)(__c)), "rm"((long)(__d))                              \
+              : "ebx", "ecx", "edx", "cc");                                                                            \
+                                                                                                                       \
+        __r;                                                                                                           \
+    })
 
-#define BrFixedMac2(__a,__b,__c,__d)				\
-({													\
-	register long __r;								\
-													\
-	__asm (											\
-		 "imull %2\n"								\
-		 "movl  %%eax,%%ebx\n"						\
-		 "movl  %%edx,%%ecx\n"						\
-													\
-		 "movl  %3,%%eax\n"							\
-		 "imull %4\n"								\
-		 "addl	%%ebx,%%eax\n"						\
-		 "adcl	%%ecx,%%edx\n"						\
-		 "shrdl $16,%%edx,%%eax\n"					\
-	: "=a" (__r)									\
-	: 	"0" ((long)(__a)), "rm" ((long)(__b)),		\
-		"rm" ((long)(__c)), "rm" ((long)(__d))		\
-	: "ebx", "ecx", "edx", "cc");					\
-													\
-	__r;											\
-})
+#define BrFixedMac3(__a, __b, __c, __d, __e, __f)                                                                      \
+    ({                                                                                                                 \
+        register long __r;                                                                                             \
+                                                                                                                       \
+        __asm("imull %2\n"                                                                                             \
+              "movl  %%eax,%%ebx\n"                                                                                    \
+              "movl  %%edx,%%ecx\n"                                                                                    \
+                                                                                                                       \
+              "movl  %3,%%eax\n"                                                                                       \
+              "imull %4\n"                                                                                             \
+              "addl	%%eax,%%ebx\n"                                                                                     \
+              "adcl	%%edx,%%ecx\n"                                                                                     \
+                                                                                                                       \
+              "movl  %5,%%eax\n"                                                                                       \
+              "imull %6\n"                                                                                             \
+              "addl	%%ebx,%%eax\n"                                                                                     \
+              "adcl	%%ecx,%%edx\n"                                                                                     \
+                                                                                                                       \
+              "shrdl $16,%%edx,%%eax\n"                                                                                \
+              : "=a"(__r)                                                                                              \
+              : "0"((long)(__a)), "rm"((long)(__b)), "rm"((long)(__c)), "rm"((long)(__d)), "rm"((long)(__e)),          \
+                "rm"((long)(__f))                                                                                      \
+              : "ebx", "ecx", "edx", "cc");                                                                            \
+                                                                                                                       \
+        __r;                                                                                                           \
+    })
 
-#define BrFixedMac3(__a,__b,__c,__d,__e,__f)		\
-({													\
-	register long __r;								\
-													\
-	__asm (											\
-		 "imull %2\n"								\
-		 "movl  %%eax,%%ebx\n"						\
-		 "movl  %%edx,%%ecx\n"						\
-													\
-		 "movl  %3,%%eax\n"							\
-		 "imull %4\n"								\
-		 "addl	%%eax,%%ebx\n"						\
-		 "adcl	%%edx,%%ecx\n"						\
-													\
-		 "movl  %5,%%eax\n"							\
-		 "imull %6\n"								\
-		 "addl	%%ebx,%%eax\n"						\
-		 "adcl	%%ecx,%%edx\n"						\
-													\
-		 "shrdl $16,%%edx,%%eax\n"					\
-	: "=a" (__r)									\
-	:	"0" ((long)(__a)), "rm" ((long)(__b)),		\
-		"rm" ((long)(__c)), "rm" ((long)(__d)),		\
-		"rm" ((long)(__e)), "rm" ((long)(__f)) 		\
-	: "ebx", "ecx", "edx", "cc");					\
-													\
-	__r;											\
-})
-
-#define BrFixedMac4(__a,__b,__c,__d,__e,__f,__g,__h)\
-({													\
-	register long __r;								\
-													\
-	__asm (											\
-		 "imull %2\n"								\
-		 "movl  %%eax,%%ebx\n"						\
-		 "movl  %%edx,%%ecx\n"						\
-													\
-		 "movl  %3,%%eax\n"							\
-		 "imull %4\n"								\
-		 "addl	%%eax,%%ebx\n"						\
-		 "adcl	%%edx,%%ecx\n"						\
-													\
-		 "movl  %5,%%eax\n"							\
-		 "imull %6\n"								\
-		 "addl	%%eax,%%ebx\n"						\
-		 "adcl	%%edx,%%ecx\n"						\
-													\
-		 "movl  %7,%%eax\n"							\
-		 "imull %8\n"								\
-		 "addl	%%ebx,%%eax\n"						\
-		 "adcl	%%ecx,%%edx\n"						\
-													\
-		 "shrdl $16,%%edx,%%eax\n"					\
-	: "=a" (__r)									\
-	:	"0" ((long)(__a)), "rm" ((long)(__b)),		\
-		"rm" ((long)(__c)), "rm" ((long)(__d)),		\
-		"rm" ((long)(__e)), "rm" ((long)(__f)),		\
-		"rm" ((long)(__g)), "rm" ((long)(__h))		\
-	: "ebx", "ecx", "edx", "cc");					\
-													\
-	__r;											\
-})
+#define BrFixedMac4(__a, __b, __c, __d, __e, __f, __g, __h)                                                            \
+    ({                                                                                                                 \
+        register long __r;                                                                                             \
+                                                                                                                       \
+        __asm("imull %2\n"                                                                                             \
+              "movl  %%eax,%%ebx\n"                                                                                    \
+              "movl  %%edx,%%ecx\n"                                                                                    \
+                                                                                                                       \
+              "movl  %3,%%eax\n"                                                                                       \
+              "imull %4\n"                                                                                             \
+              "addl	%%eax,%%ebx\n"                                                                                     \
+              "adcl	%%edx,%%ecx\n"                                                                                     \
+                                                                                                                       \
+              "movl  %5,%%eax\n"                                                                                       \
+              "imull %6\n"                                                                                             \
+              "addl	%%eax,%%ebx\n"                                                                                     \
+              "adcl	%%edx,%%ecx\n"                                                                                     \
+                                                                                                                       \
+              "movl  %7,%%eax\n"                                                                                       \
+              "imull %8\n"                                                                                             \
+              "addl	%%ebx,%%eax\n"                                                                                     \
+              "adcl	%%ecx,%%edx\n"                                                                                     \
+                                                                                                                       \
+              "shrdl $16,%%edx,%%eax\n"                                                                                \
+              : "=a"(__r)                                                                                              \
+              : "0"((long)(__a)), "rm"((long)(__b)), "rm"((long)(__c)), "rm"((long)(__d)), "rm"((long)(__e)),          \
+                "rm"((long)(__f)), "rm"((long)(__g)), "rm"((long)(__h))                                                \
+              : "ebx", "ecx", "edx", "cc");                                                                            \
+                                                                                                                       \
+        __r;                                                                                                           \
+    })
 #endif
-

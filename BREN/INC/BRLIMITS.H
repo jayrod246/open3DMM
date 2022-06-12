@@ -11,13 +11,14 @@
 #define _BRLIMITS_H_
 
 #ifdef __cplusplus
-	extern "C" {
+extern "C"
+{
 #endif
 
 /*
  * Maximum length of an item's name
  */
-#define BR_MAX_NAME	256
+#define BR_MAX_NAME 256
 
 /*
  * Maximum number of active lights
@@ -38,7 +39,6 @@
  * Maximum depth of camera in hierachy
  */
 #define MAX_CAMERA_DEPTH 16
-
 
 #ifdef __cplusplus
 };

@@ -2,39 +2,36 @@
    Licensed under the MIT License. */
 
 /***************************************************************************
-	Author: ShonK
-	Project: Kauai
-	Reviewed:
-	Copyright (c) Microsoft Corporation
+    Author: ShonK
+    Project: Kauai
+    Reviewed:
+    Copyright (c) Microsoft Corporation
 
-	Core routines for the utility layer.
+    Core routines for the utility layer.
 
 ***************************************************************************/
 #include "util.h"
 ASSERTNAME
 
-
 #ifdef DEBUG
 /***************************************************************************
-	Mark all util-level memory and objects.
+    Mark all util-level memory and objects.
 ***************************************************************************/
 void MarkUtilMem(void)
 {
-	PCFL pcfl;
-	PFIL pfil;
+    PCFL pcfl;
+    PFIL pfil;
 
-	MarkMemObj(&vsflUtil);
-	MarkMemObj(&vrndUtil);
-	MarkMemObj(&vkcdcUtil);
-	MarkMemObj(&vcodmUtil);
-	MarkMemObj(vpcodmUtil);
+    MarkMemObj(&vsflUtil);
+    MarkMemObj(&vrndUtil);
+    MarkMemObj(&vkcdcUtil);
+    MarkMemObj(&vcodmUtil);
+    MarkMemObj(vpcodmUtil);
 
-	for (pcfl = CFL::PcflFirst(); pcfl != pvNil; pcfl = pcfl->PcflNext())
-		MarkMemObj(pcfl);
+    for (pcfl = CFL::PcflFirst(); pcfl != pvNil; pcfl = pcfl->PcflNext())
+        MarkMemObj(pcfl);
 
-	for (pfil = FIL::PfilFirst(); pfil != pvNil; pfil = pfil->PfilNext())
-		MarkMemObj(pfil);
+    for (pfil = FIL::PfilFirst(); pfil != pvNil; pfil = pfil->PfilNext())
+        MarkMemObj(pfil);
 }
-#endif //DEBUG
-
-
+#endif // DEBUG

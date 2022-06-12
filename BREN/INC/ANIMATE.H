@@ -10,15 +10,16 @@
 #define _ANIMATE_H_
 
 #ifdef __cplusplus
-extern "C" {
+extern "C"
+{
 #endif
 
-typedef struct br_animation {
-	br_matrix4 matrix;
-} br_animation;
+    typedef struct br_animation
+    {
+        br_matrix4 matrix;
+    } br_animation;
 
 #ifdef __cplusplus
 };
 #endif
 #endif
-

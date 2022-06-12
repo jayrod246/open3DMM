@@ -12,7 +12,8 @@
 #define _HTON_H_
 
 #ifdef __cplusplus
-extern "C" {
+extern "C"
+{
 #endif
 
 /*
@@ -24,7 +25,7 @@ extern "C" {
 #define htons(x) (x)
 #define ntohs(x) (x)
 
-typedef float net_float;
+    typedef float net_float;
 
 #define htonf(x) (x)
 #define ntohf(x) (x)
@@ -36,16 +37,16 @@ typedef float net_float;
  */
 #if defined(__GNUC__) || defined(__WATCOMC__) || defined(__ZTC__)
 
-long bswapl(long l);
-short bswaps(short s);
-float bswapf(float f);
+    long bswapl(long l);
+    short bswaps(short s);
+    float bswapf(float f);
 
 #define ntohl(x) bswapl(x)
 #define htonl(x) bswapl(x)
 #define ntohs(x) bswaps(x)
 #define htons(x) bswaps(x)
 
-typedef float net_float;
+    typedef float net_float;
 
 #define htonf(x) bswapf(x)
 #define ntohf(x) bswapf(x)
@@ -56,4 +57,3 @@ typedef float net_float;
 };
 #endif
 #endif
-

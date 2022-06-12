@@ -24,8 +24,8 @@ ASSERTNAME
 RTCLASS(MSCB)
 
 BEGIN_CMD_MAP(MSCB, GOB)
-	ON_CID_ME(cidDoScroll, MSCB::FCmdScroll, pvNil)
-	ON_CID_ME(cidEndScroll, MSCB::FCmdScroll, pvNil)
+ON_CID_ME(cidDoScroll, MSCB::FCmdScroll, pvNil)
+ON_CID_ME(cidEndScroll, MSCB::FCmdScroll, pvNil)
 END_CMD_MAP_NIL()
 
 /****************************************************
@@ -36,9 +36,8 @@ END_CMD_MAP_NIL()
  ****************************************************/
 MSCB::MSCB(PMVIE pmvie, PGCB pgcb) : GOB(pgcb)
 {
-	_pmvie = pmvie;
+    _pmvie = pmvie;
 }
-
 
 /****************************************************
  *
@@ -54,34 +53,33 @@ MSCB::MSCB(PMVIE pmvie, PGCB pgcb) : GOB(pgcb)
  ****************************************************/
 PMSCB MSCB::PmscbNew(PMVIE pmvie, PGCB pgcb)
 {
-	PMSCB pmscb;
-	RC rc;
-	GCB gcb;
+    PMSCB pmscb;
+    RC rc;
+    GCB gcb;
 
-	AssertNilOrPo(pmvie, 0);
-	AssertVarMem(pgcb);
+    AssertNilOrPo(pmvie, 0);
+    AssertVarMem(pgcb);
 
-	if (pvNil == (pmscb = NewObj MSCB(pmvie, pgcb)))
-		return pvNil;
+    if (pvNil == (pmscb = NewObj MSCB(pmvie, pgcb)))
+        return pvNil;
 
-	//
-	// Frame slider
-	//
- 	rc.Set(0, 32, 200, 48);
-	gcb.Set(mscbhidFrame, pmscb, fgobNil, kginDefault, &rc);
-	SCB::PscbNew(&gcb, fscbHorz, 0, 0, 0);
+    //
+    // Frame slider
+    //
+    rc.Set(0, 32, 200, 48);
+    gcb.Set(mscbhidFrame, pmscb, fgobNil, kginDefault, &rc);
+    SCB::PscbNew(&gcb, fscbHorz, 0, 0, 0);
 
-	//
-	// Scene slider
-	//
- 	rc.Set(250, 32, 450, 48);
-	gcb.Set(mscbhidScene, pmscb, fgobNil, kginDefault, &rc);
-	SCB::PscbNew(&gcb, fscbHorz, 0, 0, 0);
+    //
+    // Scene slider
+    //
+    rc.Set(250, 32, 450, 48);
+    gcb.Set(mscbhidScene, pmscb, fgobNil, kginDefault, &rc);
+    SCB::PscbNew(&gcb, fscbHorz, 0, 0, 0);
 
-	AssertPo(pmscb, 0);
-	return(pmscb);
+    AssertPo(pmscb, 0);
+    return (pmscb);
 }
-
 
 /****************************************************
  *
@@ -96,93 +94,90 @@ PMSCB MSCB::PmscbNew(PMVIE pmvie, PGCB pgcb)
  ****************************************************/
 bool MSCB::FCmdScroll(PCMD pcmd)
 {
-	long hid, val, dval;
-	bool fUp, fPage;
-	PSCB pscb;
-
-	//
-	// Verify that the command is for this object
-	//
-	hid = pcmd->rglw[0];
-
-	if ((hid != mscbhidFrame) && (hid != mscbhidScene))
-		{
-		return(fFalse);
-		}
-
+    long hid, val, dval;
+    bool fUp, fPage;
+    PSCB pscb;
 
     //
-	// Get the scroll bar.
-	//
-	pscb = (PSCB)PgobFromHidScr(hid);
+    // Verify that the command is for this object
+    //
+    hid = pcmd->rglw[0];
 
-	if ((pscb == pvNil) || (_pmvie == pvNil))
-		return fTrue;
+    if ((hid != mscbhidFrame) && (hid != mscbhidScene))
+    {
+        return (fFalse);
+    }
 
     //
-	// Process the command
-	//
-	switch (pcmd->cid)
-		{
-	case cidDoScroll:
-		if (pcmd->rglw[1] == scaToVal)
-			{
-			return(fTrue);
-			}
+    // Get the scroll bar.
+    //
+    pscb = (PSCB)PgobFromHidScr(hid);
+
+    if ((pscb == pvNil) || (_pmvie == pvNil))
+        return fTrue;
+
+    //
+    // Process the command
+    //
+    switch (pcmd->cid)
+    {
+    case cidDoScroll:
+        if (pcmd->rglw[1] == scaToVal)
+        {
+            return (fTrue);
+        }
         else
-			{
-        	fUp = (pcmd->rglw[1] == scaLineUp) || (pcmd->rglw[1] == scaPageUp);
-        	fPage = (pcmd->rglw[1] == scaPageUp) || (pcmd->rglw[1] == scaPageDown);
-        	dval = fPage ? 10 : 1;
-        	if (fUp)
-        		dval = -dval;
-        	val = pscb->Val() + dval;
-			}
-		break;
+        {
+            fUp = (pcmd->rglw[1] == scaLineUp) || (pcmd->rglw[1] == scaPageUp);
+            fPage = (pcmd->rglw[1] == scaPageUp) || (pcmd->rglw[1] == scaPageDown);
+            dval = fPage ? 10 : 1;
+            if (fUp)
+                dval = -dval;
+            val = pscb->Val() + dval;
+        }
+        break;
 
-	case cidEndScroll:
-		val = pcmd->rglw[1];
-		break;
-		}
+    case cidEndScroll:
+        val = pcmd->rglw[1];
+        break;
+    }
 
     //
-	// pin the new value to the max and min
-	//
-	val = LwMin(pscb->ValMax(), LwMax(pscb->ValMin(), val));
+    // pin the new value to the max and min
+    //
+    val = LwMin(pscb->ValMax(), LwMax(pscb->ValMin(), val));
 
-	//
-	// Any changes?
-	//
-	if (val != pscb->Val() && !_pmvie->FPlaying())
-		{
+    //
+    // Any changes?
+    //
+    if (val != pscb->Val() && !_pmvie->FPlaying())
+    {
 
-		//
-		// Process new value
-		//
-		pscb->SetVal(val);
+        //
+        // Process new value
+        //
+        pscb->SetVal(val);
 
-		if (hid == mscbhidFrame)
-			{
-			if (!_pmvie->Pscen()->FGotoFrm(val))
-				{
-                //REVIEW seanse: what to do?
-				}
-			}
-		else // scene change
-			{
-			if (!_pmvie->FSwitchScen(val))
-				{
-                //REVIEW seanse: what to do?
-				}
+        if (hid == mscbhidFrame)
+        {
+            if (!_pmvie->Pscen()->FGotoFrm(val))
+            {
+                // REVIEW seanse: what to do?
+            }
+        }
+        else // scene change
+        {
+            if (!_pmvie->FSwitchScen(val))
+            {
+                // REVIEW seanse: what to do?
+            }
+        }
 
-			}
+        _pmvie->MarkViews();
+        InvalRc(pvNil);
+    }
 
-	    _pmvie->MarkViews();
-		InvalRc(pvNil);
-		}
-
-
-	return fTrue;
+    return fTrue;
 }
 
 /***************************************************************************
@@ -196,85 +191,77 @@ bool MSCB::FCmdScroll(PCMD pcmd)
  * Returns:
  *  None.
  *
-***************************************************************************/
+ ***************************************************************************/
 void MSCB::Draw(PGNV pgnv, RC *prcClip)
 {
-	AssertThis(0);
-	AssertPo(pgnv, 0);
-	AssertVarMem(prcClip);
-	STN stn;
-	RC rc;
-	PSCB pscb;
+    AssertThis(0);
+    AssertPo(pgnv, 0);
+    AssertVarMem(prcClip);
+    STN stn;
+    RC rc;
+    PSCB pscb;
 
-	pscb = (PSCB)PgobFromHidScr(mscbhidScene);
+    pscb = (PSCB)PgobFromHidScr(mscbhidScene);
 
-	if (pscb != pvNil)
-		{
-		if ((_pmvie != pvNil) && (_pmvie->Pscen() != pvNil))
-			{
-			pscb->SetValMinMax(_pmvie->Iscen(), 0, _pmvie->Cscen() - 1);
-			}
+    if (pscb != pvNil)
+    {
+        if ((_pmvie != pvNil) && (_pmvie->Pscen() != pvNil))
+        {
+            pscb->SetValMinMax(_pmvie->Iscen(), 0, _pmvie->Cscen() - 1);
+        }
         else
-			{
-			pscb->SetValMinMax(0, 0, 0);
-			}
+        {
+            pscb->SetValMinMax(0, 0, 0);
+        }
 
-		pscb->InvalRc(pvNil);
-		}
-							
-	pscb = (PSCB)PgobFromHidScr(mscbhidFrame);
+        pscb->InvalRc(pvNil);
+    }
 
-	if (pscb != pvNil)
-		{
-		if ((_pmvie != pvNil) && (_pmvie->Pscen() != pvNil))
-			{
-			pscb->SetValMinMax(_pmvie->Pscen()->Nfrm(),
-					           _pmvie->Pscen()->NfrmFirst(),
-					           _pmvie->Pscen()->NfrmLast()
-                              );
-			}
+    pscb = (PSCB)PgobFromHidScr(mscbhidFrame);
+
+    if (pscb != pvNil)
+    {
+        if ((_pmvie != pvNil) && (_pmvie->Pscen() != pvNil))
+        {
+            pscb->SetValMinMax(_pmvie->Pscen()->Nfrm(), _pmvie->Pscen()->NfrmFirst(), _pmvie->Pscen()->NfrmLast());
+        }
         else
-			{
-			pscb->SetValMinMax(0, 0, 0);
-			}
+        {
+            pscb->SetValMinMax(0, 0, 0);
+        }
 
-		pscb->InvalRc(pvNil);
-		}
+        pscb->InvalRc(pvNil);
+    }
 
-							
-	if (_pmvie != pvNil)
-		{
-		float fps;
+    if (_pmvie != pvNil)
+    {
+        float fps;
 
-		fps = ((float)_pmvie->Cnfrm() * kdtsSecond)/((float)(TsCurrent() - _pmvie->TsStart()));
+        fps = ((float)_pmvie->Cnfrm() * kdtsSecond) / ((float)(TsCurrent() - _pmvie->TsStart()));
 
-		if (_pmvie->Pscen() != pvNil)
-			{
-			stn.FFormatSz(PszLit("Frame #%d    "), _pmvie->Pscen()->Nfrm());
-			}
-		else
-			{
-			stn.FFormatSz(PszLit("Frame #%d    "), 0);
-			}
-		pgnv->DrawStn(&stn, 20, 16, kacrBlack, kacrWhite);
+        if (_pmvie->Pscen() != pvNil)
+        {
+            stn.FFormatSz(PszLit("Frame #%d    "), _pmvie->Pscen()->Nfrm());
+        }
+        else
+        {
+            stn.FFormatSz(PszLit("Frame #%d    "), 0);
+        }
+        pgnv->DrawStn(&stn, 20, 16, kacrBlack, kacrWhite);
 
-		stn.FFormatSz(PszLit("Scene #%d    "), _pmvie->Iscen() + 1);
-		pgnv->DrawStn(&stn, 270, 16, kacrBlack, kacrWhite);
+        stn.FFormatSz(PszLit("Scene #%d    "), _pmvie->Iscen() + 1);
+        pgnv->DrawStn(&stn, 270, 16, kacrBlack, kacrWhite);
 
-		stn.FFormatSz(PszLit("Fps: %2d.%02d"), (int)fps,
-			(int)((fps - (int)fps) * 100));
-		pgnv->DrawStn(&stn, 450, 16, kacrRed, kacrWhite);
+        stn.FFormatSz(PszLit("Fps: %2d.%02d"), (int)fps, (int)((fps - (int)fps) * 100));
+        pgnv->DrawStn(&stn, 450, 16, kacrRed, kacrWhite);
 
-		if (_pmvie->Pscen() != pvNil)
-			{
-			_pmvie->Pscen()->GetName(&stn);
-			pgnv->DrawStn(&stn, 160, 0, kacrBlack, kacrWhite);
-			}
-
-		}
-
+        if (_pmvie->Pscen() != pvNil)
+        {
+            _pmvie->Pscen()->GetName(&stn);
+            pgnv->DrawStn(&stn, 160, 0, kacrBlack, kacrWhite);
+        }
+    }
 }
-
 
 /****************************************************
  *
@@ -289,7 +276,7 @@ void MSCB::Draw(PGNV pgnv, RC *prcClip)
  ****************************************************/
 void MSCB::Update()
 {
-	InvalRc(pvNil, kginMark);
+    InvalRc(pvNil, kginMark);
 }
 
 /****************************************************
@@ -305,7 +292,7 @@ void MSCB::Update()
  ****************************************************/
 void MSCB::SetMvie(PMVIE pmvie)
 {
-	_pmvie = pmvie;
+    _pmvie = pmvie;
 }
 
 #ifdef DEBUG
@@ -322,24 +309,23 @@ void MSCB::SetMvie(PMVIE pmvie)
  ****************************************************/
 void MSCB::MarkMem(void)
 {
-	PSCB pscb;
+    PSCB pscb;
 
-	AssertThis(0);
-	MSCB_PAR::MarkMem();
+    AssertThis(0);
+    MSCB_PAR::MarkMem();
 
-	pscb = (PSCB)PgobFromHidScr(mscbhidFrame);
+    pscb = (PSCB)PgobFromHidScr(mscbhidFrame);
 
-	if (pscb != pvNil)
-		{
-		MarkMemObj(pscb);
-		}
+    if (pscb != pvNil)
+    {
+        MarkMemObj(pscb);
+    }
 
-	pscb = (PSCB)PgobFromHidScr(mscbhidScene);
-	if (pscb != pvNil)
-		{
-		MarkMemObj(pscb);
-		}
-
+    pscb = (PSCB)PgobFromHidScr(mscbhidScene);
+    if (pscb != pvNil)
+    {
+        MarkMemObj(pscb);
+    }
 }
 
 /***************************************************************************
@@ -354,11 +340,7 @@ void MSCB::MarkMem(void)
  **************************************************************************/
 void MSCB::AssertValid(ulong grf)
 {
-	MSCB_PAR::AssertValid(fobjAllocated);
+    MSCB_PAR::AssertValid(fobjAllocated);
 }
 
 #endif
-
-
-
-

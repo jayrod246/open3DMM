@@ -13,7 +13,7 @@
 #define DELREG_C
 
 #include "stdinc.h"
-#include <stdlib.h>		/* _MAX_PATH */
+#include <stdlib.h> /* _MAX_PATH */
 #include <string.h>
 #include "setupapi.h"
 #include "cui.h"
@@ -22,13 +22,11 @@
 #include "datadef.h"
 #include "resource.h"
 
-
-extern BOOL SETUPAPI DeleteRegKeyValue32 ( HKEY hRootKey, CSZC cszcSubKey, CSZC cszcValueName );
+extern BOOL SETUPAPI DeleteRegKeyValue32(HKEY hRootKey, CSZC cszcSubKey, CSZC cszcValueName);
 
 extern HINSTANCE hinst;
 
-RC FAR PASCAL DeleteRegKeys ( PCD pcd, POD pod, CAMF camf,
-				PCAMFD pcamfd, SZ szData );
+RC FAR PASCAL DeleteRegKeys(PCD pcd, POD pod, CAMF camf, PCAMFD pcamfd, SZ szData);
 
 /*
 **	Purpose:
@@ -45,36 +43,33 @@ RC FAR PASCAL DeleteRegKeys ( PCD pcd, POD pod, CAMF camf,
 **		Appropriate RC (return code) value.
 **
 ***************************************************************************/
-RC FAR PASCAL DeleteRegKeys ( PCD pcd, POD pod, CAMF camf,
-				PCAMFD pcamfd, SZ szData )
+RC FAR PASCAL DeleteRegKeys(PCD pcd, POD pod, CAMF camf, PCAMFD pcamfd, SZ szData)
 {
-	RC	rc = rcDoDefault;
-	CHAR rgchSubKey[256];
-	CHAR rgchKey[256];
+    RC rc = rcDoDefault;
+    CHAR rgchSubKey[256];
+    CHAR rgchKey[256];
 
-	Unused(szData);
+    Unused(szData);
 
-	if ((pod->ois != oisToBeRemoved) || (camf != camfDoNonVisualMods))
-		{
-		return(rc);
-		}
+    if ((pod->ois != oisToBeRemoved) || (camf != camfDoNonVisualMods))
+    {
+        return (rc);
+    }
 
-	if (!LoadString(hinst, IDS_REGKEY, rgchSubKey, sizeof rgchSubKey) != 0)
-		{
-		strcpy(rgchSubKey, "3D Movie Maker");
-		}
+    if (!LoadString(hinst, IDS_REGKEY, rgchSubKey, sizeof rgchSubKey) != 0)
+    {
+        strcpy(rgchSubKey, "3D Movie Maker");
+    }
 
-	wsprintf(rgchKey, "SOFTWARE\\Microsoft\\Microsoft Kids\\%s", rgchSubKey);
+    wsprintf(rgchKey, "SOFTWARE\\Microsoft\\Microsoft Kids\\%s", rgchSubKey);
 
-	DeleteRegKeyValue32(HKEY_CURRENT_USER, rgchKey, "HomeDirectory");
-	DeleteRegKeyValue32(HKEY_CURRENT_USER, rgchKey, "SwitchResolution");
-	DeleteRegKeyValue32(HKEY_CURRENT_USER, rgchKey, "UserData");
-	DeleteRegKeyValue32(HKEY_CURRENT_USER, rgchKey, "GreaterThan8bppMsg");
-	DeleteRegKeyValue32(HKEY_CURRENT_USER, rgchKey, "DebugSettings");
-	DeleteRegKeyValue32(HKEY_LOCAL_MACHINE, rgchKey, "WaveOutMsg");
-	DeleteRegKeyValue32(HKEY_LOCAL_MACHINE, rgchKey, "MidiOutMsg");
-	DeleteRegKeyValue32(HKEY_CURRENT_USER, rgchKey, "BetterSpeed");
-	return (rcOk);
+    DeleteRegKeyValue32(HKEY_CURRENT_USER, rgchKey, "HomeDirectory");
+    DeleteRegKeyValue32(HKEY_CURRENT_USER, rgchKey, "SwitchResolution");
+    DeleteRegKeyValue32(HKEY_CURRENT_USER, rgchKey, "UserData");
+    DeleteRegKeyValue32(HKEY_CURRENT_USER, rgchKey, "GreaterThan8bppMsg");
+    DeleteRegKeyValue32(HKEY_CURRENT_USER, rgchKey, "DebugSettings");
+    DeleteRegKeyValue32(HKEY_LOCAL_MACHINE, rgchKey, "WaveOutMsg");
+    DeleteRegKeyValue32(HKEY_LOCAL_MACHINE, rgchKey, "MidiOutMsg");
+    DeleteRegKeyValue32(HKEY_CURRENT_USER, rgchKey, "BetterSpeed");
+    return (rcOk);
 }
-
-

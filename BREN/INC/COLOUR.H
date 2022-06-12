@@ -11,18 +11,16 @@
 #define _COLOUR_H_
 
 #ifdef __cplusplus
-extern "C" {
+extern "C"
+{
 #endif
 
-typedef unsigned long int br_colour;
+    typedef unsigned long int br_colour;
 
-#define BR_COLOUR_RGB(r,g,b) \
-		((((unsigned int)(r))<<16) |\
-		(((unsigned int)(g))<<8) |\
-		((unsigned int)(b)))
+#define BR_COLOUR_RGB(r, g, b) ((((unsigned int)(r)) << 16) | (((unsigned int)(g)) << 8) | ((unsigned int)(b)))
 
-#define BR_COLOUR_RGBA(r,g,b,a) \
-		((((unsigned int)(a))<<24) |\
+#define BR_COLOUR_RGBA(r, g, b, a)                                                                                     \
+        ((((unsigned int)(a))<<24) |\
 		((((unsigned int)(r))<<16) |\
 		(((unsigned int)(g))<<8) |\
 		((unsigned int)(b)))
@@ -30,10 +28,9 @@ typedef unsigned long int br_colour;
 #define BR_ALPHA(c) ((c >> 24) & 0xFF)
 #define BR_RED(c) ((c >> 16) & 0xFF)
 #define BR_GRN(c) ((c >> 8) & 0xFF)
-#define BR_BLU(c) ((c) & 0xFF)
+#define BR_BLU(c) ((c)&0xFF)
 
 #ifdef __cplusplus
 };
 #endif
 #endif
-

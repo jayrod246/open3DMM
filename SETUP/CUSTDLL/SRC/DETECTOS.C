@@ -13,7 +13,7 @@
 #define DETECTOS_C
 
 #include "stdinc.h"
-#include <stdlib.h>		/* _MAX_PATH */
+#include <stdlib.h> /* _MAX_PATH */
 #include "setupapi.h"
 #include "cui.h"
 #include "stdtypes.h"
@@ -21,25 +21,17 @@
 #include "datadef.h"
 //#include "parseca.h"
 
-
 /* OS's to check for:
-*/
-#define	STR_WIN95	"win95"
-#define STR_WINNT	"winnt"
+ */
+#define STR_WIN95 "win95"
+#define STR_WINNT "winnt"
 
+RC FAR PASCAL DetectOS(PCD pcd, POD pod, CAMF camf, PCAMFD pcamfd, SZ szData);
 
-RC FAR PASCAL DetectOS ( PCD pcd, POD pod, CAMF camf,
-				PCAMFD pcamfd, SZ szData );
-
-
-STATIC_FN RC PRIVATE RcInitializeTrigger ( PCD pcd, POD pod );
-STATIC_FN RC PRIVATE RcSetDstDirOfTrigger ( PCD pcd, POD pod,
-						PCAMFDSetDstDirOfTrigger pcamfd );
-STATIC_FN RC PRIVATE RcSetModeOfTrigger ( PCD pcd, POD pod,
-						PCAMFDSetModeOfTrigger pcamfd );
-STATIC_FN RC PRIVATE RcAnswerDependClause ( PCD pcd, POD pod, SZ szData,
-						PCAMFDAnswerDependClause pcamfd );
-
+STATIC_FN RC PRIVATE RcInitializeTrigger(PCD pcd, POD pod);
+STATIC_FN RC PRIVATE RcSetDstDirOfTrigger(PCD pcd, POD pod, PCAMFDSetDstDirOfTrigger pcamfd);
+STATIC_FN RC PRIVATE RcSetModeOfTrigger(PCD pcd, POD pod, PCAMFDSetModeOfTrigger pcamfd);
+STATIC_FN RC PRIVATE RcAnswerDependClause(PCD pcd, POD pod, SZ szData, PCAMFDAnswerDependClause pcamfd);
 
 /*
 **	Purpose:
@@ -57,101 +49,91 @@ STATIC_FN RC PRIVATE RcAnswerDependClause ( PCD pcd, POD pod, SZ szData,
 **		Appropriate RC (return code) value.
 **
 ***************************************************************************/
-RC FAR PASCAL DetectOS ( PCD pcd, POD pod, CAMF camf,
-				PCAMFD pcamfd, SZ szData )
+RC FAR PASCAL DetectOS(PCD pcd, POD pod, CAMF camf, PCAMFD pcamfd, SZ szData)
 {
-	RC	rc = rcDoDefault;
+    RC rc = rcDoDefault;
 
-	Unused(szData);
+    Unused(szData);
 
-	switch (camf)
-		{
-		case camfInitializeTrigger:
-			rc = RcInitializeTrigger(pcd, pod);
-			break;
+    switch (camf)
+    {
+    case camfInitializeTrigger:
+        rc = RcInitializeTrigger(pcd, pod);
+        break;
 
-		case camfSetDstDirOfTrigger:
-			rc = RcSetDstDirOfTrigger(pcd, pod,
-						(PCAMFDSetDstDirOfTrigger)pcamfd);
-			break;
+    case camfSetDstDirOfTrigger:
+        rc = RcSetDstDirOfTrigger(pcd, pod, (PCAMFDSetDstDirOfTrigger)pcamfd);
+        break;
 
-		case camfSetModeOfTrigger:
-			rc = RcSetModeOfTrigger(pcd, pod,
-						(PCAMFDSetModeOfTrigger)pcamfd);
-			break;
+    case camfSetModeOfTrigger:
+        rc = RcSetModeOfTrigger(pcd, pod, (PCAMFDSetModeOfTrigger)pcamfd);
+        break;
 
-		case camfAnswerDependClause:
-			rc = RcAnswerDependClause(pcd, pod, szData,
-						(PCAMFDAnswerDependClause)pcamfd);
-			break;
+    case camfAnswerDependClause:
+        rc = RcAnswerDependClause(pcd, pod, szData, (PCAMFDAnswerDependClause)pcamfd);
+        break;
 
-		default:
-			break;
-		}
+    default:
+        break;
+    }
 
-	return (rc);
+    return (rc);
 }
-
 
 /*
 ****************************************************************************/
-STATIC_FN RC PRIVATE RcInitializeTrigger ( PCD pcd, POD pod )
+STATIC_FN RC PRIVATE RcInitializeTrigger(PCD pcd, POD pod)
 {
-	CAMFDSetIBSEState		camfdIBSE;
-	CAMFDSetVisitedIBSE		camfdVis;
-	CAMFDInitializeObject	camfdInit;
-	RC	rc;
-	
-	camfdIBSE.ynme = ynmeNo;
-	rc = (*pcd->pfncacb)(pod->or, camfSetIBSEState, &camfdIBSE);
-	if (rc != rcOk)
-		return (rc);
+    CAMFDSetIBSEState camfdIBSE;
+    CAMFDSetVisitedIBSE camfdVis;
+    CAMFDInitializeObject camfdInit;
+    RC rc;
 
-	camfdVis.f = fTrue;
-	rc = (*pcd->pfncacb)(pod->or, camfSetVisitedIBSE, &camfdVis);
-	if (rc != rcOk)
-		return (rc);
+    camfdIBSE.ynme = ynmeNo;
+    rc = (*pcd->pfncacb)(pod->or, camfSetIBSEState, &camfdIBSE);
+    if (rc != rcOk)
+        return (rc);
 
-	return ((*pcd->pfncacb)(pod->or, camfInitializeObject, &camfdInit));
+    camfdVis.f = fTrue;
+    rc = (*pcd->pfncacb)(pod->or, camfSetVisitedIBSE, &camfdVis);
+    if (rc != rcOk)
+        return (rc);
+
+    return ((*pcd->pfncacb)(pod->or, camfInitializeObject, &camfdInit));
 }
-
 
 /*
 ****************************************************************************/
-STATIC_FN RC PRIVATE RcSetDstDirOfTrigger ( PCD pcd, POD pod,
-						PCAMFDSetDstDirOfTrigger pcamfd )
+STATIC_FN RC PRIVATE RcSetDstDirOfTrigger(PCD pcd, POD pod, PCAMFDSetDstDirOfTrigger pcamfd)
 {
-	CAMFDCalcDstDir	camfdCalc;
-	RC	rc;
+    CAMFDCalcDstDir camfdCalc;
+    RC rc;
 
-	Assert(pcamfd->szParentDstDir != szNull);
-	Assert(FValidDir(pcamfd->szParentDstDir));
+    Assert(pcamfd->szParentDstDir != szNull);
+    Assert(FValidDir(pcamfd->szParentDstDir));
 
-	if (!pod->fDstDirSet)
-		{
-		camfdCalc.szParentDstDir = pcamfd->szParentDstDir;
-		rc = (*pcd->pfncacb)(pod->or, camfCalcDstDir, &camfdCalc);
-		if (rc != rcOk)
-			return (rc);
+    if (!pod->fDstDirSet)
+    {
+        camfdCalc.szParentDstDir = pcamfd->szParentDstDir;
+        rc = (*pcd->pfncacb)(pod->or, camfCalcDstDir, &camfdCalc);
+        if (rc != rcOk)
+            return (rc);
 
-		if (!camfdCalc.fRes)
-			return (rcFail);
-		}
-	return (rcOk);
+        if (!camfdCalc.fRes)
+            return (rcFail);
+    }
+    return (rcOk);
 }
-
 
 /*
 ****************************************************************************/
-STATIC_FN RC PRIVATE RcSetModeOfTrigger ( PCD pcd, POD pod,
-						PCAMFDSetModeOfTrigger pcamfd )
+STATIC_FN RC PRIVATE RcSetModeOfTrigger(PCD pcd, POD pod, PCAMFDSetModeOfTrigger pcamfd)
 {
-	CAMFDSetModeOfObject	camfdMode;
+    CAMFDSetModeOfObject camfdMode;
 
-	camfdMode.sma = pcamfd->sma;
-	return ((*pcd->pfncacb)(pod->or, camfSetModeOfObject, &camfdMode));
+    camfdMode.sma = pcamfd->sma;
+    return ((*pcd->pfncacb)(pod->or, camfSetModeOfObject, &camfdMode));
 }
-
 
 /*
 **	Checks for Windows 95 (wvtChicago) and Windows NT (wvtWinNT).
@@ -159,27 +141,23 @@ STATIC_FN RC PRIVATE RcSetModeOfTrigger ( PCD pcd, POD pod,
 **		NOTE: Acme95 does not support vtWin30, wvtWin31, or wvtWfW31.
 **
 ****************************************************************************/
-STATIC_FN RC PRIVATE RcAnswerDependClause ( PCD pcd, POD pod, SZ szData,
-						PCAMFDAnswerDependClause pcamfd )
+STATIC_FN RC PRIVATE RcAnswerDependClause(PCD pcd, POD pod, SZ szData, PCAMFDAnswerDependClause pcamfd)
 {
-	Unused(pod);	/* Used in debug only */
+    Unused(pod); /* Used in debug only */
 
-	Assert(pcamfd != pcamfdNull);
-	Assert(szData != szNull);
+    Assert(pcamfd != pcamfdNull);
+    Assert(szData != szNull);
 
-	if (CrcStringCompareI(szData, STR_WIN95) == crcEqual)
-		pcamfd->fRes = (pcd->wvtWinVerType == wvtChicago) ? fTrue : fFalse;
+    if (CrcStringCompareI(szData, STR_WIN95) == crcEqual)
+        pcamfd->fRes = (pcd->wvtWinVerType == wvtChicago) ? fTrue : fFalse;
 
-	else if (CrcStringCompareI(szData, STR_WINNT) == crcEqual)
-		pcamfd->fRes = (pcd->wvtWinVerType == wvtWinNT) ? fTrue : fFalse;
+    else if (CrcStringCompareI(szData, STR_WINNT) == crcEqual)
+        pcamfd->fRes = (pcd->wvtWinVerType == wvtWinNT) ? fTrue : fFalse;
 
-	else
-		{
-		pcamfd->fRes = fFalse;
-		}
+    else
+    {
+        pcamfd->fRes = fFalse;
+    }
 
-	return (rcOk);
+    return (rcOk);
 }
-
-
-

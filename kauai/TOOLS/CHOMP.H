@@ -6,8 +6,8 @@
 
 /***************************************************************************
 
-	CHOMP.H
-	Header file for Chomp, the chunky compiler
+    CHOMP.H
+    Header file for Chomp, the chunky compiler
 
 ***************************************************************************/
 #ifndef CHOMP_H
@@ -17,5 +17,4 @@
 #include "frame.h"
 #include "mssio.h"
 
-#endif //!CHOMP_H
-
+#endif //! CHOMP_H

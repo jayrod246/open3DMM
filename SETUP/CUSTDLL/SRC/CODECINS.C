@@ -21,8 +21,9 @@
 **			      more information on these files.
 **
 **	STF Syntax:
-**		ObjID	Batch	Title		Descr		Type		Data						Bmp Id	Vital	Shared	DirChng	DestDir	CheckDir	InstBy	InstData	InstDir
-**		ID#		"Error Title"	"Error Text"		CustomAction	"EXPSETUP.DLL","InstAudVid",PARAMS
+**		ObjID	Batch	Title		Descr		Type		Data						Bmp Id	Vital	Shared	DirChng
+*DestDir	CheckDir	InstBy	InstData	InstDir *		ID#		"Error Title"	"Error Text" CustomAction
+*"EXPSETUP.DLL","InstAudVid",PARAMS
 **
 **	  where PARAMS blank
 **
@@ -30,7 +31,6 @@
 **	Written For:	Explorapedia Win32/Win16 versions of Nature and People
 **
 ****************************************************************************/
-
 
 #define FILEMOVE_C
 
@@ -41,23 +41,17 @@
 #include "setupkit.h"
 #include "datadef.h"
 
-#include "mminstal.h"   // audio and video check code
-
+#include "mminstal.h" // audio and video check code
 
 //
 // Function prototypes
 //
 
-RC SETUPAPI InstAudVid( PCD pcd, POD pod, CAMF camf, PCAMFD pcamfd, SZ szData );
+RC SETUPAPI InstAudVid(PCD pcd, POD pod, CAMF camf, PCAMFD pcamfd, SZ szData);
 
+#define SzDirFromPcamfd(pcamfd) ((SZ)(((PCAMFDDtor)(pcamfd))->lpvPriv))
 
-#define SzDirFromPcamfd(pcamfd)	((SZ)(((PCAMFDDtor)(pcamfd))->lpvPriv))
-
-#define RcCallBack(pcd, or, camf, pcamfd) \
-			((*(pcd)->pfncacb)(or, camf, pcamfd))
-
-
-
+#define RcCallBack(pcd, or, camf, pcamfd) ((*(pcd)->pfncacb)(or, camf, pcamfd))
 
 /*************************************************************************
 **  Name:
@@ -84,47 +78,46 @@ RC SETUPAPI InstAudVid( PCD pcd, POD pod, CAMF camf, PCAMFD pcamfd, SZ szData );
 **      Appropriate RC (return code) value.
 **
 ****************************************************************************/
-RC FAR PASCAL InstAudVid ( PCD pcd, POD pod, CAMF camf, PCAMFD pcamfd, SZ szData )
+RC FAR PASCAL InstAudVid(PCD pcd, POD pod, CAMF camf, PCAMFD pcamfd, SZ szData)
 {
-  RC rc = rcDoDefault;
+    RC rc = rcDoDefault;
 
-  switch (camf)
-  {
-  	case camfDoVisualMods:
-      if(oisToBeInstalled == pod->ois)  // If we're in the tree (oisNotYetInstalled if we're not in tree)
-      {
-        if(HWD_SUCCESS == wHaveWaveDevice(WAVE_FORMAT_2M08)) // 22kHz, Mono, 8bit
+    switch (camf)
+    {
+    case camfDoVisualMods:
+        if (oisToBeInstalled == pod->ois) // If we're in the tree (oisNotYetInstalled if we're not in tree)
         {
-          if(wHaveMCI("WAVEAUDIO"))
-              // MCI for audio is not installed
-            wInstallComp(IC_MCI_SOUND);
+            if (HWD_SUCCESS == wHaveWaveDevice(WAVE_FORMAT_2M08)) // 22kHz, Mono, 8bit
+            {
+                if (wHaveMCI("WAVEAUDIO"))
+                    // MCI for audio is not installed
+                    wInstallComp(IC_MCI_SOUND);
 
-          if(wHaveACM())
-              // audio compression manager (sound mapper) not installed
-            wInstallComp(IC_ACM);
+                if (wHaveACM())
+                    // audio compression manager (sound mapper) not installed
+                    wInstallComp(IC_ACM);
 
-          if(wHaveACMCodec(WAVE_FORMAT_ADPCM))
-              // audio codecs not installed
-            wInstallComp(IC_ACM_ADPCM);
+                if (wHaveACMCodec(WAVE_FORMAT_ADPCM))
+                    // audio codecs not installed
+                    wInstallComp(IC_ACM_ADPCM);
 
-        } // have wave device
+            } // have wave device
 
+            if (wHaveMCI("AVIVIDEO"))
+                // MCI for video is not installed
+                wInstallComp(IC_MCI_VFW);
 
-        if(wHaveMCI("AVIVIDEO"))
-            // MCI for video is not installed
-          wInstallComp(IC_MCI_VFW);
+            if (HIC_SUCCESS != wHaveICMCodec(MS_VIDEO1))
+                //  video 1 codec not installed
+                wInstallComp(IC_ICM_VIDEO1);
 
-        if(HIC_SUCCESS != wHaveICMCodec(MS_VIDEO1))
-            //  video 1 codec not installed
-          wInstallComp(IC_ICM_VIDEO1);
+            if (HIC_SUCCESS != wHaveICMCodec(INTEL_INDEO32))
+                // indeo 3.2 codec not installed
+                wInstallComp(IC_ICM_INDEO32);
 
-        if(HIC_SUCCESS != wHaveICMCodec(INTEL_INDEO32))
-            // indeo 3.2 codec not installed
-          wInstallComp(IC_ICM_INDEO32);
+            break;
+        } // if we're in the tree
+    }     // switch(camf)
 
-        break;
-  	  } // if we're in the tree
-  } // switch(camf)
-
-return (rc);
+    return (rc);
 }

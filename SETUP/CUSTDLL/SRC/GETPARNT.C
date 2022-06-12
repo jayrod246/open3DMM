@@ -8,86 +8,75 @@
 **			      directory of the passed input object's destination directory.
 **
 **	STF Syntax:
-**		ObjID	Batch	Title	Descr	Type		Data						Bmp Id	Vital	Shared	DirChng	DestDir	CheckDir	InstBy	InstData	InstDir
-**		ID#				CustomAction	"EXPSETUP.DLL","GetParentDir","ObjID#"
+**		ObjID	Batch	Title	Descr	Type		Data						Bmp Id	Vital	Shared	DirChng	DestDir
+*CheckDir	InstBy	InstData	InstDir *		ID#				CustomAction	"EXPSETUP.DLL","GetParentDir","ObjID#"
 **
 **	Author: ******
 **	Written For:	Explorapedia Win32/Win16 versions of Nature and People
 **
 ****************************************************************************/
 
-
 #define GETPARNT_C
 
 #include <windows.h>
-#include <stdlib.h>		/* _MAX_PATH */
+#include <stdlib.h> /* _MAX_PATH */
 #include "setupapi.h"
 #include "cui.h"
 #include "stdtypes.h"
 #include "setupkit.h"
 #include "datadef.h"
 
-
 #ifdef _DEBUG
-  #define DEBUG_OUTPUT
-static  const char camfText[][24] = {
-  	"camfInitializeObject",
-  	"camfInitializeTrigger",
-  	"camfInitFromProof",
-  	"camfInitSearchObject",
-  	"camfSearchForObject",
-  	"camfAnswerDependClause",
-  	"camfAnswerDependRemove",
-  	"camfAnswerCompanion",
-  	"camfSetDstDirOfTrigger",
-  	"camfPropagateDstDir",
-  	"camfCalcDstDir",
-  	"camfSelectModeOfObject",
-  	"camfSetModeOfObject",
-  	"camfSetModeOfTrigger",
-  	"camfCheckObjectIBSE",
-  	"camfFinalizeObject",
-  	"camfAddToCopyList",
-  	"camfGetNonCopyListCost",
-  	"camfGetCost",
-  	"camfGetOODSCostStr",
-  	"camfGetOODSCostNum",
-  	"camfAddBillBoards",
-  	"camfDoNonVisualMods",
-  	"camfDoVisualMods",
-  	"camfPostInstall",
-  	"camfDtor",
-  	"camfSelectableSubOpts",
-  	"camfSetRgfChecked",
-  	"camfGetUIDstDirObj",
-  	"camfGetCAddCRemove",
-  	"camfSetOisState",
-  	"camfSetInstallData",
-  	"camfSetDstDir",
-  	"camfSetDstDirWithSubdir",
-  	"camfSetDstDirUserChoice",
-  	"camfProcessDstDirTree",
-  	"camfSetDstDirInTree",
-  	"camfSetIBSEState",
-  	"camfSetVisitedIBSE",
-  	"camfSetIbyState",
-  	"camfGetObjData",
-  	"camfError"};
+#define DEBUG_OUTPUT
+static const char camfText[][24] = {"camfInitializeObject",
+                                    "camfInitializeTrigger",
+                                    "camfInitFromProof",
+                                    "camfInitSearchObject",
+                                    "camfSearchForObject",
+                                    "camfAnswerDependClause",
+                                    "camfAnswerDependRemove",
+                                    "camfAnswerCompanion",
+                                    "camfSetDstDirOfTrigger",
+                                    "camfPropagateDstDir",
+                                    "camfCalcDstDir",
+                                    "camfSelectModeOfObject",
+                                    "camfSetModeOfObject",
+                                    "camfSetModeOfTrigger",
+                                    "camfCheckObjectIBSE",
+                                    "camfFinalizeObject",
+                                    "camfAddToCopyList",
+                                    "camfGetNonCopyListCost",
+                                    "camfGetCost",
+                                    "camfGetOODSCostStr",
+                                    "camfGetOODSCostNum",
+                                    "camfAddBillBoards",
+                                    "camfDoNonVisualMods",
+                                    "camfDoVisualMods",
+                                    "camfPostInstall",
+                                    "camfDtor",
+                                    "camfSelectableSubOpts",
+                                    "camfSetRgfChecked",
+                                    "camfGetUIDstDirObj",
+                                    "camfGetCAddCRemove",
+                                    "camfSetOisState",
+                                    "camfSetInstallData",
+                                    "camfSetDstDir",
+                                    "camfSetDstDirWithSubdir",
+                                    "camfSetDstDirUserChoice",
+                                    "camfProcessDstDirTree",
+                                    "camfSetDstDirInTree",
+                                    "camfSetIBSEState",
+                                    "camfSetVisitedIBSE",
+                                    "camfSetIbyState",
+                                    "camfGetObjData",
+                                    "camfError"};
 #endif
 
+RC SETUPAPI GetParentDir(PCD pcd, POD pod, CAMF camf, PCAMFD pcamfd, SZ szData);
 
+#define SzDirFromPcamfd(pcamfd) ((SZ)(((PCAMFDDtor)(pcamfd))->lpvPriv))
 
-
-RC SETUPAPI GetParentDir ( PCD pcd, POD pod, CAMF camf, PCAMFD pcamfd, SZ szData );
-
-
-#define SzDirFromPcamfd(pcamfd)	((SZ)(((PCAMFDDtor)(pcamfd))->lpvPriv))
-
-#define RcCallBack(pcd, or, camf, pcamfd) \
-			((*(pcd)->pfncacb)(or, camf, pcamfd))
-
-
-
+#define RcCallBack(pcd, or, camf, pcamfd) ((*(pcd)->pfncacb)(or, camf, pcamfd))
 
 /*************************************************************************
 **  Name:
@@ -107,71 +96,69 @@ RC SETUPAPI GetParentDir ( PCD pcd, POD pod, CAMF camf, PCAMFD pcamfd, SZ szData
 **      Appropriate RC (return code) value.
 **
 ****************************************************************************/
-RC SETUPAPI GetParentDir( PCD pcd, POD pod, CAMF camf, PCAMFD pcamfd, SZ szData )
+RC SETUPAPI GetParentDir(PCD pcd, POD pod, CAMF camf, PCAMFD pcamfd, SZ szData)
 {
-RC	rc = rcDoDefault;
+    RC rc = rcDoDefault;
 
-switch (camf)
-	{
-	case camfCalcDstDir:
-			{
-			CAMFDGetObjData camfdGetObjData;
-			OR		or;
+    switch (camf)
+    {
+    case camfCalcDstDir: {
+        CAMFDGetObjData camfdGetObjData;
+        OR or ;
 
-				// Get Src path object number from our data entry
-			or = atoi(szData);
+        // Get Src path object number from our data entry
+        or = atoi(szData);
 
-				// Get object data for our src path object
-			rc = RcCallBack(pcd, or, camfGetObjData, &camfdGetObjData);
-			
-				// If the object exists
-			if(rcOk == rc)
-				{
-				CHAR	szParentPathname[_MAX_PATH];
-				CAMFDSetDstDir camfdSetDstDir;
-        short iPos;
-				
-      	lstrcpy(szParentPathname, camfdGetObjData.podRes->szDstDir);
+        // Get object data for our src path object
+        rc = RcCallBack(pcd, or, camfGetObjData, &camfdGetObjData);
 
-        iPos = lstrlen(szParentPathname)-1;
+        // If the object exists
+        if (rcOk == rc)
+        {
+            CHAR szParentPathname[_MAX_PATH];
+            CAMFDSetDstDir camfdSetDstDir;
+            short iPos;
 
-        while(iPos > 0)
-          if(szParentPathname[iPos] == '\\')
+            lstrcpy(szParentPathname, camfdGetObjData.podRes->szDstDir);
+
+            iPos = lstrlen(szParentPathname) - 1;
+
+            while (iPos > 0)
+                if (szParentPathname[iPos] == '\\')
+                {
+                    szParentPathname[iPos] = '\0';
+                    break;
+                }
+                else
+                    iPos--;
+
+            // if(IsValidPath(szParentPathname))
             {
-            szParentPathname[iPos] = '\0';
-            break;
+                camfdSetDstDir.szDir = szParentPathname;
+                camfdSetDstDir.fDup = fTrue;
+                rc = RcCallBack(pcd, pod->or, camfSetDstDir, &camfdSetDstDir);
+                Assert(rc == rcOk);
+
+                ((PCAMFDCalcDstDir)pcamfd)->fRes = camfdSetDstDir.fRes;
             }
-          else
-            iPos--;
+        }
+        else
+        {
+#ifdef DEBUG_OUTPUT
+            char Text[256];
+            wsprintf(Text, "Object ID '%s' doesn't exist", (LPSTR)szData);
+            DoMsgBox(Text, "GetParent Error", MB_OK);
+#endif
+            rc = rcFail;
+        }
+    }
+    break;
 
-        //if(IsValidPath(szParentPathname))
-          {
-  				camfdSetDstDir.szDir = szParentPathname;
-  				camfdSetDstDir.fDup  = fTrue;
-  				rc = RcCallBack(pcd, pod->or, camfSetDstDir, &camfdSetDstDir);
-  				Assert(rc == rcOk);
-
-  				((PCAMFDCalcDstDir)pcamfd)->fRes = camfdSetDstDir.fRes;
-          }
-				
-				}
-			else
-				{
-				#ifdef DEBUG_OUTPUT
-				char Text[256];
-				wsprintf(Text, "Object ID '%s' doesn't exist", (LPSTR)szData);
-				DoMsgBox(Text, "GetParent Error", MB_OK);
-				#endif
-        rc = rcFail;
-				}
-			}
-		break;
-
-  #ifdef DEBUG_OUTPUT
+#ifdef DEBUG_OUTPUT
     default:
-      DoMsgBox(camfText[camf], "GetParent", MB_OK);
-      break;
-  #endif
-	}
-return (rc);
+        DoMsgBox(camfText[camf], "GetParent", MB_OK);
+        break;
+#endif
+    }
+    return (rc);
 }

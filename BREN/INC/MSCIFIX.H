@@ -7,4 +7,3 @@
  * Inline fixed point ops for Microsoft Visual C++
  *
  */
-

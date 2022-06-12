@@ -10,23 +10,26 @@
 #define _MATRIX_H_
 
 #ifdef __cplusplus
-extern "C" {
+extern "C"
+{
 #endif
 
-typedef struct br_matrix4 {
-	br_scalar m[4][4];
-} br_matrix4;
+    typedef struct br_matrix4
+    {
+        br_scalar m[4][4];
+    } br_matrix4;
 
-typedef struct br_matrix34 {
-	br_scalar m[4][3];
-} br_matrix34;
+    typedef struct br_matrix34
+    {
+        br_scalar m[4][3];
+    } br_matrix34;
 
-typedef struct br_matrix23 {
-	br_scalar m[3][2];
-} br_matrix23;
+    typedef struct br_matrix23
+    {
+        br_scalar m[3][2];
+    } br_matrix23;
 
 #ifdef __cplusplus
 };
 #endif
 #endif
-
