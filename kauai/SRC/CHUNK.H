@@ -119,7 +119,7 @@ class CFL : public CFL_PAR
     CFL(void);
     ~CFL(void);
 
-    static ulong CFL::_GrffilFromGrfcfl(ulong grfcfl);
+    static ulong _GrffilFromGrfcfl(ulong grfcfl);
 
     bool _FReadIndex(void);
     tribool _TValidIndex(void);

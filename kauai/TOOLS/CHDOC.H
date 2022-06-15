@@ -574,7 +574,7 @@ class DCGB : public DCGB_PAR
     void _DeleteIv(long iv);
 
   public:
-    static void DCGB::InvalAllDcgb(PDOCB pdocb, PGRPB pgrpb, long iv, long cvIns, long cvDel);
+    static void InvalAllDcgb(PDOCB pdocb, PGRPB pgrpb, long iv, long cvIns, long cvDel);
     virtual bool FCmdKey(PCMD_KEY pcmd);
     virtual void MouseDown(long xp, long yp, long cact, ulong grfcust);
 
