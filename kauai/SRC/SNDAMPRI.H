@@ -118,7 +118,7 @@ class CAMS : public CAMS_PAR
 
   public:
     ~CAMS(void);
-    static PCAMS CAMS::PcamsNewLoop(PCAMS pcamsSrc, long cactPlay);
+    static PCAMS PcamsNewLoop(PCAMS pcamsSrc, long cactPlay);
 
     IAMSound *psnd; // the sound to use
 

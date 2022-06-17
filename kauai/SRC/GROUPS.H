@@ -52,7 +52,7 @@ class GRPB : public GRPB_PAR
     HQ _hqData1;
     HQ _hqData2;
 
-    bool GRPB::_FEnsureHqCb(HQ *phq, long cb, long cbMinGrow, long *pcb);
+    bool _FEnsureHqCb(HQ *phq, long cb, long cbMinGrow, long *pcb);
 
   protected:
     long _cbMinGrow1;

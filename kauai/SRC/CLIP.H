@@ -43,7 +43,7 @@ class CLIP : public CLIP_PAR
     void _EnsureDoc();
     void _ExportCur(void);
     void _ImportCur(void);
-    bool CLIP::_FImportFormat(long clfm, void *pv = pvNil, long cb = 0, PDOCB *ppdocb = pvNil, bool *pfDelay = pvNil);
+    bool _FImportFormat(long clfm, void *pv = pvNil, long cb = 0, PDOCB *ppdocb = pvNil, bool *pfDelay = pvNil);
 
   public:
     CLIP(void);

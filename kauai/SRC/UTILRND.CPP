@@ -45,7 +45,7 @@ long RND::LwNext(long lwLim)
     // See Knuth vol 2, page 102, line 24 of table 1.
     // value of kdluRand doesn't matter much
     const ulong kluRandMul = 1566083941L;
-    const kdluRand = 2531011L;
+    const long kdluRand = 2531011L;
     long lw;
 
     _luSeed = _luSeed * kluRandMul + kdluRand;

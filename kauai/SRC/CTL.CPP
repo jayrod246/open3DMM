@@ -198,7 +198,7 @@ PSCB SCB::PscbNew(PGCB pgcb, ulong grfscb, long val, long valMin, long valMax)
 long SCB::DxpNormal(void)
 {
 #ifdef WIN
-    static _dxp = 0;
+    static int _dxp = 0;
 
     if (_dxp > 0)
         return _dxp;
@@ -215,7 +215,7 @@ long SCB::DxpNormal(void)
 long SCB::DypNormal(void)
 {
 #ifdef WIN
-    static _dyp = 0;
+    static int _dyp = 0;
 
     if (_dyp > 0)
         return _dyp;

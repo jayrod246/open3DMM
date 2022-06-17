@@ -6,6 +6,15 @@ list(APPEND CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake")
 set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
 set(CMAKE_CXX_STANDARD 14)
 
+if(MSVC)
+  #set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /W4")
+  
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /permissive-")
+  # permissive forces C++14 const char* as default for literals
+  # this flag re-enables the auto-conversion for the microsoft compiler
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /Zc:strictStrings-")
+endif()
+
 include(CMakeDependentOption)
 include(TargetChompSources)
 
