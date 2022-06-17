@@ -149,7 +149,7 @@ enum
 
 // Chunk Representation (big version) - fixed element in pggcrp
 // variable part of group element is an rgkid and stn data (the name)
-const kcbMaxCrpbg = klwMax;
+const long kcbMaxCrpbg = klwMax;
 struct CRPBG
 {
     CKI cki;      // chunk id
@@ -211,7 +211,7 @@ const BOM kbomCrpbgBytes = 0xFFFE0000L;
 
 // Chunk Representation (small version) - fixed element in pggcrp
 // variable part of group element is an rgkid and stn data (the name)
-const kcbMaxCrpsm = 0x00FFFFFF;
+const long kcbMaxCrpsm = 0x00FFFFFF;
 const long kcbitGrfcrp = 8;
 const ulong kgrfcrpAll = (1 << kcbitGrfcrp) - 1;
 struct CRPSM
