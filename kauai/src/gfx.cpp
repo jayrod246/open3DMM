@@ -1721,8 +1721,8 @@ void GNV::Dissolve(long crcWidth, long crcHeight, ACR acrFill, PGNV pgnvSrc, RC 
 
 #ifdef IN_80386
                     __asm
-                    {                            // ibExtra = irc % crcWidth;
-                      // pbRow = prgbSrc + (irc / crcWidth) * cbRowSrc;
+                        {                         // ibExtra = irc % crcWidth;
+                         // pbRow = prgbSrc + (irc / crcWidth) * cbRowSrc;
 						mov		edx,irc
 						movzx	eax,dx
 						shr		edx,16
@@ -1731,7 +1731,7 @@ void GNV::Dissolve(long crcWidth, long crcHeight, ACR acrFill, PGNV pgnvSrc, RC 
 						mov		ibExtra,edx
 						add		eax,prgbSrc
 						mov		pbRow,eax
-                    }
+                        }
 #else  //! IN_80386
                     ibExtra = irc % crcWidth;
                     pbRow = prgbSrc + (irc / crcWidth) * cbRowSrc;

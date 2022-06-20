@@ -102,21 +102,21 @@ enum
     kopShuffle,     // shuffles the numbers 0,1,..,a-1 for calls to NextCard
     kopShuffleList, // shuffles the top a values for calls to NextCard
     kopNextCard,    // returns the next value from the shuffled values
-                 // when all values have been used, the values are reshuffled
-    kopMatch, // a is a count of pairs, b is the key, c is the default value
-              // if b matches the first of any of the a pairs, the second
-              // value of the pair is pushed. if not, c is pushed.
-    kopPause,      // pause the script (can be resumed later from C code)
-    kopCopyStr,    // copy a string within the registry
-    kopMoveStr,    // move a string within the registry
-    kopNukeStr,    // delete a string from the registry
-    kopMergeStrs,  // merge a string table into the registry
-    kopScaleTime,  // scale the application clock
-    kopNumToStr,   // convert a number to a decimal string
-    kopStrToNum,   // convert a string to a number
-    kopConcatStrs, // concatenate two strings
-    kopLenStr,     // return the number of characters in the string
-    kopCopySubStr, // copy a piece of the string
+                    // when all values have been used, the values are reshuffled
+    kopMatch,       // a is a count of pairs, b is the key, c is the default value
+                    // if b matches the first of any of the a pairs, the second
+                    // value of the pair is pushed. if not, c is pushed.
+    kopPause,       // pause the script (can be resumed later from C code)
+    kopCopyStr,     // copy a string within the registry
+    kopMoveStr,     // move a string within the registry
+    kopNukeStr,     // delete a string from the registry
+    kopMergeStrs,   // merge a string table into the registry
+    kopScaleTime,   // scale the application clock
+    kopNumToStr,    // convert a number to a decimal string
+    kopStrToNum,    // convert a string to a number
+    kopConcatStrs,  // concatenate two strings
+    kopLenStr,      // return the number of characters in the string
+    kopCopySubStr,  // copy a piece of the string
 
     kopLimSccb
 };
