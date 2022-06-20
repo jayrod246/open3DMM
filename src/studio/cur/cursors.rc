@@ -18,8 +18,8 @@
 // Cursor
 //
 
-IDC_TURNRIGHT2          CURSOR  DISCARDABLE     "TURNRIGT.CUR"
-IDC_TURNLEFT2           CURSOR  DISCARDABLE     "TURNLEFT.cur"
+IDC_TURNRIGHT2          CURSOR  DISCARDABLE     "turnrigt.cur"
+IDC_TURNLEFT2           CURSOR  DISCARDABLE     "turnleft.cur"
 IDC_TURNAROUND          CURSOR  DISCARDABLE     "turnarnd.cur"
 IDC_DEFAULT             CURSOR  DISCARDABLE     "default.cur"
 IDC_HTSPOT3             CURSOR  DISCARDABLE     "hotspot.cur"

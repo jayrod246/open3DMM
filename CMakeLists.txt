@@ -63,10 +63,10 @@ target_include_directories(kcd2-386 PRIVATE $<TARGET_PROPERTY:kauai,INCLUDE_DIRE
 
 add_executable(chelp WIN32 EXCLUDE_FROM_ALL)
 target_sources(chelp PRIVATE
-    "${PROJECT_SOURCE_DIR}/kauai/TOOLS/CHTOP.CPP"
-    "${PROJECT_SOURCE_DIR}/kauai/TOOLS/CHELP.CPP"
-    "${PROJECT_SOURCE_DIR}/kauai/TOOLS/CHELPEXP.CPP"
-    "${PROJECT_SOURCE_DIR}/kauai/TOOLS/CHELP.RC"
+    "${PROJECT_SOURCE_DIR}/kauai/tools/chtop.cpp"
+    "${PROJECT_SOURCE_DIR}/kauai/tools/chelp.cpp"
+    "${PROJECT_SOURCE_DIR}/kauai/tools/chelpexp.cpp"
+    "${PROJECT_SOURCE_DIR}/kauai/tools/chelp.rc"
 )
 target_include_directories(chelp PRIVATE $<TARGET_PROPERTY:kauai,INCLUDE_DIRECTORIES>)
 target_link_libraries(chelp PRIVATE $<TARGET_NAME_IF_EXISTS:kauai>)
@@ -74,15 +74,15 @@ target_link_libraries(chelp PRIVATE $<TARGET_NAME_IF_EXISTS:kauai>)
 # Kauai test applications
 add_executable(ft WIN32 EXCLUDE_FROM_ALL)
 target_sources(ft PRIVATE
-    "${PROJECT_SOURCE_DIR}/kauai/SRC/TEST.CPP"
-    "${PROJECT_SOURCE_DIR}/kauai/SRC/FT.RC"
-    "${PROJECT_SOURCE_DIR}/kauai/SRC/FT.CPP"
+    "${PROJECT_SOURCE_DIR}/kauai/src/test.cpp"
+    "${PROJECT_SOURCE_DIR}/kauai/src/ft.rc"
+    "${PROJECT_SOURCE_DIR}/kauai/src/ft.cpp"
 )
 target_link_libraries(ft PRIVATE kauai)
 
 add_executable(ut EXCLUDE_FROM_ALL)
 target_sources(ut PRIVATE
-    "${PROJECT_SOURCE_DIR}/kauai/SRC/UT.CPP"
+    "${PROJECT_SOURCE_DIR}/kauai/src/ut.cpp"
 )
 target_link_libraries(ut PRIVATE kauai)
 
@@ -94,50 +94,50 @@ target_link_libraries(chomp PRIVATE $<TARGET_NAME_IF_EXISTS:kauai>)
 # Chunk Editor
 add_executable(ched WIN32 EXCLUDE_FROM_ALL)
 target_sources(ched PRIVATE
-    "${PROJECT_SOURCE_DIR}/kauai/TOOLS/CHED.RC"
-    "${PROJECT_SOURCE_DIR}/kauai/TOOLS/CHDOC.CPP"
-    "${PROJECT_SOURCE_DIR}/kauai/TOOLS/CHED.CPP"
-    "${PROJECT_SOURCE_DIR}/kauai/TOOLS/CHGRP.CPP"
-    "${PROJECT_SOURCE_DIR}/kauai/TOOLS/CHHEX.CPP"
-    "${PROJECT_SOURCE_DIR}/kauai/TOOLS/CHMBMP.CPP"
-    "${PROJECT_SOURCE_DIR}/kauai/TOOLS/CHPIC.CPP"
-    "${PROJECT_SOURCE_DIR}/kauai/TOOLS/CHTXT.CPP"
+    "${PROJECT_SOURCE_DIR}/kauai/tools/ched.rc"
+    "${PROJECT_SOURCE_DIR}/kauai/tools/chdoc.cpp"
+    "${PROJECT_SOURCE_DIR}/kauai/tools/ched.cpp"
+    "${PROJECT_SOURCE_DIR}/kauai/tools/chgrp.cpp"
+    "${PROJECT_SOURCE_DIR}/kauai/tools/chhex.cpp"
+    "${PROJECT_SOURCE_DIR}/kauai/tools/chmbmp.cpp"
+    "${PROJECT_SOURCE_DIR}/kauai/tools/chpic.cpp"
+    "${PROJECT_SOURCE_DIR}/kauai/tools/chtxt.cpp"
 )
 target_link_libraries(ched PRIVATE kauai)
 
 # mkmbmp
 add_executable(mkmbmp EXCLUDE_FROM_ALL)
 target_sources(mkmbmp PRIVATE
-    "${PROJECT_SOURCE_DIR}/kauai/TOOLS/MKMBMP.CPP"
+    "${PROJECT_SOURCE_DIR}/kauai/tools/mkmbmp.cpp"
 )
 target_link_libraries(mkmbmp PRIVATE kauai)
 
 # kpack
 add_executable(kpack EXCLUDE_FROM_ALL)
 target_sources(kpack PRIVATE
-    "${PROJECT_SOURCE_DIR}/kauai/TOOLS/KPACK.CPP"
+    "${PROJECT_SOURCE_DIR}/kauai/tools/kpack.cpp"
 )
 target_link_libraries(kpack PRIVATE kauai)
 
 # chmerge
 add_executable(chmerge EXCLUDE_FROM_ALL)
 target_sources(chmerge PRIVATE
-    "${PROJECT_SOURCE_DIR}/kauai/TOOLS/CHMERGE.CPP"
+    "${PROJECT_SOURCE_DIR}/kauai/tools/chmerge.cpp"
 )
 target_link_libraries(chmerge PRIVATE kauai)
 
 # chelpdmp
 add_executable(chelpdmp EXCLUDE_FROM_ALL)
 target_sources(chelpdmp PRIVATE
-    "${PROJECT_SOURCE_DIR}/kauai/TOOLS/CHELPDMP.CPP"
-    "${PROJECT_SOURCE_DIR}/kauai/TOOLS/CHELPEXP.CPP"
+    "${PROJECT_SOURCE_DIR}/kauai/tools/chelpdmp.cpp"
+    "${PROJECT_SOURCE_DIR}/kauai/tools/chelpexp.cpp"
 )
 target_link_libraries(chelpdmp PRIVATE kauai)
 
 # These are only here to ensure configure is rerun when dependencies are generated.
 # This is 
-file(GLOB building-chunk-sources CONFIGURE_DEPENDS "${PROJECT_SOURCE_DIR}/SRC/BUILDING/*.cht")
-file(GLOB studio-chunk-sources CONFIGURE_DEPENDS "${PROJECT_SOURCE_DIR}/SRC/STUDIO/*.cht")
+file(GLOB building-chunk-sources CONFIGURE_DEPENDS "${PROJECT_SOURCE_DIR}/src/building/*.cht")
+file(GLOB studio-chunk-sources CONFIGURE_DEPENDS "${PROJECT_SOURCE_DIR}/src/studio/*.cht")
 
 add_custom_command(
   OUTPUT "${PROJECT_BINARY_DIR}/generated/kauai/src/kcdc_386.h"
@@ -168,74 +168,74 @@ target_sources(kauai
     "${PROJECT_BINARY_DIR}/generated/kauai/src/kcdc_386.h"
     "${PROJECT_BINARY_DIR}/generated/kauai/src/kcd2_386.h"
 
-    "${PROJECT_SOURCE_DIR}/kauai/SRC/APPB.CPP"
-    "${PROJECT_SOURCE_DIR}/kauai/SRC/BASE.CPP"
-    "${PROJECT_SOURCE_DIR}/kauai/SRC/CHCM.CPP"
-    "${PROJECT_SOURCE_DIR}/kauai/SRC/CHSE.CPP"
-    "${PROJECT_SOURCE_DIR}/kauai/SRC/CHUNK.CPP"
-    "${PROJECT_SOURCE_DIR}/kauai/SRC/CLIP.CPP"
-    "${PROJECT_SOURCE_DIR}/kauai/SRC/CLOK.CPP"
-    "${PROJECT_SOURCE_DIR}/kauai/SRC/CMD.CPP"
-    "${PROJECT_SOURCE_DIR}/kauai/SRC/CODEC.CPP"
-    "${PROJECT_SOURCE_DIR}/kauai/SRC/CODKAUAI.CPP"
-    "${PROJECT_SOURCE_DIR}/kauai/SRC/CRF.CPP"
-    "${PROJECT_SOURCE_DIR}/kauai/SRC/CTL.CPP"
-    "${PROJECT_SOURCE_DIR}/kauai/SRC/CURSOR.CPP"
-    "${PROJECT_SOURCE_DIR}/kauai/SRC/DLG.CPP"
-    "${PROJECT_SOURCE_DIR}/kauai/SRC/DOCB.CPP"
-    "${PROJECT_SOURCE_DIR}/kauai/SRC/FILE.CPP"
-    "${PROJECT_SOURCE_DIR}/kauai/SRC/FRAME.RC"
-    "${PROJECT_SOURCE_DIR}/kauai/SRC/GFX.CPP"
-    "${PROJECT_SOURCE_DIR}/kauai/SRC/GOB.CPP"
-    "${PROJECT_SOURCE_DIR}/kauai/SRC/GROUPS.CPP"
-    "${PROJECT_SOURCE_DIR}/kauai/SRC/GROUPS2.CPP"
-    "${PROJECT_SOURCE_DIR}/kauai/SRC/KIDHELP.CPP"
-    "${PROJECT_SOURCE_DIR}/kauai/SRC/KIDSPACE.CPP"
-    "${PROJECT_SOURCE_DIR}/kauai/SRC/KIDWORLD.CPP"
-    "${PROJECT_SOURCE_DIR}/kauai/SRC/LEX.CPP"
-    "${PROJECT_SOURCE_DIR}/kauai/SRC/MBMP.CPP"
-    "${PROJECT_SOURCE_DIR}/kauai/SRC/MBMPGUI.CPP"
-    "${PROJECT_SOURCE_DIR}/kauai/SRC/MIDI.CPP"
-    "${PROJECT_SOURCE_DIR}/kauai/SRC/MIDIDEV.CPP"
-    "${PROJECT_SOURCE_DIR}/kauai/SRC/MIDIDEV2.CPP"
-    "${PROJECT_SOURCE_DIR}/kauai/SRC/MSSIO.CPP"
-    "${PROJECT_SOURCE_DIR}/kauai/SRC/PIC.CPP"
-    "${PROJECT_SOURCE_DIR}/kauai/SRC/REGION.CPP"
-    "${PROJECT_SOURCE_DIR}/kauai/SRC/RTXT.CPP"
-    "${PROJECT_SOURCE_DIR}/kauai/SRC/RTXT2.CPP"
-    "${PROJECT_SOURCE_DIR}/kauai/SRC/SCRCOM.CPP"
-    "${PROJECT_SOURCE_DIR}/kauai/SRC/SCRCOMG.CPP"
-    "${PROJECT_SOURCE_DIR}/kauai/SRC/SCREXE.CPP"
-    "${PROJECT_SOURCE_DIR}/kauai/SRC/SCREXEG.CPP"
-    "${PROJECT_SOURCE_DIR}/kauai/SRC/SNDAM.CPP"
-    "${PROJECT_SOURCE_DIR}/kauai/SRC/SNDM.CPP"
-    "${PROJECT_SOURCE_DIR}/kauai/SRC/SPELL.CPP"
-    "${PROJECT_SOURCE_DIR}/kauai/SRC/STREAM.CPP"
-    "${PROJECT_SOURCE_DIR}/kauai/SRC/TEXT.CPP"
-    "${PROJECT_SOURCE_DIR}/kauai/SRC/TEXTDOC.CPP"
-    "${PROJECT_SOURCE_DIR}/kauai/SRC/UTIL.CPP"
-    "${PROJECT_SOURCE_DIR}/kauai/SRC/UTILCOPY.CPP"
-    "${PROJECT_SOURCE_DIR}/kauai/SRC/UTILERRO.CPP"
-    "${PROJECT_SOURCE_DIR}/kauai/SRC/UTILGLOB.CPP"
-    "${PROJECT_SOURCE_DIR}/kauai/SRC/UTILINT.CPP"
-    "${PROJECT_SOURCE_DIR}/kauai/SRC/UTILMEM.CPP"
-    "${PROJECT_SOURCE_DIR}/kauai/SRC/UTILRND.CPP"
-    "${PROJECT_SOURCE_DIR}/kauai/SRC/UTILSTR.CPP"
-    "${PROJECT_SOURCE_DIR}/kauai/SRC/VIDEO.CPP"
+    "${PROJECT_SOURCE_DIR}/kauai/src/appb.cpp"
+    "${PROJECT_SOURCE_DIR}/kauai/src/base.cpp"
+    "${PROJECT_SOURCE_DIR}/kauai/src/chcm.cpp"
+    "${PROJECT_SOURCE_DIR}/kauai/src/chse.cpp"
+    "${PROJECT_SOURCE_DIR}/kauai/src/chunk.cpp"
+    "${PROJECT_SOURCE_DIR}/kauai/src/clip.cpp"
+    "${PROJECT_SOURCE_DIR}/kauai/src/clok.cpp"
+    "${PROJECT_SOURCE_DIR}/kauai/src/cmd.cpp"
+    "${PROJECT_SOURCE_DIR}/kauai/src/codec.cpp"
+    "${PROJECT_SOURCE_DIR}/kauai/src/codkauai.cpp"
+    "${PROJECT_SOURCE_DIR}/kauai/src/crf.cpp"
+    "${PROJECT_SOURCE_DIR}/kauai/src/ctl.cpp"
+    "${PROJECT_SOURCE_DIR}/kauai/src/cursor.cpp"
+    "${PROJECT_SOURCE_DIR}/kauai/src/dlg.cpp"
+    "${PROJECT_SOURCE_DIR}/kauai/src/docb.cpp"
+    "${PROJECT_SOURCE_DIR}/kauai/src/file.cpp"
+    "${PROJECT_SOURCE_DIR}/kauai/src/frame.rc"
+    "${PROJECT_SOURCE_DIR}/kauai/src/gfx.cpp"
+    "${PROJECT_SOURCE_DIR}/kauai/src/gob.cpp"
+    "${PROJECT_SOURCE_DIR}/kauai/src/groups.cpp"
+    "${PROJECT_SOURCE_DIR}/kauai/src/groups2.cpp"
+    "${PROJECT_SOURCE_DIR}/kauai/src/kidhelp.cpp"
+    "${PROJECT_SOURCE_DIR}/kauai/src/kidspace.cpp"
+    "${PROJECT_SOURCE_DIR}/kauai/src/kidworld.cpp"
+    "${PROJECT_SOURCE_DIR}/kauai/src/lex.cpp"
+    "${PROJECT_SOURCE_DIR}/kauai/src/mbmp.cpp"
+    "${PROJECT_SOURCE_DIR}/kauai/src/mbmpgui.cpp"
+    "${PROJECT_SOURCE_DIR}/kauai/src/midi.cpp"
+    "${PROJECT_SOURCE_DIR}/kauai/src/mididev.cpp"
+    "${PROJECT_SOURCE_DIR}/kauai/src/mididev2.cpp"
+    "${PROJECT_SOURCE_DIR}/kauai/src/mssio.cpp"
+    "${PROJECT_SOURCE_DIR}/kauai/src/pic.cpp"
+    "${PROJECT_SOURCE_DIR}/kauai/src/region.cpp"
+    "${PROJECT_SOURCE_DIR}/kauai/src/rtxt.cpp"
+    "${PROJECT_SOURCE_DIR}/kauai/src/rtxt2.cpp"
+    "${PROJECT_SOURCE_DIR}/kauai/src/scrcom.cpp"
+    "${PROJECT_SOURCE_DIR}/kauai/src/scrcomg.cpp"
+    "${PROJECT_SOURCE_DIR}/kauai/src/screxe.cpp"
+    "${PROJECT_SOURCE_DIR}/kauai/src/screxeg.cpp"
+    "${PROJECT_SOURCE_DIR}/kauai/src/sndam.cpp"
+    "${PROJECT_SOURCE_DIR}/kauai/src/sndm.cpp"
+    "${PROJECT_SOURCE_DIR}/kauai/src/spell.cpp"
+    "${PROJECT_SOURCE_DIR}/kauai/src/stream.cpp"
+    "${PROJECT_SOURCE_DIR}/kauai/src/text.cpp"
+    "${PROJECT_SOURCE_DIR}/kauai/src/textdoc.cpp"
+    "${PROJECT_SOURCE_DIR}/kauai/src/util.cpp"
+    "${PROJECT_SOURCE_DIR}/kauai/src/utilcopy.cpp"
+    "${PROJECT_SOURCE_DIR}/kauai/src/utilerro.cpp"
+    "${PROJECT_SOURCE_DIR}/kauai/src/utilglob.cpp"
+    "${PROJECT_SOURCE_DIR}/kauai/src/utilint.cpp"
+    "${PROJECT_SOURCE_DIR}/kauai/src/utilmem.cpp"
+    "${PROJECT_SOURCE_DIR}/kauai/src/utilrnd.cpp"
+    "${PROJECT_SOURCE_DIR}/kauai/src/utilstr.cpp"
+    "${PROJECT_SOURCE_DIR}/kauai/src/video.cpp"
 
     # Windows implementations
-    $<$<PLATFORM_ID:Windows>:${PROJECT_SOURCE_DIR}/kauai/SRC/APPBWIN.CPP>
-    $<$<PLATFORM_ID:Windows>:${PROJECT_SOURCE_DIR}/kauai/SRC/DLGWIN.CPP>
-    $<$<PLATFORM_ID:Windows>:${PROJECT_SOURCE_DIR}/kauai/SRC/FILEWIN.CPP>
-    $<$<PLATFORM_ID:Windows>:${PROJECT_SOURCE_DIR}/kauai/SRC/FNIWIN.CPP>
-    $<$<PLATFORM_ID:Windows>:${PROJECT_SOURCE_DIR}/kauai/SRC/GFXWIN.CPP>
-    $<$<PLATFORM_ID:Windows>:${PROJECT_SOURCE_DIR}/kauai/SRC/MEMWIN.CPP>
-    $<$<PLATFORM_ID:Windows>:${PROJECT_SOURCE_DIR}/kauai/SRC/MENUWIN.CPP>
-    $<$<PLATFORM_ID:Windows>:${PROJECT_SOURCE_DIR}/kauai/SRC/PICWIN.CPP>
-    $<$<PLATFORM_ID:Windows>:${PROJECT_SOURCE_DIR}/kauai/SRC/GOBWIN.CPP>
+    $<$<PLATFORM_ID:Windows>:${PROJECT_SOURCE_DIR}/kauai/src/appbwin.cpp>
+    $<$<PLATFORM_ID:Windows>:${PROJECT_SOURCE_DIR}/kauai/src/dlgwin.cpp>
+    $<$<PLATFORM_ID:Windows>:${PROJECT_SOURCE_DIR}/kauai/src/filewin.cpp>
+    $<$<PLATFORM_ID:Windows>:${PROJECT_SOURCE_DIR}/kauai/src/fniwin.cpp>
+    $<$<PLATFORM_ID:Windows>:${PROJECT_SOURCE_DIR}/kauai/src/gfxwin.cpp>
+    $<$<PLATFORM_ID:Windows>:${PROJECT_SOURCE_DIR}/kauai/src/memwin.cpp>
+    $<$<PLATFORM_ID:Windows>:${PROJECT_SOURCE_DIR}/kauai/src/menuwin.cpp>
+    $<$<PLATFORM_ID:Windows>:${PROJECT_SOURCE_DIR}/kauai/src/picwin.cpp>
+    $<$<PLATFORM_ID:Windows>:${PROJECT_SOURCE_DIR}/kauai/src/gobwin.cpp>
 
     # Stubs for Visual C++ 2.1 CRT functions
-    "${PROJECT_SOURCE_DIR}/kauai/SRC/stub.cpp"   
+    "${PROJECT_SOURCE_DIR}/kauai/src/stub.cpp"   
 )
 
 target_compile_definitions(kauai PUBLIC
@@ -253,12 +253,12 @@ target_link_libraries(kauai
 add_library(brender)
 target_sources(brender
     PRIVATE
-    "${PROJECT_SOURCE_DIR}/BREN/BWLD.CPP"
-    "${PROJECT_SOURCE_DIR}/BREN/stderr.c"
-    "${PROJECT_SOURCE_DIR}/BREN/stdfile.c"
-    "${PROJECT_SOURCE_DIR}/BREN/stdmem.c"
-    "${PROJECT_SOURCE_DIR}/BREN/TMAP.CPP"
-    "${PROJECT_SOURCE_DIR}/BREN/ZBMP.CPP"
+    "${PROJECT_SOURCE_DIR}/bren/bwld.cpp"
+    "${PROJECT_SOURCE_DIR}/bren/stderr.c"
+    "${PROJECT_SOURCE_DIR}/bren/stdfile.c"
+    "${PROJECT_SOURCE_DIR}/bren/stdmem.c"
+    "${PROJECT_SOURCE_DIR}/bren/tmap.cpp"
+    "${PROJECT_SOURCE_DIR}/bren/zbmp.cpp"
 )
 target_include_directories(brender PUBLIC "${PROJECT_SOURCE_DIR}/BREN/INC")
 target_link_libraries(brender
@@ -269,24 +269,24 @@ target_link_libraries(brender
 add_library(engine)
 target_sources(engine
     PRIVATE
-    "${PROJECT_SOURCE_DIR}/SRC/ENGINE/ACTOR.CPP"
-    "${PROJECT_SOURCE_DIR}/SRC/ENGINE/ACTREDIT.CPP"
-    "${PROJECT_SOURCE_DIR}/SRC/ENGINE/ACTRSAVE.CPP"
-    "${PROJECT_SOURCE_DIR}/SRC/ENGINE/ACTRSND.CPP"
-    "${PROJECT_SOURCE_DIR}/SRC/ENGINE/BKGD.CPP"
-    "${PROJECT_SOURCE_DIR}/SRC/ENGINE/BODY.CPP"
-    "${PROJECT_SOURCE_DIR}/SRC/ENGINE/MODL.CPP"
-    "${PROJECT_SOURCE_DIR}/SRC/ENGINE/MOVIE.CPP"
-    "${PROJECT_SOURCE_DIR}/SRC/ENGINE/MSND.CPP"
-    "${PROJECT_SOURCE_DIR}/SRC/ENGINE/MTRL.CPP"
-    "${PROJECT_SOURCE_DIR}/SRC/ENGINE/SCENE.CPP"
-    "${PROJECT_SOURCE_DIR}/SRC/ENGINE/SREC.CPP"
-    "${PROJECT_SOURCE_DIR}/SRC/ENGINE/TAGL.CPP"
-    "${PROJECT_SOURCE_DIR}/SRC/ENGINE/TAGMAN.CPP"
-    "${PROJECT_SOURCE_DIR}/SRC/ENGINE/TBOX.CPP"
-    "${PROJECT_SOURCE_DIR}/SRC/ENGINE/TDF.CPP"
-    "${PROJECT_SOURCE_DIR}/SRC/ENGINE/TDT.CPP"
-    "${PROJECT_SOURCE_DIR}/SRC/ENGINE/TMPL.CPP"
+    "${PROJECT_SOURCE_DIR}/src/engine/actor.cpp"
+    "${PROJECT_SOURCE_DIR}/src/engine/actredit.cpp"
+    "${PROJECT_SOURCE_DIR}/src/engine/actrsave.cpp"
+    "${PROJECT_SOURCE_DIR}/src/engine/actrsnd.cpp"
+    "${PROJECT_SOURCE_DIR}/src/engine/bkgd.cpp"
+    "${PROJECT_SOURCE_DIR}/src/engine/body.cpp"
+    "${PROJECT_SOURCE_DIR}/src/engine/modl.cpp"
+    "${PROJECT_SOURCE_DIR}/src/engine/movie.cpp"
+    "${PROJECT_SOURCE_DIR}/src/engine/msnd.cpp"
+    "${PROJECT_SOURCE_DIR}/src/engine/mtrl.cpp"
+    "${PROJECT_SOURCE_DIR}/src/engine/scene.cpp"
+    "${PROJECT_SOURCE_DIR}/src/engine/srec.cpp"
+    "${PROJECT_SOURCE_DIR}/src/engine/tagl.cpp"
+    "${PROJECT_SOURCE_DIR}/src/engine/tagman.cpp"
+    "${PROJECT_SOURCE_DIR}/src/engine/tbox.cpp"
+    "${PROJECT_SOURCE_DIR}/src/engine/tdf.cpp"
+    "${PROJECT_SOURCE_DIR}/src/engine/tdt.cpp"
+    "${PROJECT_SOURCE_DIR}/src/engine/tmpl.cpp"
 )
 target_include_directories(engine PUBLIC
   $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/INC>)
@@ -296,35 +296,35 @@ target_link_libraries(engine PUBLIC kauai brender)
 add_executable(studio WIN32)
 target_sources(studio
     PRIVATE
-    "${PROJECT_SOURCE_DIR}/SRC/STUDIO/APE.CPP"
-    "${PROJECT_SOURCE_DIR}/SRC/STUDIO/BROWSER.CPP"
-    "${PROJECT_SOURCE_DIR}/SRC/STUDIO/ESL.CPP"
-    "${PROJECT_SOURCE_DIR}/SRC/STUDIO/MMINSTAL.CPP"
-    "${PROJECT_SOURCE_DIR}/SRC/STUDIO/POPUP.CPP"
-    "${PROJECT_SOURCE_DIR}/SRC/STUDIO/PORTF.CPP"
-    "${PROJECT_SOURCE_DIR}/SRC/STUDIO/SCNSORT.CPP"
-    "${PROJECT_SOURCE_DIR}/SRC/STUDIO/SPLOT.CPP"
-    "${PROJECT_SOURCE_DIR}/SRC/STUDIO/STDIOBRW.CPP"
-    "${PROJECT_SOURCE_DIR}/SRC/STUDIO/STDIOSCB.CPP"
-    "${PROJECT_SOURCE_DIR}/SRC/STUDIO/STUDIO.CPP"
-    "${PROJECT_SOURCE_DIR}/SRC/STUDIO/TATR.CPP"
-    "${PROJECT_SOURCE_DIR}/SRC/STUDIO/TGOB.CPP"
-    "${PROJECT_SOURCE_DIR}/SRC/STUDIO/UTEST.CPP"
-    "${PROJECT_SOURCE_DIR}/SRC/STUDIO/UTEST.RC"
-    "${PROJECT_SOURCE_DIR}/SRC/STUDIO/UTEST.RC2"
+    "${PROJECT_SOURCE_DIR}/src/studio/ape.cpp"
+    "${PROJECT_SOURCE_DIR}/src/studio/browser.cpp"
+    "${PROJECT_SOURCE_DIR}/src/studio/esl.cpp"
+    "${PROJECT_SOURCE_DIR}/src/studio/mminstal.cpp"
+    "${PROJECT_SOURCE_DIR}/src/studio/popup.cpp"
+    "${PROJECT_SOURCE_DIR}/src/studio/portf.cpp"
+    "${PROJECT_SOURCE_DIR}/src/studio/scnsort.cpp"
+    "${PROJECT_SOURCE_DIR}/src/studio/splot.cpp"
+    "${PROJECT_SOURCE_DIR}/src/studio/stdiobrw.cpp"
+    "${PROJECT_SOURCE_DIR}/src/studio/stdioscb.cpp"
+    "${PROJECT_SOURCE_DIR}/src/studio/studio.cpp"
+    "${PROJECT_SOURCE_DIR}/src/studio/tatr.cpp"
+    "${PROJECT_SOURCE_DIR}/src/studio/tgob.cpp"
+    "${PROJECT_SOURCE_DIR}/src/studio/utest.cpp"
+    "${PROJECT_SOURCE_DIR}/src/studio/utest.rc"
+    "${PROJECT_SOURCE_DIR}/src/studio/utest.rc2"
 )
 target_include_directories(studio
   PUBLIC $<TARGET_PROPERTY:engine,INCLUDE_DIRECTORIES>
-  "${PROJECT_SOURCE_DIR}/SRC")
+  "${PROJECT_SOURCE_DIR}/src")
 target_chomp_sources(studio
-  "${PROJECT_SOURCE_DIR}/SRC/STUDIO/UTEST.CHT"
-  "${PROJECT_SOURCE_DIR}/SRC/STUDIO/STUDIO.CHT"
-  "${PROJECT_SOURCE_DIR}/SRC/BUILDING/BLDGHD.CHT"
-  "${PROJECT_SOURCE_DIR}/SRC/BUILDING/BUILDING.CHT"
-  "${PROJECT_SOURCE_DIR}/SRC/HELPAUD/HELPAUD.CHT"
-  "${PROJECT_SOURCE_DIR}/SRC/HELP/HELP.CHT"
-  "${PROJECT_SOURCE_DIR}/SRC/SHARED/SHARED.CHT"
-  "${PROJECT_SOURCE_DIR}/SRC/SHARED/SHARECD.CHT")
+  "${PROJECT_SOURCE_DIR}/src/studio/utest.cht"
+  "${PROJECT_SOURCE_DIR}/src/studio/studio.cht"
+  "${PROJECT_SOURCE_DIR}/src/building/bldghd.cht"
+  "${PROJECT_SOURCE_DIR}/src/building/building.cht"
+  "${PROJECT_SOURCE_DIR}/src/helpaud/helpaud.cht"
+  "${PROJECT_SOURCE_DIR}/src/help/help.cht"
+  "${PROJECT_SOURCE_DIR}/src/shared/shared.cht"
+  "${PROJECT_SOURCE_DIR}/src/shared/sharecd.cht")
 
 target_link_libraries(studio PRIVATE engine)
 set_property(TARGET studio PROPERTY OUTPUT_NAME 3dmovie)
