@@ -1391,8 +1391,8 @@ bool APPB::FSetProp(long prid, long lw)
                 return fFalse;
             }
         }
-#else //! WIN
-      // REVIEW shonk: Mac: implement
+#else  //! WIN
+       // REVIEW shonk: Mac: implement
 #endif //! WIN
         _fFullScreen = FPure(lw);
         break;
@@ -1402,8 +1402,8 @@ bool APPB::FSetProp(long prid, long lw)
         if (FPure(IsZoomed(vwig.hwndApp)) == FPure(lw))
             break;
         return FPure(ShowWindow(vwig.hwndApp, lw ? SW_SHOWMAXIMIZED : SW_SHOWNORMAL));
-#else //! WIN
-      // REVIEW shonk: Mac: implement
+#else  //! WIN
+       // REVIEW shonk: Mac: implement
         return FPure(lw);
 #endif //! WIN
 
@@ -1439,8 +1439,8 @@ bool APPB::FGetProp(long prid, long *plw)
     case kpridMaximized:
 #ifdef WIN
         *plw = FPure(IsZoomed(vwig.hwndApp));
-#else //! WIN
-      // REVIEW shonk: Mac: implement
+#else  //! WIN
+       // REVIEW shonk: Mac: implement
         *plw = fTrue;
 #endif //! WIN
         break;

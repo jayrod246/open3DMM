@@ -70,17 +70,19 @@ use INF and Section in the RunDll.exe setupx.dll command line below
 
 // RUNDLL.EXE - SETUPX.DLL InstallHinfSection reboot modes
 
-#define HOW_NEVER_REBOOT "0" // Whatever happens the machine will not be rebooted.
-                             // Its up to the client to determin if the machine should
-                             // be rebooted. For setup, this means that there is a file
-                             // c:\windows\wininit.ini that is not zero bytes in size.
+#define HOW_NEVER_REBOOT                                                                                               \
+    "0" // Whatever happens the machine will not be rebooted.
+        // Its up to the client to determin if the machine should
+        // be rebooted. For setup, this means that there is a file
+        // c:\windows\wininit.ini that is not zero bytes in size.
 
 #define HOW_ALWAYS_SILENT_REBOOT "1" // The user will not be asked, the machine will just reboot - MIS win (?)
 
 #define HOW_ALWAYS_PROMPT_REBOOT "2" // The user will be asked to Reboot the machine, Yes/No.
 
-#define HOW_SILENT_REBOOT "3" // If setup determins that we have to reboot, we will with
-                              // no user interaction
+#define HOW_SILENT_REBOOT                                                                                              \
+    "3" // If setup determins that we have to reboot, we will with
+        // no user interaction
 
 #define HOW_PROMPT_REBOOT "4" // If setup determins that we have to reboot, we will ask first Yes/No.
 
@@ -352,8 +354,8 @@ DWORD SETUPAPI dwGetDWfromValue(BYTE *pBuf, DWORD dwType)
     case REG_EXPAND_SZ: // A null-terminated string that contains unexpanded references to environment variables (for
                         // example, "%PATH%"). It will be a Unicode or ANSI string depending on whether you use the
                         // Unicode or ANSI functions.
-    case REG_SZ: // A null-terminated string. It will be a Unicode or ANSI string depending on whether you use the
-                 // Unicode or ANSI functions.
+    case REG_SZ:       // A null-terminated string. It will be a Unicode or ANSI string depending on whether you use the
+                       // Unicode or ANSI functions.
     case REG_MULTI_SZ: // An array of null-terminated strings, terminated by two null characters.
         dwRet = atol(pBuf);
         break;

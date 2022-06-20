@@ -620,7 +620,7 @@ BOOL _loadds WINAPI OnQueryNewPalette(HWND hWnd)
         {
             hDC = GetDC(hWnd);
             hOldPal = SelectPalette(hDC, hPal, FALSE); //(lpGetSenState()->fMediaPalette)? TRUE :  FALSE);  // Select
-                                                       //our palette as foreground palette if not MCI device is open
+                                                       // our palette as foreground palette if not MCI device is open
             i = RealizePalette(hDC);                   // If realization changes ...
             ReleaseDC(hWnd, hDC);
         }

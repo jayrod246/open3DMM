@@ -76,26 +76,26 @@ void ClearPb(void *pv, long cb)
 #ifdef IN_80386
 
     __asm
-    { // Setup the registers for using REP STOS instruction to set memory.
-      // NOTE: Alignment does not effect the speed of STOS.
-      //
-      // edi -> memory to set
-      // eax = value to store in destination
-      // direction flag is clear for auto-increment
+        {// Setup the registers for using REP STOS instruction to set memory.
+         // NOTE: Alignment does not effect the speed of STOS.
+         //
+         // edi -> memory to set
+         // eax = value to store in destination
+         // direction flag is clear for auto-increment
 
 		mov		edi,pv
 		xor		eax,eax
 
-            // clear the longs
+             // clear the longs
 		mov		ecx,cb
 		shr		ecx,2
 		rep		stosd
 
-            // clear the extra bytes
+             // clear the extra bytes
 		mov		ecx,cb
 		and		ecx,3
 		rep		stosb
-    }
+        }
 
 #else //! IN_80386
 
@@ -530,25 +530,24 @@ void CopyPb(void *pv1, void *pv2, long cb)
 #ifdef IN_80386
 
     __asm
-    {
-        // Setup the registers for using REP MOVS instruction to move memory.
-        //
-        // esi -> memory to move
-        // edi -> destination of move
-        // direction flag is clear for auto-increment
+        {// Setup the registers for using REP MOVS instruction to move memory.
+         //
+         // esi -> memory to move
+         // edi -> destination of move
+         // direction flag is clear for auto-increment
 		mov		esi,pv1
 		mov		edi,pv2
 
-            // move the longs
+             // move the longs
 		mov		ecx,cb
 		shr		ecx,2
 		rep		movsd
 
-            // move the extra bytes
+             // move the extra bytes
 		mov		ecx,cb
 		and		ecx,3
 		rep		movsb
-    }
+        }
 
 #else //! IN_80386
 

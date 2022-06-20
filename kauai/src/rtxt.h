@@ -253,7 +253,7 @@ class TXRD : public TXRD_PAR
     {
         ulong spcp; // sprm in the high byte and cp in the low 3 bytes
         long lw;    // the associated value - meaning depends on the sprm,
-                 // but 0 is _always_ the default
+                    // but 0 is _always_ the default
     };
 
     // sprm, value, mask triple

@@ -175,7 +175,7 @@ inline void ResumeAssertValid(void)
     void AssertValid(ulong grf);
 #define NOCOPY(cls)                                                                                                    \
   private:                                                                                                             \
-    cls &operator=(cls &robj)                                                                                     \
+    cls &operator=(cls &robj)                                                                                          \
     {                                                                                                                  \
         __AssertOnCopy();                                                                                              \
         return *this;                                                                                                  \
