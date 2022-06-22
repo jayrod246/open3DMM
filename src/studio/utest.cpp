@@ -2121,6 +2121,12 @@ void APP::_ParseCommandLine(void)
     achar *pchT;
     FNI fniT;
 
+    // Get path to current directory
+    GetCurrentDirectory(kcchMaxSz, sz);
+    stn.SetSz(sz);
+    if (!_fniCurrentDir.FBuildFromPath(&stn, kftgDir))
+        Bug("Bad current directory?");
+
     // Get path to exe
     GetModuleFileName(NULL, sz, kcchMaxSz);
     stn.SetSz(sz);
@@ -2292,14 +2298,13 @@ bool APP::_FFindMsKidsDir(void)
         while (_fniMsKidsDir.FUpDir(pvNil, ffniMoveToDir))
             ;
         */
-        /* REVIEW ***** (peted): if you check for the MSKIDS dir first, then
-            you don't have to reset the dir string before presenting the error
-            to the user */
-        stn = PszLit("Microsoft Kids"); // REVIEW *****
-        if (!_fniMsKidsDir.FDownDir(&stn, ffniMoveToDir))
+
+        if (!_FFindMsKidsDirAt(&_fniMsKidsDir))
         {
-            stn = PszLit("MSKIDS"); // REVIEW *****
-            if (!_fniMsKidsDir.FDownDir(&stn, ffniMoveToDir))
+            _fniMsKidsDir = _fniCurrentDir;
+            if (!_fniMsKidsDir.FSetLeaf(pvNil, kftgDir))
+                return fFalse;
+            if (!_FFindMsKidsDirAt(&_fniMsKidsDir))
             {
                 Warn("Can't find Microsoft Kids or MSKIDS.");
                 stn = PszLit("Microsoft Kids");
@@ -2310,6 +2315,31 @@ bool APP::_FFindMsKidsDir(void)
     }
 
     AssertPo(&_fniMsKidsDir, ffniDir);
+    return fTrue;
+}
+
+/***************************************************************************
+    Finds Microsoft Kids directory at a given path. Modifies the path to
+    descend into the directory. Returns true if successful.
+***************************************************************************/
+bool APP::_FFindMsKidsDirAt(FNI *path)
+{
+    STN stn;
+
+    /* REVIEW ***** (peted): if you check for the MSKIDS dir first, then
+        you don't have to reset the dir string before presenting the error
+        to the user */
+    stn = PszLit("Microsoft Kids"); // REVIEW *****
+    if (!path->FDownDir(&stn, ffniMoveToDir))
+    {
+        stn = PszLit("MSKIDS"); // REVIEW *****
+        if (!path->FDownDir(&stn, ffniMoveToDir))
+        {
+            return fFalse;
+        }
+    }
+
+    AssertPo(path, ffniDir);
     return fTrue;
 }
 

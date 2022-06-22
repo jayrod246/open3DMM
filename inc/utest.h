@@ -115,6 +115,7 @@ class APP : public APP_PAR
     STN _stnProductShort; // Short version of product name
     STN _stnUser;         // User's name
     long _sidProduct;
+    FNI _fniCurrentDir; // fni of current working directory
     FNI _fniExe;        // fni of this executable file
     FNI _fniMsKidsDir;  // e.g., \mskids
     FNI _fniUsersDir;   // e.g., \mskids\users
@@ -157,6 +158,7 @@ class APP : public APP_PAR
     bool _FFindProductDir(PGST pgst);
     bool _FQueryProductExists(STN *pstnLong, STN *pstnShort, FNI *pfni);
     bool _FFindMsKidsDir(void);
+    bool _FFindMsKidsDirAt(FNI *path);
     bool _FCantFindFileDialog(PSTN pstn);
     bool _FGenericError(PSTZ message);
     bool _FGenericError(PSTN message);
