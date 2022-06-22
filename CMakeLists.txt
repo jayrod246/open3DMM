@@ -18,7 +18,7 @@ endif()
 include(CMakeDependentOption)
 include(TargetChompSources)
 
-find_package(AudioMan REQUIRED)
+find_package(AudioMan)
 find_package(BRender REQUIRED)
 
 # Options
@@ -60,6 +60,17 @@ target_include_directories(kcdc-386 PRIVATE $<TARGET_PROPERTY:kauai,INCLUDE_DIRE
 add_executable(kcd2-386 EXCLUDE_FROM_ALL)
 target_sources(kcd2-386 PRIVATE "${PROJECT_SOURCE_DIR}/kauai/src/kcd2_386.c")
 target_include_directories(kcd2-386 PRIVATE $<TARGET_PROPERTY:kauai,INCLUDE_DIRECTORIES>)
+
+if (NOT TARGET 3DMMForever::AudioMan)
+  add_library(audioman)
+  add_library(3DMMForever::AudioMan ALIAS audioman)
+  target_include_directories(audioman PUBLIC
+      "${PROJECT_SOURCE_DIR}/kauai/src"
+  )
+  target_sources(audioman PRIVATE
+      "${PROJECT_SOURCE_DIR}/audioman/audioman.cpp"
+  )
+endif()
 
 add_executable(chelp WIN32 EXCLUDE_FROM_ALL)
 target_sources(chelp PRIVATE
