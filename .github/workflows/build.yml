@@ -9,7 +9,7 @@ jobs:
         uses: actions/checkout@v3
       - name: Install VCVars
         shell: pwsh
-        run: Install-Module -Name VCVars
+        run: Install-Module -Name VCVars -Force
       - name: Configure project to compile
         shell: pwsh
         run: |
