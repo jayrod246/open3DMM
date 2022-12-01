@@ -1,64 +1,32 @@
-# Microsoft 3D Movie Maker
+# 3DMMForever
 
-Released in 1995, this is the original source code to the Microsoft 3D Movie Maker project, now released
-under the [MIT license](LICENSE) as open source.
+_Making 3D Movie Maker accessible to all and preserving it for generations to come._
 
 ![3D Movie Maker](https://github.com/microsoft/Microsoft-3D-Movie-Maker/blob/main/IMG/3dmovie.jpg?raw=true)
 
-## Building instructions
+## Goals
 
-This project is unlikely to build successfully under modern hardware/software, but you can get started with compilation and get partial completed binaries. Here's what will get you going. Thanks to Mac Sample for their work on getting this far!
+Our mission is to create a version of the original 3D Movie Maker software with these goals in mind:
 
-- Make sure this repo is checked out to a folder with a short name, ideally right on the root of a drive (i.e. C:\3d).
-- You will need Visual C++ 2.1's dev tools (located under MSVC21\BIN on its installer disk) on your path. Modern compilers dislike some of the pre C++98 conventions.
-- Set these environment variables:
-  - set MSVCNT_ROOT=C:\msvc21
-  - set PATH=%MSVCNT_ROOT%\bin;%PATH%;
-  - set INCLUDE=%MSVCNT_ROOT%\include
-  - set LIB=%MSVCNT_ROOT%\lib
-- From the root of this repo, run `setvars.bat` you can change the values in this script to change what your build will target.
-  - Environment variables used by the build:
-    - SOC_ROOT: Path to root of repo (where this README.md is)
-    - KAUAI_ROOT: Path to Kauai: %SOC_ROOT%\kauai
-    - ARCH: Operating system to build for
-      - WIN: Windows
-      - MAC: Macintosh 68k
-    - INCLUDE: Set to the MSVC include directories, plus:
-      - %SOC_ROOT%\INC
-      - %SOC_ROOT%\BREN\INC
-      - %SOC_ROOT%\SRC
-      - %KAUAI_ROOT%\SRC
-    - UNICODE: If set to non-empty, build Unicode instead of ANSI
-    - TYPE: Sets build type
-      - DAY: Debug, incremental (daily?)
-      - HOME: Debug, not incremental
-      - SHIP: Release
-      - DBSHIP: Release, with linker debug output
-    - BLD_TYPE_DIR: Name of directory under OBJ to place binaries. **This will be set automatically by the Kauai makefiles.**
-      - WINS for ANSI release builds
-      - WINUS for Unicode release builds
-      - WIND for ANSI debug builds
-      - WINUD for Unicode debug builds
-    - CHIP: Set to use optimized assembly language implementations of some functions in Kauai
-      - IN_80386: Intel 80386
-      - MC_68020: Motorola 68020 (for Macintosh)
-      - If not set, just use the C implementation
-- Locate and place font files (see [FONTS.md](FONTS.md))
-- Build Kauai
-  - `cd %SOC_ROOT%\kauai`
-  - `nmake all`
-- Build 3D Movie Maker
-  - `cd %SOC_ROOT%`
-  - `nmake all`
-- Create a distribution directory that will be usable as-is
-  - `nmake dist`
-- Now you can run 3DMOVIE.EXE in the "dist" subdirectory and it should run without errors.
-- Optionally, generate a release binary in dist, using the current version number in version.def (requires a "7z" binary in the path)
-  - `nmake zip`
+- Includes the original feature set, 640x480 UI, kidspace, and graphics.
+- Builds with modern open source tools.
+- Runs on multiple additional platforms including MacOS and Linux.
+- Ensure movie files produced in 3DMMForever can play in the original 3DMM.
+  - Reduced quality is OK.
+- Ensure movie files produced with the original 3DMM can playback in true form.
+- Integrates [v3dmm](https://twitter.com/Foone/status/1307750230679412736).
+- Enhancements remain light and preserve backwards compatibility.
+  - Heavier enhnacements will be reserved for [3DMMPlus](#3dmmplus).
 
-### CMake Building Instruction
+## About
 
-With this current CMake change, CMake 3.23 and Visual Studio 2022 are required.
+Released by Microsoft in 1995, 3D Movie Maker (3DMM) is a creativity program originally designed for kids that allows users to create 3D animated movies through a simple user interface using a wide assortment of included scenes, 3D models, sounds and music. Users can place, animate and otherwise manipulate 3D models using simple mouse movements and drags. They can also record and import their own sound files. Finished movies can be saved and shared with others. The program also includes a "kidspace" in the form a movie theater that can be navigated around where a user can find movie making tutorials, and inspiration.
+
+In May 2022, Microsoft released the original source code of 3DMM under the [MIT license](LICENSE) as open source. Which is how 3DMMForever became possible!
+
+## Build instructions
+
+CMake 3.23 and Visual Studio 2022 are required.
 
 To setup an environment quickly, one can install
 [VCVars](https://github.com/bruxisma/VCVars) for powershell and use
@@ -92,10 +60,25 @@ show files inside of visual studio correctly (This will be added later)
 
 ## Contributing
 
-The source files in this repo are for historical reference and will be kept static, and this repository will
-be archived. Feel free to fork this repo and experiment.
+3DMMForever and 3DMMPlus will not be possible without an enthusiastic open source developer community backing it.
 
-## Code cleanup
+We're working on a set of contribution guidelines that we will be using going forward.
+
+## 3DMMPlus
+
+3DMMPlus is a future fork of 3DMMForever that will be created when we've finished the porting work to MacOS and Linux. The sky will be the limit with 3DMMPlus! Our mission will be to create a heavily enhanced version of 3DMM that:
+
+- Has a flexible full color UI that looks great at modern resolutions.
+- Has a modern full color 3D renderer with lightning, shading, moveable camera, and more.
+- Produces a new enhanced file type.
+- Can import 3MM files and play them back as they were originally created.
+- Maintains a strong consideration for and familiarity with the original 3DMM’s UI decisions and approach.
+
+## Legal stuff
+
+The following sections have been carried over from the original 3D Movie Maker [GitHub repository](https://github.com/microsoft/Microsoft-3D-Movie-Maker) released by Microsoft in May 2022.
+
+### Code cleanup
 
 This code was restored from the Microsoft corporate archives and cleared for release.
 
@@ -105,7 +88,7 @@ This code was restored from the Microsoft corporate archives and cleared for rel
   have been excluded
 - The code does not build with today's engineering tools, and is released as-is.
 
-## Trademarks
+### Trademarks
 
 This project may contain trademarks or logos for projects, products, or services. Authorized use of Microsoft 
 trademarks or logos is subject to and must follow 
@@ -125,5 +108,3 @@ The way most things were built at the time.
 First, he wrote the manual.  The full documentation
 That served as the spec.  Then the coding started.
 ```
-
-
