@@ -1,0 +1,23 @@
+name: build
+on: push
+jobs:
+  compile:
+    name: Compile project
+    runs-on: windows-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      - name: Install VCVars
+        shell: pwsh
+        run: Install-Module -Name VCVars -Force
+      - name: Compile
+        shell: pwsh
+        run: |
+          pushvc (invoke-vcvars -TargetArch x86 -HostArch AMD64)
+          cmake --preset x86:msvc:debug
+          cmake --build build
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: 3D-Movie-Maker
+          path: build/
