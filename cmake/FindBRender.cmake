@@ -11,13 +11,13 @@ include(FindPackageHandleStandardArgs)
 foreach (name IN ITEMS BRFMMXR BRFWMXR BRZBMXR)
   foreach (cfg IN ITEMS DEBUG RELEASE RELWITHDEBINFO MINSIZEREL)
     set(variable ${CMAKE_FIND_PACKAGE_NAME}_${name}_${cfg}_LIBRARY)
-    set(suffix "S")
+    set(suffix "s")
     if (${cfg} STREQUAL "DEBUG")
-      set(suffix "D")
+      set(suffix "d")
     endif()
     find_library(${variable}
       NAMES ${name}
-      PATHS "${PROJECT_SOURCE_DIR}/ELIB/WIN${suffix}"
+      PATHS "${PROJECT_SOURCE_DIR}/elib/win${suffix}"
       NO_DEFAULT_PATH
       NO_PACKAGE_ROOT_PATH
       NO_CMAKE_PATH
