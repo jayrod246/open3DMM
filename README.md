@@ -2,7 +2,7 @@
 
 _Making 3D Movie Maker accessible to all and preserving it for generations to come._
 
-![3D Movie Maker](https://github.com/microsoft/Microsoft-3D-Movie-Maker/blob/main/IMG/3dmovie.jpg?raw=true)
+![3D Movie Maker](https://github.com/microsoft/Microsoft-3D-Movie-Maker/blob/main/img/3dmovie.jpg?raw=true)
 
 ## Goals
 

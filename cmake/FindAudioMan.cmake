@@ -2,7 +2,7 @@ include(FindPackageHandleStandardArgs)
 
 find_library(${CMAKE_FIND_PACKAGE_NAME}_LIBRARY
   NAMES AUDIOS
-  PATHS "${PROJECT_SOURCE_DIR}/kauai/ELIB/WINS"
+  PATHS "${PROJECT_SOURCE_DIR}/kauai/elib/wins"
   NO_DEFAULT_PATH
   NO_PACKAGE_ROOT_PATH
   NO_CMAKE_PATH
