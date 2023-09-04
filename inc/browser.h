@@ -87,7 +87,7 @@ struct TFC
         };
         struct
         {
-            CTG ctg;
+            CTG _;
             CHID chid;
         };
     };
@@ -270,8 +270,8 @@ struct THD
         TAG tag; // TAG pointing to content
         struct
         {
-            long lwFill1; // sid
-            long lwFill2; // pcrf
+            long sid; // sid
+            long pcrf; // pcrf
             ulong grfontMask;
             ulong grfont;
         };
