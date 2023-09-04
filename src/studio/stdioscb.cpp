@@ -11,7 +11,7 @@
  *
 \*****************************************************************************/
 
-#include "soc.h"
+#include "core/soc.h"
 #include "studio.h"
 ASSERTNAME
 

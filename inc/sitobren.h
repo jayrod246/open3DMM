@@ -6,7 +6,7 @@
 
 #include <stdio.h>
 #include "util.h"
-#include "soc.h"     // Needs knowledge of Socrates data structs
+#include "core/soc.h"     // Needs knowledge of Socrates data structs
 #include "tyModel.h" // API for SoftImage db lib
 #include "dkfilter.h"
 #include "tySceneT.h"

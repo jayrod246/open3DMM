@@ -14,7 +14,7 @@
 #ifndef STUDIO_H
 #define STUDIO_H
 
-#include "soc.h"
+#include "core/soc.h"
 #include "kidgsdef.h"
 #include "stdiodef.h"
 #include "buildgob.h"

@@ -2,7 +2,7 @@
 // Microsoft Visual C++ generated include file.
 // Used by utest.rc
 //
-#include "socdef.h"
+#include "core/socdef.h"
 
 #define stidAppName 1
 #define stidPortNameLabel 2

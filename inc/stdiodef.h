@@ -15,7 +15,7 @@
 // Define this flag to enable frame-per-second display code
 // #define SHOW_FPS
 
-#include "socdef.h"
+#include "core/socdef.h"
 #include "utestres.h"
 
 //
