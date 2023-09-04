@@ -11,6 +11,7 @@
 ***************************************************************************/
 #include "studio.h"
 #include "commctrl.h"
+#include "kauai-glue.h"
 
 ASSERTNAME
 
