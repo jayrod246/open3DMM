@@ -102,29 +102,7 @@ void APP::Run(ulong grfapp, ulong grfgob, long ginDef)
         away anyway */
 
     _CleanupTemp();
-
-    __try
-    {
-        APP_PAR::Run(grfapp, grfgob, ginDef);
-    }
-    __except (UnhandledExceptionFilter(GetExceptionInformation()))
-    {
-        PDLG pdlg;
-
-        pdlg = DLG::PdlgNew(dlidAbnormalExit, pvNil, pvNil);
-        if (pdlg != pvNil)
-        {
-            pdlg->IditDo();
-            ReleasePpo(&pdlg);
-        }
-
-        _fQuit = fTrue;
-        MVU::RestoreKeyboardRepeat();
-#ifdef WIN
-        ClipCursor(NULL);
-#endif // WIN
-        _CleanUp();
-    }
+    APP_PAR::Run(grfapp, grfgob, ginDef);
 }
 
 /***************************************************************************
@@ -278,6 +256,7 @@ bool APP::_FInit(ulong grfapp, ulong grfgob, long ginDef)
     /* Ensure default font.  Do it here just so we get the error reported
         early. */
     OnnDefVariable();
+
 
     if (!_FInitKidworld())
     {
