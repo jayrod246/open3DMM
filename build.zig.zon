@@ -1,0 +1,14 @@
+.{
+    .name = "open3dmm",
+    .version = "0.0.0",
+    .dependencies = .{
+        .@"open3dmm-core" = .{
+            .url = "https://github.com/jayrod246/open3DMM-core/archive/refs/heads/main.tar.gz",
+            .hash = "1220ea5d26410ed8deee79ae59db9c78ac046815d9c5a68b08962aef9aafdeb925eb",
+        },
+        .resinator = .{
+            .url = "https://github.com/squeek502/resinator/archive/refs/heads/master.tar.gz",
+            .hash = "1220fe8c03f7dffe66b1436036cfae81e0ff845142dad02feb467692a82acf087d8e",
+        },
+    },
+}
