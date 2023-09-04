@@ -8,7 +8,7 @@
         },
         .resinator = .{
             .url = "https://github.com/squeek502/resinator/archive/refs/heads/master.tar.gz",
-            .hash = "1220fe8c03f7dffe66b1436036cfae81e0ff845142dad02feb467692a82acf087d8e",
+            .hash = "1220a1807d8bdca98fb744a30889eddd7d70ed4310b7e3296c67b7730799988d37cc",
         },
     },
 }
