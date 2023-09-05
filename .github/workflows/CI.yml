@@ -14,7 +14,7 @@ jobs:
     if: github.repository_owner == 'jayrod246'
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
+        os: [windows-latest]
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v3
@@ -29,27 +29,21 @@ jobs:
       - run: zig version
       - run: zig env
 
-      - name: Build
-        run: zig build
+      # - name: Build
+      #   run: zig build
 
       # - name: Run Tests
       #   run: zig build test
 
       - name: Build artifacts
-        if: ${{ matrix.os == 'ubuntu-latest' }}
+        if: ${{ matrix.os == 'windows-latest' }}
         # future: build for more targets
         run: |
-          declare -a targets=("x86-windows")
-          mkdir -p "artifacts/"
-
-          for target in "${targets[@]}"; do
-            mkdir -p artifacts/$target
-            echo "Building target ${target}..."
-            zig build -Dtarget=${target}-gnu -Doptimize=ReleaseSafe --prefix artifacts/${target}/
-          done
+          mkdir "artifacts/x86-windows"
+          zig build -Doptimize=ReleaseSafe --prefix artifacts/x86-windows/
 
       - name: Upload artifacts
-        if: ${{ matrix.os == 'ubuntu-latest' }}
+        if: ${{ matrix.os == 'windows-latest' }}
         uses: actions/upload-artifact@v3
         with:
           name: open3DMM-build
