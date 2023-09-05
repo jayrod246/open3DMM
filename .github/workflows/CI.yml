@@ -1,0 +1,56 @@
+# refer to https://github.com/zigtools/zls/blob/master/.github/workflows/main.yml
+
+name: CI
+
+on:
+  push:
+    branches: ["main", "workflows"]
+  schedule:
+    - cron: "0 0 * * *"
+  workflow_dispatch:
+
+jobs:
+  build:
+    if: github.repository_owner == 'jayrod246'
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: "main"
+          fetch-depth: 0
+          submodules: true
+      - uses: goto-bus-stop/setup-zig@v2
+        with:
+          version: master
+
+      - run: zig version
+      - run: zig env
+
+      - name: Build
+        run: zig build
+
+      # - name: Run Tests
+      #   run: zig build test
+
+      - name: Build artifacts
+        if: ${{ matrix.os == 'ubuntu-latest' }}
+        # future: build for more targets
+        run: |
+          declare -a targets=("x86-windows")
+          mkdir -p "artifacts/"
+
+          for target in "${targets[@]}"; do
+            mkdir -p artifacts/$target
+            echo "Building target ${target}..."
+            zig build -Dtarget=${target}-gnu -Doptimize=ReleaseSafe --prefix artifacts/${target}/
+          done
+
+      - name: Upload artifacts
+        if: ${{ matrix.os == 'ubuntu-latest' }}
+        uses: actions/upload-artifact@v3
+        with:
+          name: open3DMM-build
+          path: artifacts
