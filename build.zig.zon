@@ -7,8 +7,8 @@
             .hash = "1220ea5d26410ed8deee79ae59db9c78ac046815d9c5a68b08962aef9aafdeb925eb",
         },
         .resinator = .{
-            .url = "https://github.com/squeek502/resinator/archive/refs/heads/master.tar.gz",
-            .hash = "1220a1807d8bdca98fb744a30889eddd7d70ed4310b7e3296c67b7730799988d37cc",
+            .url = "https://github.com/squeek502/resinator/archive/41e67244161337925554f5150fcdea2e816305b3.tar.gz",
+            .hash = "122090609f5c4d0e1602b7907db170fcc0b3c32e22b08c46f264f12bf74be3dbba1b",
         },
     },
 }
