@@ -4,7 +4,7 @@
     .dependencies = .{
         .@"open3dmm-core" = .{
             .url = "https://github.com/jayrod246/open3DMM-core/archive/refs/heads/main.tar.gz",
-            .hash = "1220ea5d26410ed8deee79ae59db9c78ac046815d9c5a68b08962aef9aafdeb925eb",
+            .hash = "1220ee3e033a6be6275f5431e198c804734b4004469fe07f5deb2d8d587862b49fa2",
         },
         .resinator = .{
             .url = "https://github.com/squeek502/resinator/archive/41e67244161337925554f5150fcdea2e816305b3.tar.gz",
