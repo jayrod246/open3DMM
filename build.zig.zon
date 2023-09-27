@@ -6,9 +6,5 @@
             .url = "https://github.com/jayrod246/open3DMM-core/archive/refs/heads/main.tar.gz",
             .hash = "12206d54ddd221994eb541141062c75c77833e0acb1a3bea7bb9727f2b4cdc9232e6",
         },
-        .resinator = .{
-            .url = "https://github.com/squeek502/resinator/archive/41e67244161337925554f5150fcdea2e816305b3.tar.gz",
-            .hash = "122090609f5c4d0e1602b7907db170fcc0b3c32e22b08c46f264f12bf74be3dbba1b",
-        },
     },
 }

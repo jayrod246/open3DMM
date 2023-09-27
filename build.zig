@@ -15,10 +15,6 @@ pub fn build(b: *std.build.Builder) void {
         .optimize = optimize,
     });
 
-    const resinator_dep = b.dependency("resinator", .{
-        .optimize = .ReleaseFast,
-    });
-
     const exe = b.addExecutable(.{
         .name = "open3DMM",
         .target = target,
@@ -33,22 +29,18 @@ pub fn build(b: *std.build.Builder) void {
     exe.addIncludePath(.{ .path = "src/studio" });
     exe.addCSourceFiles(open3dmm_sources, open3dmm_flags);
 
-    const resinator_exe = resinator_dep.artifact("resinator");
-
-    const resinator_run = b.addRunArtifact(resinator_exe);
-
-    resinator_run.addArgs(&.{
-        "/y",
-        "/i",
-        b.pathFromRoot("inc"),
-        "/i",
-        b.getInstallPath(.header, ""),
-        "/i",
-        b.pathFromRoot("src"),
+    exe.addWin32ResourceFile(.{
+        .file = .{ .path = "src/studio/utest.rc" },
+        .flags = &.{
+            "/y",
+            "/i",
+            b.pathFromRoot("inc"),
+            "/i",
+            b.getInstallPath(.header, ""),
+            "/i",
+            b.pathFromRoot("src"),
+        },
     });
-
-    resinator_run.addFileArg(.{ .path = "src/studio/utest.rc" });
-    exe.addObjectFile(resinator_run.addOutputFileArg("utest.res"));
 
     b.installArtifact(exe);
 
