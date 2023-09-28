@@ -1748,7 +1748,7 @@ bool FNET::FInit(void)
 {
     AssertThis(0);
 
-    FTG ftgThd = kftgThumbDesc;
+    FTG ftgs[2] = { kftgThumbDesc, kftgDir};
 
     vapp.GetFniProduct(&_fniDirProduct); // look for THD files in the product FIRST
     _fniDir = _fniDirProduct;
@@ -1757,7 +1757,7 @@ bool FNET::FInit(void)
 
     if (!_fniDirMSK.FUpDir(pvNil, ffniMoveToDir))
         return fFalse;
-    if (!_fne.FInit(&_fniDir, &ftgThd, 1))
+    if (!_fne.FInit(&_fniDir, &ftgs[0], 2, ffneRecurse))
         return fFalse;
     _fInited = fTrue;
     return fTrue;
@@ -1777,8 +1777,7 @@ bool FNET::FNext(FNI *pfni, long *psid)
     AssertPo(pfni, 0);
     AssertNilOrVarMem(psid);
 
-    FTG ftgThd = kftgThumbDesc;
-    FTG ftgDir = kftgDir;
+    FTG ftgs[2] = { kftgThumbDesc, kftgDir};
     STN stnProduct;
 
     if (!_fInited)
@@ -1792,7 +1791,7 @@ bool FNET::FNext(FNI *pfni, long *psid)
 
     if (_fInitMSKDir)
     {
-        if (!_fneDir.FInit(&_fniDirMSK, &ftgDir, 1))
+        if (!_fneDir.FInit(&_fniDirMSK, &ftgs[1], 1))
             return fFalse;
         _fInitMSKDir = fFalse;
     }
@@ -1802,7 +1801,7 @@ bool FNET::FNext(FNI *pfni, long *psid)
         if (_fniDir.FSameDir(&_fniDirProduct)) // already enumerated
             continue;
 
-        if (!_fne.FInit(&_fniDir, &ftgThd, 1)) // Initialize the file enumeration
+        if (!_fne.FInit(&_fniDir, &ftgs[0], 2, ffneRecurse)) // Initialize the file enumeration
             return fFalse;
         if (_FNextFni(pfni, psid))
             return fTrue;
@@ -1823,6 +1822,14 @@ bool FNET::_FNextFni(FNI *pfni, long *psid)
     STN stnProduct;
 
     Assert(_fniDir.Ftg() == kftgDir, "Logic error");
+
+LNext:
+    if(!_fne.FNextFni(pfni))
+        return fFalse;
+
+    if(pfni->Ftg() == kftgDir)
+        goto LNext;
+
     if (pvNil != psid)
     {
         if (!_fniDir.FUpDir(&stnProduct, ffniNil))
@@ -1831,7 +1838,7 @@ bool FNET::_FNextFni(FNI *pfni, long *psid)
             return fFalse;
     }
 
-    return (_fne.FNextFni(pfni));
+    return fTrue;
 }
 
 /****************************************************
