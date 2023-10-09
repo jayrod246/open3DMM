@@ -201,8 +201,8 @@ WORD wHaveACM()
     }
 
 #ifdef _DEBUG
-    MessageBox(NULL, "Microsoft Audio Compression Manager (Sound Mapper) is properly installed on your system",
-               "ACM Installed", MB_ICONINFORMATION);
+    OutputDebugString(
+        TEXT("Microsoft Audio Compression Manager (Sound Mapper) is properly installed on your system\n"));
 #endif
 
     return (0);
@@ -248,7 +248,8 @@ WORD wHaveACMCodec(DWORD dwReqCodec)
     if (acmFTD.fdwSupport & ACMDRIVERDETAILS_SUPPORTF_CODEC)
     {
 #ifdef _DEBUG
-        MessageBox(NULL, "... is properly installed on your machine.", acmFTD.szFormatTag, MB_ICONINFORMATION);
+        OutputDebugString(acmFTD.szFormatTag);
+        OutputDebugString(TEXT("... is properly installed on your machine.\n"));
 #endif
         return (HAC_SUCCESS);
     }
@@ -289,9 +290,8 @@ WORD wHaveICMCodec(DWORD dwReqCodec)
     }
 
 #ifdef _DEBUG
-    char szDesc[256];
-    WideCharToMultiByte(CP_ACP, 0, icInfo.szDriver, -1, szDesc, 256, NULL, NULL);
-    MessageBox(NULL, "... is properly installed on your machine.", szDesc, MB_ICONINFORMATION);
+    OutputDebugStringW(icInfo.szDriver);
+    OutputDebugString(TEXT("... is properly installed on your machine."));
 #endif
 
     return (HIC_SUCCESS);
