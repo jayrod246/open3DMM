@@ -3,8 +3,15 @@
     .version = "0.0.0",
     .dependencies = .{
         .@"open3dmm-core" = .{
-            .url = "https://github.com/jayrod246/open3DMM-core/archive/ca09478b44e7727ee6be650f8dd510b55c092235.tar.gz",
-            .hash = "1220c4d56cdd10b4aecab05c4fe9ae3adf40dfec09ba3bad6a77bb26f41e30848659",
+            .url = "https://github.com/jayrod246/open3DMM-core/archive/9b48ac824e07f38f99d3c05592dc66f318248b48.tar.gz",
+            .hash = "12202d8ef3c028609079ab0ffc680b966f2758ab5c33b9f853edc7367e18b27fd8ab",
         },
+    },
+    .paths = .{
+        "inc",
+        "src",
+        "build.zig",
+        "build.zig.zon",
+        "LICENSE",
     },
 }
