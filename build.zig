@@ -1,12 +1,12 @@
 const std = @import("std");
 
-pub fn build(b: *std.build.Builder) void {
+pub fn build(b: *std.Build) void {
     // No other target is supported right now
-    const target = std.zig.CrossTarget{
+    const target = b.resolveTargetQuery(.{
         .cpu_arch = .x86,
         .os_tag = .windows,
         .abi = .gnu,
-    };
+    });
 
     const optimize = b.standardOptimizeOption(.{});
 
@@ -21,7 +21,7 @@ pub fn build(b: *std.build.Builder) void {
         .optimize = optimize,
         .link_libc = true,
     });
-    exe.disable_sanitize_c = true;
+    exe.root_module.sanitize_c = false;
 
     exe.linkLibrary(@"open3dmm-core_dep".artifact("open3dmm-core"));
     exe.installLibraryHeaders(@"open3dmm-core_dep".artifact("open3dmm-core"));
