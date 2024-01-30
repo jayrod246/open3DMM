@@ -3,8 +3,8 @@
     .version = "0.0.0",
     .dependencies = .{
         .@"open3dmm-core" = .{
-            .url = "https://github.com/jayrod246/open3DMM-core/archive/dc80efb48f67837d62c18d6435bf913c99fe6802.tar.gz",
-            .hash = "12200325847256d7139656803ae1250016aa93c939ef1f3241a6b516a734ed78e312",
+            .url = "https://github.com/jayrod246/open3DMM-core/archive/e172e724353851891d75aea1474c5343fa32edf8.tar.gz",
+            .hash = "1220f12d21193b1f6562d21606aa44670d0c45f86add9b89b8b1b73ac199311e7a69",
         },
     },
     .paths = .{
