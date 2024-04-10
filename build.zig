@@ -45,7 +45,6 @@ pub fn build(b: *std.Build) void {
     b.installArtifact(exe);
 
     const run_cmd = b.addRunArtifact(exe);
-    run_cmd.step.dependOn(b.getInstallStep());
 
     // By making the run step depend on the install step, it will be run from the
     // installation directory rather than directly from within the cache directory.
