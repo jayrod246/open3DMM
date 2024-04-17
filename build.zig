@@ -29,16 +29,28 @@ pub fn build(b: *std.Build) void {
     exe.addIncludePath(b.path("src/studio"));
     exe.addCSourceFiles(.{ .files = open3dmm_sources, .flags = open3dmm_flags });
 
+    const kauai_dep = @"open3dmm-core_dep".builder.dependency("kauai", .{
+        .target = target,
+        .optimize = optimize,
+    });
+
+    const copy_files = b.addWriteFiles();
+    copy_files.addCopyFileToSource(@"open3dmm-core_dep".path("inc/socdef.h"), "generated/core/socdef.h");
+    copy_files.addCopyFileToSource(kauai_dep.path("kauai/src/frameres.h"), "generated/frameres.h");
+    copy_files.addCopyFileToSource(kauai_dep.path("kauai/src/framedef.h"), "generated/framedef.h");
+    copy_files.addCopyFileToSource(kauai_dep.path("kauai/src/frame.rc"), "generated/frame.rc");
+    exe.step.dependOn(&copy_files.step);
+    
     exe.addWin32ResourceFile(.{
         .file = b.path("src/studio/utest.rc"),
         .flags = &.{
             "/y",
             "/i",
-            b.pathFromRoot("inc"),
+            "inc",
             "/i",
-            b.getInstallPath(.header, ""),
+            "generated",
             "/i",
-            b.pathFromRoot("src"),
+            "src",
         },
     });
 
