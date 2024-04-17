@@ -25,12 +25,12 @@ pub fn build(b: *std.Build) void {
 
     exe.linkLibrary(@"open3dmm-core_dep".artifact("open3dmm-core"));
     exe.installLibraryHeaders(@"open3dmm-core_dep".artifact("open3dmm-core"));
-    exe.addIncludePath(.{ .path = "inc" });
-    exe.addIncludePath(.{ .path = "src/studio" });
+    exe.addIncludePath(b.path("inc"));
+    exe.addIncludePath(b.path("src/studio"));
     exe.addCSourceFiles(.{ .files = open3dmm_sources, .flags = open3dmm_flags });
 
     exe.addWin32ResourceFile(.{
-        .file = .{ .path = "src/studio/utest.rc" },
+        .file = b.path("src/studio/utest.rc"),
         .flags = &.{
             "/y",
             "/i",
