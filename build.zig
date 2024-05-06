@@ -31,14 +31,13 @@ pub fn build(b: *std.Build) void {
 
     exe.addWin32ResourceFile(.{
         .file = b.path("src/studio/utest.rc"),
+        .include_paths = &.{exe.getEmittedIncludeTree()},
         .flags = &.{
             "/y",
             "/i",
-            b.pathFromRoot("inc"),
+            "inc",
             "/i",
-            b.getInstallPath(.header, ""),
-            "/i",
-            b.pathFromRoot("src"),
+            "src",
         },
     });
 
