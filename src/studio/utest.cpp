@@ -1354,7 +1354,7 @@ bool APP::_FWriteUserData(void)
     Returns:  fTrue if all actions necessary could be performed
 
 ************************************************************ PETED ***********/
-bool APP::FGetSetRegKey(PSZ pszValueName, void *pvData, long cbData, ulong grfreg, bool *pfNoValue)
+bool APP::FGetSetRegKey(PSZ pszValueName, void *pvData, long cbData, ulong grfreg, bool *pfNoValue, PSZ pszSubKey)
 {
     AssertBaseThis(0);
     AssertSz(pszValueName);
@@ -1375,7 +1375,7 @@ bool APP::FGetSetRegKey(PSZ pszValueName, void *pvData, long cbData, ulong grfre
     DWORD dwType;
     HKEY hkey = 0;
 
-    if (RegCreateKeyEx((grfreg & fregMachine) ? HKEY_LOCAL_MACHINE : HKEY_CURRENT_USER, kszSocratesKey, 0, NULL,
+    if (RegCreateKeyEx((grfreg & fregMachine) ? HKEY_LOCAL_MACHINE : HKEY_CURRENT_USER, pszSubKey, 0, NULL,
                        REG_OPTION_NON_VOLATILE, KEY_ALL_ACCESS, NULL, &hkey, &dwDisposition) != ERROR_SUCCESS)
     {
         goto LFail;

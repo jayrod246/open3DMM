@@ -353,7 +353,7 @@ class APP : public APP_PAR
 
     // Registry access function
     bool FGetSetRegKey(PSZ pszValueName, void *pvData, long cbData, ulong grfreg = fregSetDefault,
-                       bool *pfNoValue = pvNil);
+                       bool *pfNoValue = pvNil, PSZ pszSubKey = kszSocratesKey);
 
     // Movie handoff routines
     void HandoffMovie(PMVIE pmvie);
