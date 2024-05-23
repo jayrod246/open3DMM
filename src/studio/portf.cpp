@@ -508,9 +508,6 @@ UINT CALLBACK OpenHookProc(HWND hwndCustom, UINT msg, UINT wParam, LONG lParam)
         SendMessage(hwndDlg, CDM_HIDECONTROL, cmb1, 0L); // File type combo box
         EnableWindow(GetDlgItem(hwndDlg, cmb1), FALSE);
 
-        SendMessage(hwndDlg, CDM_HIDECONTROL, cmb13, 0L); // Filename entry box
-        EnableWindow(GetDlgItem(hwndDlg, cmb13), FALSE);
-
         SendMessage(hwndDlg, CDM_HIDECONTROL, chx1, 0L); // Open as Read-only check box
         EnableWindow(GetDlgItem(hwndDlg, chx1), FALSE);
 
@@ -522,13 +519,16 @@ UINT CALLBACK OpenHookProc(HWND hwndCustom, UINT msg, UINT wParam, LONG lParam)
         SendMessage(hwndDlg, CDM_HIDECONTROL, IDOK, 0L);     // OK btn.
         SendMessage(hwndDlg, CDM_HIDECONTROL, IDCANCEL, 0L); // Cancel btn.
 
-        SendMessage(hwndDlg, CDM_HIDECONTROL, stc3, 0L); // 'File Name'
-        EnableWindow(GetDlgItem(hwndDlg, stc3), FALSE);
-
         if (pdiPortfolio->fIsOpen)
         {
+            SendMessage(hwndDlg, CDM_HIDECONTROL, stc3, 0L);	// 'File Name'
+			EnableWindow(GetDlgItem(hwndDlg, stc3), FALSE);
+
             SendMessage(hwndDlg, CDM_HIDECONTROL, edt1, 0L); // File name edit ctrl
             EnableWindow(GetDlgItem(hwndDlg, edt1), FALSE);
+            
+            SendMessage(hwndDlg, CDM_HIDECONTROL, cmb13, 0L); // Filename entry box
+            EnableWindow(GetDlgItem(hwndDlg, cmb13), FALSE);
         }
 
         // If no preview required then hide the preview window.
