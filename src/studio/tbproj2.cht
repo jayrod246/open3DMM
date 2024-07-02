@@ -4,7 +4,7 @@
 ///////////////////////////////////////////////////////////////
 // Project2 table information
 ///////////////////////////////////////////////////////////////
-//WAVE_CHUNK ("studio\sound\xxx.WAV", kwav2Project00)
+//WAVE_CHUNK ("assets\studio\xxx.WAV", kwav2Project00)
 
 GOBCHUNK("Project2 initializer", kid2Project01, kgokkNormal)
 	DEFAULT_POSITION( 0, 0, 0)

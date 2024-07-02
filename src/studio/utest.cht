@@ -13,27 +13,27 @@
 //
 // Initial Palette
 //
-PALETTECHUNK ("Initial Palette", kcnoGlcrInit, "studio\bmp\homelogo.bmp")
+PALETTECHUNK ("Initial Palette", kcnoGlcrInit, "assets\studio\homelogo.gif")
 
 //
 // Home Logo
 //
 CHUNK (kctgMbmp kcnoMbmpHomeLogo "Home Logo")
-	PACK BITMAP (0 0 0) "studio\bmp\homelogo.bmp"
+	PACK BITMAP (0 0 0) "assets\studio\homelogo.gif"
 ENDCHUNK
 
 //
 // Splash Screen
 //
 CHUNK (kctgMbmp kcnoMbmpSplash "Splash Screen")
-	PACK BITMAP (0 0 0) "studio\bmp\splash.bmp"
+	PACK BITMAP (0 0 0) "assets\studio\splash.gif"
 ENDCHUNK
 
 //
 // Splash Sound
 //
 CHUNK (kctgMidi kcnoMidiSplash "Splash Sound")
-	MIDI "studio\bmp\splash.mid"
+	MIDI "assets\studio\splash.mid"
 ENDCHUNK
 
 //

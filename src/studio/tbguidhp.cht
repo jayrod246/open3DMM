@@ -4,7 +4,7 @@
 ///////////////////////////////////////////////////////////////
 // Guide help table information
 ///////////////////////////////////////////////////////////////
-//WAVE_CHUNK ("studio\sound\VOLW18.WAV", kwavLogo12)
+//WAVE_CHUNK ("assets\studio\VOLW18.WAV", kwavLogo12)
 
 GOBCHUNK("Guide Help initializer", kidGuideHelp, kgokkNormal)
 	DEFAULT_POSITION( 0, 0, 0)

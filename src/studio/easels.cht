@@ -45,7 +45,7 @@ GOBCHUNK("Spletters easel background", kidSpltBackground, kgokkRectHit)
 	DEFAULT_POSITION( kxpSpltBackground, kypSpltBackground, 200)
 	ACTION(fcustNil, fcustNil, fgrfstAll, kcrsArrow, chidNil, cidNil, cnoNil)
 ENDCHUNK
-REP_MBMPREG(CHID(kstDefault, krepDefault ), "studio\bmp\e1par.bmp", kxpregSpltBackground, kypregSpltBackground )
+REP_MBMPREG(CHID(kstDefault, krepDefault ), "assets\studio\e1par.gif", kxpregSpltBackground, kypregSpltBackground )
 ADOPT_WAVE(kcnoEzlOpenWav, CHID(kstDefault, krepEnterAnimation))
 CREATE_SCRIPT("Spletters easel created")
 	CreateChildThis(kidSpltPreviewFrame, kidSpltPreviewFrame);
@@ -87,11 +87,11 @@ GOBCHUNK("Spletters easel Transmogrify", kidSpltTransmogrify, kgokkRectHit)
 	DEFAULT_POSITION(kxpSpltTransmogrify, kypSpltTransmogrify, 10)
 	ACTION(fcustNil, fcustNil, fgrfstAll, kcrsHand, CHID(kstDefault, kchidClick), cidNil, kttSpltTransmogrify)
 ENDCHUNK
-REP_MBMPREG(CHID(kstDefault, krepDefault), "studio\bmp\e1tran.bmp",
+REP_MBMPREG(CHID(kstDefault, krepDefault), "assets\studio\e1tran.gif",
 	kxpregSpltTransmogrify, kypregSpltTransmogrify)
 ADOPT_MBMP(LAST_MBMP, CHID(kstDefault, krepMouseUpOn))
 ADOPT_MBMP(LAST_MBMP, CHID(kstDefault, krepMouseDnOff))
-REP_MBMPREG(CHID(kstDefault, krepMouseDnOn), "studio\bmp\e1trans.bmp",
+REP_MBMPREG(CHID(kstDefault, krepMouseDnOn), "assets\studio\e1trans.gif",
 	kxpregSpltTransmogrify, kypregSpltTransmogrify)
 ADOPT_MBMP(LAST_MBMP, CHID(kstSelected, krepDefault))
 ADOPT_WAVE(kcnoRandomWav, CHID(kstDefault, krepClicked))
@@ -106,11 +106,11 @@ GOBCHUNK("Spletters easel Textures", kidSpltTextures, kgokkRectHit)
 	DEFAULT_POSITION( kxpSpltTextures, kypSpltTextures, 10)
 	ACTION(fcustNil, fcustNil, fgrfstDefault, kcrsHand, CHID(kstDefault, kchidClick), cidNil, kttSpltTextures)
 ENDCHUNK
-REP_MBMPREG(CHID(kstDefault, krepDefault), "studio\bmp\e1text.bmp",
+REP_MBMPREG(CHID(kstDefault, krepDefault), "assets\studio\e1text.gif",
 	kxpregSpltTextures, kypregSpltTextures)
 ADOPT_MBMP(LAST_MBMP, CHID(kstDefault, krepMouseUpOn))
 ADOPT_MBMP(LAST_MBMP, CHID(kstDefault, krepMouseDnOff))
-REP_MBMPREG(CHID(kstDefault, krepMouseDnOn), "studio\bmp\e1texts.bmp",
+REP_MBMPREG(CHID(kstDefault, krepMouseDnOn), "assets\studio\e1texts.gif",
 	kxpregSpltTextures, kypregSpltTextures)
 ADOPT_MBMP(LAST_MBMP, CHID(kstSelected, krepDefault))
 CLICK_SCRIPT("Texture clicked")
@@ -125,11 +125,11 @@ GOBCHUNK("Spletters easel Font", kidSpltFont, kgokkRectHit)
 	DEFAULT_POSITION(kxpSpltFont, kypSpltFont, 10)
 	ACTION(fcustNil, fcustNil, fgrfstDefault, kcrsHand, CHID(kstDefault, kchidClick), cidNil, kttSpltFont)
 ENDCHUNK
-REP_MBMPREG(CHID(kstDefault, krepDefault), "studio\bmp\e1font.bmp",
+REP_MBMPREG(CHID(kstDefault, krepDefault), "assets\studio\e1font.gif",
 	kxpregSpltFont, kypregSpltFont)
 ADOPT_MBMP(LAST_MBMP, CHID(kstDefault, krepMouseUpOn))
 ADOPT_MBMP(LAST_MBMP, CHID(kstDefault, krepMouseDnOff))
-REP_MBMPREG(CHID(kstDefault, krepMouseDnOn), "studio\bmp\e1fonts.bmp",
+REP_MBMPREG(CHID(kstDefault, krepMouseDnOn), "assets\studio\e1fonts.gif",
 	kxpregSpltFont, kypregSpltFont)
 ADOPT_MBMP(LAST_MBMP, CHID(kstSelected, krepDefault))
 CLICK_SCRIPT("Font clicked")
@@ -144,11 +144,11 @@ GOBCHUNK("Spletters easel Shape", kidSpltShape, kgokkRectHit)
 	DEFAULT_POSITION(kxpSpltShape, kypSpltShape, 10)
 	ACTION(fcustNil, fcustNil, fgrfstDefault, kcrsHand, CHID(kstDefault, kchidClick), cidNil, kttSpltShape)
 ENDCHUNK
-REP_MBMPREG(CHID(kstDefault, krepDefault), "studio\bmp\e1shap.bmp",
+REP_MBMPREG(CHID(kstDefault, krepDefault), "assets\studio\e1shap.gif",
 	kxpregSpltShape, kypregSpltShape)
 ADOPT_MBMP(LAST_MBMP, CHID(kstDefault, krepMouseUpOn))
 ADOPT_MBMP(LAST_MBMP, CHID(kstDefault, krepMouseDnOff))
-REP_MBMPREG(CHID(kstDefault, krepMouseDnOn), "studio\bmp\e1shaps.bmp",
+REP_MBMPREG(CHID(kstDefault, krepMouseDnOn), "assets\studio\e1shaps.gif",
 	kxpregSpltShape, kypregSpltShape)
 ADOPT_MBMP(LAST_MBMP, CHID(kstSelected, krepDefault))
 CLICK_SCRIPT("Shape clicked")
@@ -163,11 +163,11 @@ GOBCHUNK("Spletters easel Rotate", kidSpltRotate, kgokkRectHit)
 	DEFAULT_POSITION(kxpSpltRotate, kypSpltRotate, 10)
 	ACTION(fcustNil, fcustNil, fgrfstAll, kcrsHand, CHID(kstDefault, kchidClick), cidNil, kttSpltRotate)
 ENDCHUNK
-REP_MBMPREG(CHID(kstDefault, krepDefault), "studio\bmp\e1rot.bmp",
+REP_MBMPREG(CHID(kstDefault, krepDefault), "assets\studio\e1rot.gif",
 	kxpregSpltRotate, kypregSpltRotate)
 ADOPT_MBMP(LAST_MBMP, CHID(kstDefault, krepMouseUpOn))
 ADOPT_MBMP(LAST_MBMP, CHID(kstDefault, krepMouseDnOff))
-REP_MBMPREG(CHID(kstDefault, krepMouseDnOn), "studio\bmp\e1rots.bmp",
+REP_MBMPREG(CHID(kstDefault, krepMouseDnOn), "assets\studio\e1rots.gif",
 	kxpregSpltRotate, kypregSpltRotate)
 ADOPT_MBMP(LAST_MBMP, CHID(kstSelected, krepDefault))
 ADOPT_WAVE(kcnoSpinWav, CHID(kstDefault, krepClicked))
@@ -182,11 +182,11 @@ GOBCHUNK("Spletters easel cancel", kidSpltCancel, kgokkRectHit)
 	DEFAULT_POSITION(kxpSpltCancel, kypSpltCancel, 10)
 	ACTION(fcustNil, fcustNil, fgrfstAll, kcrsHand, CHID(kstDefault, kchidClick), cidNil, kttEaselCancel)
 ENDCHUNK
-REP_MBMPREG(CHID(kstDefault, krepDefault), "studio\bmp\e1can.bmp",
+REP_MBMPREG(CHID(kstDefault, krepDefault), "assets\studio\e1can.gif",
 	kxpregSpltCancel, kypregSpltCancel)
 ADOPT_MBMP(LAST_MBMP, CHID(kstDefault, krepMouseUpOn))
 ADOPT_MBMP(LAST_MBMP, CHID(kstDefault, krepMouseDnOff))
-REP_MBMPREG(CHID(kstDefault, krepMouseDnOn), "studio\bmp\e1canc.bmp",
+REP_MBMPREG(CHID(kstDefault, krepMouseDnOn), "assets\studio\e1canc.gif",
 	kxpregSpltCancel, kypregSpltCancel)
 ADOPT_MBMP(LAST_MBMP, CHID(kstSelected, krepDefault))
 ADOPT_WAVE(kcnoCancelWav, CHID(kstDefault, krepClicked))
@@ -201,11 +201,11 @@ GOBCHUNK("Spletters easel ok", kidSpltOk, kgokkRectHit)
 	DEFAULT_POSITION(kxpSpltOk, kypSpltOk, 10)
 	ACTION(fcustNil, fcustNil, fgrfstAll, kcrsHand, CHID(kstDefault, kchidClick), cidNil, kttEaselOk)
 ENDCHUNK
-REP_MBMPREG(CHID(kstDefault, krepDefault), "studio\bmp\e1okay.bmp",
+REP_MBMPREG(CHID(kstDefault, krepDefault), "assets\studio\e1okay.gif",
 	kxpregSpltOk, kypregSpltOk)
 ADOPT_MBMP(LAST_MBMP, CHID(kstDefault, krepMouseUpOn))
 ADOPT_MBMP(LAST_MBMP, CHID(kstDefault, krepMouseDnOff))
-REP_MBMPREG(CHID(kstDefault, krepMouseDnOn), "studio\bmp\e1okayc.bmp",
+REP_MBMPREG(CHID(kstDefault, krepMouseDnOn), "assets\studio\e1okayc.gif",
 	kxpregSpltOk, kypregSpltOk)
 ADOPT_MBMP(LAST_MBMP, CHID(kstSelected, krepDefault))
 ADOPT_WAVE(kcnoOkWav, CHID(kstDefault, krepClicked))
@@ -241,7 +241,7 @@ GOBCHUNK("Costume changer easel background", kidCostBackground, kgokkRectHit)
 	DEFAULT_POSITION( kxpCostBackground, kypCostBackground, 200)
 	ACTION(fcustNil, fcustNil, fgrfstAll, kcrsArrow, chidNil, cidNil, cnoNil)
 ENDCHUNK
-REP_MBMPREG(CHID(kstDefault, krepDefault ), "studio\bmp\e2par.bmp", kxpregCostBackground, kypregCostBackground )
+REP_MBMPREG(CHID(kstDefault, krepDefault ), "assets\studio\e2par.gif", kxpregCostBackground, kypregCostBackground )
 ADOPT_WAVE(kcnoEzlOpenWav, CHID(kstDefault, krepEnterAnimation))
 CREATE_SCRIPT("Costume changer easel created")
 	CreateChildThis(kidCostPreviewFrame, kidCostPreviewFrame);
@@ -280,11 +280,11 @@ GOBCHUNK("Costume changer easel ", kidCostCostumes, kgokkRectHit)
 	DEFAULT_POSITION(kxpCostCostumes, kypCostCostumes, 10)
 	ACTION(fcustNil, fcustNil, fgrfstAll, kcrsHand, CHID(kstDefault, kchidClick), cidNil, kttCostCostumes)
 ENDCHUNK
-REP_MBMPREG(CHID(kstDefault, krepDefault), "studio\bmp\e2cost.bmp",
+REP_MBMPREG(CHID(kstDefault, krepDefault), "assets\studio\e2cost.gif",
 	kxpregCostCostumes, kypregCostCostumes)
 ADOPT_MBMP(LAST_MBMP, CHID(kstDefault, krepMouseUpOn))
 ADOPT_MBMP(LAST_MBMP, CHID(kstDefault, krepMouseDnOff))
-REP_MBMPREG(CHID(kstDefault, krepMouseDnOn), "studio\bmp\e2costs.bmp",
+REP_MBMPREG(CHID(kstDefault, krepMouseDnOn), "assets\studio\e2costs.gif",
 	kxpregCostCostumes, kypregCostCostumes)
 ADOPT_MBMP(LAST_MBMP, CHID(kstSelected, krepDefault))
 ADOPT_WAVE(kcnoCostumeWav, CHID(kstDefault, krepClicked))
@@ -301,11 +301,11 @@ GOBCHUNK("Costume changer easel Rotate", kidCostRotate, kgokkRectHit)
 	DEFAULT_POSITION(kxpCostRotate, kypCostRotate, 10)
 	ACTION(fcustNil, fcustNil, fgrfstAll, kcrsHand, CHID(kstDefault, kchidClick), cidNil, kttCostRotate)
 ENDCHUNK
-REP_MBMPREG(CHID(kstDefault, krepDefault), "studio\bmp\e2rot.bmp",
+REP_MBMPREG(CHID(kstDefault, krepDefault), "assets\studio\e2rot.gif",
 	kxpregCostRotate, kypregCostRotate)
 ADOPT_MBMP(LAST_MBMP, CHID(kstDefault, krepMouseUpOn))
 ADOPT_MBMP(LAST_MBMP, CHID(kstDefault, krepMouseDnOff))
-REP_MBMPREG(CHID(kstDefault, krepMouseDnOn), "studio\bmp\e2rots.bmp",
+REP_MBMPREG(CHID(kstDefault, krepMouseDnOn), "assets\studio\e2rots.gif",
 	kxpregCostRotate, kypregCostRotate)
 ADOPT_WAVE(kcnoSpinWav, CHID(kstDefault, krepClicked))
 CLICK_SCRIPT("Rotate clicked")
@@ -319,11 +319,11 @@ GOBCHUNK("Costume changer easel accessories", kidCostAccessories, kgokkRectHit)
 	DEFAULT_POSITION(kxpCostAccessories, kypCostAccessories, 10)
 	ACTION(fcustNil, fcustNil, fgrfstAll, kcrsHand, CHID(kstDefault, kchidClick), cidNil, kttCostAccessories)
 ENDCHUNK
-REP_MBMPREG(CHID(kstDefault, krepDefault), "studio\bmp\e2acc.bmp",
+REP_MBMPREG(CHID(kstDefault, krepDefault), "assets\studio\e2acc.gif",
 	kxpregCostAccessories, kypregCostAccessories)
 ADOPT_MBMP(LAST_MBMP, CHID(kstDefault, krepMouseUpOn))
 ADOPT_MBMP(LAST_MBMP, CHID(kstDefault, krepMouseDnOff))
-REP_MBMPREG(CHID(kstDefault, krepMouseDnOn), "studio\bmp\e2accs.bmp",
+REP_MBMPREG(CHID(kstDefault, krepMouseDnOn), "assets\studio\e2accs.gif",
 	kxpregCostAccessories, kypregCostAccessories)
 ADOPT_MBMP(LAST_MBMP, CHID(kstSelected, krepDefault))
 ADOPT_WAVE(kcnoAcesoryWav, CHID(kstDefault, krepClicked))
@@ -341,11 +341,11 @@ GOBCHUNK("Costume changer easel cancel", kidCostCancel, kgokkRectHit)
 	DEFAULT_POSITION(kxpCostCancel, kypCostCancel, 10)
 	ACTION(fcustNil, fcustNil, fgrfstAll, kcrsHand, CHID(kstDefault, kchidClick), cidNil, kttEaselCancel)
 ENDCHUNK
-REP_MBMPREG(CHID(kstDefault, krepDefault), "studio\bmp\e2can.bmp",
+REP_MBMPREG(CHID(kstDefault, krepDefault), "assets\studio\e2can.gif",
 	kxpregCostCancel, kypregCostCancel)
 ADOPT_MBMP(LAST_MBMP, CHID(kstDefault, krepMouseUpOn))
 ADOPT_MBMP(LAST_MBMP, CHID(kstDefault, krepMouseDnOff))
-REP_MBMPREG(CHID(kstDefault, krepMouseDnOn), "studio\bmp\e2canc.bmp",
+REP_MBMPREG(CHID(kstDefault, krepMouseDnOn), "assets\studio\e2canc.gif",
 	kxpregCostCancel, kypregCostCancel)
 ADOPT_MBMP(LAST_MBMP, CHID(kstSelected, krepDefault))
 ADOPT_WAVE(kcnoCancelWav, CHID(kstDefault, krepClicked))
@@ -360,11 +360,11 @@ GOBCHUNK("Costume changer easel ok", kidCostOk, kgokkRectHit)
 	DEFAULT_POSITION(kxpCostOk, kypCostOk, 10)
 	ACTION(fcustNil, fcustNil, fgrfstAll, kcrsHand, CHID(kstDefault, kchidClick), cidNil, kttEaselOk)
 ENDCHUNK
-REP_MBMPREG(CHID(kstDefault, krepDefault), "studio\bmp\e2okay.bmp",
+REP_MBMPREG(CHID(kstDefault, krepDefault), "assets\studio\e2okay.gif",
 	kxpregCostOk, kypregCostOk)
 ADOPT_MBMP(LAST_MBMP, CHID(kstDefault, krepMouseUpOn))
 ADOPT_MBMP(LAST_MBMP, CHID(kstDefault, krepMouseDnOff))
-REP_MBMPREG(CHID(kstDefault, krepMouseDnOn), "studio\bmp\e2okayc.bmp",
+REP_MBMPREG(CHID(kstDefault, krepMouseDnOn), "assets\studio\e2okayc.gif",
 	kxpregCostOk, kypregCostOk)
 ADOPT_MBMP(LAST_MBMP, CHID(kstSelected, krepDefault))
 ADOPT_WAVE(kcnoOkWav, CHID(kstDefault, krepClicked))
@@ -459,7 +459,7 @@ GOBCHUNK("Scene sorter background", kidSSorterBackground, kgokkRectHit)
 	DEFAULT_POSITION( kxpSSorterBackground, kypSSorterBackground, 200)
 	ACTION(fcustNil, fcustNil, fgrfstAll, kcrsArrow, chidNil, cidNil, cnoNil)
 ENDCHUNK
-REP_MBMPREG(CHID(kstBrowserEnabled, krepDefault ), "studio\bmp\e3par.bmp", kxpregSSorterBackground, kypregSSorterBackground )
+REP_MBMPREG(CHID(kstBrowserEnabled, krepDefault ), "assets\studio\e3par.gif", kxpregSSorterBackground, kypregSSorterBackground )
 ADOPT_WAVE(kcnoEzlOpenWav, CHID(kstDefault, krepEnterAnimation))
 CREATE_SCRIPT("Scene Sorter created")
 	CreateChildGob(kidBackground, kidGenericDisableGlass, kidGenericDisableGlass );
@@ -624,11 +624,11 @@ GOBCHUNK("Scene sorter - scroll up", kidSSorterScrollUp, kgokkRectHit)
 	DEFAULT_POSITION(kxpSSorterScrollUp, kypSSorterScrollUp, 10)
 	ACTION(fcustNil, fcustNil, fgrfstAll, kcrsHand, CHID(kstBrowserEnabled, krepMouseDnOn), cidNil, kttSSorterScrollUp)
 ENDCHUNK
-REP_MBMPREG(CHID(kstBrowserEnabled, krepDefault), "studio\bmp\e3up.bmp",
+REP_MBMPREG(CHID(kstBrowserEnabled, krepDefault), "assets\studio\e3up.gif",
 	kxpregSSorterScrollUp, kypregSSorterScrollUp)
 ADOPT_MBMP(LAST_MBMP, CHID(kstBrowserEnabled, krepMouseUpOn))
 ADOPT_MBMP(LAST_MBMP, CHID(kstBrowserEnabled, krepMouseDnOff))
-REP_MBMPREG(CHID(kstBrowserEnabled, krepMouseDnOn), "studio\bmp\e3upc.bmp",
+REP_MBMPREG(CHID(kstBrowserEnabled, krepMouseDnOn), "assets\studio\e3upc.gif",
 	kxpregSSorterScrollUp, kypregSSorterScrollUp)
 REP_ANIM(CHID(kstBrowserEnabled, krepMouseDnOn), "Pressed")
 	/* Init */
@@ -660,11 +660,11 @@ GOBCHUNK("Scene sorter - scroll down", kidSSorterScrollDn, kgokkRectHit)
 	DEFAULT_POSITION(kxpSSorterScrollDn, kypSSorterScrollDn, 10)
 	ACTION(fcustNil, fcustNil, fgrfstAll, kcrsHand, CHID(kstBrowserEnabled, krepMouseDnOn), cidNil, kttSSorterScrollDn)
 ENDCHUNK
-REP_MBMPREG(CHID(kstBrowserEnabled, krepDefault), "studio\bmp\e3down.bmp",
+REP_MBMPREG(CHID(kstBrowserEnabled, krepDefault), "assets\studio\e3down.gif",
 	kxpregSSorterScrollDn, kypregSSorterScrollDn)
 ADOPT_MBMP(LAST_MBMP, CHID(kstBrowserEnabled, krepMouseUpOn))
 ADOPT_MBMP(LAST_MBMP, CHID(kstBrowserEnabled, krepMouseDnOff))
-REP_MBMPREG(CHID(kstBrowserEnabled, krepMouseDnOn), "studio\bmp\e3downc.bmp",
+REP_MBMPREG(CHID(kstBrowserEnabled, krepMouseDnOn), "assets\studio\e3downc.gif",
 	kxpregSSorterScrollDn, kypregSSorterScrollDn)
 REP_ANIM(CHID(kstBrowserEnabled, krepMouseDnOn), "Pressed")
 	/* Init */
@@ -697,7 +697,7 @@ GOBCHUNK("Scene sorter - Bar", kidSSorterBar, kgokkRectHit)
 	ACTION(fcustNil, fcustNil, fgrfstAll, kcrsHand, chidNil, cidNil, cnoNil )
 ENDCHUNK
 REP_RECT(CHID(kstDefault, krepDefault ), "hidden", 0, 0, 0, 0)
-REP_MBMPREG(CHID(kstSelected, krepDefault ), "studio\bmp\ssbar.bmp", 0, 0)
+REP_MBMPREG(CHID(kstSelected, krepDefault ), "assets\studio\ssbar.gif", 0, 0)
 
 //
 // Open file button.  Starts the dialog.
@@ -706,11 +706,11 @@ GOBCHUNK("Scene sorter - Open", kidSSorterOpen, kgokkRectHit)
 	DEFAULT_POSITION( kxpSSorterOpen, kypSSorterOpen, 10 )
 	ACTION(fcustNil, fcustNil, fgrfstAll, kcrsHand, CHID(kstDefault, kchidClick), cidNil, kttSSorterOpen )
 ENDCHUNK
-REP_MBMPREG(CHID(kstDefault, krepDefault ), "studio\bmp\e3port.bmp",
+REP_MBMPREG(CHID(kstDefault, krepDefault ), "assets\studio\e3port.gif",
 	kxpregSSorterOpen, kypregSSorterOpen)
 ADOPT_MBMP(LAST_MBMP, CHID(kstDefault, krepMouseUpOn))
 ADOPT_MBMP(LAST_MBMP, CHID(kstDefault, krepMouseDnOff))
-REP_MBMPREG(CHID(kstDefault, krepMouseDnOn), "studio\bmp\e3portc.bmp",
+REP_MBMPREG(CHID(kstDefault, krepMouseDnOn), "assets\studio\e3portc.gif",
 	kxpregSSorterOpen, kypregSSorterOpen)
 ADOPT_MBMP(LAST_MBMP, CHID(kstSelected, krepDefault))
 CLICK_SCRIPT("Scene sorter, portfolio clicked")
@@ -724,11 +724,11 @@ GOBCHUNK("Scene sorter - Ok", kidSSorterOk, kgokkRectHit)
 	DEFAULT_POSITION(kxpSSorterOk, kypSSorterOk, 10)
 	ACTION(fcustNil, fcustNil, fgrfstAll, kcrsHand, CHID(kstDefault, kchidClick), cidSceneSortOk, kttEaselOk)
 ENDCHUNK
-REP_MBMPREG(CHID(kstDefault, krepDefault), "studio\bmp\e3okay.bmp",
+REP_MBMPREG(CHID(kstDefault, krepDefault), "assets\studio\e3okay.gif",
 	kxpregSSorterOk, kypregSSorterOk)
 ADOPT_MBMP(LAST_MBMP, CHID(kstDefault, krepMouseUpOn))
 ADOPT_MBMP(LAST_MBMP, CHID(kstDefault, krepMouseDnOff))
-REP_MBMPREG(CHID(kstDefault, krepMouseDnOn), "studio\bmp\e3okayc.bmp",
+REP_MBMPREG(CHID(kstDefault, krepMouseDnOn), "assets\studio\e3okayc.gif",
 	kxpregSSorterOk, kypregSSorterOk)
 ADOPT_WAVE(kcnoOkWav, CHID(kstDefault, krepClicked))
 CLICK_SCRIPT("Scene sorter, ok, clicked")
@@ -745,11 +745,11 @@ GOBCHUNK("Scene sorter - Cancel", kidSSorterCancel, kgokkRectHit)
 	DEFAULT_POSITION(kxpSSorterCancel, kypSSorterCancel, 10)
 	ACTION(fcustNil, fcustNil, fgrfstAll, kcrsHand, CHID(kstDefault, kchidClick), cidSceneSortCancel, kttEaselCancel)
 ENDCHUNK
-REP_MBMPREG(CHID(kstDefault, krepDefault), "studio\bmp\e3can.bmp",
+REP_MBMPREG(CHID(kstDefault, krepDefault), "assets\studio\e3can.gif",
 	kxpregSSorterCancel, kypregSSorterCancel)
 ADOPT_MBMP(LAST_MBMP, CHID(kstDefault, krepMouseUpOn))
 ADOPT_MBMP(LAST_MBMP, CHID(kstDefault, krepMouseDnOff))
-REP_MBMPREG(CHID(kstDefault, krepMouseDnOn), "studio\bmp\e3canc.bmp",
+REP_MBMPREG(CHID(kstDefault, krepMouseDnOn), "assets\studio\e3canc.gif",
 	kxpregSSorterCancel, kypregSSorterCancel)
 ADOPT_WAVE(kcnoCancelWav, CHID(kstDefault, krepClicked))
 CLICK_SCRIPT("Scene sorter, cancel, clicked")
@@ -766,11 +766,11 @@ GOBCHUNK("Scene sorter - Nuke", kidSSorterNuke, kgokkRectHit)
 	DEFAULT_POSITION(kxpSSorterNuke, kypSSorterNuke, 10)
 	ACTION(fcustNil, fcustNil, fgrfstAll, kcrsHand, CHID(kstDefault, kchidClick), cidNil, kttSSorterNuke)
 ENDCHUNK
-REP_MBMPREG(CHID(kstDefault, krepDefault ), "studio\bmp\e3rmsn.bmp",
+REP_MBMPREG(CHID(kstDefault, krepDefault ), "assets\studio\e3rmsn.gif",
 	kxpregSSorterNuke, kypregSSorterNuke)
 ADOPT_MBMP(LAST_MBMP, CHID(kstDefault, krepMouseUpOn))
 ADOPT_MBMP(LAST_MBMP, CHID(kstDefault, krepMouseDnOff))
-REP_MBMPREG(CHID(kstDefault, krepMouseDnOn), "studio\bmp\e3rmsnc.bmp",
+REP_MBMPREG(CHID(kstDefault, krepMouseDnOn), "assets\studio\e3rmsnc.gif",
 	kxpregSSorterNuke, kypregSSorterNuke)
 ADOPT_MBMP(LAST_MBMP, CHID(kstSelected, krepDefault))
 CLICK_SCRIPT("Scene sorter, Nuke, clicked")
@@ -795,11 +795,11 @@ GOBCHUNK("Scene sorter - Nuke", kidSSorterHand, kgokkRectHit)
 	DEFAULT_POSITION(kxpSSorterHand, kypSSorterHand, 10)
 	ACTION(fcustNil, fcustNil, fgrfstAll, kcrsHand, CHID(kstDefault, kchidClick), cidNil, kttSSorterHand)
 ENDCHUNK
-REP_MBMPREG(CHID(kstDefault, krepDefault ), "studio\bmp\e3hand.bmp",
+REP_MBMPREG(CHID(kstDefault, krepDefault ), "assets\studio\e3hand.gif",
 	kxpregSSorterHand, kypregSSorterHand)
 ADOPT_MBMP(LAST_MBMP, CHID(kstDefault, krepMouseUpOn))
 ADOPT_MBMP(LAST_MBMP, CHID(kstDefault, krepMouseDnOff))
-REP_MBMPREG(CHID(kstDefault, krepMouseDnOn), "studio\bmp\e3handc.bmp",
+REP_MBMPREG(CHID(kstDefault, krepMouseDnOn), "assets\studio\e3handc.gif",
 	kxpregSSorterHand, kypregSSorterHand)
 ADOPT_MBMP(LAST_MBMP, CHID(kstSelected, krepDefault))
 CLICK_SCRIPT("Scene sorter, Nuke, clicked")
@@ -828,11 +828,11 @@ ENDCHUNK
 
 /* Define the default representations */
 REP_RECT(CHID(kstBrowserInvisible, krepDefault), "hidden", 0, 0, 0, 0)
-REP_MBMPREG(CHID(kstBrowserEnabled, krepDefault), "studio\bmp\e3frm.bmp",
+REP_MBMPREG(CHID(kstBrowserEnabled, krepDefault), "assets\studio\e3frm.gif",
 	kxpregSSorterFrameBorder, kypregSSorterFrameBorder)
-REP_MBMPREG(CHID(kstBrowserSelected, krepDefault), "studio\bmp\e3frms.bmp",
+REP_MBMPREG(CHID(kstBrowserSelected, krepDefault), "assets\studio\e3frms.gif",
 	kxpregSSorterFrameBorder, kypregSSorterFrameBorder)
-REP_MBMPREG(CHID(kstBrowserDragging, krepDefault), "studio\bmp\e3frms.bmp",
+REP_MBMPREG(CHID(kstBrowserDragging, krepDefault), "assets\studio\e3frms.gif",
 	kxpregSSorterFrameBorder, kypregSSorterFrameBorder)
 REP_RECT(CHID(kstBrowserDisabled, krepDefault), "hidden", 0, 0, 0, 0)
 REP_RECT(CHID(kstBrowserScrollingSel, krepDefault), "hidden", 0, 0, 0, 0)
@@ -906,11 +906,11 @@ GOBCHUNK("Scene sorter - Transition button", kidTransition1, kgokkRectHit)
 	DEFAULT_POSITION(kxpTransition1, kypTransition1, 10)
 	ACTION(fcustNil, fcustNil, fgrfstAll, kcrsHand, CHID(kstDefault, kchidClick), cidNil, kttTransition1)
 ENDCHUNK
-REP_MBMPREG(CHID(kstDefault, krepDefault), "studio\bmp\e3trn1.bmp",
+REP_MBMPREG(CHID(kstDefault, krepDefault), "assets\studio\e3trn1.gif",
 	kxpregTransition1, kypregTransition1)
 ADOPT_MBMP(LAST_MBMP, CHID(kstDefault, krepMouseUpOn))
 ADOPT_MBMP(LAST_MBMP, CHID(kstDefault, krepMouseDnOff))
-REP_MBMPREG(CHID(kstDefault, krepMouseDnOn), "studio\bmp\e3trn1s.bmp",
+REP_MBMPREG(CHID(kstDefault, krepMouseDnOn), "assets\studio\e3trn1s.gif",
 	kxpregTransition1, kypregTransition1)
 ADOPT_MBMP(LAST_MBMP, CHID(kstSelected, krepDefault))
 CHILD_SCRIPT("Transition 1", CHID(kstDefault, kchidClick))
@@ -924,11 +924,11 @@ GOBCHUNK("Scene sorter - Transition button", kidTransition2, kgokkRectHit)
 	DEFAULT_POSITION(kxpTransition2, kypTransition2, 10)
 	ACTION(fcustNil, fcustNil, fgrfstAll, kcrsHand, CHID(kstDefault, kchidClick), cidNil, kttTransition2)
 ENDCHUNK
-REP_MBMPREG(CHID(kstDefault, krepDefault), "studio\bmp\e3trn2.bmp",
+REP_MBMPREG(CHID(kstDefault, krepDefault), "assets\studio\e3trn2.gif",
 	kxpregTransition2, kypregTransition2)
 ADOPT_MBMP(LAST_MBMP, CHID(kstDefault, krepMouseUpOn))
 ADOPT_MBMP(LAST_MBMP, CHID(kstDefault, krepMouseDnOff))
-REP_MBMPREG(CHID(kstDefault, krepMouseDnOn), "studio\bmp\e3trn2s.bmp",
+REP_MBMPREG(CHID(kstDefault, krepMouseDnOn), "assets\studio\e3trn2s.gif",
 	kxpregTransition2, kypregTransition2)
 ADOPT_MBMP(LAST_MBMP, CHID(kstSelected, krepDefault))
 CHILD_SCRIPT("Transition 2", CHID(kstDefault, kchidClick))
@@ -942,11 +942,11 @@ GOBCHUNK("Scene sorter - Transition button", kidTransition3, kgokkRectHit)
 	DEFAULT_POSITION(kxpTransition3, kypTransition3, 10)
 	ACTION(fcustNil, fcustNil, fgrfstAll, kcrsHand, CHID(kstDefault, kchidClick), cidNil, kttTransition3)
 ENDCHUNK
-REP_MBMPREG(CHID(kstDefault, krepDefault), "studio\bmp\e3trn3.bmp",
+REP_MBMPREG(CHID(kstDefault, krepDefault), "assets\studio\e3trn3.gif",
 	kxpregTransition3, kypregTransition3)
 ADOPT_MBMP(LAST_MBMP, CHID(kstDefault, krepMouseUpOn))
 ADOPT_MBMP(LAST_MBMP, CHID(kstDefault, krepMouseDnOff))
-REP_MBMPREG(CHID(kstDefault, krepMouseDnOn), "studio\bmp\e3trn3s.bmp",
+REP_MBMPREG(CHID(kstDefault, krepMouseDnOn), "assets\studio\e3trn3s.gif",
 	kxpregTransition3, kypregTransition3)
 ADOPT_MBMP(LAST_MBMP, CHID(kstSelected, krepDefault))
 CHILD_SCRIPT("Transition 3", CHID(kstDefault, kchidClick))
@@ -960,11 +960,11 @@ GOBCHUNK("Scene sorter - Transition button", kidTransition4, kgokkRectHit)
 	DEFAULT_POSITION(kxpTransition4, kypTransition4, 10)
 	ACTION(fcustNil, fcustNil, fgrfstAll, kcrsHand, CHID(kstDefault, kchidClick), cidNil, kttTransition4)
 ENDCHUNK
-REP_MBMPREG(CHID(kstDefault, krepDefault), "studio\bmp\e3trn4.bmp",
+REP_MBMPREG(CHID(kstDefault, krepDefault), "assets\studio\e3trn4.gif",
 	kxpregTransition4, kypregTransition4)
 ADOPT_MBMP(LAST_MBMP, CHID(kstDefault, krepMouseUpOn))
 ADOPT_MBMP(LAST_MBMP, CHID(kstDefault, krepMouseDnOff))
-REP_MBMPREG(CHID(kstDefault, krepMouseDnOn), "studio\bmp\e3trn4s.bmp",
+REP_MBMPREG(CHID(kstDefault, krepMouseDnOn), "assets\studio\e3trn4s.gif",
 	kxpregTransition4, kypregTransition4)
 ADOPT_MBMP(LAST_MBMP, CHID(kstSelected, krepDefault))
 CHILD_SCRIPT("Transition 4", CHID(kstDefault, kchidClick))
@@ -1017,7 +1017,7 @@ GOBCHUNK("Listener easel for actor background", kidListenBackgroundActor, kgokkR
 	DEFAULT_POSITION( kxpListenBackgroundActor, kypListenBackgroundActor, 200)
 	ACTION(fcustNil, fcustNil, fgrfstAll, kcrsArrow, chidNil, cidNil, cnoNil)
 ENDCHUNK
-REP_MBMPREG(CHID(kstDefault, krepDefault ), "studio\bmp\e4parmm.bmp", kxpregListenBackgroundActor, kypregListenBackgroundActor )
+REP_MBMPREG(CHID(kstDefault, krepDefault ), "assets\studio\e4parmm.gif", kxpregListenBackgroundActor, kypregListenBackgroundActor )
 ADOPT_WAVE(kcnoEzlOpenWav, CHID(kstDefault, krepEnterAnimation))
 CREATE_SCRIPT("Listener easel for actor background created")
 
@@ -1076,7 +1076,7 @@ GOBCHUNK("Listener easel for bkgd background", kidListenBackgroundBkgd, kgokkRec
 	DEFAULT_POSITION( kxpListenBackgroundBkgd, kypListenBackgroundBkgd, 200)
 	ACTION(fcustNil, fcustNil, fgrfstAll, kcrsArrow, chidNil, cidNil, cnoNil)
 ENDCHUNK
-REP_MBMPREG(CHID(kstDefault, krepDefault ), "studio\bmp\e4par.bmp", kxpregListenBackgroundBkgd, kypregListenBackgroundBkgd )
+REP_MBMPREG(CHID(kstDefault, krepDefault ), "assets\studio\e4par.gif", kxpregListenBackgroundBkgd, kypregListenBackgroundBkgd )
 ADOPT_WAVE(kcnoEzlOpenWav, CHID(kstDefault, krepEnterAnimation))
 CREATE_SCRIPT("Listener easel for bkgd background created")
 
@@ -1241,7 +1241,7 @@ ADOPT_ANIM(LAST_ANIM, CHID(kstSliderEnabled, kchidDownUpOff))
 GOBCHUNK("Listener easel Speech volume slider thumb", kidListenVolSpeechThumb, kgokkRectNoHit)
 	DEFAULT_POSITION( 0, 0, 10)
 ENDCHUNK
-REP_MBMPREG(CHID(kstDefault, krepDefault), "studio\bmp\e4vol1.bmp",
+REP_MBMPREG(CHID(kstDefault, krepDefault), "assets\studio\e4vol1.gif",
 	kxpregListenerNuke, kypregListenerNuke )
 
 GOBCHUNK("Listener easel FX volume slider", kidListenVolFX, kgokkRectHit)
@@ -1282,7 +1282,7 @@ ENDCHUNK
 GOBCHUNK("Listener easel FX volume slider thumb", kidListenVolFXThumb, kgokkRectNoHit)
 	DEFAULT_POSITION( 0, 0, 10)
 ENDCHUNK
-REP_MBMPREG(CHID(kstDefault, krepDefault), "studio\bmp\e4vol1.bmp",
+REP_MBMPREG(CHID(kstDefault, krepDefault), "assets\studio\e4vol1.gif",
 	kxpregListenerNuke, kypregListenerNuke )
 
 GOBCHUNK("Listener easel Midi volume slider", kidListenVolMidi, kgokkRectHit)
@@ -1323,7 +1323,7 @@ ENDCHUNK
 GOBCHUNK("Listener easel Midi volume slider thumb", kidListenVolMidiThumb, kgokkRectNoHit)
 	DEFAULT_POSITION( 0, 0, 10)
 ENDCHUNK
-REP_MBMPREG(CHID(kstDefault, krepDefault), "studio\bmp\e4vol1.bmp",
+REP_MBMPREG(CHID(kstDefault, krepDefault), "assets\studio\e4vol1.gif",
 	kxpregListenerNuke, kypregListenerNuke )
 
 GOBCHUNK("Listener easel speech motion matcher volume slider", kidListenVolSpeechMM, kgokkRectHit)
@@ -1364,7 +1364,7 @@ ENDCHUNK
 GOBCHUNK("Listener easel SpeechMM volume slider thumb", kidListenVolSpeechMMThumb, kgokkRectNoHit)
 	DEFAULT_POSITION( 0, 0, 10)
 ENDCHUNK
-REP_MBMPREG(CHID(kstDefault, krepDefault), "studio\bmp\e4vol1.bmp",
+REP_MBMPREG(CHID(kstDefault, krepDefault), "assets\studio\e4vol1.gif",
 	kxpregListenerNuke, kypregListenerNuke )
 
 GOBCHUNK("Listener easel FX motion matcher volume slider", kidListenVolFXMM, kgokkRectHit)
@@ -1405,7 +1405,7 @@ ENDCHUNK
 GOBCHUNK("Listener easel FXMM volume slider thumb", kidListenVolFXMMThumb, kgokkRectNoHit)
 	DEFAULT_POSITION( 0, 0, 10)
 ENDCHUNK
-REP_MBMPREG(CHID(kstDefault, krepDefault), "studio\bmp\e4vol1.bmp",
+REP_MBMPREG(CHID(kstDefault, krepDefault), "assets\studio\e4vol1.gif",
 	kxpregListenerNuke, kypregListenerNuke )
 
 //
@@ -1416,10 +1416,10 @@ GOBCHUNK("Listener easel nuke speech", kidListenNukeSpeech, kgokkRectHit)
 	ACTION(fcustNil, fcustNil, fgrfstAll, kcrsHand, CHID(kstSliderEnabled, kchidClick), cidNil, kttListenNukeSpeech)
 ENDCHUNK
 REP_RECT(CHID(kstSliderInvisible, krepDefault), "hidden", 0, 0, 0, 0)
-REP_MBMPREG(CHID(kstSliderEnabled, krepDefault), "studio\bmp\e4nuke.bmp", kxpregListenNukeSpeech, kypregListenNukeSpeech )
+REP_MBMPREG(CHID(kstSliderEnabled, krepDefault), "assets\studio\e4nuke.gif", kxpregListenNukeSpeech, kypregListenNukeSpeech )
 ADOPT_MBMP(LAST_MBMP, CHID(kstSliderEnabled, krepMouseUpOn))
 ADOPT_MBMP(LAST_MBMP, CHID(kstSliderEnabled, krepMouseDnOff))
-REP_MBMPREG(CHID(kstSliderEnabled, krepMouseDnOn), "studio\bmp\e4nukec.bmp", kxpregListenNukeSpeech, kypregListenNukeSpeech )
+REP_MBMPREG(CHID(kstSliderEnabled, krepMouseDnOn), "assets\studio\e4nukec.gif", kxpregListenNukeSpeech, kypregListenNukeSpeech )
 ADOPT_MBMP(LAST_MBMP, CHID(kstSelected, krepDefault))
 CHILD_SCRIPT("Listener easel nuke speech - click", CHID(kstSliderEnabled, kchidClick))
 	MoveAbsGob(kidListenVolSpeechThumb, kxpSliderThumb, kypListenVolSpeechMax);
@@ -1434,10 +1434,10 @@ GOBCHUNK("Listener easel nuke FX", kidListenNukeFX, kgokkRectHit)
 	ACTION(fcustNil, fcustNil, fgrfstAll, kcrsHand, CHID(kstSliderEnabled, kchidClick), cidNil, kttListenNukeSpeech)
 ENDCHUNK
 REP_RECT(CHID(kstSliderInvisible, krepDefault), "hidden", 0, 0, 0, 0)
-REP_MBMPREG(CHID(kstSliderEnabled, krepDefault), "studio\bmp\e4nuke.bmp", kxpregListenNukeFX, kypregListenNukeFX )
+REP_MBMPREG(CHID(kstSliderEnabled, krepDefault), "assets\studio\e4nuke.gif", kxpregListenNukeFX, kypregListenNukeFX )
 ADOPT_MBMP(LAST_MBMP, CHID(kstSliderEnabled, krepMouseUpOn))
 ADOPT_MBMP(LAST_MBMP, CHID(kstSliderEnabled, krepMouseDnOff))
-REP_MBMPREG(CHID(kstSliderEnabled, krepMouseDnOn), "studio\bmp\e4nukec.bmp", kxpregListenNukeFX, kypregListenNukeFX )
+REP_MBMPREG(CHID(kstSliderEnabled, krepMouseDnOn), "assets\studio\e4nukec.gif", kxpregListenNukeFX, kypregListenNukeFX )
 ADOPT_MBMP(LAST_MBMP, CHID(kstSelected, krepDefault))
 CHILD_SCRIPT("Listener easel nuke FX - click", CHID(kstSliderEnabled, kchidClick))
 	MoveAbsGob(kidListenVolFXThumb, kxpSliderThumb, kypListenVolFXMax);
@@ -1452,10 +1452,10 @@ GOBCHUNK("Listener easel nuke Midi", kidListenNukeMidi, kgokkRectHit)
 	ACTION(fcustNil, fcustNil, fgrfstAll, kcrsHand, CHID(kstSliderEnabled, kchidClick), cidNil, kttListenNukeSpeech)
 ENDCHUNK
 REP_RECT(CHID(kstSliderInvisible, krepDefault), "hidden", 0, 0, 0, 0)
-REP_MBMPREG(CHID(kstSliderEnabled, krepDefault), "studio\bmp\e4nuke.bmp", kxpregListenNukeMidi, kypregListenNukeMidi )
+REP_MBMPREG(CHID(kstSliderEnabled, krepDefault), "assets\studio\e4nuke.gif", kxpregListenNukeMidi, kypregListenNukeMidi )
 ADOPT_MBMP(LAST_MBMP, CHID(kstSliderEnabled, krepMouseUpOn))
 ADOPT_MBMP(LAST_MBMP, CHID(kstSliderEnabled, krepMouseDnOff))
-REP_MBMPREG(CHID(kstSliderEnabled, krepMouseDnOn), "studio\bmp\e4nukec.bmp", kxpregListenNukeMidi, kypregListenNukeMidi )
+REP_MBMPREG(CHID(kstSliderEnabled, krepMouseDnOn), "assets\studio\e4nukec.gif", kxpregListenNukeMidi, kypregListenNukeMidi )
 ADOPT_MBMP(LAST_MBMP, CHID(kstSelected, krepDefault))
 CHILD_SCRIPT("Listener easel nuke Midi - click", CHID(kstSliderEnabled, kchidClick))
 	MoveAbsGob(kidListenVolMidiThumb, kxpSliderThumb, kypListenVolMidiMax);
@@ -1470,10 +1470,10 @@ GOBCHUNK("Listener easel nuke speech motion matcher", kidListenNukeSpeechMM, kgo
 	ACTION(fcustNil, fcustNil, fgrfstAll, kcrsHand, CHID(kstSliderEnabled, kchidClick), cidNil, kttListenNukeSpeech)
 ENDCHUNK
 REP_RECT(CHID(kstSliderInvisible, krepDefault), "hidden", 0, 0, 0, 0)
-REP_MBMPREG(CHID(kstSliderEnabled, krepDefault), "studio\bmp\e4nuke.bmp",  kxpregListenNukeSpeechMM, kypregListenNukeSpeechMM )
+REP_MBMPREG(CHID(kstSliderEnabled, krepDefault), "assets\studio\e4nuke.gif",  kxpregListenNukeSpeechMM, kypregListenNukeSpeechMM )
 ADOPT_MBMP(LAST_MBMP, CHID(kstSliderEnabled, krepMouseUpOn))
 ADOPT_MBMP(LAST_MBMP, CHID(kstSliderEnabled, krepMouseDnOff))
-REP_MBMPREG(CHID(kstSliderEnabled, krepMouseDnOn), "studio\bmp\e4nukec.bmp", kxpregListenNukeSpeechMM, kypregListenNukeSpeechMM )
+REP_MBMPREG(CHID(kstSliderEnabled, krepMouseDnOn), "assets\studio\e4nukec.gif", kxpregListenNukeSpeechMM, kypregListenNukeSpeechMM )
 ADOPT_MBMP(LAST_MBMP, CHID(kstSelected, krepDefault))
 CHILD_SCRIPT("Listener easel nuke speech motion matcher - click", CHID(kstSliderEnabled, kchidClick))
 	MoveAbsGob(kidListenVolSpeechMMThumb, kxpSliderThumb, kypListenVolSpeechMMMax);
@@ -1488,10 +1488,10 @@ GOBCHUNK("Listener easel nuke FX motion matcher", kidListenNukeFXMM, kgokkRectHi
 	ACTION(fcustNil, fcustNil, fgrfstAll, kcrsHand, CHID(kstSliderEnabled, kchidClick), cidNil, kttListenNukeSpeech)
 ENDCHUNK
 REP_RECT(CHID(kstSliderInvisible, krepDefault), "hidden", 0, 0, 0, 0)
-REP_MBMPREG(CHID(kstSliderEnabled, krepDefault), "studio\bmp\e4nuke.bmp",  kxpregListenNukeFXMM, kypregListenNukeFXMM )
+REP_MBMPREG(CHID(kstSliderEnabled, krepDefault), "assets\studio\e4nuke.gif",  kxpregListenNukeFXMM, kypregListenNukeFXMM )
 ADOPT_MBMP(LAST_MBMP, CHID(kstSliderEnabled, krepMouseUpOn))
 ADOPT_MBMP(LAST_MBMP, CHID(kstSliderEnabled, krepMouseDnOff))
-REP_MBMPREG(CHID(kstSliderEnabled, krepMouseDnOn), "studio\bmp\e4nukec.bmp", kxpregListenNukeFXMM, kypregListenNukeFXMM )
+REP_MBMPREG(CHID(kstSliderEnabled, krepMouseDnOn), "assets\studio\e4nukec.gif", kxpregListenNukeFXMM, kypregListenNukeFXMM )
 ADOPT_MBMP(LAST_MBMP, CHID(kstSelected, krepDefault))
 CHILD_SCRIPT("Listener easel nuke FX motion matcher - click", CHID(kstSliderEnabled, kchidClick))
 	MoveAbsGob(kidListenVolFXMMThumb, kxpSliderThumb, kypListenVolFXMMMax);
@@ -1506,11 +1506,11 @@ GOBCHUNK("Listener easel audition speech", kidListenEditBoxSpeech, gokkNoHitKids
 	ACTION(fcustNil, fcustNil, fgrfstAll, kcrsHand, cidNil, cidNil, kttListenEditBoxSpeech)
 ENDCHUNK
 REP_RECT(CHID(kstSliderInvisible, krepDefault), "hidden", 0, 0, 0, 0)
-REP_MBMPREG(CHID(kstSliderEnabled, krepDefault), "studio\bmp\e4audit.bmp",
+REP_MBMPREG(CHID(kstSliderEnabled, krepDefault), "assets\studio\e4audit.gif",
 	kxpregListenEditBoxSpeech, kypregListenEditBoxSpeech)
 ADOPT_MBMP(LAST_MBMP, CHID(kstSliderEnabled, krepMouseDnOff))
-REP_MBMPREG(kcell1, "studio\bmp\e4auditc.bmp", kxpregListenEditBoxSpeech, kypregListenEditBoxSpeech)
-REP_MBMPREG(kcell2, "studio\bmp\e4audit.bmp", kxpregListenEditBoxSpeech, kypregListenEditBoxSpeech)
+REP_MBMPREG(kcell1, "assets\studio\e4auditc.gif", kxpregListenEditBoxSpeech, kypregListenEditBoxSpeech)
+REP_MBMPREG(kcell2, "assets\studio\e4audit.gif", kxpregListenEditBoxSpeech, kypregListenEditBoxSpeech)
 // Ignore any btn down event in the audition area.
 REP_ANIM(CHID(kstSliderEnabled, krepMouseUpOn), "Begin Rollover")
 	// User wants an audition of this sound.
@@ -1528,11 +1528,11 @@ GOBCHUNK("Listener easel audition FX", kidListenEditBoxFX, gokkNoHitKids)
 	ACTION(fcustNil, fcustNil, fgrfstAll, kcrsHand, cidNil, cidNil, kttListenEditBoxFX)
 ENDCHUNK
 REP_RECT(CHID(kstSliderInvisible, krepDefault), "hidden", 0, 0, 0, 0)
-REP_MBMPREG(CHID(kstSliderEnabled, krepDefault), "studio\bmp\e4audit.bmp",
+REP_MBMPREG(CHID(kstSliderEnabled, krepDefault), "assets\studio\e4audit.gif",
 	kxpregListenEditBoxFX, kypregListenEditBoxFX)
 ADOPT_MBMP(LAST_MBMP, CHID(kstSliderEnabled, krepMouseDnOff))
-REP_MBMPREG(kcell1, "studio\bmp\e4auditc.bmp", kxpregListenEditBoxFX, kypregListenEditBoxFX )
-REP_MBMPREG(kcell2, "studio\bmp\e4audit.bmp", kxpregListenEditBoxFX, kypregListenEditBoxFX )
+REP_MBMPREG(kcell1, "assets\studio\e4auditc.gif", kxpregListenEditBoxFX, kypregListenEditBoxFX )
+REP_MBMPREG(kcell2, "assets\studio\e4audit.gif", kxpregListenEditBoxFX, kypregListenEditBoxFX )
 REP_ANIM(CHID(kstSliderEnabled, krepMouseUpOn), "Begin Rollover")
 	EnqueueCid(cidEaselPlay, GidParGob(GidParThis()), kidListenEditBoxFX, 1, 0, 0);
 	Cell(kcell1, 0, 0, 0);
@@ -1547,11 +1547,11 @@ GOBCHUNK("Listener easel audition Midi", kidListenEditBoxMidi, gokkNoHitKids)
 	ACTION(fcustNil, fcustNil, fgrfstAll, kcrsHand, cidNil, cidNil, kttListenEditBoxMidi)
 ENDCHUNK
 REP_RECT(CHID(kstSliderInvisible, krepDefault), "hidden", 0, 0, 0, 0)
-REP_MBMPREG(CHID(kstSliderEnabled, krepDefault), "studio\bmp\e4audit.bmp",
+REP_MBMPREG(CHID(kstSliderEnabled, krepDefault), "assets\studio\e4audit.gif",
 	kxpregListenEditBoxMidi, kypregListenEditBoxMidi)
 ADOPT_MBMP(LAST_MBMP, CHID(kstSliderEnabled, krepMouseDnOff))
-REP_MBMPREG(kcell1, "studio\bmp\e4auditc.bmp", 0, 0)
-REP_MBMPREG(kcell2, "studio\bmp\e4audit.bmp", 0, 0)
+REP_MBMPREG(kcell1, "assets\studio\e4auditc.gif", 0, 0)
+REP_MBMPREG(kcell2, "assets\studio\e4audit.gif", 0, 0)
 REP_ANIM(CHID(kstSliderEnabled, krepMouseUpOn), "Begin Rollover")
 	EnqueueCid(cidEaselPlay, GidParGob(GidParThis()), kidListenEditBoxMidi, 1, 0, 0);
 	Cell(kcell1, 0, 0, 0);
@@ -1566,11 +1566,11 @@ GOBCHUNK("Listener easel audition speech motion matcher", kidListenEditBoxSpeech
 	ACTION(fcustNil, fcustNil, fgrfstAll, kcrsHand, cidNil, cidNil, kttListenEditBoxSpeechMM)
 ENDCHUNK
 REP_RECT(CHID(kstSliderInvisible, krepDefault), "hidden", 0, 0, 0, 0)
-REP_MBMPREG(CHID(kstSliderEnabled, krepDefault), "studio\bmp\e4audit.bmp",
+REP_MBMPREG(CHID(kstSliderEnabled, krepDefault), "assets\studio\e4audit.gif",
 	kxpregListenEditBoxSpeechMM, kypregListenEditBoxSpeechMM)
 ADOPT_MBMP(LAST_MBMP, CHID(kstSliderEnabled, krepMouseDnOff))
-REP_MBMPREG(kcell1, "studio\bmp\e4auditc.bmp", 0, 0)
-REP_MBMPREG(kcell2, "studio\bmp\e4audit.bmp", 0, 0)
+REP_MBMPREG(kcell1, "assets\studio\e4auditc.gif", 0, 0)
+REP_MBMPREG(kcell2, "assets\studio\e4audit.gif", 0, 0)
 REP_ANIM(CHID(kstSliderEnabled, krepMouseUpOn), "Begin Rollover")
 	EnqueueCid(cidEaselPlay, GidParGob(GidParThis()), kidListenEditBoxSpeechMM, 1, 0, 0);
 	Cell(kcell1, 0, 0, 0);
@@ -1585,11 +1585,11 @@ GOBCHUNK("Listener easel audition FX motion matcher", kidListenEditBoxFXMM, gokk
 	ACTION(fcustNil, fcustNil, fgrfstAll, kcrsHand, cidNil, cidNil, kttListenEditBoxFXMM)
 ENDCHUNK
 REP_RECT(CHID(kstSliderInvisible, krepDefault), "hidden", 0, 0, 0, 0)
-REP_MBMPREG(CHID(kstSliderEnabled, krepDefault), "studio\bmp\e4audit.bmp",
+REP_MBMPREG(CHID(kstSliderEnabled, krepDefault), "assets\studio\e4audit.gif",
 	kxpregListenEditBoxFXMM, kypregListenEditBoxFXMM)
 ADOPT_MBMP(LAST_MBMP, CHID(kstSliderEnabled, krepMouseDnOff))
-REP_MBMPREG(kcell1, "studio\bmp\e4auditc.bmp", 0, 0)
-REP_MBMPREG(kcell2, "studio\bmp\e4audit.bmp", 0, 0)
+REP_MBMPREG(kcell1, "assets\studio\e4auditc.gif", 0, 0)
+REP_MBMPREG(kcell2, "assets\studio\e4audit.gif", 0, 0)
 REP_ANIM(CHID(kstSliderEnabled, krepMouseUpOn), "Begin Rollover")
 	EnqueueCid(cidEaselPlay, GidParGob(GidParThis()), kidListenEditBoxFXMM, 1, 0, 0);
 	Cell(kcell1, 0, 0, 0);
@@ -1606,11 +1606,11 @@ GOBCHUNK("Listener easel cancel", kidListenCancel, kgokkRectHit)
 	DEFAULT_POSITION(kxpListenCancel, kypListenCancel, 10)
 	ACTION(fcustNil, fcustNil, fgrfstAll, kcrsHand, CHID(kstDefault, kchidClick), cidNil, kttEaselCancel)
 ENDCHUNK
-REP_MBMPREG(CHID(kstDefault, krepDefault), "studio\bmp\e4can.bmp",
+REP_MBMPREG(CHID(kstDefault, krepDefault), "assets\studio\e4can.gif",
 	kxpregListenCancel, kypregListenCancel)
 ADOPT_MBMP(LAST_MBMP, CHID(kstDefault, krepMouseUpOn))
 ADOPT_MBMP(LAST_MBMP, CHID(kstDefault, krepMouseDnOff))
-REP_MBMPREG(CHID(kstDefault, krepMouseDnOn), "studio\bmp\e4canc.bmp",
+REP_MBMPREG(CHID(kstDefault, krepMouseDnOn), "assets\studio\e4canc.gif",
 	kxpregListenCancel, kypregListenCancel)
 ADOPT_MBMP(LAST_MBMP, CHID(kstSelected, krepDefault))
 ADOPT_WAVE(kcnoCancelWav, CHID(kstDefault, krepClicked))
@@ -1625,11 +1625,11 @@ GOBCHUNK("Listener easel ok", kidListenOk, kgokkRectHit)
 	DEFAULT_POSITION(kxpListenOk, kypListenOk, 10)
 	ACTION(fcustNil, fcustNil, fgrfstAll, kcrsHand, CHID(kstDefault, kchidClick), cidNil, kttEaselOk)
 ENDCHUNK
-REP_MBMPREG(CHID(kstDefault, krepDefault), "studio\bmp\e4okay.bmp",
+REP_MBMPREG(CHID(kstDefault, krepDefault), "assets\studio\e4okay.gif",
 	kxpregListenOk, kypregListenOk)
 ADOPT_MBMP(LAST_MBMP, CHID(kstDefault, krepMouseUpOn))
 ADOPT_MBMP(LAST_MBMP, CHID(kstDefault, krepMouseDnOff))
-REP_MBMPREG(CHID(kstDefault, krepMouseDnOn), "studio\bmp\e4okayc.bmp",
+REP_MBMPREG(CHID(kstDefault, krepMouseDnOn), "assets\studio\e4okayc.gif",
 	kxpregListenOk, kypregListenOk)
 ADOPT_MBMP(LAST_MBMP, CHID(kstSelected, krepDefault))
 ADOPT_WAVE(kcnoOkWav, CHID(kstDefault, krepClicked))
@@ -1648,10 +1648,10 @@ GOBCHUNK("Listener icon for Midi icon", kidListenMidiIcon, kgokkRectHit)
 	ACTION(fcustNil, fcustNil, fgrfstAll, kcrsArrow, chidNil, cidNil, cidNil)
 ENDCHUNK
 REP_RECT(CHID(kstDisabled, krepDefault), "hidden", 0, 0, 0, 0)
-REP_MBMPREG( CHID( kstListenLooper, krepDefault ), "studio\bmp\e4loop.bmp",0,0  )
-REP_MBMPREG( CHID( kstListenSounderChain, krepDefault ), "studio\bmp\e4queue.bmp", 0,0 )
-REP_MBMPREG( CHID( kstListenMatcher, krepDefault ), "studio\bmp\e4mm.bmp", 0,0  )
-REP_MBMPREG( CHID( kstListenSounder, krepDefault ), "studio\bmp\e4snd.bmp", 0,0 )
+REP_MBMPREG( CHID( kstListenLooper, krepDefault ), "assets\studio\e4loop.gif",0,0  )
+REP_MBMPREG( CHID( kstListenSounderChain, krepDefault ), "assets\studio\e4queue.gif", 0,0 )
+REP_MBMPREG( CHID( kstListenMatcher, krepDefault ), "assets\studio\e4mm.gif", 0,0  )
+REP_MBMPREG( CHID( kstListenSounder, krepDefault ), "assets\studio\e4snd.gif", 0,0 )
 
 // Indicator Icon for speech
 
@@ -1660,10 +1660,10 @@ GOBCHUNK("Listener icon for speech icon", kidListenSpeechIcon, kgokkRectHit)
 	ACTION(fcustNil, fcustNil, fgrfstAll, kcrsArrow, chidNil, cidNil, cidNil)
 ENDCHUNK
 REP_RECT(CHID(kstDisabled, krepDefault), "hidden", 0, 0, 0, 0)
-REP_MBMPREG( CHID( kstListenLooper, krepDefault ), "studio\bmp\e4loop.bmp",0,0  )
-REP_MBMPREG( CHID( kstListenSounderChain, krepDefault ), "studio\bmp\e4queue.bmp", 0,0 )
-REP_MBMPREG( CHID( kstListenMatcher, krepDefault ), "studio\bmp\e4mm.bmp", 0,0  )
-REP_MBMPREG( CHID( kstListenSounder, krepDefault ), "studio\bmp\e4snd.bmp", 0,0 )
+REP_MBMPREG( CHID( kstListenLooper, krepDefault ), "assets\studio\e4loop.gif",0,0  )
+REP_MBMPREG( CHID( kstListenSounderChain, krepDefault ), "assets\studio\e4queue.gif", 0,0 )
+REP_MBMPREG( CHID( kstListenMatcher, krepDefault ), "assets\studio\e4mm.gif", 0,0  )
+REP_MBMPREG( CHID( kstListenSounder, krepDefault ), "assets\studio\e4snd.gif", 0,0 )
 
 // Indicator Icon for FX
 
@@ -1672,10 +1672,10 @@ GOBCHUNK("Listener easel FX icon", kidListenFXIcon, kgokkRectHit)
 	ACTION(fcustNil, fcustNil, fgrfstAll, kcrsArrow, chidNil, cidNil, cidNil)
 ENDCHUNK
 REP_RECT(CHID(kstDisabled, krepDefault), "hidden", 0, 0, 0, 0)
-REP_MBMPREG( CHID( kstListenLooper, krepDefault ), "studio\bmp\e4loop.bmp",0,0  )
-REP_MBMPREG( CHID( kstListenSounderChain, krepDefault ), "studio\bmp\e4queue.bmp", 0,0 )
-REP_MBMPREG( CHID( kstListenMatcher, krepDefault ), "studio\bmp\e4mm.bmp", 0,0  )
-REP_MBMPREG( CHID( kstListenSounder, krepDefault ), "studio\bmp\e4snd.bmp", 0,0 )
+REP_MBMPREG( CHID( kstListenLooper, krepDefault ), "assets\studio\e4loop.gif",0,0  )
+REP_MBMPREG( CHID( kstListenSounderChain, krepDefault ), "assets\studio\e4queue.gif", 0,0 )
+REP_MBMPREG( CHID( kstListenMatcher, krepDefault ), "assets\studio\e4mm.gif", 0,0  )
+REP_MBMPREG( CHID( kstListenSounder, krepDefault ), "assets\studio\e4snd.gif", 0,0 )
 
 // Indicator Icon for speech MM
 
@@ -1684,10 +1684,10 @@ GOBCHUNK("Listener easel Speech MM Icon", kidListenSpeechMMIcon, kgokkRectHit)
 	ACTION(fcustNil, fcustNil, fgrfstAll, kcrsArrow, chidNil, cidNil, cidNil)
 ENDCHUNK
 REP_RECT(CHID(kstDisabled, krepDefault), "hidden", 0, 0, 0, 0)
-REP_MBMPREG( CHID( kstListenLooper, krepDefault ), "studio\bmp\e4loop.bmp",0,0  )
-REP_MBMPREG( CHID( kstListenSounderChain, krepDefault ), "studio\bmp\e4queue.bmp", 0,0 )
-REP_MBMPREG( CHID( kstListenMatcher, krepDefault ), "studio\bmp\e4mm.bmp", 0,0  )
-REP_MBMPREG( CHID( kstListenSounder, krepDefault ), "studio\bmp\e4snd.bmp", 0,0 )
+REP_MBMPREG( CHID( kstListenLooper, krepDefault ), "assets\studio\e4loop.gif",0,0  )
+REP_MBMPREG( CHID( kstListenSounderChain, krepDefault ), "assets\studio\e4queue.gif", 0,0 )
+REP_MBMPREG( CHID( kstListenMatcher, krepDefault ), "assets\studio\e4mm.gif", 0,0  )
+REP_MBMPREG( CHID( kstListenSounder, krepDefault ), "assets\studio\e4snd.gif", 0,0 )
 
 // Indicator Icon for FX motion matcher
 
@@ -1696,10 +1696,10 @@ GOBCHUNK("Listener easel FX MM Icon", kidListenFXMMIcon, kgokkRectHit)
 	ACTION(fcustNil, fcustNil, fgrfstAll, kcrsArrow, chidNil, cidNil, cidNil)
 ENDCHUNK
 REP_RECT(CHID(kstDisabled, krepDefault), "hidden", 0, 0, 0, 0)
-REP_MBMPREG( CHID( kstListenLooper, krepDefault ), "studio\bmp\e4loop.bmp",0,0  )
-REP_MBMPREG( CHID( kstListenSounderChain, krepDefault ), "studio\bmp\e4queue.bmp", 0,0 )
-REP_MBMPREG( CHID( kstListenMatcher, krepDefault ), "studio\bmp\e4mm.bmp", 0,0  )
-REP_MBMPREG( CHID( kstListenSounder, krepDefault ), "studio\bmp\e4snd.bmp", 0,0 )
+REP_MBMPREG( CHID( kstListenLooper, krepDefault ), "assets\studio\e4loop.gif",0,0  )
+REP_MBMPREG( CHID( kstListenSounderChain, krepDefault ), "assets\studio\e4queue.gif", 0,0 )
+REP_MBMPREG( CHID( kstListenMatcher, krepDefault ), "assets\studio\e4mm.gif", 0,0  )
+REP_MBMPREG( CHID( kstListenSounder, krepDefault ), "assets\studio\e4snd.gif", 0,0 )
 	
 //
 //
@@ -1730,7 +1730,7 @@ GOBCHUNK("Record easel background", kidRecordBackground, kgokkRectHit)
 	DEFAULT_POSITION(kxpRecordBackground, kypRecordBackground, 200)
 	ACTION(fcustNil, fcustNil, fgrfstAll, kcrsArrow, chidNil, cidNil, cnoNil)
 ENDCHUNK
-REP_MBMPREG(CHID(kstDefault, krepDefault ), "studio\bmp\e5par.bmp", 0, 0)
+REP_MBMPREG(CHID(kstDefault, krepDefault ), "assets\studio\e5par.gif", 0, 0)
 ADOPT_WAVE(kcnoEzlOpenWav, CHID(kstDefault, krepEnterAnimation))
 CREATE_SCRIPT("Recorder easel background created")
 
@@ -1795,11 +1795,11 @@ GOBCHUNK("Recorder easel record", kidRecordRecord, kgokkRectHit)
 	DEFAULT_POSITION(kxpRecordRecord, kypRecordRecord, 10)
 	ACTION(fcustNil, fcustNil, fgrfstAll, kcrsHand, CHID(kstDefault, kchidClick), cidNil, kttRecordRecord)
 ENDCHUNK
-REP_MBMPREG(CHID(kstDefault, krepDefault), "studio\bmp\e5mike.bmp",
+REP_MBMPREG(CHID(kstDefault, krepDefault), "assets\studio\e5mike.gif",
 	kxpregRecordRecord, kypregRecordRecord)
 ADOPT_MBMP(LAST_MBMP, CHID(kstDefault, krepMouseUpOn))
 ADOPT_MBMP(LAST_MBMP, CHID(kstDefault, krepMouseDnOff))
-REP_MBMPREG(CHID(kstDefault, krepMouseDnOn), "studio\bmp\e5mikes.bmp",
+REP_MBMPREG(CHID(kstDefault, krepMouseDnOn), "assets\studio\e5mikes.gif",
 	kxpregRecordRecord, kypregRecordRecord)
 ADOPT_MBMP(LAST_MBMP, CHID(kstSelected, krepDefault))
 CHILD_SCRIPT("Recorder easel Record", CHID(kstDefault, kchidClick))
@@ -1817,11 +1817,11 @@ GOBCHUNK("Recorder easel play", kidRecordPlay, kgokkRectHit)
 	DEFAULT_POSITION(kxpRecordPlay, kypRecordPlay, 10)
 	ACTION(fcustNil, fcustNil, fgrfstAll, kcrsHand, CHID(kstDefault, kchidClick), cidNil, kttRecordPlay)
 ENDCHUNK
-REP_MBMPREG(CHID(kstDefault, krepDefault), "studio\bmp\e5play.bmp",
+REP_MBMPREG(CHID(kstDefault, krepDefault), "assets\studio\e5play.gif",
 	kxpregRecordPlay, kypregRecordPlay)
 ADOPT_MBMP(LAST_MBMP, CHID(kstDefault, krepMouseUpOn))
 ADOPT_MBMP(LAST_MBMP, CHID(kstDefault, krepMouseDnOff))
-REP_MBMPREG(CHID(kstDefault, krepMouseDnOn), "studio\bmp\e5plays.bmp",
+REP_MBMPREG(CHID(kstDefault, krepMouseDnOn), "assets\studio\e5plays.gif",
 	kxpregRecordPlay, kypregRecordPlay)
 ADOPT_MBMP(LAST_MBMP, CHID(kstSelected, krepDefault))
 ADOPT_WAVE(kcnoRPlayWav, CHID(kstDefault, krepClicked))
@@ -1841,11 +1841,11 @@ GOBCHUNK("Recorder easel cancel", kidRecordCancel, kgokkRectHit)
 	DEFAULT_POSITION(kxpRecordCancel, kypRecordCancel, 10)
 	ACTION(fcustNil, fcustNil, fgrfstAll, kcrsHand, CHID(kstDefault, kchidClick), cidNil, kttRecordEaselCancel)
 ENDCHUNK
-REP_MBMPREG(CHID(kstDefault, krepDefault), "studio\bmp\e5can.bmp",
+REP_MBMPREG(CHID(kstDefault, krepDefault), "assets\studio\e5can.gif",
 	kxpregRecordCancel, kypregRecordCancel)
 ADOPT_MBMP(LAST_MBMP, CHID(kstDefault, krepMouseUpOn))
 ADOPT_MBMP(LAST_MBMP, CHID(kstDefault, krepMouseDnOff))
-REP_MBMPREG(CHID(kstDefault, krepMouseDnOn), "studio\bmp\e5canc.bmp",
+REP_MBMPREG(CHID(kstDefault, krepMouseDnOn), "assets\studio\e5canc.gif",
 	kxpregRecordCancel, kypregRecordCancel)
 ADOPT_MBMP(LAST_MBMP, CHID(kstSelected, krepDefault))
 ADOPT_WAVE(kcnoCancelWav, CHID(kstDefault, krepClicked))
@@ -1860,11 +1860,11 @@ GOBCHUNK("Recorder easel ok", kidRecordOk, kgokkRectHit)
 	DEFAULT_POSITION(kxpRecordOk, kypRecordOk, 10)
 	ACTION(fcustNil, fcustNil, fgrfstAll, kcrsHand, CHID(kstDefault, kchidClick), cidNil, kttRecordEaselOk)
 ENDCHUNK
-REP_MBMPREG(CHID(kstDefault, krepDefault), "studio\bmp\e5okay.bmp",
+REP_MBMPREG(CHID(kstDefault, krepDefault), "assets\studio\e5okay.gif",
 	kxpregRecordOk, kypregRecordOk)
 ADOPT_MBMP(LAST_MBMP, CHID(kstDefault, krepMouseUpOn))
 ADOPT_MBMP(LAST_MBMP, CHID(kstDefault, krepMouseDnOff))
-REP_MBMPREG(CHID(kstDefault, krepMouseDnOn), "studio\bmp\e5okayc.bmp",
+REP_MBMPREG(CHID(kstDefault, krepMouseDnOn), "assets\studio\e5okayc.gif",
 	kxpregRecordOk, kypregRecordOk)
 ADOPT_MBMP(LAST_MBMP, CHID(kstSelected, krepDefault))
 ADOPT_WAVE(kcnoOkWav, CHID(kstDefault, krepClicked))
