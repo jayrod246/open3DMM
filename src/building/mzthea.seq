@@ -4,7 +4,7 @@
 
 
 
-REP_PPMBMP( kcell1, "building\pbm\theatre\thr2a1.pbm" )
+REP_MBMPNIL( kcell1 )
 REP_PPMBMP( kcell2, "building\pbm\theatre\thr2a2.pbm" )
 REP_PPMBMP( kcell3, "building\pbm\theatre\thr2a3.pbm" )
 REP_PPMBMP( kcell4, "building\pbm\theatre\thr2a4.pbm" )
@@ -214,6 +214,6 @@ REP_PPMBMP( kcell303, "building\pbm\theatre\thr1_53.pbm" )
 REP_PPMBMP( kcell304, "building\pbm\theatre\thr1_54.pbm" )
 REP_PPMBMP( kcell305, "building\pbm\theatre\thr1_55.pbm" )
 REP_PPMBMP( kcell306, "building\pbm\theatre\thr1_56.pbm" )
-REP_PPMBMP( kcell307, "building\pbm\theatre\thr1_57.pbm" )
-REP_PPMBMP( kcell308, "building\pbm\theatre\thr1_58.pbm" )
+REP_MBMPNIL( kcell307 )
+REP_MBMPNIL( kcell308 )
 
